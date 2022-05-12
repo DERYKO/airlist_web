@@ -1,0 +1,16 @@
+{
+  "url": "http://web.airlst.dev",
+  "apiUrl": "http://api.airlst.dev/api",
+  "pusher": {
+    "key": "ca498a66050eb8698158",
+    "cluster": "eu",
+    "encrypted": true
+  },
+  "stripeKey": "pk_test_4XhiCTxNVR1DYMCmAPcM09it",
+  "rollbarKey": "f3a891bfc83f459f852c41c65e86e88a",
+  "rollbarEnv": "local",
+  "rollbarLvl": "error",
+  "name": "local",
+  "html5": false,
+  "version": "1.8.5"
+}

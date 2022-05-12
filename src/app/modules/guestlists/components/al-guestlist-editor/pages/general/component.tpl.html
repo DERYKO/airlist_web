@@ -1,0 +1,212 @@
+<section id="guestlists_editor_general" ng-if="vm.showContent">
+    <h1>{{'guestlists.editor.pages.general.head' | translate}}</h1>
+    <div class="content-box" id="general_general">
+        <div class="box-section-wrap">
+            <fieldset>
+                <div class="form-group input-lg">
+                    <customfield ng-model="vm.model.name"
+                                 definition="{
+                                    type:'textbox',
+                                    name: ('guestlists.editor.pages.general.labels.name' | translate),
+                                    help: ('guestlists.editor.pages.general.help_texts.name' | translate),
+                                    required:true
+                                 }"
+                                 name="name"
+                                 ng-required="true"></customfield>
+                </div>
+                <div class="row">
+                    <div class="form-group d-inline-block mr-10 col">
+                        <customfield ng-model="vm.dateFields.start_date"
+                                     definition="{
+                                        type:'datetime',
+                                        name:('guestlists.editor.pages.general.labels.start_date' | translate),
+                                        required:true
+                                     }"
+                                     name="start_date"
+                                     ng-required="true"></customfield>
+                    </div>
+                    <div class="form-group d-inline-block col">
+                        <customfield ng-model="vm.dateFields.end_date"
+                                     definition="{
+                                        type:'datetime',
+                                        name:('guestlists.editor.pages.general.labels.end_date' | translate),
+                                        required:true
+                                     }"
+                                     name="end_date"
+                                     ng-required="true"></customfield>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <h2>{{'guestlists.editor.pages.general.sub_heads.location' | translate}}</h2>
+    <div class="content-box" id="general_location">
+        <div class="box-section-wrap">
+            <fieldset>
+                <div class="form-group input-lg">
+                    <customfield ng-model="vm.model.settings.location_information.name"
+                                 definition="{
+                                    type:'textbox',
+                                    name:('guestlists.editor.pages.general.labels.location.name' | translate),
+                                    required:false
+                                 }"
+                                 name="name_of_location"></customfield>
+
+                </div>
+                <div class="row">
+                    <div class="form-group d-inline-block mr-10 col">
+                        <customfield ng-model="vm.model.settings.location_information.street"
+                                     definition="{
+                                        type:'textbox',
+                                        name:('guestlists.editor.pages.general.labels.location.street' | translate),
+                                        required:false
+                                     }"
+                                     name="street_and_number"></customfield>
+
+                    </div>
+                    <div class="form-group d-inline-block mr-10 col">
+                        <customfield ng-model="vm.model.settings.location_information.zip"
+                                     definition="{
+                                        type:'textbox',
+                                        name:('guestlists.editor.pages.general.labels.location.zip' | translate),
+                                        required:false
+                                     }"
+                                     name="post_code"></customfield>
+
+                    </div>
+                    <div class="form-group d-inline-block mr-10 col">
+                        <customfield ng-model="vm.model.settings.location_information.city"
+                                     definition="{
+                                        type:'textbox',
+                                        name:('guestlists.editor.pages.general.labels.location.city' | translate),
+                                        required:false
+                                     }"
+                                     name="city"></customfield>
+
+                    </div>
+                    <div class="form-group d-inline-block col">
+                        <customfield ng-model="vm.model.settings.location_information.country"
+                                     definition="{
+                                        type:'textbox',
+                                        name:('guestlists.editor.pages.general.labels.location.country' | translate),
+                                        required:false
+                                     }"
+                                     name="country"></customfield>
+
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <h2>{{'guestlists.editor.pages.general.sub_heads.visibility' | translate}}</h2>
+    <div class="content-box" id="general_visibility">
+        <div class="box-section-wrap">
+            <div class="form-group">
+                <label>{{'guestlists.editor.pages.general.labels.permission' | translate}}</label>
+                <al-switch config="{name: 'permission'}" model="vm.isPrivateGuestlist"></al-switch>
+            </div>
+            <!-- @todo translate the user functionality and make it work again -->
+            <div class="base-table mt-20" ng-if="vm.isPrivateGuestlist">
+                <table>
+                    <thead>
+                    <tr>
+                        <th col-span="2">{{'guestlists.editor.pages.general.permission_list.headers.main' | translate}}</th>
+                        <th>{{'guestlists.editor.pages.general.permission_list.headers.read' | translate}}</th>
+                        <th>{{'guestlists.editor.pages.general.permission_list.headers.write' | translate}}</th>
+                        <th>{{'guestlists.editor.pages.general.permission_list.headers.delete' | translate}}</th>
+                        <th>{{'guestlists.editor.pages.general.permission_list.headers.admin' | translate}}</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="permissionRow in vm.currentUsers track by $index">
+                        <td>
+                            <p>{{ permissionRow.user.full_name }}
+                            </p>
+                        </td>
+                        <td>
+                            <input type="checkbox"
+                                   id="permission-{{$index}}-read"
+                                   ng-true-value="1"
+                                   ng-false-value="0"
+                                   ng-model="permissionRow.permissions.read">
+                            <label for="permission-{{$index}}-read"></label>
+                        </td>
+                        <td>
+                            <input type="checkbox"
+                                   id="permission-{{$index}}-write"
+                                   ng-true-value="1"
+                                   ng-false-value="0"
+                                   ng-model="permissionRow.permissions.write">
+                            <label for="permission-{{$index}}-write"></label>
+                        </td>
+                        <td>
+                            <input type="checkbox"
+                                   id="permission-{{$index}}-delete"
+                                   ng-true-value="1"
+                                   ng-false-value="0"
+                                   ng-model="permissionRow.permissions.delete">
+                            <label for="permission-{{$index}}-delete"></label>
+                        </td>
+                        <td>
+                            <input type="checkbox"
+                                   id="permission-{{$index}}-admin"
+                                   ng-true-value="1"
+                                   ng-false-value="0"
+                                   ng-model="permissionRow.permissions.admin">
+                            <label for="permission-{{$index}}-admin"></label>
+                        </td>
+                        <td>
+                            <button type="button" ng-click="vm.removeUser(permissionRow)"
+                                    class="btn-warning">
+                                <i class="fal fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button type="button" ng-click="vm.addUsers()" class="add-option mt-10 mb-20">
+                    <i class="fal fa-plus-circle"></i>&nbsp;&nbsp;
+                    {{'guestlists.editor.pages.general.permission_list.buttons.add_user' | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <h2 ng-if="vm.acl.hasModule('addressbook')">{{'guestlists.editor.pages.general.sub_heads.advanced' |
+        translate}}</h2>
+    <div class="content-box" id="general_advanced" ng-if="vm.acl.hasModule('addressbook')">
+        <div class="box-section-wrap">
+            <fieldset>
+                <div class="form-group"
+                     ng-if="vm.acl.hasModule('addressbook') && vm.acl.hasModule('addressbook_categories') && vm.state.formConfig.categorySelectBox">
+                    <label>{{('guestlists.editor.pages.general.labels.add_contact_to_categories' | translate)}}</label>
+                    <select-box
+                            model="vm.model.settings.add_contact_to_categories"
+                            config="vm.state.formConfig.categorySelectBox">
+                    </select-box>
+                </div>
+                <div class="form-group" ng-if="vm.acl.hasModule('addressbook')">
+                    <customfield
+                            definition="{type:'boolean', name: ('guestlists.editor.pages.general.labels.add_contacts_to_addressbook' | translate), help: 'When enabled, contacts that come through open registration will be saved in the overall addressbook. Otherwise, they will only be created for this specific guestlist.'}"
+                            ng-model="vm.model.settings.add_contacts_to_addressbook"
+                            name="add_to_contacts"></customfield>
+                </div>
+                <div class="form-group"
+                     ng-if="vm.acl.hasModule('addressbook') && vm.model.settings.add_contacts_to_addressbook">
+                    <customfield
+                            definition="{type:'boolean', name: ('guestlists.editor.pages.general.labels.identify_contact_by_email' | translate), help: 'When enabled, a lookup for a existing contact is started by the give email address. If contact exists, no new contact would be created.'}"
+                            ng-model="vm.model.settings.identify_contact_by_email"
+                            name="identify_contact_by_email"></customfield>
+                </div>
+                <div class="form-group"
+                     ng-if="vm.acl.hasModule('addressbook') && vm.model.settings.add_contacts_to_addressbook && vm.model.settings.identify_contact_by_email">
+                    <customfield
+                            definition="{type:'boolean', name: ('guestlists.editor.pages.general.labels.overwrite_data_of_email_identified_contact' | translate), help: 'When enabled and a contact was found by email, the data will be overwritten by the request data.'}"
+                            ng-model="vm.model.settings.overwrite_data_of_email_identified_contact"
+                            name="overwrite_data_of_email_identified_contact"></customfield>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</section>

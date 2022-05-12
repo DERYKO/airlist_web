@@ -1,0 +1,195 @@
+<section ng-if="vm.currentView == 'overview' && vm.rsvp">
+    <section>
+        <div class="heading-toolset-wrapper">
+            <h1>RSVP Details</h1>
+            <scroll-toolset ng-if="vm.store && vm.store.state.slug === 'rsvps'" model="vm.rsvp" store="vm.store"
+                            index="vm.selectedIndex"
+                            on-scroll-up="vm.gotoRsvp(model)"
+                            on-scroll-down="vm.gotoRsvp(model)"></scroll-toolset>
+        </div>
+        <div class="content-box box-900">
+            <div class="box-section-wrap">
+                <div class="user-avatar">
+                    <img ng-src="{{vm.rsvp.contact.data.profile_image.url}}" class="user"/>
+                </div>
+                <div class="user-general-info">
+                    <p ng-if="vm.rsvp.parent.data.id">
+                        Guest of RSVP <a
+                            ui-sref="app.guestlists.rsvps.details({gid: vm.rsvp.parent.data.guestlist_id, id:vm.rsvp.parent.data.id, rsvp: null})">
+                        #{{vm.rsvp.parent.data.code}} ({{vm.rsvp.parent.data.contact.data.full_name}})
+                    </a>
+                    </p>
+                    <p>
+                        <span class="name">{{ vm.rsvp.contact.data.full_name }}<span ng-if="vm.rsvp.contact.data.age"> ({{ vm.rsvp.contact.data.age }})</span>&nbsp;&nbsp;
+                            <i class="fal"
+                               ng-class="{'fa-mars': (vm.rsvp.contact.data.sex === 'male'), 'fa-venus': (vm.rsvp.contact.data.sex === 'female'), 'fa-transgender': (vm.rsvp.contact.data.sex === 'various')}"></i>
+                        </span><br/>
+                        {{vm.rsvp.contact.data.company_name}}<br/>
+                        {{vm.rsvp.contact.data.department}}<br ng-if="vm.rsvp.contact.data.department"/>
+                        {{vm.rsvp.contact.data.position}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <h2>Booking details</h2>
+        <div class="content-box box-900">
+            <div class="box-section-wrap">
+                <div class="data-list">
+                    <ul>
+                        <li ng-if="vm.rsvp.rsvp_code">
+                            <span class="data-label">Code:</span>
+                            <span class="data-value">{{ vm.rsvp.rsvp_code }}</span>
+                        </li>
+                        <li ng-if="vm.rsvp.uid">
+                            <span class="data-label">UID:</span>
+                            <span class="data-value">{{ vm.rsvp.uid}}</span>
+                        </li>
+                        <li ng-if="vm.rsvp.status">
+                            <span class="data-label">Status:</span>
+                            <span class="data-value">{{ vm.rsvp.status }}</span>
+                        </li>
+                        <li ng-if="vm.rsvp.pax_planned">
+                            <span class="data-label">PAX planned:</span>
+                            <span class="data-value">{{ vm.rsvp.pax_planned}}</span>
+                        </li>
+                        <li ng-if="vm.rsvp.pax_actual">
+                            <span class="data-label">PAX checked in:</span>
+                            <span class="data-value">{{ vm.rsvp.pax_actual}}</span>
+                        </li>
+                        <li ng-if="vm.rsvp.checkedin_at">
+                            <span class="data-label">Checked in at:</span>
+                            <span class="data-value">{{ vm.rsvp.checkedin_at}}</span>
+                        </li>
+                        <li ng-if="vm.rsvp.paid">
+                            <span class="data-label">Payment:</span>
+                            <span class="data-value">{{ vm.rsvp.paid }}</span>
+                        </li>
+                        <li ng-if="vm.rsvp.priority">
+                            <span class="data-label">Priority:</span>
+                            <span class="data-value">{{ vm.rsvp.priority}}</span>
+                        </li>
+                        <li ng-if="vm.rsvp.color">
+                            <span class="data-label">Color:</span>
+                            <span class="data-value">{{ vm.rsvp.color}}</span>
+                        </li>
+                        <li ng-if="vm.rsvp.requested_at">
+                            <span class="data-label">Requested at:</span>
+                            <span class="data-value">{{ vm.rsvp.requested_at}}</span>
+                        </li>
+                        <li ng-if="vm.rsvp.comment">
+                            <span class="data-label">Guest comment:</span>
+                            <span class="data-value">
+                                        {{ vm.rsvp.comment }}
+                                    </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-expanded-tabs-alt">
+            <ul>
+                <li ng-click="address = 'one'">
+                    <a href ng-class="{'active-tab': address=='one', 'preferred-address': !vm.rsvp.contact.data.business_preferred}">Private address</a>
+                </li>
+                <li ng-click="address = 'two'">
+                    <a href ng-class="{'active-tab': address=='two', 'preferred-address': vm.rsvp.contact.data.business_preferred}">Business address</a>
+                </li>
+            </ul>
+        </div>
+        <div class="content-box box-900">
+            <div class="pt-0" ng-init="address = 'one'">
+                <div class="box-section-wrap">
+                    <div ng-if="address=='one'">
+                        <div class="data-list">
+                            <ul>
+                                <li>
+                                    <span class="data-label">Address:</span>
+                                    <span class="data-value">
+                                                <span ng-if="vm.rsvp.contact.data.street">{{ vm.rsvp.contact.data.street }}</span><br
+                                            ng-if="vm.rsvp.contact.data.street"/>
+                                                <span ng-if="rsvp.contact.data.street_2">{{ vm.rsvp.contact.data.street_2 }}</span><br
+                                            ng-if="vm.rsvp.contact.data.street_2"/>
+                                                <span ng-if="vm.rsvp.contact.data.city && vm.rsvp.contact.data.zip">{{ vm.rsvp.contact.data.zip }} {{ vm.rsvp.contact.data.city }}</span><br
+                                            ng-if="vm.rsvp.contact.data.city && vm.rsvp.contact.data.zip"/>
+                                                <country-name code="vm.rsvp.contact.data.country"
+                                                              ng-if="vm.rsvp.contact.data.country"></country-name>
+                                            </span>
+                                </li>
+                                <li>
+                                    <span class="data-label">Landline:</span>
+                                    <span class="data-value">{{vm.rsvp.contact.data.phone}}</span>
+                                </li>
+                                <li>
+                                    <span class="data-label">Mobile:</span>
+                                    <span class="data-value">{{vm.rsvp.contact.data.phone_2}}</span>
+                                </li>
+                                <li>
+                                    <span class="data-label">Fax:</span>
+                                    <span class="data-value">{{vm.rsvp.contact.data.fax}}</span>
+                                </li>
+                                <li>
+                                    <span class="data-label">Email:</span>
+                                    <span class="data-value">{{vm.rsvp.contact.data.email}}</span>
+                                </li>
+                                <li>
+                                    <span class="data-label">Web:</span>
+                                    <span class="data-value">{{vm.rsvp.contact.data.web}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div ng-if="address=='two'">
+                        <div class="data-list">
+                            <ul>
+                                <li>
+                                    <span class="data-label">Address:</span>
+                                    <span class="data-value">
+                                                <span ng-if="vm.rsvp.contact.data.business_street">{{ vm.rsvp.contact.data.business_street }}</span><br
+                                            ng-if="vm.rsvp.contact.data.business_street"/>
+                                                <span ng-if="vm.rsvp.contact.data.business_street_2">{{ vm.rsvp.contact.data.business_street_2 }}</span><br
+                                            ng-if="vm.rsvp.contact.data.business_street_2"/>
+                                                <span ng-if="vm.rsvp.contact.data.business_city && vm.rsvp.contact.data.business_zip">{{ vm.rsvp.contact.data.business_zip }} {{ vm.rsvp.contact.data.business_city }}</span><br
+                                            ng-if="vm.rsvp.contact.data.business_city && vm.rsvp.contact.data.business_zip"/>
+                                                <country-name code="vm.rsvp.contact.data.business_country"
+                                                              ng-if="vm.rsvp.contact.data.business_country"></country-name>
+                                            </span>
+                                </li>
+                                <li>
+                                    <span class="data-label">Landline:</span>
+                                    <span class="data-value">{{vm.rsvp.contact.data.business_phone}}</span>
+                                </li>
+                                <li>
+                                    <span class="data-label">Mobile:</span>
+                                    <span class="data-value">{{vm.rsvp.contact.data.business_phone_2}}</span>
+                                </li>
+                                <li>
+                                    <span class="data-label">Fax:</span>
+                                    <span class="data-value">{{vm.rsvp.contact.data.business_fax}}</span>
+                                </li>
+                                <li>
+                                    <span class="data-label">Email:</span>
+                                    <span class="data-value">{{vm.rsvp.contact.data.business_email}}</span>
+                                </li>
+                                <li>
+                                    <span class="data-label">Web:</span>
+                                    <span class="data-value">{{vm.rsvp.contact.data.business_web}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <rsvp-extended-info rsvp="vm.rsvp" ng-if="vm.rsvp.guestlist"></rsvp-extended-info>
+
+        <contact-extended-info contact="vm.rsvp.contact.data"></contact-extended-info>
+
+    </section>
+</section>
+
+<rsvp-messages ng-if="vm.currentView == 'messages'" rsvp="vm.rsvp"></rsvp-messages>
+<rsvp-guests-full ng-if="vm.currentView == 'guests'" rsvp="vm.rsvp"></rsvp-guests-full>
+
+<!--<pre>{{vm.rsvp | json}}</pre>-->

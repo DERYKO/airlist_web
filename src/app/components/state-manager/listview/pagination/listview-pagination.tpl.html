@@ -1,0 +1,13 @@
+<div class="box-section-wrap table-options">
+    <div class="options-left" ng-if="vm.store.state.pagination.total">
+        <span>Rows:</span>
+        <select class="i-small"
+                ng-change="vm.store.dispatch('setPageSize',vm.store.state.pagination.perPage)"
+                ng-model="vm.store.state.pagination.perPage"
+                ng-options="size as size for size in vm.store.state.pagesizes track by size">
+        </select>
+    </div>
+    <div class="options-right" ng-if="vm.store.getters.pages.length > 1">
+        <al-pagination store="vm.store"></al-pagination>
+    </div>
+</div>

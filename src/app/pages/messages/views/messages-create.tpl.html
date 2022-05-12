@@ -1,0 +1,64 @@
+<h1>Send a new message</h1>
+<section>
+    <form ng-submit="vm.send()">
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <div class="form-group input-lg">
+                    <label>Template</label>
+                    <select-box model="vm.message.templates.filters[0].value[0]"
+                                config="vm.templatesConfig"></select-box>
+                </div>
+                <div class="form-group input-x-lg" ng-if="vm.contactsConfig">
+                    <label>Contacts</label>
+                    <select-box model="vm.message.contacts.filters[0].value" config="vm.contactsConfig"></select-box>
+                </div>
+
+                <fieldset>
+
+                    <div class="msg info-msg" style="margin-top: 0; margin-bottom: 10px;" ng-if="vm.message.recipient_type !== 'rsvp' && (vm.template.ticket_id || vm.template.passbook_id)">
+                        Tickets and Passbooks can just be attached to RSVP E-Mails
+                    </div>
+                    <div class="form-group" ng-if="vm.message.recipient_type === 'rsvp' && vm.template.ticket_id">
+                        <customfield ng-model="vm.message.attach_ticket" name="attach_ticket"
+                                     definition="{type:'boolean', 'name': 'Attach Ticket'}"></customfield>
+                    </div>
+                    <div class="form-group" ng-if="vm.message.recipient_type === 'rsvp' && vm.template.passbook_id">
+                        <customfield ng-model="vm.message.attach_passbook" name="attach_passbook"
+                                     definition="{type:'boolean', 'name': 'Attach Passbook'}"></customfield>
+                    </div>
+                    <div class="form-group" ng-if="vm.template.invoice_id">
+                        <customfield ng-model="vm.message.attach_invoice" name="attach_invoice"
+                                     definition="{type:'boolean', 'name': 'Attach Invoice'}"></customfield>
+                    </div>
+                    <div class="form-group" ng-if="vm.template.files && vm.template.files.length > 0">
+                        <customfield ng-model="vm.message.attach_files" name="attach_files"
+                                     definition="{type:'boolean', 'name': 'Attach Files'}"></customfield>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <h2>Template preview</h2>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <p ng-if="!vm.template.html">
+                    Select the template to display its preview
+                </p>
+                <p ng-if="vm.template.html">Subject: <strong>{{ vm.template.subject }}</strong><br><br></p>
+                <div ng-bind-html="vm.trustTemplateHtml(vm.template.html)"></div>
+            </div>
+        </div>
+        <section>
+            <div class="fixed-footer">
+                <div class="btn-group" ng-if="!vm.submitting">
+                    <button type="button" ng-click="vm.close()" class="btn-warning">Cancel</button>
+                    <button type="submit" class="btn-confirm">Send</button>
+                </div>
+                <div class="btn-group" ng-if="vm.submitting">
+                    <button type="button" class="btn-confirm" disabled="disabled"><i
+                            class="fal fa-sync fa-spin"></i>&nbsp;&nbsp;Sending...
+                    </button>
+                </div>
+            </div>
+        </section>
+    </form>
+</section>

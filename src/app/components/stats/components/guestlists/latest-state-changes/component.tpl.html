@@ -1,0 +1,22 @@
+<div class="content-box" ng-class="{empty: (!vm.loading && vm.data.length === 0)}">
+    <div class="header-with-link">
+        <h2>Last changes</h2>
+        <a class="button" ui-sref="app.guestlists.rsvps.index({gid: vm.guestlistId})">Show all&nbsp;<i class="fal fa-angle-double-right"></i></a>
+    </div>
+    <div class="empty-box" ng-if="!vm.loading && vm.data.length == 0">
+        <i class="fal fa-chart-bar"></i>
+        <p>
+            You don't have any guests on the list.<br>
+            <!--<a ui-sref="app.guestlists.rsvps.index({gid: vm.currentGuestlist.id})">Add guests</a>-->
+        </p>
+    </div>
+    <div class="main-table table-other" ng-if="!vm.loading && vm.data.length > 0">
+        <table>
+            <tr ng-repeat="row in vm.data">
+                <td><span class="{{row.status}}">{{row.status}}</span></td>
+                <td>{{row.full_name}}</td>
+                <td>{{row.time|date:"HH:mm / dd.MM."}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

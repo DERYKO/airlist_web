@@ -1,0 +1,13 @@
+<button class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Download Sample {{vm.title}}</h2>
+</div>
+<div class="modal-body">
+    <p>To download a sample {{vm.title}}, you have to select a contact or booking which will be used to fill the data on the
+        pass.</p>
+
+    <div class="btn-group">
+        <button class="button btn-confirm" ng-click="vm.selectContact()">Select Contact</button>
+        <button class="button btn-confirm" ng-click="vm.selectRsvp()">Select Booking</button>
+    </div>
+</div>

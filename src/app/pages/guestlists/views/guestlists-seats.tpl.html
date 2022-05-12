@@ -1,0 +1,177 @@
+<div id="main-loading-indicator" ng-if="vm.loading">
+    <div class="bubble">
+        <p class="icon"><span class="pe-7s-hourglass fa-spin"></span></p>
+        <p class="text">LOADING</p>
+    </div>
+</div>
+
+<div class="main-panel-content"  ng-if="!vm.loading">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4 class="title text-center">Guestlist Seatplan - {{vm.guestlist.name}}</h4>
+                <p class="category text-center">Seatplan: {{vm.seatplan.title}}</p>
+                <br>
+                <div class="nav-container">
+                    <ul class="nav nav-icons" role="tablist">
+                        <li class="" ng-repeat="group in vm.seatplan.groups.data"
+                            ng-class="{active: vm.currentGroupId == group.id}">
+                            <a ng-click="vm.activateGroup(group)">
+                                {{ group.title }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active">
+                        <nav class="nav navbar-default">
+                            <a class="btn btn-default" ng-click="vm.openDoBookingModal()"
+                               ng-if="vm.selected.objects.length > 0">
+                                Make Booking with selected elements
+                            </a>
+                        </nav>
+                        <seatplan-group
+                                ng-if="vm.currentGroupId"
+                                group-id="{{vm.currentGroupId}}"
+                                booking-information="vm.bookingInformation"
+                                blocked-elements="vm.blockedSeatplanElements"
+                                clickable="true"
+                                on-click="vm.handleSeatplanClick(e, clickedElement)"
+                                on-dbl-click="vm.handleSeatplanDblClick(e, clickedElement)"
+                                on-selection-change="vm.handleSeatplanSelectionChange(triggeredElement, selectionState)"
+                                on-un-selectable="vm.handleSeatplanUnSelectable(triggeredElement, selectionState)"
+                        ></seatplan-group>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="doBookingModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Make Booking</h3>
+    </div>
+    <div class="modal-body" id="modal-body-{{name}}">
+        <div class="row">
+            <div class="col-md-12">
+                <fieldset>
+                    <legend>Rsvp information</legend>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Contact</label>
+                            <div class="col-md-8">
+                                <select-box
+                                        config="vm.config.contact"
+                                        value-field="id"
+                                        display-field="full_name"
+                                        model="vm.rsvp.contact_id"
+                                        name="contact_id"
+                                        ng-if="vm.config"></select-box>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Status</label>
+                            <div class="col-md-8">
+                                <select name="status" class="form-control" ng-model="vm.rsvp.status">
+                                    <option value="requested">Requested</option>
+                                    <option value="listed">listed</option>
+                                    <option value="invited">Invited</option>
+                                    <option value="confirmed">Confirmed</option>
+                                    <option value="cancelled">Cancelled</option>
+                                    <option value="waitlisted">Waitlisted</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Payment</label>
+                            <div class="col-md-8">
+                                <select name="pending" class="form-control" ng-model="vm.rsvp.payment">
+                                    <option value="pending">Pending</option>
+                                    <option value="invited">Invited</option>
+                                    <option value="confirmed">Confirmed</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Color</label>
+                            <div class="col-md-8">
+                                <select name="color" class="form-control" ng-model="vm.rsvp.color">
+                                    <option value="red">Red</option>
+                                    <option value="orange">Orange</option>
+                                    <option value="green">Green</option>
+                                    <option value="pink">Pink</option>
+                                    <option value="blue">Blue</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Comment</label>
+                            <div class="col-md-8">
+                            <textarea ng-model="vm.rsvp.comment" class="form-control" name="comment"
+                                      rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-repeat="field in vm.form track by $index">
+                        <label for="{{field.key}}" class="control-label col-md-4">{{field.title}}</label>
+                        <div class="col-md-8">
+                            <customfield ng-model="vm.rsvp[field.key]" definition="field" name="field.key"
+                                         id="{{field.key}}"></customfield>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-12">
+                <fieldset>
+                    <legend>Selected Elements</legend>
+                    <ul role="tablist" class="nav nav-tabs" ng-if="vm.selected.length > 0">
+                        <li role="presentation" ng-class="{active: $first}"
+                            ng-repeat="object in vm.selected">
+                            <a data-toggle="tab" data-target="#seatplan-booking-element-{{$index}}-custom">
+                                {{object.title}}
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" ng-if="vm.selected.length > 0">
+                        <div id="seatplan-booking-element-{{$index}}-custom" class="tab-pane"
+                             ng-repeat="object in vm.selected"
+                             ng-class="{active: $first}">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Element Title</label>
+                                    <div class="col-md-8">
+                                        <input type="text" readonly ng-model="object.title" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Max PAX</label>
+                                    <div class="col-md-8">
+                                        <input type="text" readonly ng-model="object.pax" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group"
+                                     ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]"
+                                     ng-if="vm.seatplan['custom_' + i + '_rsvp_element']">
+                                    <label class="control-label col-md-4">{{vm.seatplan['custom_' + i +
+                                        '_rsvp_element'].name}}</label>
+                                    <div class="col-md-8">
+                                        <customfield ng-model="vm.rsvp.seatplan_elements[object.id]['custom_'+i]"
+                                                     definition="vm.seatplan['custom_' + i + '_rsvp_element']"
+                                                     name="'rsvp_seatplan_elements_' + $index + '_custom_' + i"></customfield>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="vm.saveRsvp(vm.rsvp)">Create RSVP</button>
+    </div>
+</script>

@@ -1,0 +1,17 @@
+<button class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Load preset</h2>
+</div>
+<div class="modal-body">
+    <!--todo configure select box-->
+
+    <selectize ng-model="vm.selected" on-change="vm.select(model)" selectize-options="vm.options" items="vm.states"></selectize>
+
+    <p class="preset-desc">{{vm.state.description }}</p>
+
+    <div class="btn-group">
+        <button class="" ng-click="vm.close()">Cancel</button>
+        <button class="btn-delete" ng-click="vm.delete()" ng-disabled="!vm.state">Delete</button>
+        <button class="btn-confirm" ng-click="vm.load(vm.state)" ng-disabled="!vm.state">Use preset</button>
+    </div>
+</div>

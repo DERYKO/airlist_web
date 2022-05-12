@@ -1,0 +1,37 @@
+<button class="close" ng-click="test.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>{{ 'templates.beefree_test' | i18n }}</h2>
+</div>
+<div class="modal-body">
+    <form>
+        <div class="form-group">
+            <label>{{ 'templates.beefree_test_email' | i18n }}</label>
+            <input ng-required="true" type="email" placeholder="Email" ng-model="test.model.sendTo">
+        </div>
+        <div class="form-group">
+            <p>{{ 'templates.beefree_test_message' | i18n }}</p>
+            <span ng-if="!test.rsvp">
+                <button ng-click="test.selectContact()">
+                    Select Contact
+                </button>
+                <span ng-if="test.contact">Selected Contact: {{test.contact.id}}</span>
+            </span>
+            <span ng-if="!test.contact">
+                <button ng-click="test.selectRsvp()">
+                    Select Rsvp
+                </button>
+                <span ng-if="test.rsvp">Selected Rsvp: {{test.rsvp.id}}</span>
+            </span>
+            <span ng-if="test.rsvp || test.contact">
+                <button class="btn-warning" ng-click="test.clear()">
+                    Clear
+                </button>
+            </span>
+        </div>
+        <div ng-bind-html="test.trustTemplateHtml()"></div>
+    </form>
+    <div class="btn-group">
+        <button class="btn-warning" ng-click="test.cancel()">Cancel</button>
+        <button ng-disabled="!test.model.sendTo" class="btn-confirm" ng-click="test.send()">Send</button>
+    </div>
+</div>

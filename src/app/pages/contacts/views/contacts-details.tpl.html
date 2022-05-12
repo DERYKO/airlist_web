@@ -1,0 +1,37 @@
+<div ng-if="vm.contact.full_name">
+    <div ng-if="!vm.currentView">
+        <div class="heading-toolset-wrapper box-900">
+            <h1>Contact Details</h1>
+            <scroll-toolset model="vm.contact"
+                            store="vm.store"
+                            index="vm.selectedIndex"
+                            on-scroll-up="vm.gotoContact(model)"
+                            on-scroll-down="vm.gotoContact(model)"
+            ></scroll-toolset>
+        </div>
+
+        <div class="content-box box-900" ng-if="vm.contact.archived">
+            <p class="alert alert-danger">
+                <strong>Warning!</strong> This contact is currently in trash.
+            </p>
+        </div>
+
+        <div class="content-box box-900">
+            <div class="box-section-wrap">
+                <contact-card contact="vm.contact"></contact-card>
+            </div>
+        </div>
+        <contact-address contact="vm.contact"></contact-address>
+        <contact-extended-info contact="vm.contact" store="vm.store"></contact-extended-info>
+        <contact-social-profiles contact="vm.contact"></contact-social-profiles>
+        <contact-picklists contact="vm.contact"></contact-picklists>
+        <!--<contact-active-subscriptions contact="vm.contact"></contact-active-subscriptions>-->
+    </div>
+    <contact-additional ng-if="vm.currentView == 'additional'" contact="vm.contact"></contact-additional>
+    <contact-rsvps ng-if="vm.currentView == 'rsvps'" contact="vm.contact"></contact-rsvps>
+    <contact-checkins ng-if="vm.currentView == 'checkins'" contact="vm.contact"></contact-checkins>
+    <contact-messages ng-if="vm.currentView == 'messages'" contact="vm.contact"></contact-messages>
+    <contact-invoices ng-if="vm.currentView == 'invoices'" contact="vm.contact"></contact-invoices>
+    <contact-subscriptions ng-if="vm.currentView == 'subscriptions'" contact="vm.contact"></contact-subscriptions>
+    <contact-documents ng-if="vm.currentView == 'documents'" contact="vm.contact"></contact-documents>
+</div>

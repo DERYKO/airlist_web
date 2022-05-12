@@ -1,0 +1,103 @@
+<h1>{{vm.model.name}}</h1>
+
+<section ng-if="vm.currentView === 'general'">
+    <h2>General</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <fieldset>
+                <div class="form-group">
+                    <label>Ticket name</label>
+                    <input type="text" ng-model="vm.model.name">
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</section>
+
+<section ng-if="vm.currentView === 'content'">
+    <h2>Content (use HTML)</h2>
+    <div class="content-box beefree">
+        <customfield ng-model="vm.model.text_content" definition="vm.ace_field"></customfield>
+    </div>
+    <div class="content-box">
+        <h2>Custom HTML Template</h2>
+        <customfield ng-model="vm.use_custom_template" definition="{'type': 'boolean'}"></customfield>
+        <customfield ng-model="vm.model.custom_html_base_template" definition="vm.ace_field" ng-if="vm.use_custom_template"></customfield>
+    </div>
+</section>
+
+<section ng-show="vm.currentView === 'ticket'" class="edit-screen">
+    <h2>Ticket</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <div class="row">
+                <div class="form-group">
+                    <label>Width (mm)</label>
+                    <customfield ng-model="vm.model.styling.size.width"
+                                 definition="{type:'textbox'}"></customfield>
+                </div>
+                <div class="form-group">
+                    <label>Height (mm) </label>
+                    <customfield ng-model="vm.model.styling.size.length"
+                                 definition="{type:'textbox'}"></customfield>
+                </div>
+                <div class="form-group dt40">
+                    <label>Text position top (mm)</label>
+                    <customfield ng-model="vm.model.styling.text.top"
+                                 definition="{type:'textbox'}"></customfield>
+                </div>
+                <div class="form-group">
+                    <label>Text position left (mm)</label>
+                    <customfield ng-model="vm.model.styling.text.left"
+                                 definition="{type:'textbox'}"></customfield>
+                </div>
+                <div class="form-group">
+                    <label>Text size (mm)</label>
+                    <customfield ng-model="vm.model.styling.text.size"
+                                 definition="{type:'textbox'}"></customfield>
+                </div>
+                <div class="form-group">
+                    <label>Text color (HEX)</label>
+                    <customfield ng-model="vm.model.styling.text.color"
+                                 definition="{type:'color-picker'}"></customfield>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label>Background Image</label>
+                    <customfield definition="{type:'media_image', startDirectory: 'tickets'}" ng-model="vm.model.background_image"></customfield>
+                </div>
+                <div class="form-group">
+                    <label>QR position top (mm)</label>
+                    <customfield ng-model="vm.model.styling.qrCode.top"
+                                 definition="{type:'textbox'}"></customfield>
+                </div>
+                <div class="form-group">
+                    <label>QR position left (mm)</label>
+                    <customfield ng-model="vm.model.styling.qrCode.left"
+                                 definition="{type:'textbox'}"></customfield>
+                </div>
+                <div class="form-group">
+                    <label>QR size (mm)</label>
+                    <customfield ng-model="vm.model.styling.qrCode.size"
+                                 definition="{type:'textbox'}"></customfield>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2>Preview</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <preview model="vm.model" background-image="vm.currentBackgroundImage"></preview>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="fixed-footer">
+        <div class="btn-group">
+            <button class="btn-warning" ng-click="vm.closeView()">Discard Changes</button>
+            <button ng-click="vm.save(vm.model)" class="btn-confirm">Done</button>
+        </div>
+    </div>
+</section>

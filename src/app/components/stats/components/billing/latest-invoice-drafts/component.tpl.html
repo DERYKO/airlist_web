@@ -1,0 +1,22 @@
+<div class="content-box" ng-class="{empty: (!vm.loading && vm.data.length === 0)}">
+    <h2>Invoice drafts</h2>
+    <div class="empty-box" ng-if="(!vm.loading && vm.data.length === 0)">
+        <i class="fal fa-euro-sign"></i>
+        <p>No invoice drafts</div>
+    <div class="main-table table-other" ng-if="!vm.loading && vm.data.length > 0">
+        <table>
+            <tr ng-repeat="invoice in vm.data">
+                <td>{{invoice.subject}}</td>
+                <td>Created: {{invoice.created_at|date:'dd.mm.yy'}}</td>
+                <td>
+                    <a ui-sref="app.billing.invoices.details({id: invoice.id})" class="button">
+                        Finish&nbsp;<i class="fal fa-angle-double-right"></i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="btn-center" ng-if="!vm.loading && vm.data.length > 0">
+        <a class="button btn-redirect" ui-sref="app.billing.invoices.index">Review all Invoices</a>
+    </div>
+</div>

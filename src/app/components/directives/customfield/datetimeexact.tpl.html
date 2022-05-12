@@ -1,0 +1,11 @@
+<label for="{{name}}" ng-if="field.definition.name">
+    {{field.definition.name}} <span ng-if="field.definition.required">*</span>
+    <i class="fal fa-info-circle" ng-if="field.definition.tooltip">
+        <span data-tooltip="{{::field.definition.tooltip}}"></span>
+    </i>
+</label>
+<p class="help-text" ng-if="field.definition.help">{{field.definition.help}}</p>
+<div class="datepicker" moment-picker="field.ngModel" format="Y-M-D HH:mm:ss" locale="de">
+    <input type="text" name="{{name}}" id="{{name}}" ng-model="field.ngModel">
+    <button type="button" class="input-icon"><i class="fal fa-calendar-alt"></i></button>
+</div>

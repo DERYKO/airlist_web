@@ -1,0 +1,16 @@
+<section id="guestlists_editor_fields" ng-if="vm.showContent">
+    <h1>{{'guestlists.editor.pages.fields.head' | translate}}</h1>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <al-guestlist-form-field-selector guestlist="vm.guestlist"
+                                              current-definition="vm.currentDefnition"
+                                              on-definition-update="vm.updateFieldDefinition( newDefinition)"
+                                              global-selected-fields="vm.globalModel.settings.enabled_fields"
+                                              available-fields="vm.availableFields"
+                                              id-prefix="'guestlist_fields_'"
+                                              custom-field-definitions="vm.customFieldDefinitions"
+                                              on-custom-field-change="vm.triggerCustomFieldChange(action, group, definition, number)"
+                                              simple-version="true"></al-guestlist-form-field-selector>
+        </div>
+    </div>
+</section>

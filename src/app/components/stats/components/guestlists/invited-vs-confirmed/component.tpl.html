@@ -1,0 +1,17 @@
+<div class="content-box" ng-class="{empty: (!vm.loading && vm.noData)}">
+    <h2>Confirmations <i>(last updated {{vm.data.timestamp|date:"HH:mm"}})</i></h2>
+    <div class="empty-box" ng-if="!vm.loading && vm.noData">
+        <i class="fal fa-chart-line"></i>
+        <p>
+            No confirmations available.<br>
+            <a ui-sref="app.guestlists.rsvps.index({gid: vm.currentGuestlist.id})">Add guests</a>
+        </p>
+    </div>
+    <canvas class="chart-bar"
+            chart-data="vm.chartData.data"
+            chart-labels="vm.chartData.labels"
+            chart-options="vm.chartData.options"
+            chart-dataset-override="vm.chartData.dataSetOverride"
+            ng-if="vm.showChart">
+    </canvas>
+</div>

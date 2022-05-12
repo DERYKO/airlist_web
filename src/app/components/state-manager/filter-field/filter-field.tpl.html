@@ -1,0 +1,15 @@
+<div class="form-group">
+    <label>{{vm.col.label}}</label>
+    <filter-boolean col="vm.col" store="vm.store" ng-if="vm.col.type == 'boolean'"></filter-boolean>
+    <filter-date col="vm.col" store="vm.store" ng-if="vm.col.type == 'date'"></filter-date>
+    <filter-datetime col="vm.col" store="vm.store" ng-if="vm.col.type == 'datetime'"></filter-datetime>
+    <filter-datetime-exact col="vm.col" store="vm.store" ng-if="vm.col.type == 'datetimeexact'"></filter-datetime-exact>
+    <filter-integer col="vm.col" store="vm.store" ng-if="vm.col.type == 'integer'"></filter-integer>
+    <filter-number col="vm.col" store="vm.store" ng-if="vm.col.type == 'number'"></filter-number>
+    <filter-select col="vm.col" store="vm.store" ng-if="vm.col.filter_information.type === 'enum'"></filter-select>
+    <filter-string
+            col="vm.col"
+            store="vm.store"
+            ng-if="vm.col.type == 'string' && !vm.col.filter_information"
+    />
+</div>

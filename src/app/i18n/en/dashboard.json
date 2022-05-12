@@ -1,0 +1,13 @@
+{
+  "dashboard" : "Dashboard",
+  "airport_on_event" : {
+    "load" : "Loading data",
+    "time_to_shine" : "Time to shine!",
+    "create_event_title": "Create your first event!",
+    "btn_create_guestlist": "Create a guestlist",
+    "pax_planned" : "{{sum_pax_planned}} PAX planned",
+    "pax_checked_in" : "{{sum_pax_actual}}  Pax (checked-in)",
+    "copy_to_clipboard" : "Copy to clipboard for excel"
+
+  }
+}

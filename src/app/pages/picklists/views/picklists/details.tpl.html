@@ -1,0 +1,122 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="navbar-brand">
+                {{ vm.picklist.name }}
+            </div>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a ng-click="vm.hide()"
+                       type="button"
+                       class="color-blue"
+                       uib-tooltip="back"
+                       tooltip-placement="left">
+                        <span class="pe-7s-back"></span>
+                    </a>
+                </li>
+                <li ng-repeat="workflow in vm.workflows track by workflow.key"
+                    ng-if="!vm.picklist.archived && workflow.level =='global'">
+                    <a ng-click="vm.clicked(workflow)" class="btn btn-default"
+                       class="{{workflow.class}}"
+                       uib-tooltip="{{workflow.title}}"
+                       tooltip-placement="left">
+                        <span class="{{workflow.icon}}"></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="color-blue"
+                       ng-click="vm.edit()"
+                       ng-if="!vm.picklist.archived"
+                       uib-tooltip="Edit"
+                       tooltip-placement="left">
+                        <span class="pe-7s-pen"></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="color-blue"
+                       ng-click="vm.restore(vm.picklist)"
+                       ng-if="vm.picklist.archived"
+                       uib-tooltip="Restore"
+                       tooltip-placement="left">
+                        <span class="pe-7s-loop"></span>
+                    </a>
+                </li>
+                <li>
+                    <div class="btn-group" uib-dropdown>
+                        <a class="color-blue" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">
+                            <span class="pe-7s-more"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-if="!vm.picklist.archived" role="menuitem">
+                                <a ng-click="vm.archive()">{{'common.archive' | i18n}} </a>
+                            </li>
+                            <li ng-if="vm.picklist.archived" role="menuitem">
+                                <a ng-click="vm.delete(vm.picklist)">{{'common.delete_permanently' | i18n}} </a>
+                            </li>
+                            <li ng-if="!vm.picklist.archived && workflow.level =='dropdown'"
+                                ng-repeat="workflow in vm.workflows track by workflow.key">
+                                <a ng-click="vm.clicked(workflow)">{{workflow.title}}</a>
+                            </li>
+                            <li ng-if="vm.picklist.archived && workflow.level =='archivedDropdown'"
+                                ng-repeat="workflow in vm.workflows track by workflow.key">
+                                <a ng-click="vm.clicked(workflow)">{{workflow.title}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="main-panel-content">
+    <div class="container-fluid">
+        <div class="row" ng-if="vm.picklist.archived">
+            <div class="col-xs-12">
+                <div class="alert alert-danger">
+                    <strong>{{ 'common.archive_header'|i18n }}</strong> {{ 'picklists.archive_header'|i18n }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">
+                            General Information
+                        </h4>
+                    </div>
+                    <div class="content">
+                        <dl class="dl-horizontal">
+                            <dt>{{ 'picklists.name'|i18n }}</dt>
+                            <dd>{{ vm.picklist.name}}</dd>
+                            <dt>{{ 'picklists.permission'|i18n }}</dt>
+                            <dd>{{ vm.picklist.permission}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">
+                            {{ 'common.custom_attributes'|i18n }}
+                        </h4>
+                    </div>
+                    <div class="content">
+                        <fieldset ng-repeat="index in vm.customs"
+                                  ng-if="vm.picklist['custom_' + index + '_name'] && vm.picklist['custom_' + index + '_name'].name && vm.picklist['custom_' + index + '_name'].name != ''">
+                            <legend>{{ 'customs.custom_'+index+'_name'|i18n }}</legend>
+                            <p>
+                                {{ vm.picklist['custom_'+index+'_name'].type }} : {{
+                                vm.picklist['custom_'+index+'_name'].name}}
+                            </p>
+                    </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

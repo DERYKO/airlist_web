@@ -1,0 +1,14 @@
+<ul class="top-nav">
+    <li al-dropdown dropdown-disabled="{{(rootItem.children.length === 0 || !vm.navIsMobile) ? 1 : 0}}" ng-repeat="rootItem in vm.topNavTree track by rootItem.key"
+        ng-class="{'active':rootItem.active,'dropdown-container': (rootItem.children.length > 0),'two-levels': (rootItem.children.length > 0)}">
+        <a ng-click="vm.goToElem(rootItem);" class="dropdown-toggle" title="{{rootItem.label}}">{{rootItem.label}}</a>
+        <div class="dropdown-sheet" ng-if="rootItem.children.length > 0">
+            <ul>
+                <li ng-repeat="subItem in rootItem.children track by subItem.key"
+                    ng-class="{'active':subItem.active}">
+                    <a ng-click="vm.goToElem(subItem);">{{subItem.label}}</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul>

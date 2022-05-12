@@ -1,0 +1,11 @@
+{
+  "custom_attribute_saving_unsuccessful":"The custom attribute was not saved",
+  "custom_attribute_saving_successful":"The custom attribute was successfully saved.",
+  "shortcuts_scroll_up": "Scroll up",
+  "shortcuts_scroll_down": "Scroll down",
+  "shortcuts_select_record": "Select Record",
+  "blacklists_saving_unsuccessful":"The blacklists were not updated.",
+  "blacklists_saving_successful":"The blacklists were successfully updated.",
+  "settings_saving_unsuccessful":"The settings were not updated.",
+  "settings_saving_successful":"The settings were successfully updated."
+}

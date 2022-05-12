@@ -1,0 +1,11 @@
+<div>
+    <button class="btn-delete" ng-click="vm.cancelBooking();" ng-if="!vm.hideActions">
+        Cancel
+    </button>
+    <button class="btn-confirm" ng-click="vm.confirmBooking();" ng-if="!vm.hideActions">
+        Confirm
+    </button>
+</div>
+<div style="margin-top: 10px;">
+    <button ng-click="vm.editInformation()"><span class="fal fa-pencil"></span>&nbsp;Quick Edit Information</button>
+</div>

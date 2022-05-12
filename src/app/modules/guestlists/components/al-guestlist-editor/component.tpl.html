@@ -1,0 +1,46 @@
+<!--<pre>{{vm.state.model|json}}</pre>-->
+<!--<pre>{{vm.state.availableFields|json}}</pre>-->
+<al-guestlist-editor-page-general
+        show-content="vm.state.currentView === 'general'"
+        guestlist="vm.guestlist"
+        on-model-update="vm.updateModelValues(newValues)"
+        global-model="vm.state.model"></al-guestlist-editor-page-general>
+<al-guestlist-editor-page-fields
+        show-content="vm.state.currentView === 'fields'"
+        guestlist="vm.guestlist"
+        available-fields="vm.state.availableFields"
+        on-model-update="vm.updateModelValues(newValues)"
+        custom-field-definitions="vm.state.customFieldDefinitions"
+        global-model="vm.state.model"
+        on-custom-field-change="vm.handleCustomFieldChange(action, group, definition, number)"
+        on-enabled-fields-update="vm.handleEnabledFieldsUpdate(newFieldList)"></al-guestlist-editor-page-fields>
+<al-guestlist-editor-page-form
+        show-content="vm.state.currentView === 'form'"
+        guestlist="vm.guestlist"
+        available-fields="vm.state.availableFields"
+        on-model-update="vm.updateModelValues(newValues)"
+        custom-field-definitions="vm.state.customFieldDefinitions"
+        global-model="vm.state.model"
+        on-custom-field-change="vm.handleCustomFieldChange(action, group, definition, number)"
+        on-enabled-fields-update="vm.handleEnabledFieldsUpdate(newFieldList)"></al-guestlist-editor-page-form>
+<al-guestlist-editor-page-landing
+        show-content="vm.state.currentView === 'landing'"
+        guestlist="vm.guestlist"
+        on-model-update="vm.updateModelValues(newValues)"
+        global-model="vm.state.model"></al-guestlist-editor-page-landing>
+<al-guestlist-editor-page-emails
+        show-content="vm.state.currentView === 'messages'"
+        guestlist="vm.guestlist"
+        on-model-update="vm.updateModelValues(newValues)"
+        global-model="vm.state.model"></al-guestlist-editor-page-emails>
+<al-guestlist-editor-page-tickets
+        show-content="vm.state.currentView === 'tickets'"
+        guestlist="vm.guestlist"
+        on-model-update="vm.updateModelValues(newValues)"
+        global-model="vm.state.model"></al-guestlist-editor-page-tickets>
+<al-guestlist-editor-page-limits
+        show-content="vm.state.currentView === 'limitations'"
+        guestlist="vm.guestlist"
+        on-model-update="vm.updateModelValues(newValues)"
+        global-model="vm.state.model"></al-guestlist-editor-page-limits>
+

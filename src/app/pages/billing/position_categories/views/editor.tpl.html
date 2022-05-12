@@ -1,0 +1,23 @@
+<h1>{{vm.headline}}</h1>
+
+<form name="form" ng-class="{'submitted':form.$submitted}" novalidate>
+    <section>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <div class="form-group">
+                    <label>{{vm.schema.properties.title.title}}</label>
+                    <input type="text" ng-model="vm.model.title" name="title"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="fixed-footer">
+            <div class="btn-group">
+                <button class="btn-warning" ng-click="vm.cancel()">Discard Changes</button>
+                <button ng-click="vm.save(vm.model)" type="submit" class="btn-confirm">Done</button>
+            </div>
+        </div>
+    </section>
+</form>

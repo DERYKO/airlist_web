@@ -1,0 +1,13 @@
+<button class="close" ng-click="vm.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Confirm Super Group Deletion: {{vm.model.super_group}}</h2>
+</div>
+<div class="modal-body">
+    <p>
+        Are you sure you want to delete the super group <b>{{vm.model.super_group}}</b> with all the seats and allocations within the group?
+    </p>
+    <div class="btn-group">
+        <button ng-click="vm.cancel()">Cancel</button>
+        <button class="btn-confirm" ng-click="vm.save(vm.model)">Delete</button>
+    </div>
+</div>

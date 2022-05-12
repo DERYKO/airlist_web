@@ -1,0 +1,88 @@
+<h1>Create new profile</h1>
+
+<form ng-submit="vm.save(vm.user)" name="profileForm"
+      ng-class="{'submitted':profileForm.$submitted}" class="edit-screen" novalidate>
+    <section>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <div class="user-avatar">
+                    <customfield name="image" definition="{type:'media_image'}" ng-model="vm.profile_image"></customfield>
+                </div>
+                <div class="user-general-info">
+                    <fieldset>
+                        <div class="form-group">
+                            <label>{{'profile.first_name' | i18n }}</label>
+                            <customfield definition="{type:'textbox'}" ng-model="vm.user.first_name"
+                                         name="first_name"></customfield>
+                        </div>
+                        <div class="form-group">
+                            <label>{{'profile.last_name' | i18n }}</label>
+                            <customfield definition="{type:'textbox'}" ng-model="vm.user.last_name"
+                                         name="last_name"></customfield>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-group">
+                            <label>{{'profile.email' | i18n }}</label>
+                            <customfield definition="{type:'textbox'}" ng-model="vm.user.email"
+                                         name="email"></customfield>
+                        </div>
+
+                        <div class="form-group">
+                            <label>{{'profile.password' | i18n }}</label>
+                            <customfield definition="{type:'password'}" ng-model="vm.user.password"
+                                         name="password"></customfield>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </section>
+    <h2>Roles</h2>
+    <section>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <div class="form-group" ng-repeat="role in vm.roles">
+                    <label>{{role.name}}</label>
+                    <customfield definition="{type:'boolean'}"
+                                 ng-model="vm.user.roles[role.id]"></customfield>
+                </div>
+            </div>
+        </div>
+    </section>
+    <h2>Permissions granted</h2>
+    <section>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <v-accordion class="vAccordion--default" multiple>
+                    <v-pane  ng-repeat="module in vm.modules track by $index"
+                             expanded="module.isExpanded">
+
+                        <v-pane-header>
+                            <h3>Module: <span class="attr-name">{{module.name}}</span></h3>
+                        </v-pane-header>
+
+                        <v-pane-content>
+                            <div class="form-group" ng-repeat="right in module.rights">
+                                <label>{{right.name}}({{vm.user.rights[module.identifier+'.'+right.identifier]}})</label>
+                                <customfield definition="{type:'boolean'}"
+                                             ng-model="vm.user.rights[module.identifier+'.'+right.identifier]"></customfield>
+                            </div>
+                        </v-pane-content>
+
+                    </v-pane>
+                </v-accordion>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="fixed-footer">
+            <div class="btn-group">
+                <button ng-click="vm.cancelEditing()" type="button">Cancel</button>
+                <button type="submit" class="btn-confirm">Done</button>
+            </div>
+        </div>
+    </section>
+
+</form>

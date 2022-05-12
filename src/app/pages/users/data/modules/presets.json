@@ -1,0 +1,26 @@
+{
+  "name": "Presets",
+  "identifier": "presets",
+  "rights": [
+    {
+      "name": "bulk",
+      "identifier": "bulk"
+    },
+    {
+      "name": "delete",
+      "identifier": "delete"
+    },
+    {
+      "name": "edit",
+      "identifier": "edit"
+    },
+    {
+      "name": "list",
+      "identifier": "list"
+    },
+    {
+      "name": "view",
+      "identifier": "view"
+    }
+  ]
+}

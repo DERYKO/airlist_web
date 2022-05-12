@@ -1,0 +1,8 @@
+<label for="{{name}}" ng-if="field.definition.name">{{field.definition.name}}
+    <span ng-if="field.definition.required">*</span>
+    <i class="fal fa-info-circle" ng-if="field.definition.tooltip">
+        <span data-tooltip="{{::field.definition.tooltip}}"></span>
+    </i>
+</label>
+<p class="help-text" ng-if="field.definition.help">{{field.definition.help}}</p>
+<input type="number" step="0.01" ng-model="field.ngModel" name="{{name}}" id="{{name}}" class="form-control" ng-required="field.definition.required"/>

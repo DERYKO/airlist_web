@@ -1,0 +1,144 @@
+{
+  "categories": {
+    "list": "Categories"
+  },
+  "dashboard": {
+    "default": "<i class=\"fal fa-home\"></i>"
+  },
+  "contacts": {
+    "list": "Contacts",
+    "details": "{contact_full_name}",
+    "details-tab": "{current_view}",
+    "create": "Create a new contact",
+    "edit": "Edit",
+    "import": "Import contacts",
+    "edit-multiple": "Edit multiple contacts"
+  },
+  "guestlists": {
+    "list": "Guestlists",
+    "masterlist": "Masterlist",
+    "create": "Create a new guestlist",
+    "edit": "Edit",
+    "limits": "Limits",
+    "import": "Import Rsvps",
+    "duplicates": "Duplicates",
+    "rsvps": {
+      "list": "{guestlist_name}",
+      "create": "Create a new RSVP",
+      "details": "{rsvp}",
+      "details-tab": "{current_view}",
+      "edit": "Edit"
+    }
+  },
+  "messages": {
+    "list": "Messages",
+    "details": "{message_title}",
+    "send": "Send a new message"
+  },
+  "picklists": {
+    "list": "Picklists",
+    "create": "Create a new picklist",
+    "contacts": "{picklist_name}",
+    "edit": "Edit"
+  },
+  "seatplans": {
+    "list": "Seatplans",
+    "create": "Create a new seatplan",
+    "details": "{seatplan_name}"
+  },
+  "settings": {
+    "main": "Settings",
+    "blacklists": "Blacklists",
+    "notifications": "Notifications",
+    "customfields": "Custom",
+    "jobs-log": "Job Log",
+    "profile": {
+      "details": "Profile details",
+      "edit": "Edit"
+    }
+  },
+  "templates": {
+    "main": "Templates",
+    "email": {
+      "list": "Email",
+      "create": "Create a new email template",
+      "details": "{template_name}",
+      "edit": "Edit"
+    },
+    "documents": {
+      "list": "Documents",
+      "details": "{template_name}",
+      "create": "Create a new document",
+      "edit": "Edit document"
+    },
+    "types": {
+      "list": "Types",
+      "create": "Create a new document",
+      "edit": "{type_name}"
+    }
+  },
+  "tickets": {
+    "main": "Tickets",
+    "pdf": {
+      "list": "PDF",
+      "create": "Create a new PDF ticket",
+      "details": "{ticket_name}",
+      "edit": "Edit"
+    },
+    "passbook": {
+      "list": "Apple Wallet",
+      "create": "Create a new passbook",
+      "details": "{passbook_name}",
+      "edit": "Edit"
+    }
+  },
+  "users": {
+    "list": "Users",
+    "details": "{user_name}",
+    "edit": "Edit",
+    "create": "Create a new profile"
+  },
+  "sidenav": {
+    "guestlists": {
+      "create": "Create a new guestlist",
+      "masterlist": "Masterlist"
+    }
+  },
+  "billing": {
+    "main": "Billing",
+    "invoices": {
+      "list": "Invoices",
+      "create": "Create a new invoice",
+      "details": "{invoice}"
+    },
+    "positions": {
+      "list": "Positions",
+      "create": "Create a new position",
+      "edit": "Edit position"
+    },
+    "position_categories": {
+      "list": "Position categories",
+      "create": "Create a new position category",
+      "edit": "Edit a position category"
+    },
+    "invoice_templates": {
+      "list": "Invoice templates",
+      "create": "Create a new invoice template",
+      "edit": "Edit invoice template"
+    },
+    "subscriptions": {
+      "list": "Subscriptions",
+      "create": "Create a new subscription",
+      "edit": "Edit subscription"
+    },
+    "number_circles": {
+      "list": "Number circles",
+      "create": "Create a new circle",
+      "edit": "Edit a number circle"
+    },
+    "stripe": {
+      "main": "Stripe",
+      "connection-info": "Connection Information"
+    }
+  }
+}

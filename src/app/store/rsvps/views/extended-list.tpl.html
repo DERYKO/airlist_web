@@ -1,0 +1,171 @@
+<div class="row" ng-controller="RsvpsExtendedListViewCtrl as elvc" ng-init="elvc.setRow(row); elvc.setStore(vm.store);" ng-click="$event.stopPropagation();">
+    <div class="loading-indicator" ng-if="elvc.loading">
+        <span class="fal fa-sync fa-spin"></span>
+    </div>
+    <div class="col-4 user-details-overview" ng-if="!elvc.loading">
+        <img ng-src="{{elvc.model.contact.data.profile_image.url}}" ng-if="elvc.model.contact.data.profile_image" class="user"/>
+        <p class="details-expanded-name">
+            {{elvc.model.contact.data.full_name}}<span ng-if="elvc.model.contact.data.age">&nbsp;({{ elvc.model.contact.data.age }})</span>&nbsp;&nbsp;<i
+                class="fal"
+                ng-class="{'fa-mars': (elvc.model.contact.data.sex === 'male'), 'fa-venus': (elvc.model.contact.data.sex === 'female'), 'fa-transgender': (elvc.model.contact.data.sex === 'various')}"></i>
+        </p>
+        <hr>
+        <div class="data-list">
+            <ng-include src="elvc.specialContactView" ng-if="elvc.specialContactView"></ng-include>
+            <ul>
+                <li ng-if="elvc.model.contact.data.main_subscription_status">
+                    <span class="data-label">Subscription:</span>
+                    <span class="data-value">
+                        <span class="subscription-state {{ elvc.model.contact.data.main_subscription_status }}"></span>{{ 'profile.' + elvc.model.contact.data.main_subscription_status | i18n }}
+                    </span>
+                </li>
+                <li ng-if="elvc.model.contact.data.company_name">
+                    <span class="data-label">Company:</span>
+                    <span class="data-value">{{elvc.model.contact.data.company_name}}</span>
+                </li>
+                <li ng-if="elvc.model.contact.data.department">
+                    <span class="data-label">Department:</span>
+                    <span class="data-value">{{elvc.model.contact.data.department}}</span>
+                </li>
+                <li ng-if="elvc.model.contact.data.position">
+                    <span class="data-label">Position:</span>
+                    <span class="data-value">{{elvc.model.contact.data.position}}</span>
+                </li>
+                <li ng-if="elvc.model.contact.data.preferred_email">
+                    <span class="data-label">Email:</span>
+                    <span class="data-value">{{elvc.model.contact.data.preferred_email}}</span>
+                </li>
+                <li ng-if="elvc.model.status">
+                    <span class="data-label">Status:</span>
+                    <span class="data-value">
+                        <span class="{{ elvc.model.status }}"></span>{{ elvc.model.status }}<a ng-click="elvc.changeRsvpStatus();" >&nbsp;<i class="fal fa-pencil"></i></a>
+                    </span>
+                </li>
+
+            </ul>
+        </div>
+        <hr>
+        <div class="tbl-actions">
+            <h3>User actions:</h3>
+            <button ng-if="elvc.acl.hasRight('messages::send-email')" ng-click="elvc.sendEmail()"><i
+                    class="fal fa-envelope"></i>&nbsp;&nbsp;Send email
+            </button>
+            <button ng-if="(!elvc.model.archived && elvc.acl.hasRight('rsvps::archive')) || (elvc.model.archived && elvc.acl.hasRight('rsvps::delete'))"
+                    ng-click="elvc.confirmNDeleteRsvp()" class="btn-warning">
+                <i class="fal fa-trash-alt"></i>&nbsp;&nbsp;Delete
+            </button>
+            <button ng-if="elvc.acl.hasRight('rsvps::edit')" ng-click="elvc.editRsvp()"><i
+                    class="fal fa-edit"></i>&nbsp;&nbsp;Edit
+            </button>
+            <button ng-if="elvc.acl.hasRight('rsvps::quick-edit')" ng-click="elvc.quickEditRsvp()"><i
+                    class="fal fa-edit"></i>&nbsp;&nbsp;Quick Edit
+            </button>
+            <button ng-if="elvc.acl.hasRight('rsvps::checkins') && elvc.model.pax_planned !== elvc.model.pax_actual" ng-click="elvc.checkInRsvp()"><i class="fal fa-sign-in"></i>&nbsp;&nbsp;Check-In</button>
+            <button ng-if="elvc.acl.hasRight('rsvps::checkins') && elvc.model.pax_planned === elvc.model.pax_actual" ng-click="elvc.checkInRsvp()"><i class="fal fa-sign-out"></i>&nbsp;&nbsp;Check-Out</button>
+            <button ng-if="elvc.acl.hasRight('rsvps::view')" ng-click="elvc.viewRsvp()"><i
+                    class="fal fa-external-link-square"></i>&nbsp;&nbsp;View
+            </button>
+            <button ng-if="elvc.model.guestlist.data.settings.enable_guests && elvc.acl.hasWorkflow('rsvps::list.quick-add-guest')" ng-click="elvc.quickAddGuest()"><i
+                    class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add Guest
+            </button>
+        </div>
+    </div>
+
+    <div class="col-8 user-details-summary" ng-if="!elvc.loading">
+        <div class="details-expanded-tabs">
+            <ul>
+                <li ng-repeat="view in elvc.availableViews">
+                    <a ng-click="elvc.goToView(view.key);" ng-class="{'active-tab': elvc.currentView === view.key}">{{view.label}}</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="details-expanded-box" ng-if="elvc.currentView === 'overview' && !elvc.specialRsvpView">
+            <div class="details-expanded-basic-info" ng-if="elvc.model">
+                <h3>Booking:</h3>
+                <hr>
+                <table>
+                    <tr>
+                        <th>Pax planned:</th>
+                        <th>Code:</th>
+                        <th ng-if="elvc.model.guestlist.data.settings.enable_guests">Guests:</th>
+                    </tr>
+                    <tr>
+                        <td>{{elvc.model.pax_actual ? elvc.model.pax_actual : 0}}/{{elvc.model.pax_planned}}</td>
+                        <td>{{elvc.model.code}} <a ng-click="elvc.showRsvpQrCode()" title="Show QR-Code" style="font-size: 80%;"><i class="fal fa-qrcode"></i></a></td>
+                        <td ng-if="elvc.model.guestlist.data.settings.enable_guests">
+                            {{elvc.model.guest_pax}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="details-expanded-last-messages"
+                 ng-if="elvc.acl.hasRight('messages::view') && elvc.model.lastMessage">
+                <hr>
+                <h3>Last message:</h3>
+                <table class="table-last-message">
+                    <tr ui-sref="app.messages.details({id: elvc.model.lastMessage.data.id})">
+                        <td class="pointer"><span class="message-status {{elvc.model.lastMessage.data.status}}">{{'messages.states.' + elvc.model.lastMessage.data.status | i18n}}</span>
+                        </td>
+                        <td class="pointer">{{elvc.model.lastMessage.data.created_at|date:'d.M.yyyy HH:mm'}}</td>
+                        <td class="pointer">{{elvc.model.lastMessage.data.subject}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="details-expanded-box" ng-if="elvc.currentView === 'overview' && elvc.specialRsvpView">
+            <ng-include src="elvc.specialRsvpView"></ng-include>
+        </div>
+
+        <div class="details-expanded-box" ng-if="elvc.currentView === 'booking'">
+            <div class="details-expanded-basic-info">
+                <div class="data-list" ng-repeat="(fieldGroupKey, fields) in elvc.model.guestlist.data.fields" ng-if="!elvc.model.parent_rsvp_id">
+                    <h3 ng-if="fieldGroupKey === 'contact'">Contact information</h3>
+                    <h3 ng-if="fieldGroupKey === 'rsvp'">Booking information</h3>
+                    <ul class="col-layout">
+                        <li ng-repeat="(fieldName, fieldInformation) in fields">
+                            <span class="data-label" title="{{fieldInformation.label}}">{{fieldInformation.label}}</span>
+                            <span class="data-value" ng-if="fieldInformation.type == 'image'">
+                                <al-media-thumbnail file="elvc.getObjectVar(elvc.model, (fieldGroupKey === 'contact' ? 'contact.data.' : '') + fieldName)"></al-media-thumbnail>
+                            </span>
+                            <span class="data-value" ng-if="fieldInformation.type !== 'image' && fieldInformation.type !== 'date' && fieldInformation.type !== 'datetime'">{{elvc.getObjectVar(elvc.model, (fieldGroupKey === 'contact' ? 'contact.data.' : '') + fieldName)}}</span>
+                            <span class="data-value" ng-if="fieldInformation.type === 'date'">{{elvc.getObjectVar(elvc.model, (fieldGroupKey === 'contact' ? 'contact.data.' : '') + fieldName)|date:'dd.MM.yyyy'}}</span>
+                            <span class="data-value" ng-if="fieldInformation.type === 'datetime'">{{elvc.getObjectVar(elvc.model, (fieldGroupKey === 'contact' ? 'contact.data.' : '') + fieldName)|date:'dd.MM.yyyy HH:mm':'+0000'}}</span>
+                        </li>
+                    </ul>
+                    <hr ng-if="!$loop.last"/>
+                </div>
+                <div class="data-list" ng-repeat="(fieldGroupKey, fields) in elvc.model.guestlist.data.guest_fields" ng-if="!!elvc.model.parent_rsvp_id">
+                    <h3 ng-if="fieldGroupKey === 'contact'">Contact information</h3>
+                    <h3 ng-if="fieldGroupKey === 'rsvp'">Booking information</h3>
+                    <ul class="col-layout">
+                        <li ng-repeat="(fieldName, fieldInformation) in fields">
+                            <span class="data-label" title="{{fieldInformation.label}}">{{fieldInformation.label}}</span>
+                            <span class="data-value" ng-if="fieldInformation.type == 'image'">
+                                <al-media-thumbnail file="elvc.getObjectVar(elvc.model, (fieldGroupKey === 'contact' ? 'contact.data.' : '') + fieldName)"></al-media-thumbnail>
+                            </span>
+                            <span class="data-value" ng-if="fieldInformation.type !== 'image' && fieldInformation.type !== 'date' && fieldInformation.type !== 'datetime'">{{elvc.getObjectVar(elvc.model, (fieldGroupKey === 'contact' ? 'contact.data.' : '') + fieldName)}}</span>
+                            <span class="data-value" ng-if="fieldInformation.type === 'date'">{{elvc.getObjectVar(elvc.model, (fieldGroupKey === 'contact' ? 'contact.data.' : '') + fieldName)|date:'dd.MM.yyyy'}}</span>
+                            <span class="data-value" ng-if="fieldInformation.type === 'datetime'">{{elvc.getObjectVar(elvc.model, (fieldGroupKey === 'contact' ? 'contact.data.' : '') + fieldName)|date:'dd.MM.yyyy HH:mm':'+0000'}}</span>
+                        </li>
+                    </ul>
+                    <hr ng-if="!$loop.last"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-expanded-box" ng-if="elvc.currentView === 'messages'">
+            <rsvp-messages-small rsvp="elvc.model" store="vm.store" reload-action="elvc.loadData()"
+                                 ng-if="elvc.model"></rsvp-messages-small>
+        </div>
+
+        <div class="details-expanded-box" ng-if="elvc.currentView === 'guests'">
+            <rsvp-guests rsvp="elvc.model" store="vm.store" headline="Guests" reload-action="elvc.loadData()"
+                         ng-if="elvc.model && elvc.model.guestlist.data.settings.enable_guests && elvc.model.has_children"></rsvp-guests>
+            <button ng-if="elvc.acl.hasWorkflow('rsvps::list.quick-add-guest')" ng-click="elvc.quickAddGuest()"><i
+                    class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add Guest
+            </button>
+        </div>
+    </div>
+</div>

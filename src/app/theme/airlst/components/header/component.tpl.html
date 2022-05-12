@@ -1,0 +1,58 @@
+<header>
+    <div class="mobile-menu">
+        <div class="dropdown-container" al-dropdown>
+            <button type="button" class="dropdown-toggle">
+                <i class="fal fa-bars"></i>
+            </button>
+            <div class="dropdown-sheet">
+                <nav>
+                    <navigation-top-nav nav-is-mobile="true"></navigation-top-nav>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="logo">
+        <a ui-sref="app.dashboard" title="Dashboard">
+            <img src="/images/logo-airlst.png"/>
+        </a>
+    </div>
+
+    <nav>
+        <div class="desktop-menu">
+            <navigation-top-nav nav-is-mobile="false"></navigation-top-nav>
+        </div>
+    </nav>
+
+    <div class="right-nav">
+        <al-top-search ng-if="header.showNav"></al-top-search>
+        <div class="user dropdown-container" ng-if="header.user" al-dropdown>
+            <button class="dropdown-toggle" style="background-image: url('{{header.user.profile_image.url}}'); background-size: cover;">
+
+            </button>
+            <div class="dropdown-sheet">
+                <ul class="profile">
+                    <li><strong>{{header.user.full_name}}</strong></li>
+                    <li><small>{{header.user.company.data.name}}</small></li>
+                    <li>{{header.user.email}}</li>
+                </ul>
+                <ul>
+                    <li><a ui-sref="app.settings.profile-details">Profile settings</a></li>
+                    <li ng-if="header.user.available_companies.length > 1"><a ng-click="header.switchCompany()">Switch company</a></li>
+                    <li><a ui-sref="app.logout">Log out</a></li>
+                </ul>
+                <div class="checkin-mode keep-open">
+                    <div class="form-group">
+                        <label class="control-label">Check-in mode</label>
+                        <customfield
+                                definition="{type:'boolean', onChange: header.toggleCheckinMode.bind(header)}"
+                                ng-model="header.checkinMode"
+                                name="checkin-mode"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>

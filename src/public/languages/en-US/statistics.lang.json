@@ -1,0 +1,44 @@
+{
+  "rsvp": {
+    "status": {
+      "labels": {
+        "unknown": "unknown",
+        "listed": "listed",
+        "requested": "requested",
+        "invited": "invited",
+        "confirmed": "confirmed",
+        "cancelled": "cancelled",
+        "waitlisted": "waitlisted",
+        "pending": "pending"
+      }
+    }
+  },
+  "guestlists": {
+    "rsvp-quota": {
+      "labels": {
+        "max_count": "Max",
+        "cur_count": "Cur",
+        "free_spaces": "Free"
+      }
+    }
+  },
+  "contacts": {
+    "sex": {
+      "labels": {
+        "male": "Male",
+        "various": "Various",
+        "female": "Female",
+        "unknown": "Unknown"
+      }
+    }
+  },
+  "general": {
+    "count-bar": {
+      "labels": {
+        "contacts": "CONTACTS",
+        "bookings": "BOOKINGS",
+        "messages": "MESSAGES SENT"
+      }
+    }
+  }
+}

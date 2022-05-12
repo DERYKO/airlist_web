@@ -1,0 +1,11 @@
+<button class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2 id="modal-title">Select date for pausing</h2>
+</div>
+<div class="modal-body" id="modal-body">
+    <customfield ng-model="vm.date" definition="{type:'date'}" name="date"></customfield>
+    <div class="btn-group">
+        <button type="button" ng-click="vm.close()">Close</button>
+        <button class="btn-confirm" type="button" ng-click="vm.finish()">Select this Date</button>
+    </div>
+</div>

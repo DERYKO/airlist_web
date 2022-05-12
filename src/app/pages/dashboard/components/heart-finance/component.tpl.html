@@ -1,0 +1,31 @@
+<section ng-if="vm.loading">
+    <div class="dashboard-empty">
+        <div class="pacman">
+            <i class="fal fa-sync fa-spin"></i>
+            <h2>Loading data</h2>
+        </div>
+    </div>
+</section>
+
+<div class="dashboard-wrapper">
+    <div class="dashboard-title">
+        <h1>Dashboard</h1>
+    </div>
+
+    <div class="dashboard-tools">
+        <button type="button" class="export">Export <i class="fal fa-inbox-out"></i></button>
+    </div>
+
+    <section>
+        <div class="dashboard">
+            <div class="col-1-3">
+                <billing-latest-invoice-drafts></billing-latest-invoice-drafts>
+                <contact-subscription-counts></contact-subscription-counts>
+            </div>
+            <div class="col-2-3">
+                <billing-invoices-paid-vs-open></billing-invoices-paid-vs-open>
+                <billing-failed-payments></billing-failed-payments>
+            </div>
+        </div>
+    </section>
+</div>

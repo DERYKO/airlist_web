@@ -1,0 +1,27 @@
+<div class="al-media-selector">
+    <div class="al-media-selector-selected-info">
+            <span title="{{vm.selectedFile.name}}" ng-if="vm.selectedFile">
+                <a clipboard text="vm.selectedFile.url"
+                   on-copied="vm.clipboardStatus(true)"
+                   on-error="vm.clipboardStatus(false)"><i class="fal fa-clone"></i></a> {{vm.selectedFile.name}}
+            </span>
+        <!--<span class="size" ng-if="vm.selectedFile"><strong>Size: </strong>{{vm.selectedFile.size|mediaFormatFileSize}}</span>-->
+        <!--<span ng-if="!vm.selectedFile">Please select a file</span>-->
+    </div>
+    <div class="al-media-selector-thumbnail align-center" ng-click="vm.startFileSelection()">
+        <img ng-src="{{vm.selectedFile.thumbnail}}" ng-if="vm.selectedFile" class="d-block m-auto"/>
+        <div class="placeholder-icon" ng-if="!vm.selectedFile">
+            <span class="fas fa-file"></span>
+            <span class="thumbnail-text">Select file</span>
+        </div>
+    </div>
+    <div class="al-media-selector-meta">
+        <hr>
+        <div class="al-media-selector-toolbar">
+            <a class="download-file-toggle button" href="{{vm.selectedFile.url}}" download="{{vm.selectedFile.name}}"
+               target="_blank" ng-disabled="!vm.selectedFile"><i class="fal fa-arrow-to-bottom"></i> Download</a>
+            <button type="button" class="select-file-toggle" ng-click="vm.startFileSelection()" ng-disabled="!vm.selectedFile"><i class="fal fa-edit"></i> Edit</button>
+            <button type="button" class="clean-file-toggle" ng-click="vm.cleanFile()" ng-disabled="!vm.selectedFile"><i class="fal fa-trash-alt"></i> Delete</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<button class="close" ng-click="vm.dismiss()"><i class="fal fa-times"></i></button>
+
+<div class="modal-header">
+    <h2>Quick Edit Rsvp</h2>
+</div>
+<div class="modal-body">
+    <div class="loading" ng-if="vm.loading">
+        <span class="fal fa-sync fa-spin"></span>&nbsp;Loading rsvp information
+    </div>
+    <div class="msg error-msg" ng-if="!vm.loading && vm.error">{{vm.errorMessage}}</div>
+    <div class="content" ng-if="!vm.loading && !vm.error">
+        <div class="form-group">
+            <label for="rsvp_quick_edit_email">E-Mail</label>
+            <input id="rsvp_quick_edit_email" type="text" ng-model="vm.contact.email">
+        </div>
+        <div class="form-group">
+            <label for="rsvp_quick_edit_custom_2">Flugnummer</label>
+            <input id="rsvp_quick_edit_custom_2" type="text" ng-model="vm.rsvp.custom_2">
+        </div>
+        <div class="form-group">
+            <label for="rsvp_quick_edit_custom_3">Buchungscode</label>
+            <input id="rsvp_quick_edit_custom_3" type="text" ng-model="vm.rsvp.custom_3">
+        </div>
+        <div class="form-group">
+            <label for="rsvp_quick_edit_pax_planned">Pax planned</label>
+            <input id="rsvp_quick_edit_pax_planned" type="number" step="1" min="0" ng-model="vm.rsvp.pax_planned">
+        </div>
+    </div>
+    <div class="btn-group">
+        <button class="" ng-click="vm.dismiss()">Close</button>
+        <button class="btn-confirm" ng-click="vm.save()" ng-if="!vm.loading && !vm.error">Save changes</button>
+    </div>
+</div>

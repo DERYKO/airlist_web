@@ -1,0 +1,27 @@
+<section ng-if="vm.contact.facebook_url || vm.contact.xing_url || vm.contact.instagram_url || vm.contact.linkedin_url">
+    <h2>Social profiles</h2>
+    <div class="content-box box-900">
+        <div class="box-section-wrap">
+            <div class="data-list col-layout">
+                <table>
+                    <tr ng-if="vm.contact.facebook_url">
+                        <td><i class="fab fa-facebook"></i>&nbsp;&nbsp;Facebook:</td>
+                        <td>{{vm.contact.facebook_url}}</td>
+                    </tr>
+                    <tr ng-if="vm.contact.xing_url">
+                        <td><i class="fab fa-xing"></i>&nbsp;&nbsp;Xing:</td>
+                        <td>{{vm.contact.xing_url}}</td>
+                    </tr>
+                    <tr ng-if="vm.contact.instagram_url">
+                        <td><i class="fab fa-instagram"></i>&nbsp;&nbsp;Instagram:</td>
+                        <td>{{vm.contact.instagram_url}}</td>
+                    </tr>
+                    <tr ng-if="vm.contact.linkedin_url">
+                        <td><i class="fab fa-linkedin"></i>&nbsp;&nbsp;Linkedin:</td>
+                        <td>{{vm.contact.linkedin_url}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

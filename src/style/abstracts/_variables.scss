@@ -1,0 +1,103 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+//Font
+$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+$icon-font-light: "Font Awesome 5 Light";
+$icon-font-solid: "Font Awesome 5 Solid";
+
+$font-xlarge: 24px;
+$font-large: 19px;
+$font-medium: 15px;
+$font-regular: 13px;
+$font-small: 11px;
+
+$font-size-basic: $font-regular;
+//$font-size-nav: $font-regular;
+$font-size-nav: $font-small;
+$font-size-button: $font-regular;
+$font-size-input-label: 11px;
+$font-size-heading: $font-xlarge;
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-bold: 600;
+
+
+//Colors
+$darkest: #5b626b;
+$darker: #7d7d7d;
+$dark: #b6b6b6;
+$light: #c0bfbf;
+$lighter: #f7f8f9;
+$lightest: #fff;
+
+$primary: #8b5ed9;
+//$primary-bg: lighten($primary,6%);
+$primary-bg: $primary;
+$secondary: #42b2ad;
+$warning: #e01249;
+$warning-soft: #f5b858;
+$waitlist: #40c4f1;
+
+$highlight-1: #edeff0;
+$highlight-2: #eff4f9;
+$highlight-3: #f7f8f9;
+$highlight-4: #f5fcfb;
+$highlight-5: #f4f9fc;
+
+$main-background: $lighter;
+$box-background: $lightest;
+$text-color: $darkest;
+$text-light: $light;
+$icon-color: $darkest;
+
+//$gradient-stripe:  linear-gradient(to bottom, rgba(69,50,117,1) 0%, rgba(150,122,220,1) 100%);
+$gradient-stripe:  linear-gradient(to bottom, #8b5ed9 0%, rgba(66,178,173,1) 100%);
+$gradient-circle: linear-gradient(135deg, rgba(139,94,217,1) 0%, rgba(66,178,173,1) 100%);
+$gradient-stripe-2: linear-gradient(90deg, rgba(139,94,217,1) 0%, rgba(66,178,173,1) 100%);
+
+$box-shadow-large: 0px 6px 19px 0px rgba(182, 182, 182, 0.35);
+$box-shadow-small: 0px 1px 10px 0px rgba(182, 182, 182, 0.35);
+$box-shadow-top: 0px -6px 19px 0px rgba(182, 182, 182, 0.35);
+$box-shadow-right: 4px 6px 19px 0px rgba(114, 114, 114, 0.64); /* to be changed */
+$box-shadow-input: inset 0px 4px 10px 0px rgba(224, 224, 224, 0.33);
+$box-shadow-button: 0px 3px 13.72px 0.28px rgba(182, 182, 182, 0.31);
+$text-shadow: 0px 0px 5px rgba(182, 182, 182, 0.89);
+
+//Sizes
+$side-menu-width: 250px;
+$side-menu-width-collapsed: 105px;
+
+$max-width-page: 1400px;
+$max-width-element: 600px;
+
+$border-color: #e0e0e0;
+$border: 1px solid $border-color;
+$divider: 1px solid #c6c6d1;
+
+$input-width: 230px;
+$input-width-lg: 485px;
+$input-width-sm: 110px;
+$input-height: 35px;
+
+$gutter-small: gutter() / 2;
+$gutter-regular: gutter();
+$gutter-large: gutter() * 2;
+
+//$border-radius-small: 2px;
+$border-radius-small: 0;
+$border-radius-large: 2px;
+$border-radius-round: 50%;
+
+$icon-small: 14px;
+$icon-medium: 16px;
+$icon-regular: 18px;
+$icon-large: 20px;
+
+$transition: all 0.3s ease;
+
+$padding-basic: $gutter-regular $gutter-large;
+$padding-list: $gutter-small $gutter-large;

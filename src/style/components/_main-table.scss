@@ -1,0 +1,295 @@
+//margins subtracted to make table full width
+.main-table {
+  transform: translate3d(0, 0, 0);
+  margin-left: -($gutter-large);
+  margin-right: -($gutter-large);
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  @include breakpoint($small) {
+    margin-left: -15px;
+    margin-right: -15px;
+    transform: none;
+  }
+}
+
+th {
+  background-color: $lighter;
+  padding: $gutter-small $gutter-regular;
+  text-align: left;
+  border-bottom: $border;
+}
+
+td {
+  padding: 10px;
+}
+
+listview-table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  table tbody {
+    white-space: normal;
+  }
+}
+
+.main-table table {
+  width: 100%;
+  margin-bottom: 15px;
+
+  th, td {
+    &.checkbox-cell {
+      position: -webkit-sticky;
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      background-clip: padding-box;
+    }
+  }
+
+  th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+
+    &:first-child {
+      font-weight: $font-weight-regular;
+    }
+
+    &.checkbox-cell {
+      background-color: $lighter;
+    }
+  }
+
+  tr:not(.details-expanded) td:not(.actions):hover {
+    [data-tooltip]:before,
+    [data-tooltip]:after {
+      visibility: visible;
+      opacity:1;
+    }
+  }
+
+  td {
+    border-bottom: $border;
+    max-width: 200px;
+    position: relative;
+    padding: 0;
+
+    &.checkbox-cell {
+      background-color: $lightest;
+    }
+
+    .cell-actions {
+      display: none;
+    }
+
+    .actions {
+      width: 115px;
+
+      @include breakpoint($small) {
+        width: auto;
+        text-align: left;
+      }
+    }
+
+    &:hover {
+
+      .cell-actions {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(256,256,256,0.8);
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+
+        button {
+          margin-top: 10px;
+          display: inline-block;
+          pointer-events: auto;
+          color: $darker;
+
+          &:hover {
+            color: $primary;
+          }
+        }
+      }
+    }
+
+    > span.cell-content {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: block;
+      padding: 12px;
+    }
+
+    > .tooltip-wrapper {
+      position: absolute;
+      left: 0;
+      top: 0;
+      //height: 100%;
+      height: 1px;
+      width: 150%;
+
+      &:before {
+        //bottom: 85%;
+        bottom: -5px;
+        background-color: #fff;
+        color: $text-color;
+        text-transform: none;
+        border: $border;
+        padding: 10px;
+        box-shadow: $box-shadow-small;
+        border-radius: 0;
+        white-space: normal;
+        text-align: left;
+        max-width: 300px;
+        line-height: 14px;
+      }
+
+      &:after {
+        display: none;
+      }
+    }
+
+    &:first-child {
+      width: $gutter-regular;
+    }
+  }
+
+  th, td {
+    &:first-child {
+      padding-left: $gutter-large;
+    }
+
+    &:last-child {
+      padding-right: $gutter-large;
+
+      > .tooltip-wrapper {
+        width: 100%;
+      }
+
+      .dropdown-sheet {
+        top: 0;
+        right: 20px;
+      }
+    }
+  }
+
+  .details-expanded {
+    >td {
+      @include breakpoint($small) {
+        width: 100%;
+        max-width: none;
+        display: block;
+        padding-right: 0;
+        //overflow: scroll;
+      }
+
+      &.details-expanded-close {
+        display: none;
+
+        @include breakpoint($small) {
+          display: block;
+          position: fixed;
+          padding: 0;
+          width: calc(100% - 40px);
+          z-index: 2;
+          background: white;
+          top: 49px;
+        }
+      }
+    }
+  }
+
+
+  tr {
+    transition: $transition;
+
+    &:hover {
+      //background-color: rgba(115,205,186,0.1);
+      background-color: $highlight-5;
+      cursor: pointer;
+    }
+
+    &.details-expanded:hover {
+      background-color: white;
+    }
+  }
+
+  .details-expanded tr {
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .active {
+    //background-color: rgba(115,205,186,0.1);
+    background-color: $highlight-5;
+  }
+
+  tr>td>span>img {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+  }
+}
+
+
+//for tables other than list view
+.main-table.table-other {
+  table {
+
+    th {
+      font-weight: $font-weight-bold;
+      padding: 10px;
+    }
+
+    tr {
+      &:hover {
+        background-color: inherit;
+        cursor: inherit;
+      }
+    }
+
+    td {
+      padding: 10px;
+    }
+
+    td:first-child, td:last-child {
+      text-align: left;
+      width: auto;
+    }
+
+    td:first-child, th:first-child {
+      padding-left: $gutter-large;
+
+      @include breakpoint($small) {
+        padding-left: $gutter-regular;
+      }
+    }
+
+    td:last-child, th:last-child {
+      padding-right: $gutter-large;
+
+      @include breakpoint($small) {
+        padding-right: $gutter-regular;
+      }
+    }
+  }
+}
+
+
+.empty-table {
+  color: $light;
+  text-align: center;
+  padding: $gutter-regular;
+}
+
+.tr-highlight{
+  background-color: $warning-soft;
+}

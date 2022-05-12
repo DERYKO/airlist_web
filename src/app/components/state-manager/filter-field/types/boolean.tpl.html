@@ -1,0 +1,11 @@
+<button class="btn-regular"
+        ng-click="vm.store.dispatch('filterCol', {col: vm.col, value: (vm.store.state.filters[vm.col.key] === true) ? undefined : true})"
+        ng-class="{'btn-confirm': (vm.store.state.filters[vm.col.key] === true)}">Yes
+</button>
+<!--<button class="btn-regular" ng-click="vm.store.dispatch('filterCol', {col: vm.col, value: true})"-->
+<!--ng-if=" vm.store.state.filters[vm.col.key] !== true">Yes-->
+<!--</button>-->
+<button class="btn-regular"
+        ng-click="vm.store.dispatch('filterCol', {col: vm.col, value: (vm.store.state.filters[vm.col.key] === false) ? undefined : false})"
+        ng-class="{'btn-confirm': (vm.store.state.filters[vm.col.key] === false)}" uncheckable>No
+</button>

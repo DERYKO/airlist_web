@@ -1,0 +1,10 @@
+{
+  "description": "Preset Description",
+  "name": "Name",
+  "no_filters": "No Presets",
+  "no_filters_messages": "Filter and sort presets were not found in table.",
+  "presets": "Presets",
+  "saving_successful": "Saving filter presets done successfully.",
+  "table": "Table",
+  "title_details": "Table Presets"
+}

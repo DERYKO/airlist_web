@@ -1,0 +1,41 @@
+<button class="btn btn-primary btn-sm" ng-click="vm.newPositionLink()">New position link</button>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Position</th>
+        <th>Price per unit</th>
+        <th>amount</th>
+        <th>unit</th>
+        <th>sum</th>
+        <th>latest doc</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="position in vm.positionLinks">
+        <td>
+            {{position.label}}<br/>
+            <small>{{position.description}}</small>
+        </td>
+        <td>{{position.price_per_unit|number:2}}</td>
+        <td>{{position.amount|number:2}}</td>
+        <td>{{position.unit}}</td>
+        <td>{{(position.price_per_unit*position.amount)|number:2}}</td>
+        <td ng-if="position.latest_document">
+            <a href="#" target="_blank" ui-sref="app.billing.invoices.details({id: position.latest_document.id})">{{position.latest_document.invoice_number}}</a><br/>
+            <small>({{position.latest_document.type}})</small>
+        </td>
+        <td ng-if="!position.latest_document">{{}}</td>
+        <td>
+            <button class="btn btn-danger btn-simple btn-xs" ng-click="vm.deletePositionLink(position)"
+                    ng-if="!position.already_invoiced">
+                <i class="fa fa-trash"></i>
+            </button>
+            <button class="btn btn-info btn-simple btn-xs" ng-click="vm.editPositionLink(position)"
+                    ng-if="!position.already_invoiced">
+                <i class="fa fa-pencil"></i>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,128 @@
+<div class="row select-fields">
+    <div class="col-7">
+        <div class="row mt-0 br-1">
+            <div class="col-12 mt-0 mb-0">
+                <div class="select-fields-header">
+                    <h3>{{'guestlists.editor.components.form-field-selector.head' | translate}}</h3>
+                    <!--<button>{{'guestlists.editor.components.form-field-selector.buttons.move_all' | translate}}<i
+                            class="fal fa-long-arrow-right"></i></button>-->
+                </div>
+            </div>
+            <div class="col-4 mt-0">
+                <div class="select-fields-categories">
+                    <ul>
+                        <li ng-repeat="filter in vm.availableFilters"
+                            ng-class="{active: vm.currentFilter === filter.key}">
+                            <a href ng-click="vm.changeCurrentFilter(filter)">
+                                {{filter.label}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-8 mt-0">
+
+                <div class="search">
+                    <input type="text" name="tableSearch" placeholder="Search fields"
+                           ng-model="vm.selectableFieldsSearch">
+                    <button name="tableSearchSubmit"><i class="fal fa-search"></i></button>
+                </div>
+
+                <div class="form-group select-fields-form-group">
+                    <h3 class="mt-10" ng-repeat-start="fieldGroup in vm.selectableFields">
+                        <input type="checkbox" id="{{vm.idPrefix}}field_group_{{fieldGroup.key}}"
+                               ng-model="vm.selectedGroupsInputModels[fieldGroup.key]"
+                               ng-change="vm.handleFieldGroupToggle(fieldGroup.key)">
+                        <label for="{{vm.idPrefix}}field_group_{{fieldGroup.key}}"> {{fieldGroup.label}}</label>
+                    </h3>
+                    <div class="checkbox-list" ng-repeat-end>
+                        <input type="checkbox" id="{{vm.idPrefix}}fields_{{field}}"
+                               ng-repeat-start="field in fieldGroup.fields"
+                               ng-model="vm.selectedFieldsInputModels[field.slug]"
+                               ng-change="vm.handleFieldToggle(field.slug)">
+                        <label for="{{vm.idPrefix}}fields_{{field}}" ng-repeat-end>{{field.label}}<span
+                                class="field-configured" ng-if="field.enabledInMain"></span>
+                            <button ng-if="field.isCustomField" ng-click="vm.changeCustomFieldDefinition(field);">
+                                <i class="fal fa-cog"></i>
+                            </button>
+                        </label>
+                    </div>
+                    <div class="checkbox-list">
+                        <label ng-if="vm.customFieldDefinitions.availability.contact || vm.customFieldDefinitions.availability.rsvp">
+                            <input type="text"
+                                   placeholder="{{'guestlists.editor.components.form-field-selector.labels.add_custom_field_name' | translate}}"
+                                   ng-model="vm.newCustomFieldName">
+                            <button class="add-option" ng-click="vm.addNewCustomField()">
+                                <i class="fal fa-plus-circle"></i>
+                            </button>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="select-fields-header">
+            <h3>{{'guestlists.editor.components.form-field-selector.sub_heads.selected_fields' | translate}}</h3>
+        </div>
+
+        <div class="search">
+            <input type="text" name="tableSearch" placeholder="Search fields" ng-model="vm.selectedFieldsSearch">
+            <button name="tableSearchSubmit"><i class="fal fa-search"></i></button>
+        </div>
+
+        <div class="drag-drop-legend mt-25" ng-if="!vm.simpleVersion">
+            <div class="drag-drop-field-name2">{{'guestlists.editor.components.form-field-selector.tableHeaders.label' |
+                translate}}
+            </div>
+            <div class="drag-drop-field-type2">
+                {{'guestlists.editor.components.form-field-selector.tableHeaders.apiSetting' | translate}}
+            </div>
+            <div class="drag-drop-field-req2">{{'guestlists.editor.components.form-field-selector.tableHeaders.required'
+                | translate}}
+            </div>
+            <div class="drag-drop-field-actions">{{'guestlists.editor.components.form-field-selector.tableHeaders.edit'
+                | translate}}
+            </div>
+        </div>
+
+        <div class="drag-drop-container" ui-sortable ng-model="vm.internalDefintion" id="{{vm.idPrefix}}draggable"
+             ng-if="!vm.simpleVersion">
+            <div class="drag-drop-item"
+                 ng-repeat="item in vm.internalDefintion|filter:vm.selectedFieldsSearch track by $index">
+                <div class="drag-drop-field-name2">
+                    <input type="checkbox" id="defined-field-{{$index}}"
+                           ng-model="vm.selectedFieldsInputModels[item.slug]"
+                           ng-change="vm.handleFieldToggle(item.slug)">
+                    <label for="defined-field-{{$index}}">
+                        {{vm.availableFields[item.slug].default_label}} <em ng-if="item.label">({{item.label}})</em>
+                    </label>
+                </div>
+                <div class="drag-drop-field-type2">{{vm.getDefinitionFieldTypeReadable(item)}}</div>
+                <div class="drag-drop-field-req2 align-center">
+                    <input ng-model="item.required"
+                           id="defined-field-required-{{$index}}"
+                           type="checkbox"/>
+                    <label for="defined-field-required-{{$index}}"></label>
+                </div>
+                <div class="drag-drop-field-actions">
+                    <button ng-click="vm.openFieldSettings(item)">
+                        <i class="fal fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group select-fields-form-group selected-fields" ng-if="vm.simpleVersion">
+            <div class="checkbox-list">
+                <input type="checkbox"
+                       id="defined-field-{{$index}}"
+                       ng-change="vm.handleFieldToggle(item.slug)"
+                       ng-model="vm.selectedFieldsInputModels[item.slug]"
+                       ng-repeat-start="item in vm.internalDefintion|filter:vm.selectedFieldsSearch track by $index">
+                <label for="defined-field-{{$index}}"
+                       ng-repeat-end>{{vm.availableFields[item.slug].default_label}}</label>
+            </div>
+        </div>
+    </div>
+</div>

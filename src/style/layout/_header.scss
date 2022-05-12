@@ -1,0 +1,323 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+header {
+  //background: susy-svg-grid() no-repeat scroll;
+  padding: $gutter-regular 0 $gutter-regular $gutter-regular;
+  position: fixed;
+  width: 100%;
+  background-color: $lightest;
+  z-index: 1000;
+  border-bottom: 1px solid $border-color;
+  height: 65px;
+  box-shadow: $box-shadow-small;
+  display: flex;
+  align-items: center;
+
+  @include breakpoint($mediumsmall) {
+    padding: $gutter-small 0 $gutter-small 10px;
+    height: 50px;
+  }
+
+  .mobile-menu {
+    display: none;
+    width: span(1, $collapsed);
+    padding-left: 20px;
+
+    button {
+      padding: $gutter-small;
+      margin-left: -10px;
+
+      i {
+        font-size: 22px;
+      }
+
+      &:hover {
+        background-color: $highlight-1;
+      }
+    }
+
+    @include breakpoint($mediumsmall) {
+      display: inline-block;
+    }
+  }
+
+  .logo, nav, .right-nav {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .logo {
+    padding-left: $gutter-large;
+    padding-right: $gutter-large;
+    width: 240px;
+
+    img {
+      max-width: 110px;
+
+      @include breakpoint($medium) {
+        max-width: 100%;
+      }
+    }
+
+    @include breakpoint($regular) {
+      width: 210px;
+    }
+
+    @include breakpoint($medium) {
+      width: 122px;
+    }
+
+    @include breakpoint($mediumsmall) {
+
+      width: 130px;
+      padding: 0;
+      position: absolute;
+
+      @include center-align;
+
+      img {
+        width: 130px;
+      }
+    }
+  }
+
+  nav {
+    flex-grow: 1;
+    font-size: $font-size-nav;
+    font-weight: $font-weight-light;
+    padding-left: $gutter-small;
+
+    @include breakpoint($medium) {
+      width: span(8 at 2, $collapsed);
+    }
+
+    @include breakpoint($mediumsmall) {
+      position: absolute;
+      bottom: 0;
+      left: -30px;
+      transform: translateY(100%);
+      width: auto;
+      border: 1px solid #e0e0e0;
+      background-color: white;
+      z-index: 9999;
+      box-shadow: $box-shadow-right;
+      padding: 0;
+      overflow: scroll;
+      max-height: calc(100vh - 50px);
+    }
+
+    .desktop-menu {
+      @include breakpoint($mediumsmall) {
+        display: none;
+      }
+    }
+
+    ul {
+      width: 100%;
+      max-width: 1050px;
+    }
+
+    >li {
+      text-align: center;
+    }
+
+    li {
+      display: inline-block;
+      margin-right: 16px;
+      transition: $transition;
+
+      @include breakpoint($medium) {
+        margin-right: 5px;
+      }
+
+      @include breakpoint($mediumsmall) {
+        display: block;
+        max-width: $max-width-element;
+        width: 250px;
+        border-top: 1px solid #e0e0e0;
+
+        &:first-of-type {
+          border-top: none;
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: $highlight-1;
+        }
+      }
+
+      a {
+        padding: 6px 0;
+        text-transform: uppercase;
+
+        &:hover {
+          color: $secondary;
+        }
+
+        @include breakpoint($mediumsmall) {
+
+          padding: 20px $gutter-large;
+          display: block;
+
+          &:hover {
+            color: initial;
+          }
+        }
+      }
+
+      a::before{
+        display: block;
+        content: attr(title);
+        font-weight: bold;
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        margin-left: 13px;
+      }
+
+      &.active {
+
+        @include breakpoint($mediumsmall) {
+          background-color: $highlight-2;
+        }
+
+        &>a {
+          border-bottom: 1px solid $secondary;
+          color: $secondary;
+          font-weight: 400;
+
+          @include breakpoint($mediumsmall) {
+            border-bottom: none;
+            font-weight: $font-weight-bold;
+          }
+        }
+      }
+    }
+
+    .dropdown-sheet li.active > a {
+      font-weight: $font-weight-bold;
+      border-bottom: none;
+    }
+
+  }
+
+  .two-levels ul {
+    display: block;
+
+    li {
+      display: block;
+      margin-right: 0;
+
+      @include breakpoint($mediumsmall) {
+        display: block;
+        padding: 0;
+        width: auto;
+      }
+    }
+  }
+
+  .two-levels>a {
+
+    @include breakpoint($mediumsmall) {
+
+    }
+
+    &:after {
+      content: "\f107";
+      font-family: $icon-font-light;
+      vertical-align: bottom;
+      margin-left: 5px;
+    }
+  }
+
+  .right-nav {
+    text-align: right;
+    padding-right: $gutter-large;
+
+    @include breakpoint($medium) {
+      width: span(4 at 10, $collapsed);
+      padding-right: 15px;
+    }
+
+    @include breakpoint($mediumsmall) {
+      width: span(12 at 2, $collapsed);
+      vertical-align: top;
+    }
+
+    @include breakpoint($small) {
+      padding: 0;
+    }
+
+    form.search {
+      vertical-align: bottom;
+      margin-right: 0;
+
+      input:not([type='checkbox']),
+      input:not([type='radio']) {
+        width: auto;
+      }
+    }
+  }
+
+  .notifications {
+    height: 34px;
+    width: 34px;
+    line-height: 34px;
+    margin-left: $gutter-regular;
+
+    button {
+      vertical-align: middle;
+
+      i {
+        font-size: 22px;
+      }
+      .counter {
+        position: absolute;
+        top: -1px;
+        right: -6px;
+        background: $secondary;
+        box-shadow: $box-shadow-small;
+        border-radius: 50%;
+        height: 20px;
+        min-width: 20px;
+        line-height: 20px;
+        font-size: 12px;
+        padding: 0 2px;
+        color: $lightest;
+        text-shadow: $text-shadow;
+      }
+    }
+  }
+
+  .quick-search {
+    height: 34px;
+    width: auto;
+    line-height: 34px;
+    margin-left: $gutter-regular;
+
+    @include breakpoint($xsmall) {
+      display: none;
+    }
+  }
+
+  //.search-popover {
+  //  height: 34px;
+  //  line-height: 44px;
+  //}
+  //
+
+  .user {
+    display: inline-block;
+    margin-left: $gutter-regular;
+
+    button {
+      @include user(34px);
+      display: block;
+      padding: 0;
+    }
+  }
+}
+
+

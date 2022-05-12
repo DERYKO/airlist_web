@@ -1,0 +1,21 @@
+<div class="details-expanded-last-messages">
+    <table class="table-guests">
+        <tr>
+            <th><strong>Status</strong></th>
+            <th><strong>Subject</strong></th>
+            <th><strong>Created at</strong></th>
+        </tr>
+        <tr ng-if="vm.loading">
+            <td colspan="5" class="align-center">Loading ...</td>
+        </tr>
+        <tr ng-if="!vm.loading && vm.currentMessages.length === 0">
+            <td colspan="5" class="align-center">No messages available</td>
+        </tr>
+        <tr ng-repeat="message in vm.currentMessages" ng-if="!vm.loading && vm.currentMessages.length > 0">
+            <td><span class="message-status {{message.status}}">{{'messages.states.' + message.status | i18n}}</span>
+            </td>
+            <td>{{message.subject}}</td>
+            <td>{{message.created_at|date:'d.M.yyyy HH:mm'}}</td>
+        </tr>
+    </table>
+</div>

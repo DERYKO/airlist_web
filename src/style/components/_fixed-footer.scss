@@ -1,0 +1,34 @@
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(256,256,256,0.8);
+  box-shadow: $box-shadow-top;
+  text-align: right;
+  z-index: 1000;
+
+  .btn-group {
+    padding: $gutter-regular $gutter-large $gutter-regular (span(1 wide) + $gutter-small);
+    max-width: $max-width-page;
+
+    @include breakpoint($small) {
+      padding: 15px;
+
+      button {
+        margin-left: 5px;
+        padding-left: 9px;
+        padding-right: 9px;
+      }
+    }
+  }
+}
+
+.wide {
+  .fixed-footer {
+
+    .btn-group {
+      max-width: 100%;
+    }
+  }
+}

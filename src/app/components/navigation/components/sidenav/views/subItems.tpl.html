@@ -1,0 +1,10 @@
+<ul>
+    <li ng-repeat="item in items"
+        data-tooltip="{{sideNavItem.label}}"
+        ng-class="{active: sideNavItem.active}">
+        <a ng-click="item.action()">{{item.label}}</a>
+        <div class="sub-actions" ng-if="item.subItems && item.subItems.length > 0">
+            <ng-include src="'/components/navigation/components/sidenav/views/subItems.tpl.html'" onload="items = item.subItems"></ng-include>
+        </div>
+    </li>
+</ul>

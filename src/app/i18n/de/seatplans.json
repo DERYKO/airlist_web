@@ -1,0 +1,29 @@
+{
+  "load"  : "Wird geladen....",
+  "seat_plan_details" : {
+    "add_root_element" : "Neues Wurzelelement hinzufügen",
+    "discard_btn" : "Änderungen verwerfen",
+    "done_btn" : "Erledigt",
+    "cancel_btn" : "Stornieren",
+    "add_child_btn" : "Neues Kind hinzufügen",
+    "duplicate_element_btn" : " Element duplizieren",
+    "remove_element_btn" : "Element entfernen",
+    "default_text" : "Leer lassen für Standardwert",
+    "title ": "Title",
+    "bookable" : "Buchbar",
+    "size" : "Größe",
+    "background" : "Hintergrund",
+    "border" : {
+      "color" : "Randfarbe",
+      "width" : "Border Width"
+    },
+    "demo" : {
+      "title" : " Demo Sitzplan"
+    }
+  },
+  "alerts": {
+    "invalid_seat_id" : "Ungültige Sitzplan-ID angegeben",
+    "error_loading_seat_plan" : "Fehler beim Laden des Sitzplans",
+    "error_loading_canvas" : "Fehler beim Laden der Canvas-Daten"
+  }
+}

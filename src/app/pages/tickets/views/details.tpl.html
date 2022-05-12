@@ -1,0 +1,86 @@
+<h1>{{vm.model.name}}</h1>
+
+<section ng-if="vm.model.archived">
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <p>
+                <strong>Warning!</strong> This ticket has been deleted.
+            </p>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <div class="data-list-two-col">
+                <h4>Dimensions</h4>
+                <div class="data-list">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Width (mm)</td>
+                            <td>{{ vm.model.styling.size.width }} mm</td>
+                        </tr>
+                        <tr>
+                            <td>Height (mm)</td>
+                            <td>{{ vm.model.styling.size.length }} mm</td>
+                        </tr>
+                        <tr>
+                            <td>Text position top (mm)</td>
+                            <td>{{ vm.model.styling.text.top }} mm</td>
+                        </tr>
+                        <tr>
+                            <td>Text position left (mm)</td>
+                            <td>{{ vm.model.styling.text.left }} mm</td>
+                        </tr>
+                        <tr>
+                            <td>Text size (mm)</td>
+                            <td>{{ vm.model.styling.text.size }} mm</td>
+                        </tr>
+                        <tr>
+                            <td>Text color (HEX)</td>
+                            <td>{{ vm.model.styling.text.color }}</td>
+                        </tr>
+                        <tr>
+                            <td>QR position top (mm)</td>
+                            <td>{{ vm.model.styling.qrCode.top }} mm</td>
+                        </tr>
+                        <tr>
+                            <td>QR position left (mm)</td>
+                            <td>{{ vm.model.styling.qrCode.left }} mm</td>
+                        </tr>
+                        <tr>
+                            <td>QR size (mm)</td>
+                            <td>{{ vm.model.styling.qrCode.size }} mm</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="data-list-two-col">
+                <h4>Content</h4>
+                <div class="data-list">
+                    <table>
+                        <tr>
+                            <td>{{ vm.model.text_content }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <h4>Background Image</h4>
+                <div class="data-list">
+                    <table>
+                        <tr>
+                            <td>
+                                <img ng-src="{{vm.model.background_image.url}}" class="img-responsive passbook-dropshadow"
+                                     ng-if="vm.model.background_image" style="max-width:100%"/>
+                                <div class="alert alert-info text-center" ng-if="!vm.model.background_image">No image
+                                    yet
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

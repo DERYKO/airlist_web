@@ -1,0 +1,42 @@
+{
+  "name": "Statistics",
+  "identifier": "statistics",
+  "rights": [
+    {
+      "name": "contact.sex",
+      "identifier": "contact.sex"
+    },
+    {
+      "name": "general.counts",
+      "identifier": "general.counts"
+    },
+    {
+      "name": "guestlist.activeStats",
+      "identifier": "guestlist.activeStats"
+    },
+    {
+      "name": "guestlist.checkIns",
+      "identifier": "guestlist.checkIns"
+    },
+    {
+      "name": "guestlist.groupByField",
+      "identifier": "guestlist.groupByField"
+    },
+    {
+      "name": "guestlist.quota",
+      "identifier": "guestlist.quota"
+    },
+    {
+      "name": "guestlist.sex",
+      "identifier": "guestlist.sex"
+    },
+    {
+      "name": "guestlist.status",
+      "identifier": "guestlist.status"
+    },
+    {
+      "name": "message.latest",
+      "identifier": "message.latest"
+    }
+  ]
+}

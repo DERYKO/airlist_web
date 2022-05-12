@@ -1,0 +1,53 @@
+<section>
+    <h1>Profile {{ vm.user.full_name }}</h1>
+    <section>
+        <div class="content-box box-900">
+            <div class="box-section-wrap general-info">
+                <div class="user-avatar">
+                    <img ng-src="{{ vm.user.profile_image.url }}" ng-if="vm.user.profile_image" class="user"/>
+                </div>
+                <div class="user-general-info">
+                    <p>
+                        <span class="name">{{ vm.user.first_name}} {{ vm.user.last_name}}</span>
+                        <br>
+                        {{ vm.user.email}}
+                    </p>
+                </div>
+                <div class="user-extended-info mt-20">
+                    <div class="categories-list">
+                        <div class="category" ng-repeat="role in vm.roles" ng-if="!!vm.user.roles[role.id]">
+                            {{role.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--@todo Disabled specific user rights for now-->
+    <!--<h2>{{'profile.permissions_granted' | i18n}}</h2>-->
+    <!--<section>-->
+        <!--<div class="content-box">-->
+            <!--<div class="box-section-wrap">-->
+                <!--<v-accordion class="vAccordion&#45;&#45;default" multiple>-->
+                    <!--<v-pane ng-repeat="module in vm.modules track by $index"-->
+                            <!--expanded="module.isExpanded">-->
+
+                        <!--<v-pane-header>-->
+                            <!--<h3>Module: <span class="attr-name">{{module.name}}</span></h3>-->
+                        <!--</v-pane-header>-->
+
+                        <!--<v-pane-content>-->
+                            <!--<ul>-->
+                                <!--<li ng-repeat="right in module.rights"-->
+                                    <!--ng-if="!!vm.user.rights[module.identifier+'.'+right.identifier]"> {{right.name}}-->
+                                <!--</li>-->
+                            <!--</ul>-->
+                        <!--</v-pane-content>-->
+
+                    <!--</v-pane>-->
+                <!--</v-accordion>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</section>-->
+</section>

@@ -1,0 +1,83 @@
+<h2 class="login-heading" ng-if="vm.ready">{{'auth.activate.headline' | i18n}}</h2>
+<form name="activationForm" ng-submit="vm.activate(activationForm)" novalidate ng-if="vm.ready">
+    <p class="hint">
+        {{'auth.activate.instructions' | i18n}}
+    </p>
+    <fieldset>
+        <div class="form-group"
+             ng-class="{'error': activationForm.$submitted && (activationForm.$error.required|filter:{'$name':'activate_first_name'}).length > 0}">
+            <label for="activate_first_name">{{'common.first_name' | i18n}}</label>
+            <input class="form-control placeholder-no-fix" type="text"
+                   autocomplete="off"
+                   ng-model="vm.model.first_name"
+                   name="activate_first_name"
+                   id="activate_first_name"
+                   ng-required="true"/>
+        </div>
+        <div class="form-group"
+             ng-class="{'error': activationForm.$submitted && (activationForm.$error.required|filter:{'$name':'activate_last_name'}).length > 0}">
+            <label for="activate_last_name">{{'common.last_name' | i18n}}</label>
+            <input class="form-control placeholder-no-fix" type="text"
+                   autocomplete="off"
+                   ng-model="vm.model.last_name"
+                   name="activate_last_name"
+                   id="activate_last_name"
+                   ng-required="true"/>
+        </div>
+    </fieldset>
+
+    <div class="form-group"
+         ng-class="{'error': activationForm.$submitted && (((activationForm.$error.required|filter:{'$name':'activate_password'}).length > 0) || vm.passwordStrength < 60 || !vm.passwordsMatch)}">
+        <label for="activate_password">{{'common.password' | i18n}}</label>
+        <input class="form-control placeholder-no-fix"
+               type="password"
+               name="activate_password"
+               id="activate_password"
+               ng-model="vm.model.password"
+               ng-keyup="vm.checkStrength();vm.checkPasswordConfirmation()"/>
+    </div>
+    <div class="password-strength-meter" id="password_strength" ng-class="{
+            insecure: vm.passwordStrength < 60,
+            ok: vm.passwordStrength >= 60 && vm.passwordStrength < 80,
+            strong: vm.passwordStrength >= 80
+        }">
+        <div class="before-text">Password strength</div>
+        <div class="progress-bar">
+            <div class="strength-value" style="width: {{vm.passwordStrength}}%"></div>
+            <span class="strength-text" ng-if="vm.passwordStrength < 60">Insufficient</span>
+            <span class="strength-text" ng-if="vm.passwordStrength >= 60 && vm.passwordStrength < 80">Ok</span>
+            <span class="strength-text" ng-if="vm.passwordStrength >= 80">Strong</span>
+        </div>
+    </div>
+    <div class="form-group"
+         ng-class="{'error': activationForm.$submitted && (((activationForm.$error.required|filter:{'$name':'activate_password'}).length > 0) || !vm.passwordsMatch)}">
+        <label for="activate_password_confirmation">{{'common.confirm_password' | i18n}}</label>
+        <input class="form-control placeholder-no-fix"
+               type="password"
+               name="activate_password_confirmation"
+               id="activate_password_confirmation"
+               ng-model="vm.passwordConfirmation"
+               ng-keyup="vm.checkPasswordConfirmation()"/>
+    </div>
+    <div ng-show="!vm.passwordsMatch">
+        <p class="text-error">The passwords don't match!</p>
+    </div>
+    <div>
+        <br>
+        <p><strong>Please enter a password which contains at least:</strong></p>
+        <ul class="bulleted-list">
+            <li>8 characters</li>
+            <li>One uppercase letter</li>
+            <li>One lowercase letter</li>
+            <li>One number or special character</li>
+        </ul>
+    </div>
+
+    <div class="btn-center">
+        <div class="form-group">
+            <button type="submit" class="btn-confirm" ng-disabled="vm.submitting">
+                {{'common.submit' | i18n}}
+            </button>
+        </div>
+    </div>
+</form>

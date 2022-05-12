@@ -1,0 +1,23 @@
+.sweet-alert {
+
+  h2 {
+    font-size: $font-xlarge;
+    font-weight: $font-weight-regular;
+  }
+
+  button {
+    margin-bottom: $gutter-regular;
+  }
+
+  button.confirm {
+    box-shadow: none !important;
+  }
+
+  button.cancel:hover {
+    color: #424a54;
+  }
+
+  &[data-has-cancel-button=false] button {
+    box-shadow: $box-shadow-button !important;
+  }
+}

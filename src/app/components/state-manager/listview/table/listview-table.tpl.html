@@ -1,0 +1,69 @@
+<table>
+    <thead>
+    <tr>
+        <th ng-if="vm.store.getters.selectable" class="selectable checkbox-cell">
+            <input type="checkbox"
+                   ng-checked="vm.store.state.selection.selectAll"
+                   ng-click="vm.store.commit('setSelectAll', !vm.store.state.selection.selectAll)"
+                   id="cb_select_all">
+            <label for="cb_select_all"></label>
+        </th>
+        <th ng-repeat="col in vm.store.getters.visibleColumns track by $index">
+            <div ng-class="{pointer: col.sortable}" ng-click="vm.store.dispatch('toggleSort', col)">
+                {{col.label}}
+                <span ng-if="col.sort">
+                    <i class="fa" ng-class="{'fa-caret-up':col.sort == 'asc', 'fa-caret-down':col.sort == 'desc'}"></i>
+                </span>
+            </div>
+        </th>
+        <th ng-if="vm.store.getters.otherRowActions.length" class="text-right">
+            Actions
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat-start="row in vm.store.state.data track by $index"
+        ng-class="{active: (vm.store.state.extendedListView && vm.lodash.get(row, vm.store.state.identifier_field) == vm.store.state.currentExtendedRow)}">
+        <td class="checkbox-cell" ng-if="vm.store.getters.selectable">
+                <span class="checkbox">
+                    <input type="checkbox"
+                           ng-checked="vm.store.state.selection.selectedRows[row.id]"
+                           ng-click="vm.store.dispatch('toggleRowSelection',row)"
+                           id="table_row_{{row.id}}">
+                    <label for="table_row_{{row.id}}"></label>
+                </span>
+        </td>
+        <td ng-repeat="col in vm.store.getters.visibleColumns track by $index">
+            <span ng-bind-html="vm.store.helpers.getCell(row, col, vm.store)" class="cell-content"
+                  ng-click="vm.store.dispatch('clickedMainRow', row)"></span>
+            <div class="cell-actions"
+                 ng-if="vm.store.state.copyColumns.indexOf(col.key) !== -1 && vm.store.helpers.getCell(row, col, vm.store)">
+                <button clipboard text="vm.store.helpers.getCell(row, col, vm.store)" type="button"
+                        on-copied="vm.store.dispatch('copiedTextToClipboard', true)"
+                        on-error="vm.store.dispatch('copiedTextToClipboard', false)">
+                    <i class="fal fa-copy"></i>
+                </button>
+            </div>
+            <div class="tooltip-wrapper" data-tooltip="{{vm.store.helpers.getCell(row, col, vm.store, true)}}" ng-if="(vm.store.state.tooltipColumns.indexOf(col.key) !== -1) && vm.store.helpers.getCell(row, col, vm.store) && (col.type !== 'color_code_select')"></div>
+        </td>
+        <td class="actions text-right" ng-class="col.column_size" ng-if="vm.store.getters.otherRowActions.length">
+            <button ng-repeat="action in vm.store.getters.otherRowActions  track by $index" class="{{action.class}}"
+                    title="{{action.title}}" ng-click="vm.store.dispatch('clickedRow', row)">
+                <i class="fa {{action.icon}}" ng-if="action.icon"></i>
+                <span ng-if="!action.icon">{{action.title}}</span>
+            </button>
+        </td>
+    </tr>
+    <tr class="details-expanded" ng-if="vm.lodash.get(row, vm.store.state.identifier_field) == vm.store.state.currentExtendedRow"
+        ng-repeat-end>
+        <td class="align-right details-expanded-close">
+            <button ng-click="vm.store.dispatch('clickedMainRow',vm.store.state.currentExtendedRow)" class="mb-10 mt-10">
+                <i class="fal fa-times-circle"></i>
+            </button>
+        </td>
+        <td colspan="100%" class="details-expanded-content">
+            <ng-include src="vm.store.state.extendedListViewTemplate"></ng-include>
+        </td>
+    </tr>
+    </tbody>
+</table>

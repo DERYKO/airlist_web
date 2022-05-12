@@ -1,0 +1,159 @@
+<div class="alert alert-danger" ng-if="ticket.model.archived">
+    <strong>{{ 'common.archive_header'|i18n }}</strong> {{ 'tickets.archive_header'|i18n }}
+</div>
+<div>
+    <div class="portlet light">
+        <div class="portlet-title">
+          <div class="actions">
+            <div class="btn-group" uib-dropdown>
+              <button id="edit-button" type="button" class="btn blue" ng-click="ticket.editing = true"
+                      ng-if="!ticket.model.archived">
+                  {{'common.edit' | i18n}}
+              </button>
+              <button id="restore-button" type="button" class="btn blue" ng-click="ticket.restore(ticket.model)"
+                      ng-if="ticket.model.archived">
+                  {{'common.restore' | i18n}}
+              </button>
+              <button type="button" class="btn blue" uib-dropdown-toggle>
+                <span class="caret"></span>
+                <span class="sr-only">{{'common.more_options' | i18n}}</span>
+              </button>
+              <ul uib-dropdown-menu role="menu" aria-labelledby="split-button">
+                <li ng-if="!ticket.model.archived" role="menuitem"><a ng-click="ticket.archive()">
+                    {{'common.archive' | i18n}} </a></li>
+                <li ng-if="ticket.model.archived" role="menuitem"><a ng-click="ticket.delete(ticket.model)">
+                    {{'common.delete_permanently' | i18n}} </a></li>
+              </ul>
+            </div>
+            <a class="btn btn-circle btn-icon-only btn-default" ng-click="ticket.hide()">
+                <i class="fal fa-remove"></i>
+            </a>
+          </div>
+        </div>
+        <div class="portlet-body">
+            <uib-tabset  ng-if="!ticket.editing">
+                <uib-tab>
+                    <uib-tab-heading>
+                        {{'common.ticket' | i18n}}
+                    </uib-tab-heading>
+                    <form class="form-vertical" role="form">
+                        <preview model="ticket.model"></preview>
+                    </form>
+                </uib-tab>
+                <uib-tab>
+                    <uib-tab-heading>
+                      {{'common.info' | i18n}}
+                    </uib-tab-heading>
+                    <form class="form-vertical" role="form">
+                        <div class="form-body">
+                            <!-- row -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">{{'tickets.name' | i18n }}</label>
+                                        <p class="form-control-static"> {{ ticket.model.name}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">{{'tickets.text_content' | i18n }}</label>
+                                        <p class="form-control-static"> {{ ticket.model.text_content}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">{{'tickets.background_image' | i18n }}</label>
+                                        <img ng-src="{{ ticket.model.background_image }}" class="img-responsive" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                        </div>
+                    </form>
+                </uib-tab>
+                <uib-tab>
+                    <uib-tab-heading>
+                      {{'common.styling' | i18n}}
+                    </uib-tab-heading>
+                    <form class="form-vertical" role="form">
+                        <div class="form-body">
+                            <h3 class="form-section">{{'common.size' | i18n}}</h3>
+                            <!-- row -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">{{'tickets.length' | i18n }}</label>
+                                        <p class="form-control-static"> {{ ticket.model.styling.size.length}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">{{'tickets.width' | i18n }}</label>
+                                        <p class="form-control-static"> {{ ticket.model.styling.size.width}} </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                            <h3 class="form-section">{{'common.qr_code' | i18n}}</h3>
+                            <!-- row -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">{{'tickets.top' | i18n }}</label>
+                                        <p class="form-control-static"> {{ ticket.model.styling.qrCode.top}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">{{'tickets.left' | i18n }}</label>
+                                        <p class="form-control-static"> {{ ticket.model.styling.qrCode.left}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">{{'tickets.size' | i18n }}</label>
+                                        <p class="form-control-static"> {{ ticket.model.styling.qrCode.size}} </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                            <h3 class="form-section">{{'common.text' | i18n}}</h3>
+                            <!-- row -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">{{'tickets.top' | i18n }}</label>
+                                        <p class="form-control-static"> {{ ticket.model.styling.text.top}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">{{'tickets.left' | i18n }}</label>
+                                        <p class="form-control-static"> {{ ticket.model.styling.text.left}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">{{'tickets.color' | i18n }}</label>
+                                        <p class="form-control-static"> {{ ticket.model.styling.text.color}} </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                        </div>
+                    </form>
+                </uib-tab>
+            </uib-tabset>
+
+            <div ng-if="ticket.editing">
+                <editor schema="ticket.schema"
+                        form="ticket.form"
+                        model="ticket.model"
+                        before-schema-form="'tickets/views/tickets-schema-form.tpl.html'"
+                        upload-preview="false"
+                        on-save="ticket.save(model)"
+                        on-cancel="ticket.cancelEditing()"></editor>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,797 @@
+<h1>Create Guestlist</h1>
+
+
+<div class="wizard">
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <h1>Guestlist <---name---> successfully created!</h1>
+
+            <div class="btn-group">
+                <button class="" ng-click="vm.close()">Cancel</button>
+                <button ng-click="vm.save(vm.model, guestlistForm)" class="btn-confirm">
+                    Create a guestlist
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--<form class="wizard" name="guestlistForm" enctype="multipart/form-data" method="post"-->
+      <!--ng-class="{'submitted':guestlistForm.$submitted}" novalidate>-->
+
+    <!--<section ng-if="vm.currentStep.id === 'general'">-->
+        <!--<ng-form name="guestlistForm.{{ 'formPart_' + vm.currentStep.id }}"-->
+                 <!--ng-class="{'form-invalid': vm.validateFormPart}">-->
+            <!--<div class="content-box">-->
+                <!--<div class="box-section-wrap">-->
+                    <!--<h2>Set general settings of your guestlist</h2>-->
+                    <!--<fieldset ng-form="step[index]">-->
+                        <!--<div class="form-group input-lg">-->
+                            <!--<customfield ng-model="vm.model.name"-->
+                                         <!--definition="{type:'textbox',name:'Name',help: 'Used internally to to name the guestlist', required:true}"-->
+                                         <!--name="name"-->
+                                         <!--ng-required="true"></customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<customfield ng-model="vm.model.date"-->
+                                         <!--definition="{type:'datetime',name:'Date of Event', required:true}" name="date"-->
+                                         <!--ng-required="true"></customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label>Registration Type</label>-->
+                            <!--<div class="checkbox-list">-->
+                                <!--<input ng-model="vm.model.settings.enable_open_registration"-->
+                                       <!--id="registration-types-open"-->
+                                       <!--type="checkbox"/>-->
+                                <!--<label for="registration-types-open">Open Registration</label>-->
+                                <!--<input ng-model="vm.model.settings.enable_code_registration"-->
+                                       <!--id="registration-types-code"-->
+                                       <!--type="checkbox"/>-->
+                                <!--<label for="registration-types-code">Code Registration</label>-->
+                                <!--<input ng-model="vm.model.settings.enable_logged_in_registration"-->
+                                       <!--id="registration-types-logged-in"-->
+                                       <!--type="checkbox"/>-->
+                                <!--<label for="registration-types-logged-in">Logged-In Registration</label>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</fieldset>-->
+                <!--</div>-->
+                <!--<div class="box-section-wrap">-->
+                    <!--<button type="button" ng-if="!vm.currentStep.meta.advanced"-->
+                            <!--ng-click="vm.currentStep.meta.advanced = true"><i-->
+                            <!--class="fal fa-arrow-down"></i>&nbsp;&nbsp;Show advanced fields-->
+                    <!--</button>-->
+                    <!--<button type="button" class="btn-left" ng-if="vm.currentStep.meta.advanced"-->
+                            <!--ng-click="vm.currentStep.meta.advanced = false"><i-->
+                            <!--class="fal fa-arrow-up"></i>&nbsp;&nbsp;Hide advanced fields-->
+                    <!--</button>-->
+                    <!--<button class="btn-right" ng-if="vm.currentStep.meta.advanced">Reset to defaults</button>-->
+                <!--</div>-->
+                <!--<div class="box-section-wrap" ng-if="vm.currentStep.meta.advanced">-->
+                    <!--<div class="extended-info">-->
+                        <!--<div class="form-group">-->
+                            <!--<label>Permission</label>-->
+                            <!--<div class="radio-list">-->
+                                <!--<input ng-model="vm.model.permission" id="permission-type-public"-->
+                                       <!--type="radio" value="public"/>-->
+                                <!--<label for="permission-type-public">Public (manageable by the entire-->
+                                    <!--team)</label>-->
+
+                                <!--<input ng-model="vm.model.permission" id="permission-type-private"-->
+                                       <!--type="radio" value="private"/>-->
+                                <!--<label for="permission-type-private">Private (user permissions can be-->
+                                    <!--defined)</label>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group" ng-if="vm.model.permission == 'private'">-->
+                            <!--<table>-->
+                                <!--<thead>-->
+                                <!--<tr>-->
+                                    <!--<th col-span="2">Permissions for guest list</th>-->
+                                    <!--<th>Read</th>-->
+                                    <!--<th>Write</th>-->
+                                    <!--<th>Delete</th>-->
+                                    <!--<th>Admin</th>-->
+                                <!--</tr>-->
+                                <!--</thead>-->
+                                <!--<tbody>-->
+                                <!--<tr ng-repeat="permissionRow in vm.model.users track by $index">-->
+                                    <!--<td>-->
+                                        <!--<p>{{ permissionRow.user.full_name }}-->
+                                        <!--</p>-->
+                                    <!--</td>-->
+                                    <!--<td>-->
+                                        <!--<input type="checkbox" id="permission-{{$index}}-read" ng-true-value="1"-->
+                                               <!--ng-false-value="0" ng-model="permissionRow.permissions.read">-->
+                                        <!--<label for="permission-{{$index}}-read"></label>-->
+                                    <!--</td>-->
+                                    <!--<td>-->
+                                        <!--<input type="checkbox" id="permission-{{$index}}-write" ng-true-value="1"-->
+                                               <!--ng-false-value="0" ng-model="permissionRow.permissions.write">-->
+                                        <!--<label for="permission-{{$index}}-write"></label>-->
+                                    <!--</td>-->
+                                    <!--<td>-->
+                                        <!--<input type="checkbox" id="permission-{{$index}}-delete" ng-true-value="1"-->
+                                               <!--ng-false-value="0" ng-model="permissionRow.permissions.delete">-->
+                                        <!--<label for="permission-{{$index}}-delete"></label>-->
+                                    <!--</td>-->
+                                    <!--<td>-->
+                                        <!--<input type="checkbox" id="permission-{{$index}}-admin" ng-true-value="1"-->
+                                               <!--ng-false-value="0" ng-model="permissionRow.permissions.admin">-->
+                                        <!--<label for="permission-{{$index}}-admin"></label>-->
+                                    <!--</td>-->
+                                    <!--<td>-->
+                                        <!--<button type="button" ng-click="vm.removeUser(permissionRow)"-->
+                                                <!--class="btn btn-delete">-->
+                                            <!--Remove-->
+                                        <!--</button>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--<tr>-->
+                                    <!--<td>-->
+                                        <!--<button type="button" ng-click="vm.addUsers()" class="btn btn-confirm">Add-->
+                                            <!--User-->
+                                        <!--</button>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--</tbody>-->
+                            <!--</table>-->
+                        <!--</div>-->
+                        <!--<div class="form-group" ng-if="vm.acl.hasModule('seatplans')">-->
+                            <!--<customfield definition="{type:'boolean', name: 'Enable Seatplan'}"-->
+                                         <!--ng-model="vm.model.settings.enable_seatplan"-->
+                                         <!--name="seatplan_enabled"></customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group"-->
+                             <!--ng-if="vm.acl.hasModule('addressbook')">-->
+                            <!--<customfield-->
+                                    <!--definition="{type:'boolean', name: 'Add guests to addressbook', help: 'When enabled, contacts that come through open registration will be saved in the overall addressbook. Otherwise, they will only be created for this specific guestlist.'}"-->
+                                    <!--ng-model="vm.model.settings.add_contacts_to_addressbook"-->
+                                    <!--name="add_to_contacts"></customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group"-->
+                             <!--ng-if="vm.acl.hasModule('addressbook') && vm.acl.hasModule('addressbook_categories') && vm.selectBoxConfigs.categories">-->
+                            <!--<label>Select Categories</label>-->
+                            <!--<select-box-->
+                                    <!--model="vm.model.settings.add_contact_to_categories"-->
+                                    <!--config="vm.selectBoxConfigs.categories">-->
+                            <!--</select-box>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</ng-form>-->
+    <!--</section>-->
+
+    <!--<section ng-if="vm.currentStep.id === 'limits'">-->
+        <!--<ng-form name="guestlistForm.{{ 'formPart_' + vm.currentStep.id }}"-->
+                 <!--ng-class="{'form-invalid': vm.validateFormPart}">-->
+            <!--<div class="content-box">-->
+                <!--<div class="box-section-wrap">-->
+                    <!--<h2>Set limits on your guestlist</h2>-->
+                    <!--<fieldset>-->
+                        <!--<div class="form-group">-->
+                            <!--<customfield ng-model="vm.model.settings.registration_start"-->
+                                         <!--definition="{type:'datetime',name:'Opening date', required:true}"-->
+                                         <!--name="registration_start"-->
+                                         <!--ng-required="true"></customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<customfield ng-model="vm.model.settings.registration_end"-->
+                                         <!--definition="{type:'datetime',name:'Closing date', required:true}"-->
+                                         <!--name="registration_end"-->
+                                         <!--ng-required="true"></customfield>-->
+                        <!--</div>-->
+                    <!--</fieldset>-->
+
+                    <!--<fieldset ng-if="vm.model.settings.enable_open_registration">-->
+                        <!--<h3>Configure <span class="heading-emphasis">OPEN</span> registration</h3>-->
+                        <!--<div class="form-group input-sm">-->
+                            <!--<customfield-->
+                                    <!--definition="{type:'integer', name: 'PAX Limit for open registration', help: 'Specifies top number of people registered to the event from this type of registration'}"-->
+                                    <!--ng-model="vm.model.settings.open_reg_pax_limit"-->
+                                    <!--name="open_pax_limit"></customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group" ng-if="vm.model.settings.open_reg_pax_limit > 0">-->
+                            <!--<customfield-->
+                                    <!--definition="{type:'boolean', name: 'Enable wait list after reaching open limit'}"-->
+                                    <!--ng-model="vm.model.settings.open_reg_enable_waitlist"-->
+                                    <!--name="open_waitlist"></customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group" ng-if="vm.model.settings.open_reg_pax_limit">-->
+                            <!--<label>States the open pax limit is calculated on</label>-->
+                            <!--<selectize items="vm.config.statesForSelectize"-->
+                                       <!--ng-model="vm.model.settings.open_reg_pax_limit_states"-->
+                                       <!--max-items="vm.config.statesForSelectize.length"></selectize>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<customfield-->
+                                    <!--definition="{type:'textbox',required:(vm.model.ask_password), name:'Set the Password'}"-->
+                                    <!--ng-model="vm.model.settings.open_reg_password"-->
+                                    <!--name="password">-->
+                            <!--</customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group input-sm" ng-if="!vm.model.settings.enable_guests">-->
+                            <!--<customfield-->
+                                    <!--definition="{type:'integer', 'name': 'Number of people allowed per registration', required:true, }"-->
+                                    <!--ng-model="vm.model.settings.pax_planned_max"-->
+                                    <!--name="pax_planned_max"-->
+                                    <!--ng-required="true">-->
+                            <!--</customfield>-->
+                        <!--</div>-->
+                    <!--</fieldset>-->
+
+                    <!--<fieldset ng-if="vm.model.settings.enable_code_registration">-->
+                        <!--<h3>Configure <span class="heading-emphasis">CODE</span> registration</h3>-->
+                        <!--<div class="form-group input-sm">-->
+                            <!--<customfield-->
+                                    <!--definition="{type:'integer', name: 'PAX Limit for code registration', help: 'Specifies top number of people registered to the event from this type of registration'}"-->
+                                    <!--ng-model="vm.model.settings.code_reg_pax_limit"-->
+                                    <!--name="code_pax_limit"></customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group" ng-if="vm.model.settings.code_reg_pax_limit > 0">-->
+                            <!--<customfield-->
+                                    <!--definition="{type:'boolean', name: 'Enable wait list after reaching code limit'}"-->
+                                    <!--ng-model="vm.model.settings.code_reg_enable_waitlist"-->
+                                    <!--name="code_waitlist"></customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group" ng-if="vm.model.settings.code_reg_pax_limit > 0">-->
+                            <!--<label>States the open pax limit is calculated on</label>-->
+                            <!--<selectize items="vm.config.statesForSelectize"-->
+                                       <!--ng-model="vm.model.settings.code_reg_pax_limit_states"-->
+                                       <!--max-items="vm.config.statesForSelectize.length"></selectize>-->
+                        <!--</div>-->
+                    <!--</fieldset>-->
+
+                    <!--<fieldset ng-if="vm.model.settings.enable_logged_in_registration">-->
+                        <!--<h3>Configure <span class="heading-emphasis">Logged-In</span> registration</h3>-->
+                        <!--<div class="form-group input-sm">-->
+                            <!--<customfield-->
+                                    <!--definition="{type:'integer', name: 'PAX Limit for logged-in registration', help: 'Specifies top number of people registered to the event from this type of registration'}"-->
+                                    <!--ng-model="vm.model.settings.logged_in_reg_pax_limit"-->
+                                    <!--name="logged_in_reg_pax_limit"></customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group" ng-if="vm.model.settings.logged_in_reg_pax_limit > 0">-->
+                            <!--<customfield-->
+                                    <!--definition="{type:'boolean', name: 'Enable wait list after reaching loggedin limit'}"-->
+                                    <!--ng-model="vm.model.settings.logged_in_reg_enable_waitlist"-->
+                                    <!--name="logged_in_reg_enable_waitlist"></customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group" ng-if="vm.model.settings.logged_in_reg_pax_limit > 0">-->
+                            <!--<label>States the open pax limit is calculated on</label>-->
+                            <!--<selectize items="vm.config.statesForSelectize"-->
+                                       <!--ng-model="vm.model.settings.logged_in_reg_pax_limit_states"-->
+                                       <!--max-items="vm.config.statesForSelectize.length"></selectize>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<customfield-->
+                                    <!--definition="{type:'boolean', name: 'Update contact data on logged in registration'}"-->
+                                    <!--ng-model="vm.model.settings.update_contact_data_on_logged_in"-->
+                                    <!--name="update_contact_data_on_logged_in"></customfield>-->
+                        <!--</div>-->
+                    <!--</fieldset>-->
+                <!--</div>-->
+                <!--<div class="box-section-wrap">-->
+                    <!--<button ng-if="!vm.currentStep.meta.advanced" ng-click="vm.currentStep.meta.advanced = true"><i-->
+                            <!--class="fal fa-arrow-down"></i>&nbsp;&nbsp;Show advanced fields-->
+                    <!--</button>-->
+                    <!--<button class="btn-left" ng-if="vm.currentStep.meta.advanced"-->
+                            <!--ng-click="vm.currentStep.meta.advanced = false"><i-->
+                            <!--class="fal fa-arrow-up"></i>&nbsp;&nbsp;Hide advanced fields-->
+                    <!--</button>-->
+                    <!--<button class="btn-right" ng-if="vm.currentStep.meta.advanced">Reset to defaults</button>-->
+                <!--</div>-->
+                <!--<div class="box-section-wrap" ng-show="vm.currentStep.meta.advanced">-->
+                    <!--<div class="extended-info">-->
+                        <!--<div ng-if="vm.model.settings.enable_code_registration || vm.model.settings.enable_open_registration"-->
+                             <!--class="form-group">-->
+                            <!--<label>Enable login for the following states</label>-->
+                            <!--<selectize items="vm.config.statesForSelectize"-->
+                                       <!--ng-model="vm.model.settings.enable_login_states"-->
+                                       <!--max-items="vm.config.statesForSelectize.length"></selectize>-->
+                        <!--</div>-->
+                        <!--<div ng-if="vm.model.settings.enable_code_registration || vm.model.settings.enable_open_registration">-->
+                            <!--<h2 style="margin-bottom: 5px; margin-top: 10px;">Registration Status Flow</h2>-->
+                            <!--<table>-->
+                                <!--<tr>-->
+                                    <!--<th></th>-->
+                                    <!--<th ng-repeat="colState in vm.deposits.rsvp_states" style="padding: 5px;">-->
+                                        <!--{{colState}}-->
+                                    <!--</th>-->
+                                <!--</tr>-->
+                                <!--<tr>-->
+                                    <!--<th style="padding: 5px;">Non state</th>-->
+                                    <!--<td ng-repeat="(colState, colLabel) in vm.deposits.rsvp_states"-->
+                                        <!--style="padding: 5px;">-->
+                                        <!--<input type="checkbox"-->
+                                               <!--name="selectedStates[default][]"-->
+                                               <!--value="{{colState}}"-->
+                                               <!--ng-checked="vm.model.settings.registration_status_flow.default.indexOf(colState) > -1"-->
+                                               <!--ng-click="vm.toggleStatusFlowSelection(colState, vm.model.settings.registration_status_flow.default)"-->
+                                               <!--id="registration-status-flow-default-{{colState}}">-->
+                                        <!--<label for="registration-status-flow-default-{{colState}}"></label>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--<tr ng-repeat="(rowState, rowLabel) in vm.deposits.rsvp_states">-->
+                                    <!--<th style="padding: 5px;">{{rowLabel}}</th>-->
+                                    <!--<td ng-repeat="(colState, colLabel) in vm.deposits.rsvp_states"-->
+                                        <!--style="padding: 5px;">-->
+                                        <!--<input type="checkbox"-->
+                                               <!--name="selectedStates[rowState][]"-->
+                                               <!--value="{{colState}}"-->
+                                               <!--ng-checked="vm.model.settings.registration_status_flow[rowState].indexOf(colState) > -1"-->
+                                               <!--ng-click="vm.toggleStatusFlowSelection(colState, vm.model.settings.registration_status_flow[rowState])"-->
+                                               <!--id="registration-status-flow-{{rowState}}-{{colState}}">-->
+                                        <!--<label for="registration-status-flow-{{rowState}}-{{colState}}"></label>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                            <!--</table>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</ng-form>-->
+    <!--</section>-->
+
+    <!--<section ng-if="vm.currentStep.id === 'fields' && vm.config.availableFields.length > 0"-->
+             <!--ng-class="{'form-invalid': vm.validateFormPart}">-->
+        <!--<ng-form name="guestlistForm.{{ 'formPart_' + vm.currentStep.id }}">-->
+            <!--<div class="content-box">-->
+                <!--<div class="box-section-wrap">-->
+                    <!--<h2>Set fields to be collected from guests:</h2>-->
+                    <!--<uib-accordion close-others="true">-->
+                        <!--<div uib-accordion-group class="panel-default"-->
+                             <!--template-url="custom-field-group.tpl.html"-->
+                             <!--heading="Field {{ $index+1 }}: {{(field.slug) ? (vm.config.availableFields|filter:{'value':field.slug})[0].label : 'Please select'}}"-->
+                             <!--ng-repeat="field in vm.model.settings.registration_fields">-->
+                            <!--<uib-accordion-heading>-->
+                                <!--<h3>-->
+                                    <!--Field {{ $index+1 }}: <span class="attr-name" ng-if="field.slug">{{ (vm.config.availableFields|filter:{'value':field.slug})[0].label }}</span><span-->
+                                        <!--class="attr-name" ng-if="!field.slug"> Please select</span>-->
+                                <!--</h3>-->
+                            <!--</uib-accordion-heading>-->
+                            <!--<customfield definition="{type:'field',availableFields:vm.config.availableFields}"-->
+                                         <!--ng-model="field"></customfield>-->
+
+                            <!--<button class="btn-warning"-->
+                                    <!--ng-click="vm.model.settings.registration_fields.splice($index, 1)">-->
+                                <!--<i class="fal fa-trash-alt"></i> Delete-->
+                            <!--</button>-->
+                        <!--</div>-->
+                    <!--</uib-accordion>-->
+
+                    <!--<button class="add-option"-->
+                            <!--ng-click="vm.model.settings.registration_fields.push({isExpanded: true})">-->
+                        <!--<i class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add Field-->
+                    <!--</button>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="content-box">-->
+                <!--<div class="box-section-wrap">-->
+                    <!--<div class="form-group">-->
+                        <!--<h2>Extra fields</h2>-->
+                        <!--<p class="help-text">Add fields specific to the guestlist. They will be added automatically-->
+                            <!--as fields collected from guests.</p>-->
+                    <!--</div>-->
+                    <!--<uib-accordion close-others="true">-->
+                        <!--<div uib-accordion-group class="panel-default"-->
+                             <!--template-url="custom-field-group.tpl.html"-->
+                             <!--ng-repeat="index in vm.config.customs.range"-->
+                             <!--ng-if="index == 1  || vm.model['custom_'+index+'_name'].type || vm.model['custom_'+(index-1)+'_name'].type">-->
+                            <!--<uib-accordion-heading>-->
+                                <!--<h3>Attribute {{ index }}: <span class="attr-name">{{ vm.model['custom_'+index+'_name'].name}}</span>-->
+                                <!--</h3>-->
+                            <!--</uib-accordion-heading>-->
+                            <!--<customfield definition="{type:'builder'}"-->
+                                         <!--ng-model="vm.model['custom_'+index+'_name']"-->
+                                         <!--name="'custom_'+index+'_name'"></customfield>-->
+                        <!--</div>-->
+                    <!--</uib-accordion>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="content-box">-->
+                <!--<div class="box-section-wrap">-->
+                    <!--<div class="form-group">-->
+                        <!--<customfield-->
+                                <!--definition="{type:'boolean', name: 'Ask for individual contact details of +1s?'}"-->
+                                <!--ng-model="vm.model.settings.enable_guests"-->
+                                <!--name="enable_guests"></customfield>-->
+                    <!--</div>-->
+                    <!--<fieldset ng-if="vm.model.settings.enable_guests">-->
+                        <!--<div class="box-section-wrap">-->
+                            <!--<h2>Fields for +1s</h2>-->
+                            <!--<uib-accordion close-others="true">-->
+                                <!--<div uib-accordion-group class="panel-default"-->
+                                     <!--template-url="custom-field-group.tpl.html"-->
+                                     <!--ng-repeat="field in vm.model.settings.registration_guest_fields">-->
+                                    <!--<uib-accordion-heading>-->
+                                        <!--<h3>-->
+                                            <!--Field {{ $index+1 }}: <span class="attr-name" ng-if="field.slug">{{ (vm.config.availableFields|filter:{"value":field.slug})[0].label }}</span><span-->
+                                                <!--class="attr-name" ng-if="!field.slug"> Please select</span>-->
+                                        <!--</h3>-->
+                                    <!--</uib-accordion-heading>-->
+                                    <!--<customfield definition="{type:'field',availableFields:vm.config.availableFields}"-->
+                                                 <!--ng-model="field"></customfield>-->
+                                    <!--<button class="btn-warning"-->
+                                            <!--ng-click="vm.model.settings.registration_guest_fields.splice($index, 1)">-->
+                                        <!--<i class="fal fa-trash-alt"></i> Delete-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                            <!--</uib-accordion>-->
+                            <!--<button class="add-option" ng-click="vm.model.settings.registration_guest_fields.push({})">-->
+                                <!--<i-->
+                                        <!--class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add Field-->
+                            <!--</button>-->
+                        <!--</div>-->
+                        <!--<div class="form-group input-sm">-->
+                            <!--<customfield-->
+                                    <!--definition="{type:'integer', name: 'Minimum amount of guests', help: 'Defines the minimum number of guests, that should be provided'}"-->
+                                    <!--ng-model="vm.model.settings.guest_count_minimum"-->
+                                    <!--name="guest_count_minimum"></customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group input-sm">-->
+                            <!--<customfield-->
+                                    <!--definition="{type:'integer', name: 'Maximum amount of guests', help: 'Defines the maximum number of guests, that can be provided (0 = infinite)'}"-->
+                                    <!--ng-model="vm.model.settings.guest_count_maximum"-->
+                                    <!--name="guest_count_maximum"></customfield>-->
+                        <!--</div>-->
+                    <!--</fieldset>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="content-box">-->
+                <!--<div class="box-section-wrap">-->
+                    <!--<div class="form-group">-->
+                        <!--<customfield-->
+                                <!--definition="{type:'boolean', name: 'Enable representative functionality?'}"-->
+                                <!--ng-model="vm.model.settings.enable_representative"-->
+                                <!--name="enable_representative"></customfield>-->
+                    <!--</div>-->
+                    <!--<fieldset ng-if="vm.model.settings.enable_representative">-->
+                        <!--<div class="box-section-wrap">-->
+                            <!--<h2>Fields for representative</h2>-->
+                            <!--<uib-accordion close-others="true">-->
+                                <!--<div uib-accordion-group class="panel-default"-->
+                                     <!--template-url="custom-field-group.tpl.html"-->
+                                     <!--ng-repeat="field in vm.model.settings.representative_fields">-->
+                                    <!--<uib-accordion-heading>-->
+                                        <!--<h3>-->
+                                            <!--Field {{ $index+1 }}: <span class="attr-name" ng-if="field.slug">{{ (vm.config.availableFields|filter:{"value":field.slug}:true)[0].label }}</span><span-->
+                                                <!--class="attr-name" ng-if="!field.slug"> Please select</span>-->
+                                        <!--</h3>-->
+                                    <!--</uib-accordion-heading>-->
+                                    <!--<customfield definition="{type:'field',availableFields:vm.config.availableFields}"-->
+                                                 <!--ng-model="field"></customfield>-->
+                                    <!--<button class="btn-warning"-->
+                                            <!--ng-click="vm.model.settings.representative_fields.splice($index, 1)">-->
+                                        <!--<i class="fal fa-trash-alt"></i> Entfernen-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                            <!--</uib-accordion>-->
+                            <!--<button class="add-option" ng-click="vm.model.settings.representative_fields.push({})">-->
+                                <!--<i-->
+                                        <!--class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add Field-->
+                            <!--</button>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label>Default state for a newly created representative</label>-->
+                            <!--<selectize items="vm.config.statesForSelectize"-->
+                                       <!--ng-model="vm.model.settings.representative_default_state"-->
+                                       <!--max-items="1"></selectize>-->
+                        <!--</div>-->
+                    <!--</fieldset>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="content-box">-->
+                <!--<div class="box-section-wrap">-->
+                    <!--<div class="form-group">-->
+                        <!--<customfield-->
+                                <!--definition="{type:'boolean', name: 'Enable recommendations functionality'}"-->
+                                <!--ng-model="vm.model.settings.enable_recommendations"-->
+                                <!--name="enable_guests"></customfield>-->
+                    <!--</div>-->
+                    <!--<fieldset ng-if="vm.model.settings.enable_recommendations">-->
+                        <!--<div class="form-group">-->
+                            <!--<label>Default state for a newly created recommendation</label>-->
+                            <!--<selectize items="vm.config.statesForSelectize"-->
+                                       <!--ng-model="vm.model.settings.recommendation_default_state"-->
+                                       <!--max-items="1"></selectize>-->
+                        <!--</div>-->
+                        <!--<div class="box-section-wrap">-->
+                            <!--<h2>Fields for +1s</h2>-->
+                            <!--<uib-accordion close-others="true">-->
+                                <!--<div uib-accordion-group class="panel-default"-->
+                                     <!--template-url="custom-field-group.tpl.html"-->
+                                     <!--ng-repeat="field in vm.model.settings.recommendations_fields">-->
+                                    <!--<uib-accordion-heading>-->
+                                        <!--<h3>-->
+                                            <!--Field {{ $index+1 }}: <span class="attr-name" ng-if="field.slug">{{ (vm.config.availableFields|filter:{"value":field.slug}:true)[0].label }}</span><span-->
+                                                <!--class="attr-name" ng-if="!field.slug"> Please select</span>-->
+                                        <!--</h3>-->
+                                    <!--</uib-accordion-heading>-->
+                                    <!--<customfield definition="{type:'field',availableFields:vm.config.availableFields}"-->
+                                                 <!--ng-model="field"></customfield>-->
+                                    <!--<button class="btn-warning"-->
+                                            <!--ng-click="vm.model.settings.recommendations_fields.splice($index, 1)">-->
+                                        <!--<i class="fal fa-trash-alt"></i> Entfernen-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                            <!--</uib-accordion>-->
+                            <!--<button class="add-option" ng-click="vm.model.settings.recommendations_fields.push({})">-->
+                                <!--<i-->
+                                        <!--class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add Field-->
+                            <!--</button>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<customfield definition="{type:'boolean', name: 'Send recommendation emails?'}"-->
+                                         <!--ng-model="vm.model.settings.send_recommendation_emails"-->
+                                         <!--name="send_recommendation_emails"></customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group input-sm">-->
+                            <!--<customfield-->
+                                    <!--definition="{type:'integer', name: 'Minimum amount of recommendations', help: 'Defines the minimum number of recommendations, that should be provided'}"-->
+                                    <!--ng-model="vm.model.settings.recommendation_count_minimum"-->
+                                    <!--name="recommendation_count_minimum"></customfield>-->
+                        <!--</div>-->
+                        <!--<div class="form-group input-sm">-->
+                            <!--<customfield-->
+                                    <!--definition="{type:'integer', name: 'Maximum amount of recommendations', help: 'Defines the maximum number of recommendations, that can be provided (0 = infinite)'}"-->
+                                    <!--ng-model="vm.model.settings.recommendation_count_maximum"-->
+                                    <!--name="recommendation_count_maximum"></customfield>-->
+                        <!--</div>-->
+                    <!--</fieldset>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</ng-form>-->
+    <!--</section>-->
+
+    <!--<section ng-if="vm.currentStep.id === 'messages'" ng-class="{'form-invalid': vm.validateFormPart}">-->
+        <!--<ng-form name="guestlistForm.{{ 'formPart_' + vm.currentStep.id }}">-->
+            <!--<div class="content-box">-->
+                <!--<div class="box-section-wrap">-->
+                    <!--<h2>Configure messages to be sent:</h2>-->
+
+                    <!--<div class="form-group">-->
+                        <!--<label>Mail send flow for the main guest</label>-->
+                        <!--<selectize items="vm.deposits.main_rsvp_message_send_flows"-->
+                                   <!--ng-model="vm.model.settings.messages_main_rsvp_send_flow"-->
+                                   <!--max-items="1"></selectize>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label>Mail send flow for sub guests (+1s, Recommendations, Representatives)</label>-->
+                        <!--<selectize items="vm.deposits.sub_rsvp_message_send_flows"-->
+                                   <!--ng-model="vm.model.settings.messages_sub_rsvp_send_flow"-->
+                                   <!--max-items="1"></selectize>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label>How should the ticket handling work?</label>-->
+                        <!--<selectize items="vm.deposits.message_ticket_flows"-->
+                                   <!--ng-model="vm.model.settings.messages_ticket_flow"-->
+                                   <!--max-items="1"></selectize>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<customfield definition="{type:'boolean', name: 'Send invitation email'}"-->
+                                     <!--ng-model="vm.model.settings.send_invitation_email"-->
+                                     <!--name="send_invitation"></customfield>-->
+                    <!--</div>-->
+                    <!--<div class="form-group" ng-if="vm.model.settings.send_invitation_email">-->
+                        <!--<label>Select invitation template</label>-->
+                        <!--<select-box-->
+                                <!--model="vm.model.invitation_template_id"-->
+                                <!--config="vm.selectBoxConfigs.templates">-->
+                        <!--</select-box>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<customfield definition="{type:'boolean', name: 'Send confirmation email'}"-->
+                                     <!--ng-model="vm.model.settings.send_confirmation_email"-->
+                                     <!--name="send_confirmation"></customfield>-->
+                    <!--</div>-->
+                    <!--<div class="form-group" ng-if="vm.model.settings.send_confirmation_email">-->
+                        <!--<label>Select confirmation template</label>-->
+                        <!--<select-box-->
+                                <!--model="vm.model.confirmation_template_id"-->
+                                <!--config="vm.selectBoxConfigs.templates">-->
+                        <!--</select-box>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<customfield definition="{type:'boolean', name: 'Send cancellation email'}"-->
+                                     <!--ng-model="vm.model.settings.send_cancellation_email"-->
+                                     <!--name="send_cancellation"></customfield>-->
+                    <!--</div>-->
+                    <!--<div class="form-group" ng-if="vm.model.settings.send_cancellation_email">-->
+                        <!--<label>Select cancellation template</label>-->
+                        <!--<select-box-->
+                                <!--model="vm.model.cancellation_template_id"-->
+                                <!--config="vm.selectBoxConfigs.templates">-->
+                        <!--</select-box>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<customfield definition="{type:'boolean', name: 'Send request email'}"-->
+                                     <!--ng-model="vm.model.settings.send_request_email"-->
+                                     <!--name="send_request"></customfield>-->
+                    <!--</div>-->
+                    <!--<div class="form-group" ng-if="vm.model.settings.send_request_email">-->
+                        <!--<label>Select request template</label>-->
+                        <!--<select-box-->
+                                <!--model="vm.model.request_email_id"-->
+                                <!--config="vm.selectBoxConfigs.templates">-->
+                        <!--</select-box>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<customfield definition="{type:'boolean', name: 'Send waitlist email'}"-->
+                                     <!--ng-model="vm.model.settings.send_waitlist_email"-->
+                                     <!--name="send_waitlist"></customfield>-->
+                    <!--</div>-->
+                    <!--<div class="form-group" ng-if="vm.model.settings.send_waitlist_email">-->
+                        <!--<label>Select waitlist template</label>-->
+                        <!--<select-box-->
+                                <!--model="vm.model.waitlist_template_id"-->
+                                <!--config="vm.selectBoxConfigs.templates">-->
+                        <!--</select-box>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<customfield definition="{type:'boolean', name: 'Send pending email'}"-->
+                                     <!--ng-model="vm.model.settings.send_pending_email"-->
+                                     <!--name="send_pending"></customfield>-->
+                    <!--</div>-->
+                    <!--<div class="form-group" ng-if="vm.model.settings.send_pending_email">-->
+                        <!--<label>Select pending template</label>-->
+                        <!--<select-box-->
+                                <!--model="vm.model.pending_template_id"-->
+                                <!--config="vm.selectBoxConfigs.templates">-->
+                        <!--</select-box>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</ng-form>-->
+    <!--</section>-->
+
+
+    <!--<section ng-if="vm.currentStep.id === 'landingpage'" ng-class="{'form-invalid': vm.validateFormPart}">-->
+        <!--<ng-form name="guestlistForm.{{ 'formPart_' + vm.currentStep.id }}">-->
+            <!--<div class="content-box">-->
+                <!--<div class="box-section-wrap">-->
+                    <!--<h2>Configure your Landingpage</h2>-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-4">-->
+                            <!--<div class="form-group">-->
+                                <!--<customfield definition="{type: 'media_image', name: vm.cSettings.lp_field_labels.image_1, startDirectory: 'guestlists'}"-->
+                                             <!--ng-model="vm.model.image_1" name="image_1"></customfield>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="col-4">-->
+                            <!--<div class="form-group">-->
+                                <!--<customfield definition="{type: 'media_image', name: vm.cSettings.lp_field_labels.image_2, startDirectory: 'guestlists'}"-->
+                                             <!--ng-model="vm.model.image_2" name="image_2"></customfield>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="col-4">-->
+                            <!--<div class="form-group">-->
+                                <!--<customfield definition="{type: 'media_image', name: vm.cSettings.lp_field_labels.image_3, startDirectory: 'guestlists'}"-->
+                                             <!--ng-model="vm.model.image_3" name="image_3"></customfield>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<customfield definition="{type:'html', name: vm.cSettings.lp_field_labels.text_1}"-->
+                                     <!--ng-model="vm.model.settings.lp_text_1"-->
+                                     <!--name="text_1"></customfield>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<customfield definition="{type:'html', name: vm.cSettings.lp_field_labels.text_2}"-->
+                                     <!--ng-model="vm.model.settings.lp_text_2"-->
+                                     <!--name="text_2"></customfield>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<customfield definition="{type:'html', name: vm.cSettings.lp_field_labels.text_3}"-->
+                                     <!--ng-model="vm.model.settings.lp_text_3"-->
+                                     <!--name="text_3"></customfield>-->
+                    <!--</div>-->
+
+                    <!--<div class="form-group">-->
+                        <!--<customfield definition="{type:'html', name: vm.cSettings.lp_field_labels.text_4}"-->
+                                     <!--ng-model="vm.model.settings.lp_text_4"-->
+                                     <!--name="text_4"></customfield>-->
+                    <!--</div>-->
+
+                    <!--<div class="form-group">-->
+                        <!--<customfield definition="{type:'html', name: vm.cSettings.lp_field_labels.text_5}"-->
+                                     <!--ng-model="vm.model.settings.lp_text_5"-->
+                                     <!--name="text_5"></customfield>-->
+                    <!--</div>-->
+
+                    <!--<div class="row">-->
+                        <!--<div ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]"-->
+                             <!--ng-if="vm.schema.properties['custom_'+i]" ng-class="{'col-12': vm.schema.properties['custom_'+i].original.type === 'html','col-4': vm.schema.properties['custom_'+i].original.type !== 'html'}">-->
+                            <!--<div class="form-group">-->
+                                <!--<customfield ng-model="vm.model['custom_'+i]"-->
+                                             <!--definition="vm.schema.properties['custom_'+i].original"></customfield>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</ng-form>-->
+    <!--</section>-->
+
+    <!--<section ng-if="vm.currentStep.id === 'seatplan'" ng-class="{'form-invalid': vm.validateFormPart}">-->
+        <!--<ng-form name="guestlistForm.{{ 'formPart_' + vm.currentStep.id }}">-->
+            <!--<div class="content-box">-->
+                <!--<div class="box-section-wrap">-->
+                    <!--<h2>Guestlist Seatplan</h2>-->
+                    <!--<div class="data-list">-->
+                        <!--<table>-->
+                            <!--<tbody>-->
+                            <!--<tbody>-->
+                            <!--<tr>-->
+                                <!--<td>Seatplan</td>-->
+                                <!--<td>-->
+                                    <!--<select-box model="vm.model.seatplan_id"-->
+                                                <!--config="vm.selectBoxConfigs.seatplans"></select-box>-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                            <!--&lt;!&ndash; @todo reimplement blocked seatplan elements &ndash;&gt;-->
+                            <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<td>Blocked Seatplan Elements</td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<select-box model="vm.model.blockedSeatplanElements" config="vm.selectBoxConfigs.blocked_seatplan_elements"></select-box>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<h2 ng-if-start="vm.model.seatplan_id">Example</h2>-->
+            <!--<div class="content-box beefree" ng-if-end>-->
+                <!--<seatplan-example seatplan-id="{{vm.model.seatplan_id}}" ng-if="vm.model.seatplan_id"-->
+                                  <!--blocked-elements="[]">-->
+                <!--</seatplan-example>-->
+            <!--</div>-->
+        <!--</ng-form>-->
+    <!--</section>-->
+
+    <!--<section ng-if="vm.currentStep.id === 'review'" ng-class="{'form-invalid': vm.validateFormPart}">-->
+        <!--<ng-form name="guestlistForm.{{ 'formPart_' + vm.currentStep.id }}">-->
+            <!--<h2>Last step with review of the given parameters</h2>-->
+        <!--</ng-form>-->
+    <!--</section>-->
+
+    <!--<section>-->
+        <!--<div class="fixed-footer">-->
+            <!--<div class="btn-group">-->
+                <!--<button ng-click="vm.closeView()" class="btn-warning">Cancel</button>-->
+
+                <!--<button ng-click="vm.previousStep()"-->
+                        <!--ng-if="vm.currentStep !== vm.steps[0]"><i class="fal fa-angle-left"></i> Previous Step-->
+                <!--</button>-->
+
+                <!--<button ng-click="vm.save(vm.model, guestlistForm)" class="btn-confirm"-->
+                        <!--ng-if="vm.currentStep === vm.steps[vm.steps.length-1]">Done-->
+                <!--</button>-->
+
+                <!--<button ng-click="vm.nextStep()" class="btn-confirm"-->
+                        <!--ng-if="vm.currentStep !== vm.steps[vm.steps.length-1]">Next Step <i-->
+                        <!--class="fal fa-angle-right"></i>-->
+                <!--</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</section>-->
+<!--</form>-->
+
+<script type="text/ng-template" id="custom-field-group.tpl.html">
+    <div class="panel-heading">
+        <h4 class="panel-title" style="color:#fa39c3">
+            <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+          <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+            {{heading}}
+          </span>
+            </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse" uib-collapse="!isOpen">
+        <div class="panel-body" ng-transclude></div>
+    </div>
+</script>

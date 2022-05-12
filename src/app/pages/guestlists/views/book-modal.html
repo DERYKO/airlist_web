@@ -1,0 +1,17 @@
+<button class="close" ng-click="vm.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>{{ 'sweetalerts.contacts_confirmation' | i18n }}</h2>
+</div>
+<div class="modal-body">
+    <!--Question-->
+    <p>{{ 'sweetalerts.contacts_confirmation_existing' | i18n }}</p>
+    <p>
+    	<button ng-click="vm.accept('all')">{{ 'sweetalerts.contacts_confirmation_cancel' | i18n }}</button>
+    </p>
+    <p>
+	    <button ng-click="vm.accept('new')">{{ 'sweetalerts.contacts_confirmation_dont_exist' | i18n }}</button>
+    </p>
+    <div class="btn-group">
+        <button class="btn-warning" ng-click="vm.cancel()" >Cancel</button>
+    </div>
+</div>

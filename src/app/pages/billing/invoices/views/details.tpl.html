@@ -1,0 +1,68 @@
+<h1>{{vm.invoice.invoice_number}}</h1>
+
+
+<h2>{{'billing.invoices.details.headlines.information' | i18n }}</h2>
+<section>
+    <div class="content-box">
+        <div class="box-section-wrap data-list">
+            <div class="data-list col-layout">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>{{ 'billing.invoices.details.labels.information.type' | i18n }}</td>
+                        <td>{{ 'billing.invoices.details.types.' + vm.invoice.type | i18n }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'billing.invoices.details.labels.information.invoice_number' | i18n }}</td>
+                        <td>{{ vm.invoice.invoice_number }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'billing.invoices.details.labels.information.status' | i18n }}</td>
+                        <td>{{ 'billing.invoices.details.status.' + vm.invoice.status | i18n }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'billing.invoices.details.labels.information.performance_period' | i18n }}</td>
+                        <td>{{vm.invoice.performance_period}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'billing.invoices.details.labels.information.contact' | i18n }}</td>
+                        <td>
+                            <a ui-sref="app.contacts.details({id: vm.invoice.contact.data.id})">
+                                {{ vm.invoice.contact.data.full_name }}
+                            </a>
+                        </td>
+                    </tr>
+                    <tr ng-if="vm.invoice.contactSubscription">
+                        <td>Subscription</td>
+                        <td>
+                            <strong>{{vm.invoice.contactSubscription.subscription.label}}</strong><br/>
+                            <span>Start: {{vm.invoice.contactSubscription.start_date|date:'dd. MM. yyyy'}}</span><br/>
+                            <span ng-if="vm.invoice.contactSubscription.termination_date">End: {{vm.invoice.contactSubscription.termination_date|date:'dd. MM. yyyy'}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'billing.invoices.details.labels.information.address' | i18n }}
+                            <a ng-click="vm.updateAddress(vm.invoice)">
+                                <span class="fal fa-pencil"></span>
+                            </a>
+                        </td>
+                        <td ng-bind-html="vm.invoice.address|nl2br"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--<h2>Preview</h2>-->
+<!--<section>-->
+    <!--<div class="content-box">-->
+        <!--<div class="box-section-wrap data-list">-->
+            <!--<canvas id="invoice-canvas"></canvas>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</section>-->
+
+<listview store="vm.paymentsStore" ng-if="vm.paymentsStore"></listview>
+

@@ -1,0 +1,82 @@
+<div class="details-expanded-last-messages">
+    <table class="table-guests">
+        <tr>
+            <th><strong>Status</strong></th>
+            <th><strong>Code</strong></th>
+            <th><strong>Name</strong></th>
+            <th><strong>E-Mail</strong></th>
+            <th></th>
+        </tr>
+        <tr ng-if="vm.loading">
+            <td colspan="5" class="align-center">Loading ...</td>
+        </tr>
+        <tr ng-if="!vm.loading && vm.currentGuests.length === 0">
+            <td colspan="5" class="align-center">No guests available</td>
+        </tr>
+        <tr ng-repeat="guest in vm.currentGuests" ng-if="!vm.loading && vm.currentGuests.length > 0">
+            <td>
+                <span class="{{guest.status}}">{{guest.status}}</span>
+            </td>
+            <td>{{guest.code}}</td>
+            <td ng-if="guest.contact.full_name">{{guest.contact.full_name}}</td>
+            <td ng-if="!guest.contact.full_name">unnamed</td>
+            <td>{{guest.contact.email}}</td>
+            <td class="actions align-right">
+                <a data-tooltip="View guest details" class="btn" ng-click="vm.openRsvpDetails(guest)"
+                   ng-if="vm.acl.hasRight('rsvps::view')">
+                    <i class="fal fa-external-link-square"></i>
+                </a>&nbsp;
+                <a class="btn" ng-click="vm.sendEmail(guest)" data-tooltip="Send email"
+                   ng-if="vm.acl.hasRight('messages::send-email')"><i
+                        class="fal fa-envelope"></i>
+                </a>&nbsp;<a data-tooltip="Edit guest" class="btn" ng-click="vm.editRsvp(guest)"
+                             ng-if="vm.acl.hasRight('rsvps::edit')">
+                <i class="fal fa-edit"></i></a>&nbsp;<a data-tooltip="Delete guest" class="btn btn-warning"
+                                                        ng-click="vm.deleteRsvp(guest)"
+                                                        ng-if="vm.acl.hasRight('rsvps::archive')">
+                <i class="fal fa-trash-alt"></i>
+            </a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<!--<div class="rsvp-guests">-->
+    <!--<h3>-->
+        <!--{{vm.headline}}-->
+        <!--<a data-tooltip="Go to full guest list" class="button" ng-click="vm.goToGuestView()"-->
+           <!--ng-if="vm.acl.hasRight('rsvps::view')">-->
+            <!--<i class="fal fa-external-link-square"></i>-->
+        <!--</a>-->
+    <!--</h3>-->
+    <!--<div class="list-body">-->
+        <!--<table>-->
+
+            <!--<tr ng-repeat="guest in vm.currentGuests"-->
+                <!--ng-if="!vm.loading && vm.currentGuests.length > 0">-->
+                <!--<td>{{guest.code}}</td>-->
+                <!--<td ng-if="guest.contact.full_name">{{guest.contact.full_name}}</td>-->
+                <!--<td ng-if="!guest.contact.full_name">unnamed</td>-->
+                <!--<td>{{guest.contact.email}}</td>-->
+                <!--<td>{{guest.status}}</td>-->
+                <!--<td class="actions align-right" style="width: 115px;">-->
+                    <!--<a data-tooltip="Go to guest details page" class="btn" ng-click="vm.openRsvpDetails(guest)"-->
+                       <!--ng-if="vm.acl.hasRight('rsvps::view')">-->
+                        <!--<i class="fal fa-external-link-square"></i>-->
+                    <!--</a>&nbsp;-->
+                    <!--<a class="btn" ng-click="vm.sendEmail(guest)" data-tooltip="Send email"-->
+                       <!--ng-if="vm.acl.hasRight('messages::send-email')"><i-->
+                            <!--class="fal fa-envelope"></i>-->
+                    <!--</a>&nbsp;<a data-tooltip="Edit guest" class="btn" ng-click="vm.editRsvp(guest)"-->
+                                 <!--ng-if="vm.acl.hasRight('rsvps::edit')">-->
+                    <!--<i class="fal fa-pencil"></i></a>&nbsp;<a data-tooltip="Delete guest" class="btn btn-warning"-->
+                                                              <!--ng-click="vm.deleteRsvp(guest)"-->
+                                                              <!--ng-if="vm.acl.hasRight('rsvps::archive')">-->
+                    <!--<i class="fal fa-trash"></i>-->
+                <!--</a>-->
+                <!--</td>-->
+            <!--</tr>-->
+        <!--</table>-->
+    <!--</div>-->
+<!--</div>-->

@@ -1,0 +1,34 @@
+<div class="contact-subscriptions">
+    <button class="btn btn-primary" ng-click="vm.createNewSubscription()">
+        New Subscription
+    </button>
+    <table class="table table-striped">
+        <thead>
+            <th>Subscription</th>
+            <th>Start date</th>
+            <th>status</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="subscription in vm.subscriptions" ng-if="!vm.loading && !vm.error">
+            <td>
+                <a ng-click="vm.showSubscriptionDetails(subscription)">
+                    {{subscription.subscription.data.title}}
+                </a>
+            </td>
+            <td>{{subscription.start_date|date:'dd. MM. yyyy'}}</td>
+            <td ng-if="subscription.termination_date">terminated to {{subscription.termination_date|date:'dd. MM. yyyy'}}</td>
+            <td ng-if="!subscription.termination_date">active</td>
+        </tr>
+        <tr ng-if="vm.loading && !vm.error">
+            <td colspan="3" class="bg-info text-center">
+                Data is being loaded
+            </td>
+        </tr>
+        <tr ng-if="vm.error">
+            <td colspan="3" class="bg-danger text-center">
+                An error occurred
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

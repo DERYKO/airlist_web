@@ -1,0 +1,58 @@
+<form ng-submit="vm.submit()">
+    <h2 class="login-heading">
+        {{'auth.reset_password_instructions' | i18n}}
+    </h2>
+    <div class="form-group">
+        <input class="form-control placeholder-no-fix"
+               autocomplete="off"
+               type="password"
+               placeholder="{{'common.password' | i18n}}" ng-model="vm.model.password"
+               ng-keyup="vm.checkStrength();vm.checkPasswordMatch()"/>
+    </div>
+    <div class="password-strength-meter" id="password_strength" ng-class="{
+            insecure: vm.strength < 60,
+            ok: vm.strength >= 60 && vm.strength < 80,
+            strong: vm.strength >= 80
+        }">
+        <div class="before-text">Password strength</div>
+        <div class="progress-bar">
+            <div class="strength-value" style="width: {{vm.strength}}%"></div>
+            <span class="strength-text" ng-if="vm.strength < 60">Insufficient</span>
+            <span class="strength-text" ng-if="vm.strength >= 60 && vm.strength < 80">Ok</span>
+            <span class="strength-text" ng-if="vm.strength >= 80">Strong</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <input class="form-control placeholder-no-fix"
+               autocomplete="off"
+               type="password"
+               placeholder="{{'common.confirm_password' | i18n}}"
+               ng-model="vm.model.passwordConfirmation"
+               ng-keyup="vm.checkPasswordMatch()"/>
+    </div>
+    <div ng-show="!vm.passwordsMatch">
+        <p class="text-error">The passwords don't match!</p>
+    </div>
+    <div>
+        <br>
+        <p><strong>Please enter a password which contains at least:</strong></p>
+        <ul class="bulleted-list">
+            <li>8 characters</li>
+            <li>One uppercase letter</li>
+            <li>One lowercase letter</li>
+            <li>One number or special character</li>
+        </ul>
+    </div>
+    <div class="btn-center">
+        <div class="form-group">
+            <button type="submit" class="btn-confirm" ng-disabled="vm.strength < 60 || !vm.passwordsMatch">
+                {{'common.submit' | i18n}}
+            </button>
+        </div>
+        <div class="form-group">
+            <button type="button" ui-sref="auth.login" class="btn-grey">
+                {{'common.back' | i18n}}
+            </button>
+        </div>
+    </div>
+</form>

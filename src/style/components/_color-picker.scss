@@ -1,0 +1,13 @@
+.color-picker-wrapper .input-group .input-group-addon {
+  padding: 0;
+  position: absolute;
+  right: 0;
+  height: $input-height;
+  width: 50px;
+  border-color: #e0e0e0;
+  border-radius: 0 $border-radius-large $border-radius-large 0;
+}
+
+.color-picker-wrapper .input-group .input-group-addon:first-child {
+  border-right-width: 1px;
+}

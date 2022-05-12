@@ -1,0 +1,115 @@
+.table-duplicates {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  transform: translate3d(0, 0, 0);
+
+  >table {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  tr {
+    border-bottom: 4px solid $lightest;
+  }
+
+  td {
+    background-color: $lighter;
+    cursor: pointer;
+
+   &.duplicates-number {
+     font-size: 33px;
+     font-weight: $font-weight-bold;
+     color: $secondary;
+     border-right: 4px solid $lightest;
+     width: 80px;
+     white-space: nowrap;
+     text-align: center;
+     padding: 10px 13px;
+   }
+
+    &.duplicates-overview {
+      padding: 10px 25px;
+
+      >span:last-child {
+        span:last-child {
+          display: none;
+        }
+      }
+    }
+
+    &.duplicates-expand {
+      text-align: right;
+      padding-right: 20px;
+      font-size: 20px;
+      color: #b5b5b5;
+    }
+  }
+
+  .duplicates-separator {
+    color: #b5b5b5;
+    margin: 0 5px;
+  }
+
+}
+
+.duplicates-expanded-row {
+  >td {
+    padding: 0;
+  }
+}
+
+.duplicates-expanded {
+  overflow: scroll;
+  background-color: $lightest;
+
+  customfield {
+    vertical-align: top;
+  }
+
+  .switch {
+    margin-right: 10px;
+  }
+
+  .switch-label {
+    display: inline-block;
+    height: 28px;
+    vertical-align: top;
+  }
+
+  .switch-label-yes {
+    line-height: 28px;
+  }
+
+  //temporary
+  .before-switch, .after-switch {
+    display: none;
+  }
+
+  td {
+    height: 60px;
+    padding: 10px 25px;
+
+    &:nth-child(1),
+    &:nth-child(2) {
+      border-right: 4px solid $lightest;
+      padding: 10px 15px;
+    }
+  }
+
+  th {
+    padding: 10px 25px;
+
+    &:nth-child(1) {
+      padding: 10px 15px;
+    }
+  }
+
+  .duplicates-separator {
+    margin: 0;
+  }
+}
+
+td.duplicate-column {
+  background-color: rgba($secondary, .12);
+}

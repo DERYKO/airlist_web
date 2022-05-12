@@ -1,0 +1,127 @@
+<section ng-if="vm.loading">
+    <div class="dashboard-empty">
+        <div class="pacman">
+            <i class="fal fa-sync fa-spin"></i>
+            <h2>Loading data</h2>
+        </div>
+    </div>
+</section>
+
+<section ng-if="!vm.loading && !vm.currentGuestlist">
+    <div class="dashboard-empty-state">
+        <div class="dashboard-empty-msg align-center">
+            <img srcset="/images/heart.png 1x, /images/heart@2x.png 2x" src="/images/heart.png" alt="">
+            <h1>Time to shine! <br>
+                Create your first event!
+            </h1>
+
+            <a class="btn-confirm" ui-sref="app.guestlists.create">Create a guestlist</a>
+        </div>
+    </div>
+</section>
+
+<div class="dashboard-wrapper" ng-if="!vm.loading && vm.currentGuestlist">
+    <div class="dashboard-title">
+        <h1>Dashboard: {{vm.currentGuestlist.name}} ({{vm.currentGuestlist.date|date:'dd.MM.yyyy'}})</h1>
+        <div class="dropdown-container" al-dropdown ng-if="vm.guestlists.length > 1">
+            <button type="button" class="dropdown-toggle">Change guestlist&nbsp;<i class="fal fa-angle-down"></i>
+            </button>
+            <div class="dropdown-sheet">
+                <ul>
+                    <li ng-repeat="guestlist in vm.guestlists" ng-if="(guestlist.id !== vm.currentGuestlist.id)">
+                        <a ng-click="vm.selectGuestlist(guestlist)">{{guestlist.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="dashboard columns">
+            <div class="dashboard-column">
+                <div class="content-box" ng-if="vm.displayType === 'checkin'">
+                    <h2>Check-ins</h2>
+                    <div class="canvas-container">
+                        <canvas class="chart chart-doughnut"
+                                chart-data="[[vm.checkedInRate,100-vm.checkedInRate]]"
+                                chart-labels="[]"
+                                chart-dataset-override="[{borderWidth: 0, backgroundColor: ['#73ccb9', '#e0e0e0'], hoverBackgroundColor: ['#73ccb9', '#e0e0e0'], hoverBorderColor: '#ff0000', hoverBorderWidth: 0}]"
+                                chart-options="{cutoutPercentage: 85, tooltips: {enabled: false}, title: {enabled: true}}">
+                        </canvas>
+                        <div class="checked-in-rate">{{vm.checkedInRate}}%</div>
+                    </div>
+                    <div class="legend">
+                        <span class="legend-1">{{vm.currentGuestlist.sum_pax_planned_confirmed}} PAX confirmed</span>
+                        <span class="legend-2">{{vm.currentGuestlist.sum_pax_actual_confirmed}} Pax (checked-in)</span>
+                    </div>
+                </div>
+                <div class="content-box empty" ng-if="vm.displayType === 'default'">
+                    <h2>Confirmed</h2>
+                    <span ng-if="!vm.currentGuestlist.count_rsvps_confirmed">0</span>
+                    <span>{{vm.currentGuestlist.count_rsvps_confirmed}}</span>
+                </div>
+            </div>
+
+            <div class="dashboard-column">
+                <guestlist-rsvps-by-status guestlist-id="vm.currentGuestlist.id"></guestlist-rsvps-by-status>
+                <guestlist-rsvps-latest-state-changes
+                        guestlist-id="vm.currentGuestlist.id"></guestlist-rsvps-latest-state-changes>
+            </div>
+
+            <div class="dashboard-column">
+                <guestlist-rsvps-invited-vs-confirmed
+                        guestlist-id="vm.currentGuestlist.id"></guestlist-rsvps-invited-vs-confirmed>
+                <guestlist-failed-messages-stats ng-if="vm.acl.hasRight('messages::list')"
+                                                 guestlist-id="vm.currentGuestlist.id"></guestlist-failed-messages-stats>
+            </div>
+        </div>
+    </section>
+
+    <section>
+
+        <div class="dashboard columns">
+            <div class="dashboard-column">
+                <div class="content-box">
+                    <h2>OE-Mapping <i>(people by invitors)</i></h2>
+                    <a clipboard text="vm.oeClipboardText"
+                       on-copied="vm.clipboardSuccess()"
+                       on-error="vm.clipboardError()">
+                        Copy to clipboard for excel <i class="fal fa-file-excel"></i>
+                    </a>
+                    <div class="box-section-wrap main-table table-other">
+                        <table style="width: 100%;">
+                            <thead>
+                            <tr>
+                                <th>Vorname, Nachname</th>
+                                <th>Firma</th>
+                                <th>Niederlassung</th>
+                                <th>OE-Nr</th>
+                                <th>Anzahl Personen</th>
+                                <th>Invited</th>
+                                <th>Confirmed</th>
+                                <th>Cancelled</th>
+                                <th>Check-Ins</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="oeRow in vm.oeMapping" ng-if="vm.oeStats[oeRow.oe_number].sum_all">
+                                <td>{{oeRow.first_name}} {{oeRow.last_name}}</td>
+                                <td>{{oeRow.company}}</td>
+                                <td>{{oeRow.department}}</td>
+                                <td>
+                                    <a ng-click="vm.goToRsvpListAndFilterOeNumber(oeRow.oe_number)">{{oeRow.oe_number}}</a>
+                                </td>
+                                <td>{{vm.oeStats[oeRow.oe_number].sum_all}}</td>
+                                <td>{{vm.oeStats[oeRow.oe_number].sum_invited}}</td>
+                                <td>{{vm.oeStats[oeRow.oe_number].sum_confirmed}}</td>
+                                <td>{{vm.oeStats[oeRow.oe_number].sum_cancelled}}</td>
+                                <td>{{vm.oeStats[oeRow.oe_number].sum_checked_in}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

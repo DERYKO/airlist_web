@@ -1,0 +1,78 @@
+<section ng-if="vm.currentView == 'contact-attr'">
+    <h1>{{ 'contacts.custom_attributes'|i18n }}</h1>
+    <form ng-submit="vm.saveCustom(vm.model)" name="customAttributes" class="light"
+          ng-class="{'submitted':customAttributes.$submitted}" novalidate>
+        <section>
+            <div class="content-box">
+                <div class="box-section-wrap">
+                    <v-accordion class="vAccordion--default" multiple>
+                        <v-pane ng-repeat="index in vm.customs"
+                         ng-if="index == 1  || vm.model['custom_'+index+'_name'].type || vm.model['custom_'+(index-1)+'_name'].type" expanded="vm.model['custom_'+index+'_name'].isExpanded">
+
+                            <v-pane-header>
+                                <h3>Attribute {{ index }}: <span class="attr-name">{{ vm.model['custom_'+index+'_name'].name}}</span></h3>
+                            </v-pane-header>
+
+                            <v-pane-content ng-class="vm.model['custom_'+index+'_name'].isExpanded ? 'v-pane-expanded' : 'v-pane-hidden'" >
+                                <customfield definition="{type:'builder'}"
+                                             ng-model="vm.model['custom_'+index+'_name']"
+                                             name="'custom_'+index+'_name'"></customfield>
+                            </v-pane-content>
+
+                        </v-pane>
+                    </v-accordion>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="fixed-footer">
+                <div class="btn-group">
+                    <button class="btn-warning" ng-click="vm.cancelEditing(false)">Discard Changes</button>
+                    <button ng-click="vm.saveCustom(vm.model)" type="submit" class="btn-confirm">Done</button>
+                </div>
+            </div>
+        </section>
+    </form>
+
+</section>
+
+<section ng-if="vm.currentView == 'guestlist-attr'">
+    <h1>Custom guestlist attributes</h1>
+    <form ng-submit="vm.saveCustom(vm.model)" name="customAttributes" class="light"
+          ng-class="{'submitted':customAttributes.$submitted}" novalidate>
+        <section>
+            <div class="content-box">
+                <div class="box-section-wrap">
+
+                    <v-accordion class="vAccordion--default" multiple>
+                        <v-pane ng-repeat="index in vm.guestlistCustoms"
+                                ng-if="index == 1  || vm.model['custom_'+index+'_guestlist'].type || vm.model['custom_'+(index-1)+'_guestlist'].type" expanded="vm.model['custom_'+index+'_guestlist'].isExpanded">
+
+                            <v-pane-header>
+                                <h3>Attribute {{ index }}: <span class="attr-name">{{ vm.model['custom_'+index+'_guestlist'].name}}</span></h3>
+                            </v-pane-header>
+
+                            <v-pane-content ng-class="vm.model['custom_'+index+'_guestlist'].isExpanded ? 'v-pane-expanded' : 'v-pane-hidden'">
+                                <customfield definition="{type:'builder'}"
+                                             ng-model="vm.model['custom_'+index+'_guestlist']"
+                                             name="'custom_'+index+'_guestlist'"></customfield>
+                            </v-pane-content>
+
+                        </v-pane>
+                    </v-accordion>
+
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="fixed-footer">
+                <div class="btn-group">
+                    <button class="btn-warning" ng-click="vm.cancelEditing(false)">Discard Changes</button>
+                    <button ng-click="vm.saveCustom(vm.model)" type="submit" class="btn-confirm">Done</button>
+                </div>
+            </div>
+        </section>
+    </form>
+</section>

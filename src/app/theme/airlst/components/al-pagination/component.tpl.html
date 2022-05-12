@@ -1,0 +1,11 @@
+<ul class="pagination" ng-if="pagination.pager.totalPages > 0">
+    <li ng-if="pagination.pager.currentPage > 1">
+        <a ng-click="pagination.goToPage(pagination.pager.currentPage - 1)"><i class="fal fa-long-arrow-left"></i></a>
+    </li>
+    <li ng-repeat="page in pagination.pager.pages">
+        <a ng-class="{active: (page == pagination.store.state.pagination.current)}" ng-click="pagination.goToPage(page)">{{page}}</a>
+    </li>
+    <li ng-if="pagination.pager.currentPage < pagination.pager.totalPages">
+        <a ng-click="pagination.goToPage(pagination.pager.currentPage+1)"><i class="fal fa-long-arrow-right"></i></a>
+    </li>
+</ul>

@@ -1,0 +1,66 @@
+{
+  "name": "Addressbook",
+  "identifier": "addressbook",
+  "rights": [
+    {
+      "name": "contact.bulk",
+      "identifier": "contact.bulk"
+    },
+    {
+      "name": "contact.categories",
+      "identifier": "contact.categories"
+    },
+    {
+      "name": "contact.checkin",
+      "identifier": "contact.checkin"
+    },
+    {
+      "name": "contact.delete",
+      "identifier": "contact.delete"
+    },
+    {
+      "name": "contact.duplicates",
+      "identifier": "contact.duplicates"
+    },
+    {
+      "name": "contact.edit",
+      "identifier": "contact.edit"
+    },
+    {
+      "name": "contact.export",
+      "identifier": "contact.export"
+    },
+    {
+      "name": "contact.import",
+      "identifier": "contact.import"
+    },
+    {
+      "name": "contact.invoices",
+      "identifier": "contact.invoices"
+    },
+    {
+      "name": "contact.list",
+      "identifier": "contact.list"
+    },
+    {
+      "name": "contact.merge",
+      "identifier": "contact.merge"
+    },
+    {
+      "name": "contact.messages",
+      "identifier": "contact.messages"
+    },
+    {
+      "name": "contact.picklists",
+      "identifier": "contact.picklists"
+    },
+    {
+      "name": "contact.rsvps",
+      "identifier": "contact.rsvps"
+    },
+    {
+      "name": "contact.view",
+      "identifier": "contact.view"
+    }
+  ]
+}

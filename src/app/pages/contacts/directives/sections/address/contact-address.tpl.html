@@ -1,0 +1,92 @@
+<section>
+    <div class="details-expanded-tabs-alt">
+        <ul>
+            <li ng-click="address = 'one'">
+                <a href ng-class="{'active-tab': address=='one', 'preferred-address': !vm.rsvp.contact.data.business_preferred}">Private address</a>
+            </li>
+            <li ng-click="address = 'two'">
+                <a href ng-class="{'active-tab': address=='two', 'preferred-address': vm.rsvp.contact.data.business_preferred}">Business address</a>
+            </li>
+        </ul>
+    </div>
+    <div class="content-box box-900" ng-init="address = 'one'">
+        <div class="box-section-wrap">
+            <div ng-if="address=='one'">
+                <div class="data-list">
+                    <ul>
+                        <li>
+                            <span class="data-label">Address:</span>
+                            <span class="data-value">
+                                <span ng-if="vm.contact.street">{{ vm.contact.street }}</span><br
+                                    ng-if="vm.contact.street"/>
+                                <span ng-if="vm.contact.street_2">{{ vm.contact.street_2 }}</span><br
+                                    ng-if="vm.contact.street_2"/>
+                                <span ng-if="vm.contact.city && vm.contact.zip">{{ vm.contact.zip }} {{ vm.contact.city }}</span><br
+                                    ng-if="vm.contact.city && vm.contact.zip"/>
+                                <country-name code="vm.contact.country" ng-if="vm.contact.country"></country-name>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="data-label">Landline:</span>
+                            <span class="data-value">{{vm.contact.phone}}</span>
+                        </li>
+                        <li>
+                            <span class="data-label">Mobile:</span>
+                            <span class="data-value">{{vm.contact.phone_2}}</span>
+                        </li>
+                        <li>
+                            <span class="data-label">Fax:</span>
+                            <span class="data-value">{{vm.contact.fax}}</span>
+                        </li>
+                        <li>
+                            <span class="data-label">Email:</span>
+                            <span class="data-value">{{vm.contact.email}}</span>
+                        </li>
+                        <li>
+                            <span class="data-label">Web:</span>
+                            <span class="data-value">{{vm.contact.web}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div ng-if="address=='two'">
+                <div class="data-list">
+                    <ul>
+                        <li>
+                            <span class="data-label">Address:</span>
+                            <span class="data-value">
+                                <span ng-if="vm.contact.business_street">{{ vm.contact.business_street }}</span><br
+                                    ng-if="vm.contact.business_street"/>
+                                <span ng-if="vm.contact.business_street_2">{{ vm.contact.business_street_2 }}</span><br
+                                    ng-if="vm.contact.business_street_2"/>
+                                <span ng-if="vm.contact.business_city && vm.contact.business_zip">{{ vm.contact.business_zip }} {{ vm.contact.business_city }}</span><br
+                                    ng-if="vm.contact.business_city && vm.contact.business_zip"/>
+                                <country-name code="vm.contact.business_country" ng-if="vm.contact.business_country"></country-name>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="data-label">Landline:</span>
+                            <span class="data-value">{{vm.contact.business_phone}}</span>
+                        </li>
+                        <li>
+                            <span class="data-label">Mobile:</span>
+                            <span class="data-value">{{vm.contact.business_phone_2}}</span>
+                        </li>
+                        <li>
+                            <span class="data-label">Fax:</span>
+                            <span class="data-value">{{vm.contact.business_fax}}</span>
+                        </li>
+                        <li>
+                            <span class="data-label">Email:</span>
+                            <span class="data-value">{{vm.contact.business_email}}</span>
+                        </li>
+                        <li>
+                            <span class="data-label">Web:</span>
+                            <span class="data-value">{{vm.contact.business_web}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

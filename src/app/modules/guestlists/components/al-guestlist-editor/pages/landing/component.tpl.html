@@ -1,0 +1,178 @@
+<section id="guestlists_editor_landing" ng-if="vm.showContent">
+    <h1>{{'guestlists.editor.pages.landing.head' | translate}}</h1>
+
+    <h2>{{'guestlists.editor.pages.landing.sub_heads.website' | translate}}</h2>
+    <div class="content-box" id="landing_website">
+        <div class="box-section-wrap">
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <customfield
+                                definition="{type: 'media_image', name: vm.state.formConfig.landingPageLabels.image_1, startDirectory: 'guestlists'}"
+                                ng-model="vm.model.image_1" name="image_1"></customfield>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <customfield
+                                definition="{type: 'media_image', name: vm.state.formConfig.landingPageLabels.image_2, startDirectory: 'guestlists'}"
+                                ng-model="vm.model.image_2" name="image_2"></customfield>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <customfield
+                                definition="{type: 'media_image', name: vm.state.formConfig.landingPageLabels.image_3, startDirectory: 'guestlists'}"
+                                ng-model="vm.model.image_3" name="image_3"></customfield>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <customfield definition="{type:'html', name: vm.state.formConfig.landingPageLabels.text_1}"
+                             ng-model="vm.model.settings.lp_text_1"
+                             name="text_1"></customfield>
+            </div>
+            <div class="form-group">
+                <customfield definition="{type:'html', name: vm.state.formConfig.landingPageLabels.text_2}"
+                             ng-model="vm.model.settings.lp_text_2"
+                             name="text_2"></customfield>
+            </div>
+            <div class="form-group">
+                <customfield definition="{type:'html', name: vm.state.formConfig.landingPageLabels.text_3}"
+                             ng-model="vm.model.settings.lp_text_3"
+                             name="text_3"></customfield>
+            </div>
+
+            <div class="form-group">
+                <customfield definition="{type:'html', name: vm.state.formConfig.landingPageLabels.text_4}"
+                             ng-model="vm.model.settings.lp_text_4"
+                             name="text_4"></customfield>
+            </div>
+
+            <div class="form-group">
+                <customfield definition="{type:'html', name: vm.state.formConfig.landingPageLabels.text_5}"
+                             ng-model="vm.model.settings.lp_text_5"
+                             name="text_5"></customfield>
+            </div>
+            <div class="row">
+                <div ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]"
+                     ng-if="vm.schema.properties['custom_'+i]"
+                     ng-class="{'col-12': vm.schema.properties['custom_'+i].original.type === 'html','col-4': vm.schema.properties['custom_'+i].original.type !== 'html'}">
+                    <div class="form-group">
+                        <customfield ng-model="vm.state.model['custom_'+i]"
+                                     definition="vm.schema.properties['custom_'+i].original"></customfield>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>{{'guestlists.editor.pages.landing.sub_heads.alerts' | translate}}</h2>
+
+    <div class="content-box" id="landing_alerts">
+        <div class="box-section-wrap">
+            <h2 class="mt-20">{{'guestlists.editor.pages.landing.sub_heads.alerts_limits' | translate}}</h2>
+            <div class="form-group input-full">
+                <customfield ng-model="vm.model.settings.lp_alert_texts.limits.registration_not_open"
+                             definition="{type:'textarea',name:('guestlists.editor.pages.landing.labels.alerts.registration_not_open' | translate),required:true}"
+                             name="name"
+                             ng-required="true">
+                </customfield>
+            </div>
+            <div class="form-group input-full">
+                <customfield ng-model="vm.model.settings.lp_alert_texts.limits.registration_already_closed"
+                             definition="{type:'textarea',name:('guestlists.editor.pages.landing.labels.alerts.registration_already_closed' | translate),required:true}"
+                             name="name"
+                             ng-required="true">
+                </customfield>
+            </div>
+            <div class="form-group input-full">
+                <customfield ng-model="vm.model.settings.lp_alert_texts.limits.pax_limit_reached_with_waitlist"
+                             definition="{type:'textarea',name:('guestlists.editor.pages.landing.labels.alerts.pax_limit_reached_with_waitlist' | translate),required:true}"
+                             name="name"
+                             ng-required="true">
+                </customfield>
+            </div>
+            <div class="form-group input-full">
+                <customfield ng-model="vm.model.settings.lp_alert_texts.limits.pax_limit_reached_without_waitlist"
+                             definition="{type:'textarea',name:('guestlists.editor.pages.landing.labels.alerts.pax_limit_reached_without_waitlist' | translate),required:true}"
+                             name="name"
+                             ng-required="true">
+                </customfield>
+            </div>
+
+            <hr class="mt-30">
+            <h2 class="mt-30">{{'guestlists.editor.pages.landing.sub_heads.alerts_registration' | translate}}</h2>
+            <div class="form-group input-full">
+                <customfield ng-model="vm.model.settings.lp_alert_texts.registration.wrong_code"
+                             definition="{type:'textarea',name:('guestlists.editor.pages.landing.labels.alerts.wrong_code' | translate),required:true}"
+                             name="name"
+                             ng-required="true">
+                </customfield>
+            </div>
+            <div class="form-group input-full">
+                <customfield ng-model="vm.model.settings.lp_alert_texts.registration.confirmation_success"
+                             definition="{type:'textarea',name:('guestlists.editor.pages.landing.labels.alerts.confirmation_success' | translate),required:true}"
+                             name="name"
+                             ng-required="true">
+                </customfield>
+            </div>
+            <div class="form-group input-full">
+                <customfield ng-model="vm.model.settings.lp_alert_texts.registration.cancellation_success"
+                             definition="{type:'textarea',name:('guestlists.editor.pages.landing.labels.alerts.cancellation_success' | translate),required:true}"
+                             name="name"
+                             ng-required="true">
+                </customfield>
+            </div>
+            <div class="form-group input-full">
+                <customfield ng-model="vm.model.settings.lp_alert_texts.registration.request_success"
+                             definition="{type:'textarea',name:('guestlists.editor.pages.landing.labels.alerts.request_success' | translate),required:true}"
+                             name="name"
+                             ng-required="true">
+                </customfield>
+            </div>
+            <div class="form-group input-full">
+                <customfield ng-model="vm.model.settings.lp_alert_texts.registration.waitlist_success"
+                             definition="{type:'textarea',name:('guestlists.editor.pages.landing.labels.alerts.waitlist_success' | translate),required:true}"
+                             name="name"
+                             ng-required="true">
+                </customfield>
+            </div>
+
+            <hr class="mt-30">
+            <h2 class="mt-30">{{'guestlists.editor.pages.landing.sub_heads.alerts_validation' | translate}}</h2>
+            <div class="form-group input-full">
+                <customfield ng-model="vm.model.settings.lp_alert_texts.validation.missing_required_fields"
+                             definition="{type:'textarea',name:('guestlists.editor.pages.landing.labels.alerts.missing_required_fields' | translate),required:true}"
+                             name="name"
+                             ng-required="true">
+                </customfield>
+            </div>
+            <div class="form-group input-full">
+                <customfield ng-model="vm.model.settings.lp_alert_texts.validation.wrong_data_format"
+                             definition="{type:'textarea',name:('guestlists.editor.pages.landing.labels.alerts.wrong_data_format' | translate),required:true}"
+                             name="name"
+                             ng-required="true">
+                </customfield>
+            </div>
+
+            <hr class="mt-30">
+
+            <h2 class="mt-30">{{'guestlists.editor.pages.landing.sub_heads.alerts_general' | translate}}</h2>
+            <div class="form-group input-full">
+                <customfield ng-model="vm.model.settings.lp_alert_texts.general.technical_issue"
+                             definition="{type:'textarea',name:('guestlists.editor.pages.landing.labels.alerts.technical_issue' | translate),required:true}"
+                             name="name"
+                             ng-required="true">
+                </customfield>
+            </div>
+            <div class="form-group input-full">
+                <customfield ng-model="vm.model.settings.lp_alert_texts.general.missing_event_information"
+                             definition="{type:'textarea',name:('guestlists.editor.pages.landing.labels.alerts.missing_event_information' | translate),required:true}"
+                             name="name"
+                             ng-required="true">
+                </customfield>
+            </div>
+        </div>
+    </div>
+</section>

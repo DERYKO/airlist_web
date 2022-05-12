@@ -1,0 +1,14 @@
+<section ngif="vm.contact.activeSubscriptions">
+    <h2>Active Subscription</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <div class="data-list col-layout">
+                <table>
+                    <tr ng-repeat="sub in vm.contact.activeSubscriptions">
+                        <td><pre>{{sub}}</pre></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

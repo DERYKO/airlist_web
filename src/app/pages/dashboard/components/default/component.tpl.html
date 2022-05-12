@@ -1,0 +1,104 @@
+<section ng-if="vm.loading">
+    <div class="dashboard-empty">
+        <div class="pacman">
+            <i class="fal fa-sync fa-spin"></i>
+            <h2>Loading data</h2>
+        </div>
+    </div>
+</section>
+
+<section ng-if="!vm.loading && !vm.currentGuestlist">
+    <div class="dashboard-empty-state">
+        <div class="dashboard-empty-msg align-center">
+            <img srcset="/images/heart.png 1x, /images/heart@2x.png 2x" src="/images/heart.png" alt="">
+            <h1>Time to shine! <br>
+                Create your first event!
+            </h1>
+
+            <a class="btn-confirm" ui-sref="app.guestlists.create">Create a guestlist</a>
+        </div>
+    </div>
+</section>
+
+<div class="dashboard-wrapper" ng-if="!vm.loading && vm.currentGuestlist">
+    <div class="dashboard-title">
+        <h1>Dashboard: {{vm.currentGuestlist.name}} ({{vm.currentGuestlist.date|date:'dd.MM.yyyy'}})</h1>
+        <div class="dropdown-container" al-dropdown  ng-if="vm.guestlists.length > 1">
+            <button type="button" class="dropdown-toggle">Change guestlist&nbsp;<i class="fal fa-angle-down"></i></button>
+            <div class="dropdown-sheet">
+                <ul>
+                    <li ng-repeat="guestlist in vm.guestlists" ng-if="(guestlist.id !== vm.currentGuestlist.id)">
+                        <a ng-click="vm.selectGuestlist(guestlist)">{{guestlist.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-tools">
+        <button type="button" class="export" ng-click="vm.displayType = 'checkin';" ng-if="vm.displayType !== 'checkin'">
+            Switch to CheckIn Mode <i class="fal fa-exchange"></i></button>
+        <button type="button" class="export" ng-click="vm.displayType = 'default';" ng-if="vm.displayType === 'checkin'">
+            Switch to Default Mode <i class="fal fa-exchange"></i></button>
+        <button type="button" class="export">Export <i class="fal fa-inbox-out"></i></button>
+    </div>
+
+    <section>
+        <div class="dashboard columns">
+            <!--<div class="content-box segmented-button">-->
+                <!--<a class="button btn-lg"><i class="fa fa-plus-circle"></i>Add guests</a>-->
+                <!--<div class="separator"></div>-->
+                <!--<div class="dropdown-container" al-dropdown>-->
+                    <!--<button class="btn-lg dropdown-toggle">-->
+                        <!--<i class="fal fa-angle-down">-->
+                        <!--</i>-->
+                    <!--</button>-->
+                    <!--<div class="dropdown-sheet">-->
+                        <!--<ul>-->
+                            <!--<li>-->
+                                <!--<a>Do something</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<a>Do another something</a>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <div class="dashboard-column">
+                <div class="content-box" ng-if="vm.displayType === 'checkin'">
+                    <h2>Check-ins</h2>
+                    <div class="canvas-container">
+                        <canvas class="chart chart-doughnut"
+                                chart-data="[[vm.checkedInRate,100-vm.checkedInRate]]"
+                                chart-labels="[]"
+                                chart-dataset-override="[{borderWidth: 0, backgroundColor: ['#73ccb9', '#e0e0e0'], hoverBackgroundColor: ['#73ccb9', '#e0e0e0'], hoverBorderColor: '#ff0000', hoverBorderWidth: 0}]"
+                                chart-options="{cutoutPercentage: 85, tooltips: {enabled: false}, title: {enabled: true}}">
+                        </canvas>
+                        <div class="checked-in-rate">{{vm.checkedInRate}}%</div>
+                    </div>
+                    <div class="legend">
+                        <span class="legend-1">{{vm.currentGuestlist.sum_pax_planned_confirmed}} PAX confirmed</span>
+                        <span class="legend-2">{{vm.currentGuestlist.sum_pax_actual_confirmed}} Pax (checked-in)</span>
+                    </div>
+                </div>
+                <div class="content-box empty" ng-if="vm.displayType === 'default'">
+                    <h2>Confirmed</h2>
+                    <span ng-if="!vm.currentGuestlist.count_rsvps_confirmed">0</span>
+                    <span>{{vm.currentGuestlist.count_rsvps_confirmed}}</span>
+                </div>
+            </div>
+
+            <div class="dashboard-column">
+                <guestlist-rsvps-by-status guestlist-id="vm.currentGuestlist.id"></guestlist-rsvps-by-status>
+                <guestlist-rsvps-latest-state-changes guestlist-id="vm.currentGuestlist.id"></guestlist-rsvps-latest-state-changes>
+            </div>
+
+            <div class="dashboard-column">
+                <guestlist-rsvps-invited-vs-confirmed guestlist-id="vm.currentGuestlist.id"></guestlist-rsvps-invited-vs-confirmed>
+                <guestlist-failed-messages-stats ng-if="vm.acl.hasRight('messages::list')"  guestlist-id="vm.currentGuestlist.id"></guestlist-failed-messages-stats>
+            </div>
+        </div>
+    </section>
+</div>

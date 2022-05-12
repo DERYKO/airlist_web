@@ -1,0 +1,7 @@
+<label>
+    {{::field.definition.name}}
+    <i class="fal fa-info-circle" ng-if="field.definition.tooltip">
+        <span data-tooltip="{{::field.definition.tooltip}}"></span>
+    </i>
+</label>
+<al-switch config="{name:name,label:field.definition.name}" model="field.ngModel" on-change="field.definition.onChange"></al-switch>

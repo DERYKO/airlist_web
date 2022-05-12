@@ -1,0 +1,62 @@
+{
+  "picklist-contacts": [
+    "send-sms"
+  ],
+  "contacts": [
+    "export-all-contacts",
+    "duplicate-contacts"
+  ],
+  "contact-duplicates": [
+    "review-duplicates"
+  ],
+  "contact": [
+    "add-contact-to-guestlist",
+    "add-contact-to-picklists",
+    "remove-contact-from-picklist",
+    "add-contact-to-category",
+    "remove-contact-from-category",
+    "sms-contact"
+  ],
+  "contact-edit": [
+    "email-contact",
+    "add-contact-to-guestlist",
+    "add-contact-to-picklists",
+    "remove-contact-from-picklist",
+    "add-contact-to-category",
+    "remove-contact-from-category",
+    "add-nfc-tag",
+    "checkin-contact",
+    "archive-contact",
+    "delete-contact",
+    "restore-contact",
+    "sms-contact"
+  ],
+  "rsvp": [
+    "add-rsvp-to-addressbook",
+    "edit-rsvp",
+    "sms-rsvp",
+    "archive-rsvp",
+    "restore-rsvp",
+    "delete-rsvp"
+  ],
+  "passbook": [
+    "duplicate-passbook"
+  ],
+  "message": [
+    "archive-message",
+    "delete-message",
+    "restore-message"
+  ],
+  "template": [
+    "send-template"
+  ],
+  "rsvps": [
+    "update-rsvps",
+    "archive-selected",
+    "show-deleted",
+    "export-all-rsvps"
+  ],
+  "invoices":[
+    "download-invoices"
+  ]
+}

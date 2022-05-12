@@ -1,0 +1,4 @@
+{
+  "error_stat_exist" : "Stat does not exist",
+  "error_stat_load" : "Error while loading stats"
+}

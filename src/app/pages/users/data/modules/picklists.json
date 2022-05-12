@@ -1,0 +1,42 @@
+{
+  "name": "Picklists",
+  "identifier": "picklists",
+  "rights": [
+    {
+      "name": "picklist.addContacts",
+      "identifier": "picklist.addContacts"
+    },
+    {
+      "name": "picklist.bulk",
+      "identifier": "picklist.bulk"
+    },
+    {
+      "name": "picklist.contacts",
+      "identifier": "picklist.contacts"
+    },
+    {
+      "name": "picklist.delete",
+      "identifier": "picklist.delete"
+    },
+    {
+      "name": "picklist.edit",
+      "identifier": "picklist.edit"
+    },
+    {
+      "name": "picklist.list",
+      "identifier": "picklist.list"
+    },
+    {
+      "name": "picklist.removeContacts",
+      "identifier": "picklist.removeContacts"
+    },
+    {
+      "name": "picklist.removeDuplicates",
+      "identifier": "picklist.removeDuplicates"
+    },
+    {
+      "name": "picklist.view",
+      "identifier": "picklist.view"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+.pagination li {
+  display: inline-block;
+  margin: 0 2px;
+
+  a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: $border-radius-round;
+    line-height: 30px;
+    text-align: center;
+    transition: $transition;
+
+    &:hover {
+      background-color: $highlight-2;
+    }
+
+    &.active {
+      background-color: $primary;
+      color: $lightest;
+    }
+  }
+}

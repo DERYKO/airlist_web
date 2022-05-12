@@ -1,0 +1,22 @@
+<button class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Select file</h2>
+</div>
+<div class="modal-content-inner">
+    <div class="modal-body">
+        <media-library-wrapper
+                selected-fn="vm.selected(file)"
+                directory-changed-fn="vm.directoryChanged(directory)"
+                files="vm.files"
+                directories="vm.directories"
+                start-directory-uuid="vm.startDirectory"
+                allowed-mimes="vm.allowedMimes">
+            <media-library ng-non-bindable @selected="selected" :api-base-url="apiBaseUrl" :auth-token="authToken" ref="media-library" :start-directory-uuid="startDirectory" :allowed-mimes="allowedMimes"></media-library>
+        </media-library-wrapper>
+    </div>
+
+    <!--<div class="btn-group btn-fixed">-->
+        <!--<button type="submit" class="btn-confirm" ng-disabled="!vm.selectedFile" ng-click="vm.close()">Select</button>-->
+    <!--</div>-->
+
+</div>

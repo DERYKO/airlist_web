@@ -1,0 +1,47 @@
+<form ng-submit="vm.send(sendEditor)" name="sendEditor">
+    <button type="button" class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+    <div class="modal-header">
+        <h2>Send sms to {{vm.rsvp.contact.full_name}}</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Number</label>
+            <select name="send_to_override"
+                    ng-change="vm.message.send_to_override = vm.numbers[vm.send_to_override]"
+                    ng-model="vm.send_to_override">
+                <option ng-value="type" ng-repeat="(type, sms) in vm.numbers track by type">
+                    {{type}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group input-lg" ng-if="vm.send_to_override === 'custom'">
+            <label>Custom number:</label>
+            <input type="text" ng-model="vm.message.send_to_override" ng-required>
+        </div>
+        <p><b>Sending to:</b> {{vm.message.send_to_override}}</p><br>
+
+        <div class="form-group input-lg">
+            <label>Message</label>
+            <fieldset>
+                <div class="form-group small-ace-box">
+                    <label>{{ 'common.sms_content'|i18n }}</label>
+                    <customfield definition="vm.aceOptions" ng-model="vm.message.content"></customfield>
+                </div>
+            </fieldset>
+            <p class="box-section-wrap">
+                Number of sent messages: <strong>{{vm.messageValidation.smsCount}}</strong><br />
+                Number of characters: <strong>{{vm.messageValidation.length}}</strong><br/>
+                Is Unicode: <strong>{{(vm.messageValidation.isGsm) ? 'No' : 'Yes'}}</strong><br/>
+                Characters limit per message: <strong>{{vm.messageValidation.limit}}</strong>
+            </p>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn-warning" ng-click="vm.close()">{{ 'common.cancel' | i18n }}</button>
+            <button type="submit" class="btn-confirm" ng-disabled="sendEditor.$invalid || vm.sending"
+                    ng-class="{disabled: sendEditor.$invalid || vm.sending}">
+                {{vm.sending ? 'Sending' : 'Send'}}
+            </button>
+        </div>
+    </div>
+</form>

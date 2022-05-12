@@ -1,0 +1,16 @@
+<section>
+    <div class="user-avatar">
+        <img ng-src="{{vm.contact.profile_image.url}}" ng-if="vm.contact.profile_image" class="user"/>
+    </div>
+    <div class="user-general-info">
+        <p>
+            <span class="name">{{ vm.contact.full_name }}<span ng-if="vm.contact.age"> ({{ vm.contact.age }})</span>&nbsp;&nbsp;
+                <i class="fal" ng-class="{'fa-mars': (vm.contact.sex === 'male'), 'fa-venus': (vm.contact.sex === 'female'), 'fa-transgender': (vm.contact.sex === 'various')}"></i>
+                <span ng-if="vm.contact.main_subscription_status" class="subscription-status">{{ vm.contact.main_subscription_status }}</span>
+            </span><br/>
+            {{vm.contact.company_name}}<br/>
+            {{vm.contact.department}}<br ng-if="vm.contact.department"/>
+            {{vm.contact.position}}
+        </p>
+    </div>
+</section>

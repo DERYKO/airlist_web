@@ -1,0 +1,29 @@
+{
+  "crud_picklists": {
+    "create_title": "Neue Auswahlliste erstellen",
+    "details_header": "Allgemeine Information",
+    "input_permissions": "Berechtigungen",
+    "cancel": "Stornieren",
+    "save": "sparen"
+  },
+  "alerts": {
+    "select_rows": "Sie müssen zuerst Zeilen auswählen, bevor Sie sie aktualisieren'",
+    "not_found": "Auswahlliste nicht gefunden",
+    "archive_picklists": {
+      "title": "Löschen {{name}}",
+      "text": "Möchten Sie diese Auswahlliste wirklich archivieren?",
+      "success": {
+        "title": "Erfolg",
+        "text": "Die Auswahlliste wurde erfolgreich archiviert"
+      }
+    },
+    "delete_picklists": {
+      "title": "Löschen {{name}}",
+      "text": "Möchten Sie diese Auswahlliste wirklich dauerhaft löschen? Das kann nicht rückgängig gemacht werden!",
+      "success": {
+        "title": "Erfolg",
+        "text": "The picklist was deleted successful"
+      }
+    }
+  }
+}

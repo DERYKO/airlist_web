@@ -1,0 +1,7 @@
+{
+  "alerts": {
+    "download_started": "Download started",
+    "file_not_found": "File not found",
+    "error" : "Error occurred!"
+  }
+}

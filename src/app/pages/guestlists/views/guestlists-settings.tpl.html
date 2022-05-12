@@ -1,0 +1,144 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="navbar-brand">
+                {{ vm.model.name }}
+            </div>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a ng-click="vm.hide()" type="button" title="Back"><i class="pe-7s-back"></i></a>
+                </li>
+                <li>
+                    <a ng-click="workflow.action(vm.model)" class="{{workflow.class}}"
+                       ng-repeat="workflow in vm.workflows track by workflow.key"
+                       ng-if="!vm.model.archived && workflow.level =='global' && Workflows.shouldShow(vm.model)"
+                       title="{{workflow.title}}"
+                    >
+                        <i class="{{workflow.icon}}"></i>
+                    </a>
+                </li>
+                <li>
+                    <a type="button" ng-click="vm.edit()"
+                       title="Edit"
+                       ng-if="!vm.model.archived && vm.hasWritePermission"><i class="pe-7s-settings"></i>
+                    </a>
+                </li>
+                <li>
+                    <a type="button" ng-click="vm.restore(vm.model)"
+                       ng-if="vm.model.archived && vm.hasDeletePermission"><i class="pe-7s-reload"></i>
+                    </a>
+                </li>
+
+                <li class="btn-group dropdown" uib-dropdown>
+                    <a type="button" class="dropdown-toggle"
+                       ng-if="vm.hasDeletePermission || vm.hasWritePermission"
+                       uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">
+                        <i class="icon-options"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ng-if="!vm.model.archived && workflow.level == 'dropdown' && Workflows.shouldShow(vm.model)"
+                            ng-repeat="workflow in vm.workflows track by workflow.key">
+                            <a ng-click="workflow.action(vm.model)" title="{{workflow.title}}">
+                                <i class="{{workflow.icon}}"></i>
+                            </a>
+                        </li>
+                        <li ng-if="vm.model.archived && workflow.level =='archivedDropdown' && vm.hasDeletePermission && Workflows.shouldShow(vm.model)"
+                            ng-repeat="workflow in vm.workflows track by workflow.key">
+                            <a ng-click="workflow.action(vm.model)">
+                                {{workflow.title}}
+                            </a>
+                        </li>
+                        <li ng-if="!vm.model.archived" role="menuitem">
+                            <a ng-click="vm.archive()">
+                                {{'common.archive' | i18n}}
+                            </a>
+                        </li>
+                        <li ng-if="vm.model.archived" role="menuitem">
+                            <a ng-click="vm.delete(vm.model)">
+                                {{'common.delete_permanently' | i18n}}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="main-panel-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Booking Status</h4>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <dashboard-tabular-simple model="rsvps" filters="{'guestlist_id':vm.model.id}"
+                                                  groups="['status']"
+                                                  headline="Booking Status"
+                                                  empty="No Status" skip-empty="true"></dashboard-tabular-simple>
+                    </div>
+                    <div class="content">
+                        <dashboard-barchart-simple model="rsvps" filters="{'guestlist_id':vm.model.id}"
+                                                   groups="['status']"
+                                                   headline="Booking Status"
+                                                   empty="No Status" skip-empty="true"></dashboard-barchart-simple>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">General Information</h4>
+                    </div>
+                    <div class="content">
+                        <p>
+                            <a href="{{$root.user.company.data.settings.lp-api.ext_reg_domain}}{{vm.model.uid}}"
+                               target="_blank">
+                                {{$root.user.company.data.settings.lp-api.ext_reg_domain}}{{vm.model.uid}}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">
+                            Templates
+                            <a class="btn btn-success btn-simple btn-xs pull-right" ng-click="vm.selectTemplates()"
+                               title="Link Templates">
+                                <span class="plus-circle"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th style="width: 100px;" class="text-right"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="template in vm.model.templates.data">
+                                <td>{{template.name}}</td>
+                                <td class="text-right">
+                                    <a class="btn btn-danger btn-simple btn-xs"
+                                       uib-tooltip-placement="top"
+                                       uib-tooltip="Remove"
+                                       ng-click="vm.removeTemplate(template)">
+                                        <span class="fal fa-remove"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+{
+  "crud_passbooks"  : {
+    "header" : "Create new Passbook",
+    "discard"  : "Discard changes"
+  },
+  "alerts": {
+    "archive_passbook": {
+      "title": "Confirm Apple Wallet Deletion",
+      "text": "Are you sure you want to delete the apple wallet: {{name}}",
+      "btn_text": "Delete"
+    },
+    "delete_passbook": {
+      "title": "Confirm Ticket Deletion",
+      "text": "Are you sure you want to permanently delete the ticket: {{name}}",
+      "btn_text": "Delete"
+    }
+  }
+}

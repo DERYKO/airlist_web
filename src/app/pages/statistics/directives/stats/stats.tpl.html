@@ -1,0 +1,58 @@
+<div class="content-box" style="padding: 0;" ng-class="{empty: (!vm.loading && vm.data.length === 0)}">
+    <div class="pie-chart" ng-if="!vm.loading && !vm.error && vm.type == 'pie'">
+        <div class="chart-container">
+            <canvas class="chart chart-pie"
+                    chart-data="vm.chart.data"
+                    chart-labels="vm.chart.labels"
+                    chart-options="vm.chart.options"
+                    chart-dataset-override="vm.chart.dataSet"
+                    width="250"
+                    height="250">
+            </canvas>
+        </div>
+        <div class="legend" ng-if="!vm.hideLegend">
+            <span class="legend-entry"
+                  ng-repeat="entry in vm.chart.legend"><span
+                    class="bubble"
+                    style="background: {{entry.color}}"
+                    ng-if="!entry.icon"></span><span
+                    class="{{entry.icon}} icon"
+                    style="color: {{entry.color}}; font-weight: bold;"
+                    ng-if="entry.icon"></span><span class="text">{{entry.text}} ({{vm.chart.data[$index]}})</span></span>
+        </div>
+    </div>
+    <div class="count-bar-chart" ng-if="!vm.loading && !vm.error && vm.type == 'count-bar'">
+        <div class="bar-item" ng-repeat="label in vm.chart.legend">
+            <span class="count" style="color: {{(label.useColorInBar && label.color) ? label.color : ''}};">{{vm.chart.data[$index]}}</span>
+            <span class="label">{{label.text}}</span>
+        </div>
+    </div>
+    <div class="{{vm.type}}-chart" ng-if="!vm.error && vm.type !== 'pie'">
+        <table ng-if="vm.type == 'table'">
+            <tbody>
+            <tr ng-if="!vm.chart.options.tableHead"
+                ng-repeat="rowData in vm.chart.data track by $index">
+                <th>{{vm.chart.labels[$index]}}</th>
+                <td>
+                    {{rowData}}
+                </td>
+            </tr>
+            <tr ng-repeat="rowData in vm.chart.data track by $index">
+                <td ng-repeat="cell in rowData track by vm.chart.labels[$index]">
+                    <a ng-click="vm.followLink(cell.linkData)" ng-if="cell.linked">
+                        {{ cell.text }}
+                    </a>
+                    <span ng-if="!cell.linked">
+                        {{ cell.text }}
+                    </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <canvas ng-if="vm.type == 'line'"
+                class="chart chart-line"
+                chart-data="vm.chart.data" chart-labels="vm.chart.labels" chart-options="vm.chart.options">
+        </canvas>
+    </div>
+    <div class="alert alert-danger" ng-if="vm.error">{{vm.errorMessage}}</div>
+</div>

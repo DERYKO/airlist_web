@@ -1,0 +1,18 @@
+<button class="close" ng-click="vm.dismiss()"><i class="fal fa-times"></i></button>
+
+<div class="modal-header">
+    <h2>Quick Edit Rsvp</h2>
+</div>
+<div class="modal-body">
+    <div class="msg error-msg" ng-if="!vm.loading && vm.error">{{vm.errorMessage}}</div>
+    <div class="content" ng-if="!vm.loading && !vm.error">
+        <div class="form-group">
+            <label for="rsvp_cancel_reason">Cancel reason</label>
+            <textarea id="rsvp_cancel_reason" ng-model="vm.reason"></textarea>
+        </div>
+    </div>
+    <div class="btn-group">
+        <button class="" ng-click="vm.dismiss()">Close</button>
+        <button class="btn-confirm" ng-click="vm.save()" ng-if="!vm.loading && !vm.error">Save changes</button>
+    </div>
+</div>

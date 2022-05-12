@@ -1,0 +1,100 @@
+$v-accordion-spacing: 40px;
+
+$v-pane-border-color: $border-color;
+$v-pane-expanded-border-color: $primary;
+$v-pane-icon-color: $primary;
+$v-pane-hover-color: lighten($darkest, 20%);
+
+.v-pane-expanded {
+  display: table;
+}
+
+.v-pane-hidden {
+  height: 0;
+}
+
+.box-section-wrap {
+  uib-accordion h3 {
+    margin-bottom: $gutter-regular;
+    font-weight: $font-weight-regular;
+  }
+
+  uib-accordion uib-accordion-heading {
+    border-bottom: 1px solid $primary;
+  }
+
+  uib-accordion .panel-body {
+    padding-bottom: $gutter-large;
+  }
+}
+
+.wizard {
+  uib-accordion {
+
+    .panel {
+
+      &:focus {
+        outline: none;
+      }
+
+      .panel-title {
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .panel-collapse {
+        display: none;
+        &.in {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .panel-heading {
+    width: 100%;
+    //background-color: $highlight-2;
+    margin-bottom: 5px;
+    position: relative;
+
+    &:focus {
+      outline: none;
+    }
+
+    h4 {
+      margin-bottom: 0;
+    }
+
+    a {
+      display: block;
+      padding: 15px;
+      background-color: $highlight-1;
+
+      &:hover {
+        color: $text-color;
+        background-color: lighten($highlight-1, 2%);
+      }
+    }
+
+    &:after {
+      content: "\f107";
+      font-family: $icon-font-light;
+      display: block;
+      position: absolute;
+      right: 15px;
+      @include top-align;
+    }
+  }
+
+  .panel-open .panel-heading {
+    &:after {
+      content: "\f106";
+    }
+  }
+
+  .panel-content {
+    border: $border;
+    padding: 10px 15px;
+  }
+}

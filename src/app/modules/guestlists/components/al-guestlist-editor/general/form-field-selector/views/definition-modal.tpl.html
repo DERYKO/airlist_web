@@ -1,0 +1,49 @@
+<div class="modal-content">
+    <button class="close ng-scope" ng-click="vm.dismiss()"><i class="fal fa-times"></i></button>
+    <form>
+        <div class="modal-header">
+            <h2>{{'guestlists.editor.components.form-field-selector.modal.head' | translate}}<strong>{{vm.fieldConfig.default_label}}</strong>
+            </h2>
+        </div>
+        <div class="modal-body">
+            <div class="wizard">
+                <fieldset class="no-border mb-30">
+                    <div class="form-group input-full">
+                        <label for="default_field_label">{{'guestlists.editor.components.form-field-selector.modal.labels.default_label'
+                            | translate}}</label>
+                        <input id="default_field_label" type="text" ng-model="vm.fieldConfig.default_label"
+                               disabled="disabled" class="form-control"/>
+                    </div>
+                    <div class="form-group input-full">
+                        <customfield ng-model="vm.definition.label"
+                                     definition="{type:'textbox', name:('guestlists.editor.components.form-field-selector.modal.labels.label' | translate)}"
+                                     name="custom_label"
+                                     ng-required="true"></customfield>
+                    </div>
+
+                    <div class="form-group input-full">
+                        <label for="api_setting_type">{{'guestlists.editor.components.form-field-selector.modal.labels.api_setting' | translate}}</label>
+                        <select name="api_setting_type" id="api_setting_type" ng-model="vm.currentApiSettingType"
+                                ng-options="item.key as item.label for item in vm.formConfig.apiSettingTypes"></select>
+                    </div>
+
+                    <div class="" ng-if="vm.isCustomField">
+                        <h4>{{'guestlists.editor.components.form-field-selector.modal.custom_field_settings_header' | translate}}</h4>
+                        <customfield definition="{type:'builder'}"
+                                     ng-model="vm.customFieldDefinition"
+                                     name="'custom_'+index+'_name'" class="input-full"></customfield>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="btn-group">
+                <button class="" ng-click="vm.dismiss()">Cancel</button>
+                <button class="btn-delete" ng-if="vm.isCustomField">
+                    Delete field
+                </button>
+                <button class="btn-confirm" ng-click="vm.save()">
+                    Update field settings
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

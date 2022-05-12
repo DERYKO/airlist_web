@@ -1,0 +1,78 @@
+{
+  "name": "Messaging",
+  "identifier": "messaging",
+  "rights": [
+    {
+      "name": "message.bulk",
+      "identifier": "message.bulk"
+    },
+    {
+      "name": "message.delete",
+      "identifier": "message.delete"
+    },
+    {
+      "name": "message.export",
+      "identifier": "message.export"
+    },
+    {
+      "name": "message.list",
+      "identifier": "message.list"
+    },
+    {
+      "name": "message.send",
+      "identifier": "message.send"
+    },
+    {
+      "name": "message.test",
+      "identifier": "message.test"
+    },
+    {
+      "name": "message.view",
+      "identifier": "message.view"
+    },
+    {
+      "name": "template.bulk",
+      "identifier": "template.bulk"
+    },
+    {
+      "name": "template.delete",
+      "identifier": "template.delete"
+    },
+    {
+      "name": "template.edit",
+      "identifier": "template.edit"
+    },
+    {
+      "name": "template.fixBefree",
+      "identifier": "template.fixBefree"
+    },
+    {
+      "name": "template.list",
+      "identifier": "template.list"
+    },
+    {
+      "name": "template.type.bulk",
+      "identifier": "template.type.bulk"
+    },
+    {
+      "name": "template.type.delete",
+      "identifier": "template.type.delete"
+    },
+    {
+      "name": "template.type.edit",
+      "identifier": "template.type.edit"
+    },
+    {
+      "name": "template.type.list",
+      "identifier": "template.type.list"
+    },
+    {
+      "name": "template.type.view",
+      "identifier": "template.type.view"
+    },
+    {
+      "name": "template.view",
+      "identifier": "template.view"
+    }
+  ]
+}

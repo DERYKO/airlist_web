@@ -1,0 +1,169 @@
+{
+  "title_details": "Seatplan details",
+  "title": "Title",
+  "seatplans": {
+    "defaults": {
+      "group_name": "new group"
+    },
+    "messages": {
+      "created": "Success",
+      "created_message": "the seatplan was created successful",
+      "seatplan_not_found": "Not found",
+      "seatplan_not_found_messages": "seatplan could not be found",
+      "edited": "Success",
+      "edited_message": "changes have been saved successfull",
+      "builder_error": "error",
+      "builder_error_message": "error while getting builder"
+    },
+    "fields": {
+      "title": "Title",
+      "custom_1_rsvp_element": "Custom RSVP element 1"
+    },
+    "views": {
+      "editor": {
+        "head": {
+          "cancel": "Cancel",
+          "save": "Save"
+        },
+        "general": {
+          "headline": "General",
+          "labels": {
+            "title": "Title"
+          }
+        },
+        "groups": {
+          "headline": "Groups",
+          "actions": {
+            "add_group": "add group",
+            "remove_group": "remove group"
+          },
+          "legends": {
+            "grid": "Grid",
+            "styles": "Styles",
+            "general": "General"
+          },
+          "style_tabs": {
+            "general": "general",
+            "font": "font",
+            "element_defaults": "elements",
+            "element_defaults_hover": "elements hover",
+            "element_defaults_selected": "elements selected"
+          },
+          "labels": {
+            "title": "title",
+            "grid_width": "width",
+            "grid_height": "height",
+            "background": "background",
+            "font": {
+              "family": "family",
+              "size": "size",
+              "color": "color"
+            },
+            "defaults": {
+              "default": "BG - Default",
+              "blocked": "BG - Blocked",
+              "bookable": {
+                "confirmed": "BG - Booked",
+                "pending": "BG - Pending",
+                "invited": "BG - Invited"
+              }
+            }
+          }
+        },
+        "custom_rsvp_element_attributes": {
+          "headline": "Custom rsvp element attributes",
+          "labels": {
+            "attribute": "attribute"
+          }
+        }
+      },
+      "list": {
+        "title": "Seatplans",
+        "actions": {
+          "add_new": "add new",
+          "row_details": "show Details",
+          "row_edit": "edit",
+          "row_delete": "delete"
+        }
+      },
+      "details": {
+        "head": {
+          "cancel": "back"
+        },
+        "groups": {
+          "headline": "Groups",
+          "legends": {
+            "preview": "preview",
+            "grid": "grid",
+            "styles": "style"
+          },
+          "labels": {
+            "title": "title",
+            "grid_width": "width",
+            "grid_height": "height",
+            "background": "background",
+            "font": {
+              "family": "family",
+              "size": "size",
+              "color": "color"
+            },
+            "defaults": {
+              "default": "BG - Default",
+              "blocked": "BG - Blocked",
+              "bookable": {
+                "confirmed": "BG - Confirmed",
+                "pending": "BG - Pending",
+                "invited": "BG - Invited"
+              }
+            }
+          },
+          "actions": {
+            "edit_elements": "Edit elements"
+          },
+          "style_tabs": {
+            "general": "general",
+            "font": "font",
+            "element_defaults": "elements",
+            "element_defaults_hover": "elements hover",
+            "element_defaults_selected": "elements selected"
+          }
+        },
+        "custom_rsvp_element_attributes": {
+          "headline": "Custom rsvp element attributes",
+          "labels": {
+            "attribute": "attribute",
+            "type": "type",
+            "enum": "enum",
+            "name": "name"
+          }
+        }
+      },
+      "elements": {
+        "head": {
+          "save": "save",
+          "cancel": "zurück"
+        }
+      }
+    },
+    "states": {
+      "create": {
+        "title": "Create new seatplan"
+      },
+      "edit": {
+        "title": "Edit seatplan"
+      }
+    }
+  },
+  "groups": {
+    "title": "Seatplan Group",
+    "fields": {
+      "title": "title",
+      "grid_width": "grid width",
+      "grid_height": "grid height",
+      "style_information": {
+        "self": "style information",
+        "background": "background"
+      }
+    }
+  }
+}

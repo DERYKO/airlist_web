@@ -1,0 +1,15 @@
+<div class="content-box" ng-class="{empty: (!vm.loading && vm.data.length === 0)}">
+    <h2>Invoices paid vs. open <i>(last updated {{vm.data.timestamp|date:"HH:mm"}})</i></h2>
+    <div class="empty-box" ng-if="!vm.loading && vm.noData">
+        <i class="fal fa-chart-line"></i>
+        <p>No existing invoices<br>
+    </div>
+    <canvas class="chart-bar"
+            chart-data="vm.chartData.data"
+            chart-labels="vm.chartData.labels"
+            chart-series="vm.chartData.series"
+            chart-options="vm.chartData.options"
+            chart-dataset-override="vm.chartData.dataSetOverride"
+            ng-if="vm.showChart">
+    </canvas>
+</div>

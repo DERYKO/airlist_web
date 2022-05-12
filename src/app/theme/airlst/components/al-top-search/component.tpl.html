@@ -1,0 +1,21 @@
+<div class="quick-search dropdown-container" ng-if="vm.acl.hasRight('addressbook::list') && vm.acl.hasRight('addressbook::view')">
+    <form class="search" ng-submit="vm.performSearch()">
+        <input type="text" placeholder="Search contacts" ng-model="vm.searchValue">
+        <button name="tableSearchSubmit"><i class="fal fa-search"></i></button>
+    </form>
+    <div class="dropdown-sheet" ng-class="{open: vm.dropdownShown}">
+        <h2>Results <span ng-if="!vm.loading">({{vm.store.state.pagination.total}} found)</span></h2>
+        <ul class="dropdown-list">
+            <li ng-if="vm.loading" class="loading">
+                <strong><i class="fal fa-sync fa-spin"></i></strong>
+            </li>
+            <li ng-if="!vm.loading && vm.results.length > 0" ng-repeat="contact in vm.results">
+                <a ng-click="vm.goToContact(contact)">
+                    <img ng-src="{{contact.profile_image.url}}" ng-if="contact.profile_image" class="avatar"/>
+                    {{contact.full_name}} <span ng-if="contact.code">({{contact.code}})</span><br/>
+                    <small ng-if="contact.company_name">{{contact.company_name}}</small>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

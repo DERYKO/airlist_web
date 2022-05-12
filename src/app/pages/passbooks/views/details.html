@@ -1,0 +1,120 @@
+<h1>{{vm.model.name}}</h1>
+
+<section ng-if="vm.currentView == 'general'">
+    <h2>Labels</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <div class="data-list">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>{{'passbooks.primary_label' | i18n}}</td>
+                        <td>{{vm.model.primary_label}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{'passbooks.secondary_label' | i18n}}</td>
+                        <td>{{vm.model.secondary_label}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{'passbooks.auxiliary_label' | i18n}}</td>
+                        <td>{{vm.model.auxiliary_label}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{'passbooks.code_text' | i18n}}</td>
+                        <td>{{vm.model.code_text}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <h2>Colors</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <div class="data-list">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>{{'passbooks.background_color' | i18n}}</td>
+                        <td>
+                            <p>
+                                RGB({{vm.model.background_color.red}}, {{vm.model.background_color.green}},
+                                {{vm.model.background_color.blue}})
+                            </p>
+                            <p class="text-center"
+                               style="height:30px; background-color: rgb({{vm.model.background_color.red}},{{vm.model.background_color.green}},{{vm.model.background_color.blue}})"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{'passbooks.fore_color' | i18n}}</td>
+                        <td>
+                            <p>
+                                RGB({{vm.model.fore_color.red}}, {{vm.model.fore_color.green}},
+                                {{vm.model.fore_color.blue}})
+                            </p>
+
+                            <p class="text-center"
+                               style="padding:5px; color: rgb({{vm.model.fore_color.red}},{{vm.model.fore_color.green}},{{vm.model.fore_color.blue}});  background-color: rgb({{vm.model.background_color.red}},{{vm.model.background_color.green}},{{vm.model.background_color.blue}})">
+                                Sample Text
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{'passbooks.label_color' | i18n}}</td>
+                        <td>
+                            <p>
+                                RGB({{vm.model.label_color.red}}, {{vm.model.label_color.green}},
+                                {{vm.model.label_color.blue}})
+                            </p>
+                            <p class="text-center"
+                               style="height:30px; background-color: rgb({{vm.model.label_color.red}},{{vm.model.label_color.green}},{{vm.model.label_color.blue}})"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{'passbooks.secondary_label' | i18n}}</td>
+                        <td>{{vm.model.secondary_label}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{'passbooks.auxiliary_label' | i18n}}</td>
+                        <td>{{vm.model.auxiliary_label}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{'passbooks.code_text' | i18n}}</td>
+                        <td>{{vm.model.code_text}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section ng-if="vm.currentView == 'images'">
+    <h2>Logo</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <img ng-src="{{vm.model.image_logo.url}}" class="img-responsive" ng-if="vm.model.image_logo"/>
+            <div class="alert alert-info" ng-if="!vm.model.image_logo">No image yet.</div>
+        </div>
+    </div>
+    <h2>Icon</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <img ng-src="{{vm.model.image_icon.url}}" class="img-responsive" ng-if="vm.model.image_icon"/>
+            <div class="alert alert-info" ng-if="!vm.model.image_icon">No image yet.</div>
+        </div>
+    </div>
+    <h2>Thumbnail</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <img ng-src="{{vm.model.image_thumbnail.url}}" class="img-responsive" ng-if="vm.model.image_thumbnail"/>
+            <div class="alert alert-info" ng-if="!vm.model.image_thumbnail">No image yet.</div>
+        </div>
+    </div>
+    <h2>Background</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <img ng-src="{{vm.model.image_background.url}}" class="img-responsive" ng-if="vm.model.image_background"/>
+            <div class="alert alert-info" ng-if="!vm.model.image_background">No image yet.</div>
+        </div>
+    </div>
+</section>

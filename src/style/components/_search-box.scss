@@ -1,0 +1,32 @@
+.search {
+  display: inline-block;
+  position: relative;
+  margin-right: $gutter-regular;
+
+  @include breakpoint($small) {
+    width: 100%;
+  }
+
+  input[name="tableSearch"] {
+    padding-right: 40px;
+
+    @include breakpoint($small) {
+      width: 100%;
+    }
+  }
+
+  button[name="tableSearchSubmit"] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: $input-height;
+    cursor: pointer;
+
+    i {
+      font-size: $icon-small;
+      color: $light;
+    }
+
+  }
+}

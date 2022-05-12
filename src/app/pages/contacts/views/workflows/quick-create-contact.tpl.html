@@ -1,0 +1,94 @@
+<button class="close" ng-click="vm.dismissModal()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Quick Create Contact</h2>
+</div>
+<div class="modal-body">
+    <form name="quickCreateContactForm" ng-class="{'submitted':quickCreateContactForm.$submitted}" novalidate
+          ng-submit="vm.save(quickCreateContactForm)">
+        <h3 class="mt-0">Personal data</h3>
+        <fieldset>
+            <div class="form-group">
+                <label for="qcc_sex">Sex</label>
+                <select name="sex" id="qcc_sex" ng-model="vm.model.sex">
+                    <option value="unknown">Unknown</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="various">Various</option>
+                </select>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label for="qcc_title">Title</label>
+                <input type="text" name="qcc_title" id="qcc_title" ng-model="vm.model.title"/>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label for="qcc_firstname">Firstname</label>
+                <input type="text" name="qcc_firstname" id="qcc_firstname" ng-model="vm.model.first_name"/>
+            </div>
+            <div class="form-group">
+                <label for="qcc_lastname">Lastname</label>
+                <input type="text" name="qcc_lastname" id="qcc_lastname" ng-model="vm.model.last_name"/>
+            </div>
+        </fieldset>
+        <h3>Company Data</h3>
+        <fieldset>
+            <div class="form-group">
+                <label for="qcc_company">Company</label>
+                <input type="text" name="qcc_company" id="qcc_company" ng-model="vm.model.company_name"/>
+            </div>
+            <div class="form-group">
+                <label for="qcc_department">Department</label>
+                <input type="text" name="qcc_department" id="qcc_department" ng-model="vm.model.department"/>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label for="qcc_position">Position</label>
+                <input type="text" name="qcc_position" id="qcc_position" ng-model="vm.model.position"/>
+            </div>
+        </fieldset>
+        <h3>Address</h3>
+        <fieldset>
+            <div class="form-group">
+                <label for="qcc_street">Street</label>
+                <input type="text" name="qcc_street" id="qcc_street" ng-model="vm.model.street"/>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label for="qcc_zip">Postalcode</label>
+                <input type="text" name="qcc_zip" id="qcc_zip" ng-model="vm.model.zip"/>
+            </div>
+            <div class="form-group">
+                <label for="qcc_city">City</label>
+                <input type="text" name="qcc_city" id="qcc_city" ng-model="vm.model.city"/>
+            </div>
+        </fieldset>
+        <h3>Communication Data</h3>
+        <fieldset>
+            <div class="form-group">
+                <label for="qcc_email">Email</label>
+                <input type="text" name="qcc_email" id="qcc_email" ng-model="vm.model.email"/>
+            </div>
+            <div class="form-group">
+                <label for="qcc_email">Phone</label>
+                <input type="text" name="qcc_phone" id="qcc_phone" ng-model="vm.model.phone"/>
+            </div>
+        </fieldset>
+        <h3>Custom Information</h3>
+        <fieldset>
+            <div class="form-group" ng-repeat="(fieldName, field) in vm.customFields">
+                <customfield ng-model="vm.model[fieldName]"
+                             definition="field.original"
+                             name="qcc_{{fieldName}}"></customfield>
+            </div>
+        </fieldset>
+        <div class="btn-group">
+            <button type="button" class="btn-dismiss" ng-click="vm.dismissModal()">Cancel</button>
+            <button type="submit" class="btn-confirm">Save</button>
+        </div>
+    </form>
+</div>

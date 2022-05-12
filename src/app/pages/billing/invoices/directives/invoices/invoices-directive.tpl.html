@@ -1,0 +1,56 @@
+<button ng-click="vm.createNewBid()">
+    <i class="fal fa-plus-circle"></i>&nbsp;BID
+</button>
+<button ng-click="vm.createNewInvoice()">
+    <i class="fal fa-plus-circle"></i>&nbsp;Invoice
+</button>
+<button ng-click="vm.createNewCancellation()">
+    <i class="fal fa-plus-circle"></i>&nbsp;Cancellation
+</button>
+<table>
+    <thead>
+    <tr>
+        <th>Number</th>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Sum brutto</th>
+        <th style="width: 335px;">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="invoice in vm.invoices">
+        <td>{{invoice.invoice_number}}</td>
+        <td>{{invoice.created_at|date:'dd. MM. yyyy'}}</td>
+        <td>{{invoice.type}}</td>
+        <td>{{(invoice.type === 'invoice') ? invoice.status : ''}}</td>
+        <td>{{invoice.sum_brutto | number:2}} {{invoice.currency}}</td>
+        <td>
+            <a ui-sref="app.billing.invoices.details({id: invoice.id})" class="btn btn-simple btn-sm btn-info">
+                <i class="fal fa-search"></i>
+            </a>
+            <a ng-click="vm.updateAddress(invoice)" class="btn btn-simple btn-sm btn-info" title="Update address">
+                <i class="fal fa-align-justify"></i>
+            </a>
+            <a ng-click="vm.sendInvoice(invoice)" class="btn btn-simple btn-sm btn-primary" ng-if="invoice.status !== 'draft'">
+                <i class="fal fa-envelope"></i>
+            </a>
+            <a ng-click="vm.downloadInvoice(invoice)" class="btn btn-simple btn-sm btn-success">
+                <i class="fal fa-download"></i>
+            </a>
+            <a ng-click="vm.editInvoice(invoice)" class="btn btn-simple btn-sm btn-info" ng-if="invoice.type === 'bid' || invoice.status === 'draft'">
+                <i class="fal fa-pencil"></i>
+            </a>
+            <a ng-click="vm.deleteInvoice(invoice)" class="btn btn-simple btn-sm btn-danger" ng-if="invoice.type === 'bid' || invoice.status === 'draft'">
+                <i class="fal fa-trash-alt"></i>
+            </a>
+            <a ng-click="vm.showPayments(invoice)" class="btn btn-simple btn-sm btn-danger" ng-if="invoice.type === 'invoice' && invoice.status !== 'draft'">
+                <i class="fal fa-money"></i>
+            </a>
+            <a ng-click="vm.finishInvoice(invoice)" class="btn btn-simple btn-sm btn-success" ng-if="invoice.status === 'draft'">
+                <i class="fal fa-check-square"></i>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>

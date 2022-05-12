@@ -1,0 +1,33 @@
+<label for="{{name}}" ng-if="field.definition.name">{{field.definition.name}}
+    <span ng-if="field.definition.required">*</span>
+    <i class="fal fa-info-circle" ng-if="field.definition.tooltip">
+        <span data-tooltip="{{::field.definition.tooltip}}"></span>
+    </i>
+</label>
+<p class="help-text" ng-if="field.definition.help">{{field.definition.help}}</p>
+
+<div class="inline-block" style="margin-bottom: 2px;">
+    <img ng-src="{{field.definition.currentImage}}"
+         style="max-height: 250px"
+         ng-if="!field.definition.hidePreview && !field.ngModel && !field.ngModel.$ngfBlobUrl && field.definition.currentImage && field.ngModel !== 'delete'">
+</div>
+
+<div class="inline-block" style="margin-bottom: 2px;" ng-show="!field.definition.hidePreview && field.ngModel && field.ngModel !== 'delete' && field.ngModel.$ngfBlobUrl">
+    <img ngf-src="field.ngModel" style="max-height: 250px">
+</div>
+
+
+<input name="{{name}}"
+       id="{{name}}"
+       type="file"
+       class="form-control"
+       ng-model="field.ngModel"
+       accept="{{field.definition.accept ? field.definition.accept : 'image/*'}}"
+       ngf-select>
+
+<button type="button"
+        class="btn-warning"
+        ng-click="field.removeImage()"
+        ng-if="field.definition.deleteImageButton &&  (field.definition.currentImage || field.ngModel) && field.ngModel !== 'delete'">
+    Delete Image
+</button>

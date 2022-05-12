@@ -1,0 +1,114 @@
+<div class="text-right">
+    <a ng-click="vm.close()" class="btn btn-default btn-close"><i class="fal fa-close"></i></a>
+</div>
+<div class="modal-body">
+    <div class="view-main">
+        <div class="container-fluid">
+            <div class="table-responsive">
+                <h2>
+                    Seat: {{vm.seat.name}}
+                    <div class="pull-right btn-group">
+                        <a class="btn btn-sm btn-default"  ng-if="$root.user.permissions.seatmap_assign" ng-click="vm.assign()">{{vm.seat.rsvp_id ? 'Reassign' : 'Assign'}}</a>
+                        <a class="btn btn-sm btn-default"  ng-if="$root.user.permissions.seatmap_edit" ng-click="vm.edit()">Edit</a>
+                        <a class="btn btn-sm btn-danger"  ng-if="$root.user.permissions.seatmap_edit" ng-click="vm.destroy()">Delete</a>
+                    </div>
+                </h2>
+                <table class="table table-bordered">
+                    <tr>
+                        <td class="td-label">Super Group</td>
+                        <td>{{vm.seat.super_group}}</td>
+                        <td class="td-label">Group</td>
+                        <td>{{vm.seat.group}}</td>
+                        <td class="td-label">Status</td>
+                        <td>{{vm.seat.status}}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Row</td>
+                        <td>{{vm.seat.row}}</td>
+                        <td class="td-label">Column</td>
+                        <td>{{vm.seat.column}}</td>
+                        <td class="td-label">Capacity</td>
+                        <td>{{vm.seat.capacity}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-responsive" ng-if="vm.rsvp">
+                <h2>
+                    {{vm.rsvp.contact.data.full_name || 'No Name'}}
+                    <div class="pull-right btn-group">
+                        <a class="btn btn-sm btn-default" ng-click="vm.contactDetails()">Contact Details</a>
+                        <a class="btn btn-sm btn-default" ng-click="vm.editRsvp()">Edit</a>
+                    </div>
+                </h2>
+                <table class="table table-bordered">
+                    <tr>
+                        <td rowspan="4">
+                            <div class="frame text-center">
+                                <div class="db10">
+                                    <a ng-click="vm.contactDetails()">
+                                        <div class="image" style="background-image:url({{vm.rsvp.contact.data.profile_image.url}}); "></div>
+                                    </a>
+                                </div>
+                                <div class="text-muted">
+                                    <p>
+                                        <span ng-bind-html="vm.rsvp.contact.data.full_name"></span><br>
+                                        <span ng-bind-html="vm.rsvp.contact.data.company_name"></span>
+                                    </p>
+                                    <a ng-click="vm.contactDetails()">
+                                        Details
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="td-label">Pax planned</td>
+                        <td>{{vm.rsvp.pax_planned}}</td>
+                        <td class="td-label">Status</td>
+                        <td>{{vm.rsvp.status}}</td>
+                        <td class="td-label">Email</td>
+                        <td>{{vm.rsvp.contact.data.preferred_email || 'N/A'}}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Pax actual</td>
+                        <td>{{vm.rsvp.pax_actual}}</td>
+                        <td class="td-label">Payment</td>
+                        <td>{{vm.rsvp.payment}}</td>
+                        <td class="td-label">Telefon</td>
+                        <td>{{vm.rsvp.contact.data.preferred_phone || 'N/A'}}</td>
+                    </tr>
+                    <tr>
+
+                        <td class="td-label">Code</td>
+                        <td>{{vm.rsvp.code}}</td>
+                        <td class="td-label">Priority</td>
+                        <td>{{vm.rsvp.priority}}</td>
+                        <td class="td-label">Handy</td>
+                        <td>{{vm.rsvp.contact.data.preferred_phone_2 || 'N/A'}}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-label">Used code</td>
+                        <td>{{vm.rsvp.used_code}}</td>
+                        <td class="td-label">Color</td>
+                        <td>{{vm.rsvp.color}}</td>
+                        <td class="td-label">Web</td>
+                        <td>{{vm.rsvp.contact.data.preferred_web || 'N/A'}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .td-label {
+        background-color: #f9f9f9;
+    }
+
+    .frame .image {
+        width: 100%;
+        height: 160px;
+        max-width: 160px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+</style>

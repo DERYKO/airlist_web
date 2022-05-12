@@ -1,0 +1,50 @@
+{
+  "name": "General",
+  "identifier": "general",
+  "rights": [
+    {
+      "name": "checkins",
+      "identifier": "checkins"
+    },
+    {
+      "name": "company.user.bulk",
+      "identifier": "company.user.bulk"
+    },
+    {
+      "name": "company.user.delete",
+      "identifier": "company.user.delete"
+    },
+    {
+      "name": "company.user.edit",
+      "identifier": "company.user.edit"
+    },
+    {
+      "name": "company.user.list",
+      "identifier": "company.user.list"
+    },
+    {
+      "name": "company.user.view",
+      "identifier": "company.user.view"
+    },
+    {
+      "name": "files.delete",
+      "identifier": "files.delete"
+    },
+    {
+      "name": "files.upload",
+      "identifier": "files.upload"
+    },
+    {
+      "name": "files.view",
+      "identifier": "files.view"
+    },
+    {
+      "name": "jobLog",
+      "identifier": "jobLog"
+    },
+    {
+      "name": "updateCompany",
+      "identifier": "updateCompany"
+    }
+  ]
+}

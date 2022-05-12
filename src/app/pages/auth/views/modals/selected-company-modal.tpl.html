@@ -1,0 +1,16 @@
+<button class="close" ng-click="vm.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Selected company to use</h2>
+</div>
+<div class="modal-body">
+    <p>Please select the company you want to login to.</p>
+    <fieldset>
+        <div class="form-group">
+            <select class="input-lg" ng-options="company as company.name for company in vm.availableCompanies" ng-model="vm.selectedCompany"></select>
+        </div>
+    </fieldset>
+    <div class="btn-group">
+        <button type="button" ng-click="vm.cancel()" class="btn btn-delete align-left">Cancel</button>
+        <button type="button" ng-click="vm.selectCompany()" class="btn btn-confirm primary">Use selected company</button>
+    </div>
+</div>

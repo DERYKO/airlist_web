@@ -1,0 +1,38 @@
+{
+  "crud_documents": {
+    "general": "Allgemeine Information",
+    "create_title": "Erstellen Sie ein neues Dokument",
+    "input_title": "Titel",
+    "input_template": "Vorlage",
+    "btn_create": "Dokument erstellen",
+    "cancel": "Stornieren",
+    "created_at": "Hergestellt in",
+    "documents_unavailable": "Keine Dokumente verfügbar",
+    "documents_loading": "Dokumente werden geladen",
+    "more": "Mehr"
+  },
+  "crud_templates"  : {
+    "create_title"  : "Neue Dokumentvorlage erstellen"
+  },
+  "alerts": {
+    "error_template_not_found" : "Dokumentvorlage nicht gefunden",
+    "save_template": {
+      "title": "Gerettet",
+      "text": "Änderungen an der Vorlage wurden gespeichert"
+    },
+    "create_document": {
+      "title": "Erfolg",
+      "text": "Dokument erstellt"
+    },
+    "error_loading": "Fehler beim Laden von Dokumenten: {{e}}",
+    "delete_document": {
+      "title": "Löschen?",
+      "text": "Möchten Sie dieses Dokument wirklich löschen?",
+      "btn_text": "Ja, lösche es!",
+      "success": {
+        "title": "Gelöscht",
+        "text": "Dokument wurde erfolgreich gelöscht"
+      }
+    }
+  }
+}

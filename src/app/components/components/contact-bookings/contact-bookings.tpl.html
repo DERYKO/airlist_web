@@ -1,0 +1,35 @@
+<div class="details-expanded-last-messages">
+    <table class="table-guests">
+        <tr>
+            <th><strong>Status</strong></th>
+            <th><strong>Guestlist</strong></th>
+            <th><strong>PAX planned</strong></th>
+            <th><strong>Code</strong></th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="rsvp in vm.items">
+            <td>
+                <span class="{{rsvp.status}}">{{rsvp.status}}</span>
+            </td>
+            <td>{{rsvp.guestlist.name}}</td>
+            <td>{{rsvp.pax_actual ? rsvp.pax_actual : 0}}/{{rsvp.pax_planned}}</td>
+            <td>{{rsvp.code}}</td>
+            <td class="actions align-right">
+                <a data-tooltip="View booking details" class="btn" ng-click="vm.openRsvpDetails(rsvp)"
+                   ng-if="vm.acl.hasRight('rsvps::view')">
+                    <i class="fal fa-external-link-square"></i>
+                </a>&nbsp;
+                <a class="btn" ng-click="vm.sendEmail(rsvp)" data-tooltip="Send email"
+                   ng-if="vm.acl.hasRight('messages::send-email')"><i
+                        class="fal fa-envelope"></i>
+                </a>&nbsp;<a data-tooltip="Edit booking" class="btn" ng-click="vm.editRsvp(rsvp)"
+                             ng-if="vm.acl.hasRight('rsvps::edit')">
+                <i class="fal fa-edit"></i></a>&nbsp;<a data-tooltip="Delete booking" class="btn btn-warning"
+                                                        ng-click="vm.deleteRsvp(rsvp)"
+                                                        ng-if="vm.acl.hasRight('rsvps::archive')">
+                <i class="fal fa-trash-alt"></i>
+            </a>
+            </td>
+        </tr>
+    </table>
+</div>

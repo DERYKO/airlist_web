@@ -1,0 +1,27 @@
+<div class="modal-dialog ">
+    <div class="modal-content">
+        <button class="close ng-scope" ng-click="vm.dismiss()"><i class="fal fa-times"></i></button>
+        <form>
+            <div class="modal-header">
+                <h2>{{'guestlists.modals.after-create.title' | translate}}</h2>
+            </div>
+            <div class="modal-body">
+                <div class="wizard">
+                    <h2>{{'guestlists.modals.after-create.actions_head' | translate}}</h2>
+
+                </div>
+                <div class="btn-group align-center">
+                    <button ng-click="vm.goToImport()" class="btn-confirm">
+                        {{'guestlists.modals.after-create.actions.import' | translate}}
+                    </button>
+                    <button ng-click="vm.goToSettings()" class="btn-confirm">
+                        {{'guestlists.modals.after-create.actions.settings' | translate}}
+                    </button>
+                    <button ng-click="vm.goToFieldDefinition()" class="btn-confirm">
+                        {{'guestlists.modals.after-create.actions.fields' | translate}}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

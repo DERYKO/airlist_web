@@ -1,0 +1,12 @@
+{
+  "rsvps": {
+    "states": {
+      "listed": "Listed",
+      "invited": "Invited",
+      "requested": "Requested",
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled",
+      "waitlisted": "Waitlisted"
+    }
+  }
+}

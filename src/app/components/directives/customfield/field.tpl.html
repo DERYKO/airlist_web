@@ -1,0 +1,51 @@
+<fieldset>
+    <div class="form-group">
+        <label>Select Field</label>
+        <selectize items="field.definition.availableFields"
+                   ng-model="field.ngModel.slug"
+                   on-change="field.ngModel.slug = model; onChange();"
+                   ng-disabled="!field.definition.availableFields.length"
+                   max-items="1"
+                   ng-required></selectize>
+    </div>
+</fieldset>
+<fieldset>
+    <div class="form-group">
+        <label for="{{::field.customIdentifier}}-field-label">Override Label</label>
+        <input type="text" ng-model="field.ngModel.label" class="form-control"
+               id="{{::field.customIdentifier}}-field-label"/>
+    </div>
+    <div class="form-group">
+        <label for="{{::field.customIdentifier}}-field-description">Description</label>
+        <input type="text" ng-model="field.ngModel.description" class="form-control"
+               id="{{::field.customIdentifier}}-field-description"/>
+    </div>
+</fieldset>
+<fieldset class="fieldset-container">
+    <div class="form-group">
+        <input type="checkbox" id="{{::field.customIdentifier}}-field-required" ng-true-value="true"
+               ng-false-value="false" ng-model="field.ngModel.required">
+        <label for="{{::field.customIdentifier}}-field-required">Required</label>
+    </div>
+    <div class="form-group">
+        <input type="checkbox" id="{{::field.customIdentifier}}-field-locked" ng-true-value="true"
+               ng-false-value="false" ng-model="field.ngModel.locked">
+        <label for="{{::field.customIdentifier}}-field-locked">Locked</label>
+    </div>
+    <div class="form-group">
+        <input type="checkbox" id="{{::field.customIdentifier}}-field-auto_fill" ng-true-value="true"
+               ng-false-value="false" ng-model="field.ngModel.auto_fill">
+        <label for="{{::field.customIdentifier}}-field-auto_fill">Pre-Fill</label>
+    </div>
+    <div class="form-group">
+        <input type="checkbox" id="{{::field.customIdentifier}}-field-unique" ng-true-value="true"
+               ng-false-value="false" ng-model="field.ngModel.unique">
+        <label for="{{::field.customIdentifier}}-field-unique">Unique on this list</label>
+    </div>
+    <div class="form-group" ng-if="field.ngModel.unique" style="padding-top: 0;">
+        <label for="{{::field.customIdentifier}}-field-unique-count">How often can the field be filled with the same
+            value?</label>
+        <input type="number" ng-model="field.ngModel.unique_count" min="1" class="form-control"
+               id="{{::field.customIdentifier}}-field-unique-count" style="width: 70px;"/>
+    </div>
+</fieldset>

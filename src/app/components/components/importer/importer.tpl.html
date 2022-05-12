@@ -1,0 +1,164 @@
+<h1>Import {{vm.type}}s </h1>
+<al-wizard steps="vm.steps" on-change="vm.goToStep(selectedStep)"></al-wizard>
+
+<form class="wizard" novalidate>
+    <section ng-if="vm.currentStep.id === 'data'">
+        <ng-form name="collectForm" ng-class="{'form-invalid': collectForm}">
+            <div class="content-box">
+                <div class="box-section-wrap">
+                    <h2>Choose {{ vm.type+'.plural' |  i18n }} to be imported:</h2>
+                    <div class="form-group input-lg" style=width:100%;>
+                        <label>Paste import data</label>
+                        <p class="help-text">Simply copy & paste from Excel or any .csv file format</p>
+                        <customfield ng-model="vm.csv" definition="vm.pasteArea" ng-required></customfield>
+                    </div>
+                    <div class="form-group input-sm">
+                        <label>Or upload a csv file instead</label>
+                        <p class="help-text">If you do not want to copy & paste, just upload your .csv file here:</p>
+                        <input name="import_csv"
+                               id="import_csv"
+                               type="file"
+                               class="form-control"
+                               ng-model="vm.model.inputFile"
+                               ng-change="vm.uploadCsvFileData()"
+                               accept=".csv"
+                               style="width: 300px;"
+                               ngf-select>
+                        <button class="btn-confirm ng-scope" ng-if="vm.type === 'rsvp'" ng-click="vm.setCsvFileData()" type="input">Upload file data</button>
+                    </div>
+                    <div class="form-group input-lg">
+                        <label>Use first row as column headers</label>
+                        <p class="help-text">Select Yes if the first row contains column headlines and should not be imported</p>
+                        <customfield definition="vm.headersToggle" ng-model="vm.hasHeaders"></customfield>
+                    </div>
+                </div>
+            </div>
+        </ng-form>
+    </section>
+
+    <section ng-if="vm.currentStep.id === 'mapping'">
+        <div class="content-box">
+            <div class="box-section-wrap table-options">
+                <div class="options-left">
+                    <span>Field definition</span>
+                </div>
+                <p class="help-text">Select Yes if the first row contains column headlines and should not be imported</p>
+            </div>
+            <div class="box-section-wrap main-table table-other">
+                <table>
+                    <tr>
+                        <th>Select field to import to</th>
+                        <th>Example values</th>
+                    </tr>
+                    <tr ng-repeat="field in vm.parsed.data[0] track by $index">
+                        <td style="width:300px">
+                            <selectize ng-model="vm.model.columns[$index]" on-change3="vm.columnChange($index)" selectize-options="vm.model.field_config" items="vm.column_fields" options="vm.column_fields"">
+                                <!--<option value="{{ item.key }}"-->
+                                        <!--ng-repeat="item in vm.fields track by item.key | orderBy:'label'">-->
+                                    <!--{{item.label}}-->
+                                <!--</option>-->
+                            </selectize>
+                        </td>
+                        <td>
+                            <span>{{ vm.samples[$index] | join:', '}}</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <h2>Settings</h2>
+
+                <div class="form-group" ng-if="vm.type == 'contact' && vm.type !== 'rsvp'">
+                    <label>Add to addressbook</label>
+                    <customfield definition="{type:'boolean'}" ng-model="vm.model.addressbook"></customfield>
+                </div>
+                <div class="form-group" ng-if="vm.type !== 'rsvp'">
+                    <label>Add imported contacts to categories:</label>
+                    <select-box config="vm.categories" model="vm.model.categories"></select-box>
+                </div>
+                <div class="form-group" ng-if="vm.type === 'rsvp'">
+                    <label>Default value for Pax Planned</label>
+                    <p class="help-text">Used only when no specific value is provided during import</p>
+                    <customfield definition="{type:'textbox'}" ng-model="vm.model.default_pax_planned"></customfield>
+                </div>
+                <div class="form-group" ng-if="vm.type === 'rsvp'">
+                    <label> Default value for rsvp 'status' </label>
+                    <selectize items="vm.model.rsvp_statuses" name="status" ng-model="vm.model.default_status">
+                        <!--<option value="requested">Requested</option>-->
+                        <!--<option value="listed">Listed</option>-->
+                        <!--<option value="invited">Invited</option>-->
+                        <!--<option value="confirmed">Confirmed</option>-->
+                        <!--<option value="cancelled">Cancelled</option>-->
+                        <!--<option value="waitlisted">Waitlisted</option>-->
+                    </selectize>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section ng-if="vm.currentStep.id === 'review'">
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <h2>Review import settings</h2>
+                <p>
+                    Records to Import:<strong> {{vm.parsed.data.length}}</strong>
+                </p>
+                <p>
+                    Add to addressbook:<strong> {{vm.model.addressbook ? 'Yes' : 'No'}}</strong>
+                </p>
+                <p>
+                    Add to categories:<strong> {{ vm.displayCategories() }}</strong>
+                    <strong ng-if="!vm.model.categories">No categories</strong>
+                </p>
+                <p ng-if="vm.model.default_pax_planned">
+                    Default Pax Planned:<strong> {{vm.model.default_pax_planned}}</strong>
+                </p>
+                <p ng-if="vm.model.default_status">
+                    Default Status:<strong> {{vm.model.default_status}}</strong>
+                </p>
+            </div>
+            <div class="box-section-wrap">
+                <h2>Mapping</h2>
+                <div class="main-table table-other">
+                    <table>
+                        <thead>
+                        <tr style="width:300px">
+                            <th>Field to import to</th>
+                            <th>Example values</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="col in vm.model.columns track by $index">
+                            <td>{{ vm.fields[col].label ? vm.fields[col].label : 'Do not import column' }}</td>
+                            <td>{{ vm.samples[$index] | join:', '}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="fixed-footer">
+            <div class="btn-group">
+                <button type="button" ng-click="vm.cancel()" class="btn-warning">Cancel</button>
+
+                <button type="button" ng-click="vm.previousStep()" ng-if="vm.currentStep !== vm.steps[0]">
+                    <i class="fal fa-angle-left"></i> Previous Step
+                </button>
+
+                <button type="button" ng-click="vm.save(vm.model, guestlistForm)" class="btn-confirm"
+                        ng-if="vm.currentStep === vm.steps[vm.steps.length-1]">Done
+                </button>
+
+                <button ng-click="vm.nextStep()" class="btn-confirm"
+                        ng-if="vm.currentStep !== vm.steps[vm.steps.length-1]">Next Step <i
+                        class="fal fa-angle-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+</form>

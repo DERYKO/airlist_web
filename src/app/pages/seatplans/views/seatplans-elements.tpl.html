@@ -1,0 +1,278 @@
+<nav class="navbar">
+    <div class="navigation-buttons">
+        <div class="back-button">
+            <a ng-click="vm.cancel()">
+                <span class="fal fa-caret-left"></span>
+            </a>
+        </div>
+    </div>
+    <div class="navbar-header">
+        <div class="navbar-brand">
+            Elements of {{ vm.group.title }}
+        </div>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a class="btn btn-simple btn-primary" ng-click="vm.save()"
+                   uib-tooltip="{{'seatplans.seatplans.views.elements.head.save' | i18n }}"
+                   tooltip-placement="bottom">
+                    <span class="fal fa-save"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="main-panel-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card" id="groupElementsTreeContainer">
+                    <div class="header text-right">
+                        <button type="button" ng-click="vm.addNewChild(vm.builder)"
+                                class="btn btn-success btn-simple btn-xs">
+                            <span class="plus-circle"></span>
+                            add new root element
+                        </button>
+                    </div>
+                    <div class="content">
+                        <div ui-tree>
+                            <ol ui-tree-nodes="vm.builder.objects" ng-model="vm.builder.objects">
+                                {{parentElem=vm.builder;""}}
+                                <li ng-repeat="object in vm.builder.objects as values" ui-tree-node
+                                    ng-include="'seatplanElement'"></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="content">
+                        <dl class="dl-horizontal">
+                            <dt>grid width</dt>
+                            <dd>{{vm.drawInfo.grid_width}}</dd>
+                            <dt>grid height</dt>
+                            <dd>{{vm.drawInfo.grid_height}}</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="card">
+                    <canvas></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="seatplanElement">
+    <div ui-tree-handle>
+        {{object.title}}
+    </div>
+    <div class="actions">
+        <button type="button" ng-click="vm.editElement(object, parentElem.objects)"
+                class="btn btn-primary btn-simple btn-xs">
+            <span class="fal fa-edit"></span>
+            Bearbeiten
+        </button>
+        <button type="button" ng-click="vm.addNewChild(object, parentElem.objects)"
+                class="btn btn-success btn-simple btn-xs">
+            <span class="fal fa-plus-circle"></span>
+            Add new child
+        </button>
+        <button type="button" ng-click="vm.duplicateElement(values, object)" class="btn btn-info btn-simple btn-xs">
+            <span class="fal fa-copy"></span>
+            Duplicate element
+        </button>
+        <button type="button" ng-click="vm.removeElement(values, object)" class="btn btn-danger btn-simple btn-xs">
+            <span class="fal fa-trash"></span>
+            Remove element
+        </button>
+    </div>
+    <ol ui-tree-nodes="object.objects" ng-model="object.objects">
+        {{parentElem=object;""}}
+        <li ng-repeat="object in object.objects as values" ui-tree-node ng-include="'seatplanElement'"></li>
+    </ol>
+</script>
+
+<script type="text/ng-template" id="editElementModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">{{vm.element.title}}</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <div class="form-vertical">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Title</label>
+                        <div>
+                            <input type="text" ng-model="vm.element.title" class="form-control" name="title"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">Bookable</label>
+                        <div>
+                            <input type="checkbox" value="1" ng-model="vm.element.bookable"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">Pax</label>
+                        <div>
+                            <input type="number" ng-model="vm.element.pax" class="form-control" name="pax"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">Pos X</label>
+                        <div>
+                            <input type="number" ng-model="vm.element.pos.x" class="form-control" name="pos_x"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">Pos y</label>
+                        <div>
+                            <input type="number" ng-model="vm.element.pos.y" class="form-control" name="pos_y"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">Size X</label>
+                        <div>
+                            <input type="number" ng-model="vm.element.size.x" class="form-control" name="size_x"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">Size y</label>
+                        <div>
+                            <input type="number" ng-model="vm.element.size.y" class="form-control" name="size_y"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">Background</label>
+                        <div>
+                            <input type="text" ng-model="vm.element.background" class="form-control" name="background"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">Background hover</label>
+                        <div>
+                            <input type="text" ng-model="vm.element.background_hover" class="form-control"
+                                   name="background_hover"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <fieldset>
+                <legend>Labels</legend>
+                <ul role="tablist" class="nav nav-tabs">
+                    <li role="presentation" ng-class="{active: $first}"
+                        ng-repeat="labelType in vm.labelTypes">
+                        <a data-toggle="tab"
+                           data-target="#seatplan-element-labels-{{labelType.mainGroup}}-{{labelType.subGroup}}">
+                            {{labelType.label}}
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="seatplan-element-labels-{{labelType.mainGroup}}-{{labelType.subGroup}}" class="tab-pane"
+                         ng-class="{active: $first}"
+                         ng-repeat="labelType in vm.labelTypes">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Text</label>
+                                <div class="col-md-9">
+                                    <input type="text"
+                                           ng-model="vm.element.labels[labelType.mainGroup][labelType.subGroup].text"
+                                           class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Font Color</label>
+                                <div class="col-md-9">
+                                    <input type="text"
+                                           ng-model="vm.element.labels[labelType.mainGroup][labelType.subGroup].font.color"
+                                           class="form-control"/>
+                                    <p class="help-block">
+                                        <small>Leave empty for default value</small>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Font Size</label>
+                                <div class="col-md-9">
+                                    <input type="text"
+                                           ng-model="vm.element.labels[labelType.mainGroup][labelType.subGroup].font.size"
+                                           class="form-control"/>
+                                    <p class="help-block">
+                                        <small>Leave empty for default value</small>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Font Size</label>
+                                <div class="col-md-9">
+                                    <input type="text"
+                                           ng-model="vm.element.labels[labelType.mainGroup][labelType.subGroup].font.family"
+                                           class="form-control"/>
+                                    <p class="help-block">
+                                        <small>Leave empty for default value</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">Border Color</label>
+                        <div>
+                            <input type="text" ng-model="vm.element.border.color" class="form-control"
+                                   name="border_color"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">Border width</label>
+                        <div>
+                            <input type="text" ng-model="vm.element.border.width" class="form-control"
+                                   name="border_width"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group">
+            <button type="button" ng-click="vm.cancel()">Cancel</button>
+            <button class="btn-confirm" type="button" ng-click="vm.ok()">OK</button>
+        </div>
+    </div>
+</script>

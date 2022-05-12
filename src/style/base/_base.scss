@@ -1,0 +1,183 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100vh;
+  background-color: $main-background;
+}
+
+.vertical-stripe {
+  height: 100vh;
+  width: 8px;
+  position: fixed;
+  z-index: 9997;
+  background-image: $gradient-stripe;
+
+  @include breakpoint($small) {
+    width: 5px;
+  }
+}
+
+a {
+  color: $text-color;
+  text-decoration: none;
+  transition: $transition;
+
+  &:hover {
+     color: $primary;
+   }
+}
+
+h1, h2, h3, h4 {
+  margin-top: 0;
+  font-weight: $font-weight-bold;
+}
+
+h1 {
+  font-size: $font-size-heading;
+  margin-bottom: $gutter-large;
+  margin-top: $gutter-large * 0.7;
+
+  @include breakpoint($small) {
+    font-size: 21px;
+  }
+}
+
+h2 {
+  font-size: $font-medium;
+}
+
+h3 {
+  font-size: $font-regular;
+}
+
+h4 {
+  margin-bottom: $gutter-small;
+}
+
+p {
+  line-height: 24px;
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  line-height: 20px;
+}
+
+ul.bulleted-list {
+  list-style-type: circle;
+  margin-left: 17px;
+}
+
+svg {
+  color: $darkest;
+}
+
+table {
+  border-collapse: collapse;
+  word-wrap: break-word;
+}
+
+strong {
+  font-weight: $font-weight-bold;
+}
+
+.ace_scroller {
+  border: $border;
+}
+
+.text-green {
+  color: $secondary!important;
+}
+
+.text-red {
+  color: $warning!important;
+}
+
+hr {
+  border: none;
+  border-bottom: $divider;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.loading-indicator {
+  padding: 10px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 16px;
+}
+
+.selectize-dropdown {
+  margin-bottom: 80px;
+}
+
+.no-scroll {
+  @include breakpoint($small) {
+    overflow: hidden;
+  }
+}
+
+
+.base-table {
+  th, td {
+    border: $border;
+
+    &:not(:first-child) {
+      text-align: center;
+    }
+  }
+
+  td {
+    position: relative;
+    padding: 12px 10px;
+
+    input[type="radio"] + label,
+    input[type="checkbox"] + label {
+      line-height: 1;
+
+      &:before {
+        margin: 0;
+      }
+    }
+
+  }
+}
+
+.fixed-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table-matrix {
+  input[type="radio"] + label,
+  input[type="checkbox"] + label {
+    display: initial;
+    padding: 10px;
+
+    &:before {
+      top: 10px;
+    }
+  }
+}

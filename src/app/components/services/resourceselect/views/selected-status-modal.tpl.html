@@ -1,0 +1,16 @@
+<button class="close" ng-click="vm.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Select status to use</h2>
+</div>
+<div class="modal-body">
+    <p>Please select a status.</p>
+    <fieldset>
+        <div class="form-group">
+            <select class="input-lg" ng-options="status as label for (status, label) in vm.availableStates" ng-model="vm.selectedStatus"></select>
+        </div>
+    </fieldset>
+    <div class="btn-group">
+        <button type="button" ng-click="vm.cancel()" class="btn btn-delete align-left">Cancel</button>
+        <button type="button" ng-click="vm.selectStatus()" class="btn btn-confirm primary">Use selected status</button>
+    </div>
+</div>

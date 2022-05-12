@@ -1,0 +1,16 @@
+<button class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>{{:: vm.category.name}}</h2>
+</div>
+<div class="modal-body">
+    <form ng-submit="vm.save()">
+        <div class="form-group">
+            <label for="category_name">Name</label>
+            <input  id="category_name" ng-model="vm.category.name" name="name">
+        </div>
+    </form>
+    <div class="btn-group">
+        <button class="btn-delete" type="button" ng-click="vm.trash()">Delete</button>
+        <button class="btn-confirm" ng-click="vm.save()">Save</button>
+    </div>
+</div>

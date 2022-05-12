@@ -1,0 +1,44 @@
+.switch {
+  top: 7px;
+  height: 20px;
+  width: 37px;
+  background-color: $darkest;
+  border: none;
+
+  .table-options & {
+    vertical-align: top;
+    margin: 0 6px;
+  }
+
+  &.checked {
+    background: $secondary;
+    border-color: $secondary;
+
+    small {
+      left: 19px;
+    }
+  }
+
+  small {
+    width: 16px;
+    height: 16px;
+    top: 2px;
+    left: 2px;
+  }
+}
+
+.before-switch, .after-switch {
+  line-height: 38px;
+
+  .table-options & {
+    margin-right: 0;
+  }
+}
+
+.before-switch {
+  margin-right: 6px;
+}
+
+.after-switch {
+  margin-left: 6px;
+}

@@ -1,0 +1,34 @@
+{
+  "crud_ticket": {
+    "title": "Neues PDF-Ticket erstellen",
+    "ticket_archived_title": "Dieses Ticket wurde gelöscht",
+    "dimensions": "Maße",
+    "width": "Breite (mm)",
+    "Height": "Höhe (mm)",
+    "text": {
+      "position_top": "Textposition oben (mm)",
+      "position_left": "Textposition links (mm)",
+      "size ": "Textgröße (mm)",
+      "color": "Textfarbe (HEX)",
+      "qr_top": "QR Position oben(mm)",
+      "qr_left": "QR Position oben (mm)",
+      "qr_size ": "QR Größe (mm)"
+    },
+    "content " : "Inhalt",
+    "background_image" : "Hintergrundbild",
+    "general" : "Allgemeines",
+    "input_ticket_name" : "Ticket Name",
+    "discard ": "Änderungen verwerfen"
+  },
+  "alerts" : {
+    "archive_pdf_ticket" : {
+      "title" : "Bestätigen Sie das Löschen des Tickets",
+      "text" : "Möchten Sie das Ticket wirklich löschen ?: {{ticket_name}}"
+    },
+    "delete_pdf_ticket" : {
+      "title" : "Bestätigen Sie das Löschen des Tickets",
+      "text" : "Möchten Sie das Ticket wirklich dauerhaft löschen?: {{ticket_name}}"
+    }
+
+  }
+}

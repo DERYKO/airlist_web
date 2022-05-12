@@ -1,0 +1,140 @@
+//TODO add this class to the body when popup is open
+.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 15px;
+  height: 100vh;
+  background: rgba($darkest, 0.5);
+  z-index: 1000;
+  overflow: scroll;
+
+  .modal-lg {
+    .modal-content {
+      max-width: $max-width-element*1.5;
+      width: 100%;
+    }
+  }
+
+  .modal-xlg {
+    .modal-content {
+      width: 100%;
+      max-width: $max-width-element*2.3;
+
+      .modal-content-inner {
+        width: 100%;
+        max-width: 100%;
+        height: 89vh;
+        overflow: scroll;
+      }
+    }
+  }
+}
+
+.modal-content {
+
+  @include box-basic($box-shadow-large, 0);
+
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: $max-width-element;
+  position: relative;
+
+  .modal-xlg & {
+    margin-top: 20px;
+  }
+
+  .close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+
+    .fal {
+      font-weight: $font-weight-bold;
+    }
+  }
+}
+
+.modal-header {
+  background-color: $main-background;
+  padding: $gutter-regular ($gutter-large * 1.5) $gutter-regular $gutter-large;
+  width: 100%;
+
+  @include breakpoint($small) {
+    padding-left: 15px;
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+.modal-body {
+  padding: $gutter-large;
+  margin-bottom: 60px;
+
+  @include breakpoint($small) {
+    padding: 15px;
+  }
+  h3 {
+    font-size: $font-medium;
+    margin-bottom: 15px;
+    margin-top: 20px;
+  }
+
+  p {
+    margin-bottom: $gutter-regular;
+  }
+
+  .checkbox-list .form-group {
+    padding: 0;
+  }
+}
+
+.visibility-filter {
+
+  input {
+    width: 100%;
+    margin-bottom: $gutter-regular;
+  }
+
+  .data-list table td:last-child {
+    text-align: right;
+    padding-right: 0;
+  }
+}
+
+.preset-desc {
+  margin-left: 5px;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+//modal with export options
+
+.modal-body .table-options {
+  .options-row {
+    span {
+      display: inline-block;
+      margin-bottom: $gutter-regular;
+    }
+  }
+
+  .columns-row {
+    line-height: $font-xlarge;
+  }
+}
+
+fieldset.inputs-list {
+  input[type="checkbox"] + label,
+  input[type="radio"] + label {
+    line-height: 30px;
+  }
+}

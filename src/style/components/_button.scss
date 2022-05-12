@@ -1,0 +1,141 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+button, a.button, .sweet-alert button {
+  font-family: $text-font-stack;
+  font-size: 13px;
+  color: $darkest;
+  font-weight: $font-weight-regular;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: $transition;
+  border-radius: $border-radius-large;
+  outline: none;
+  text-align: center;
+
+  i {
+    vertical-align: text-bottom;
+    font-size: $icon-regular;
+  }
+
+  span {
+    vertical-align: bottom;
+  }
+
+  &:hover {
+    color: $primary;
+  }
+
+  &.btn-regular, &.btn-confirm, &.btn-delete, &.confirm, &.btn-redirect, &.btn-light {
+    //box-shadow: $box-shadow-button;
+    padding: 7px 25px;
+    min-width: 70px;
+    height: 35px;
+
+    &[disabled] {
+      background-color: $border-color!important;
+      border: $border;
+      cursor: not-allowed;
+
+      &:hover {
+        border: $border;
+      }
+    }
+  }
+
+  &.btn-round {
+    min-width: 35px;
+    height: 35px;
+    padding: 0;
+    line-height: 35px;
+    border-radius: 50%;
+  }
+
+  &.btn-confirm, &.btn-delete, &.confirm, &.btn-redirect  {
+    color: $lightest;
+  }
+
+  &.btn-regular {
+    background-color: #e4e8ec;
+
+    &:hover {
+      background-color: darken($main-background, 5%);
+      color: inherit;
+    }
+
+    &:active {
+      background-color: darken($main-background, 10%);
+    }
+  }
+
+  &.btn-confirm, &.confirm {
+    @include full-color-button($secondary);
+  }
+
+  &.btn-delete {
+    @include full-color-button($warning);
+  }
+
+  &.btn-redirect {
+    background-color: $warning-soft;
+
+    &:hover {
+      background-color: darken($warning-soft, 20%);
+    }
+  }
+
+  &.btn-warning {
+    color: $warning;
+
+    &:hover {
+      color: darken($warning, 20%);
+    }
+  }
+
+  &.btn-grey {
+    color: $dark;
+  }
+
+  &.btn-no-transition {
+    transition: none;
+  }
+
+  &.btn-large {
+    padding: 15px 25px;
+  }
+
+  &.btn-block {
+    width: 100%;
+  }
+
+  &.btn-light {
+    background-color: $lighter;
+    i {
+      color: $light;
+    }
+  }
+}
+
+.btn-group {
+  text-align: right;
+  padding-top: $gutter-regular;
+
+  button {
+    margin-left: $gutter-regular;
+  }
+}
+
+button.full-width-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 0;
+}
+
+.form-group {
+  button {
+    vertical-align: top;
+  }
+}

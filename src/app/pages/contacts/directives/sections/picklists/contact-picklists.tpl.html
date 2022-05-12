@@ -1,0 +1,10 @@
+<section ng-if="vm.show && (vm.error || vm.picklists.length > 0)">
+    <h2>Picklists</h2>
+    <div class="content-box box-900">
+        <div class="box-section-wrap">
+            <span class="msg error-msg" ng-if="vm.error">{{vm.error}}</span>
+            <span ng-repeat="picklist in vm.picklists">
+                <a ng-click="vm.goToPicklist(picklist)">{{picklist.name}}</a><span ng-if="!$last">&nbsp;&nbsp;|&nbsp;&nbsp;</span></span>
+        </div>
+    </div>
+</section>

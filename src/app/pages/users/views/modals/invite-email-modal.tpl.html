@@ -1,0 +1,27 @@
+<button class="close" ng-click="vm.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Selected company to use</h2>
+</div>
+<div class="modal-body">
+    <p>Please enter the email you want to invite to this company.</p>
+    <fieldset>
+        <div class="form-group">
+            <label for="email_to_invite">E-Mail to invite</label>
+            <input type="email"
+                   ng-model="vm.emailToInvite"
+                   id="email_to_invite"/>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="form-group input-lg">
+            <label>Roles for the new user</label>
+            <selectize ng-model="vm.rolesToAttach" items="vm.availableRoles"
+                       selectize-options="{labelField: 'name', valueField: 'id', maxItems: vm.availableRoles.length}"></selectize>
+        </div>
+    </fieldset>
+    <div class="btn-group">
+        <button type="button" ng-click="vm.cancel()" class="btn btn-delete align-left">Cancel</button>
+        <button type="button" ng-click="vm.inviteEmail()" class="btn btn-confirm primary">Use selected company
+        </button>
+    </div>
+</div>

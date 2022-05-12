@@ -1,0 +1,18 @@
+<label for="{{name}}" ng-if="field.definition.name">{{field.definition.name}} <span
+        ng-if="field.definition.required">*</span>
+    <i class="fal fa-info-circle" ng-if="field.definition.tooltip">
+        <span data-tooltip="{{::field.definition.tooltip}}"></span>
+    </i>
+</label>
+<p class="help-text" ng-if="field.definition.help">{{field.definition.help}}</p>
+<ng-quill-editor ng-model="field.ngModel" modules="{
+                    toolbar: [
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{'header': [1, 2, 3, 4, 5, 6, false]}],
+                        [{'list': 'ordered'}, {'list': 'bullet'}],
+                        [{'script': 'sub'}, {'script': 'super'}],
+                        [{'color': []}, {'background': []}, {'direction': 'rtl'}, {'align': []}],
+                        ['link','video','clean']
+                    ]
+                }"
+                 custom-options="[{import: 'attributors/style/align'},{import: 'attributors/style/background'},{import: 'attributors/style/color'},{import: 'attributors/style/direction'},{import: 'attributors/style/font'},{import: 'attributors/style/size'}]"></ng-quill-editor>

@@ -1,0 +1,90 @@
+<h1>{{vm.headline}}</h1>
+
+<form name="form" ng-class="{'submitted':form.$submitted}" class="edit-screen" novalidate>
+    <h2>General</h2>
+    <section>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <fieldset>
+                    <div class="form-group">
+                        <label>{{vm.schema.properties.title.title}}</label>
+                        <input type="text" ng-model="vm.model.title" name="title"/>
+                    </div>
+                    <div class="form-group">
+                        <label>{{vm.schema.properties.subject.title}}</label>
+                        <input type="text" ng-model="vm.model.subject" name="subject"/>
+                    </div>
+                    <div class="form-group">
+                        <label>{{vm.schema.properties.number_circle_id.title}}</label>
+                        <select ng-model="vm.model.number_circle_id"
+                                ng-options="numberCircle.id as numberCircle.title for numberCircle in vm.numberCircles"
+                                name="category_id">
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label>{{vm.schema.properties.text1.title}}</label>
+                        <textarea ng-model="vm.model.text1" name="text1"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>{{vm.schema.properties.text2.title}}</label>
+                        <textarea ng-model="vm.model.text2" name="text2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>{{vm.schema.properties.text3.title}}</label>
+                        <textarea ng-model="vm.model.text3" name="text3"></textarea>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label>{{vm.schema.properties.tax_rate.title}}</label>
+                        <input type="number" ng-model="vm.model.tax_rate"
+                               name="tax_rate" step="0.01"/>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </section>
+
+    <h2>PDF Template (use HTML)</h2>
+    <section>
+        <div class="content-box beefree">
+            <customfield ng-model="vm.model.template" definition="vm.ace_field"></customfield>
+        </div>
+    </section>
+
+    <h2>Enable For</h2>
+    <section>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <div class="card">
+                    <div class="form-group">
+                        <label>Bid</label>
+                        <customfield definition="{type:'boolean'}"
+                                     ng-model="vm.model.enable_for_bid"></customfield>
+                    </div>
+                    <div class="form-group">
+                        <label>Invoice</label>
+                        <customfield definition="{type:'boolean'}"
+                                     ng-model="vm.model.enable_for_invoice"></customfield>
+                    </div>
+                    <div class="form-group">
+                        <label>Cancellation</label>
+                        <customfield definition="{type:'boolean'}"
+                                     ng-model="vm.model.enable_for_cancellation"></customfield>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="fixed-footer">
+            <div class="btn-group">
+                <button class="btn-warning" ng-click="vm.cancel()">Cancel</button>
+                <button ng-click="vm.save(vm.model)" type="submit" class="btn-confirm">Done</button>
+            </div>
+        </div>
+    </section>
+</form>

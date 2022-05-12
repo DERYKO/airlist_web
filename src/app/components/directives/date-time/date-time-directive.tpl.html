@@ -1,0 +1,31 @@
+<div class="datetime-wrapper">
+    <div class="row">
+        <div class="col-xs-8 date-wrapper">
+            <p class="input-group">
+                <input type="text"
+                       class="form-control"
+                       sf-changed="form"
+                       uib-datepicker-popup="dd.MM.yyyy"
+                       ng-change="dateTime.updateDate()"
+                       ng-model="dateTime.date"
+                       is-open="dateTime.dateOpen"
+                       min-date="dateTime.dateOptions.minDate"
+                       max-date="dateTime.dateOptions.maxDate"
+                       init-date="dateTime.dateOptions.defaultDate"
+                       close-text="Close"/>
+                <span class="input-group-btn">
+                     <button type="button" class="btn grey" ng-click="dateTime.dateOpen = !dateTime.dateOpen"><i
+                             class="fal fa-calendar-o"></i></button>
+                </span>
+            </p>
+        </div>
+        <div class="col-xs-4 time-wrapper">
+            <uib-timepicker ng-model="dateTime.time"
+                            ng-change="dateTime.updateTime()"
+                            hour-step="dateTime.timeOptions.hourStep"
+                            minute-step="dateTime.timeOptions.minuteStep"
+                            show-meridian="dateTime.timeOptions.showMeridian">
+            </uib-timepicker>
+        </div>
+    </div>
+</div>

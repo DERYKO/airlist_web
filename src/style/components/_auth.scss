@@ -1,0 +1,71 @@
+.logo-auth {
+  width: 100%;
+  text-align: center;
+  padding: $gutter-large $gutter-regular;
+
+  img {
+    max-width: 130px;
+  }
+}
+
+.auth-container {
+  margin: 0 15px;
+}
+
+.auth {
+  max-width: $max-width-element;
+  margin: 0 auto;
+
+}
+
+.login-switch {
+
+  text-align: center;
+  margin: 10px 0 $gutter-large 0;
+
+  a.button {
+    display: inline-block;
+    width: 48%;
+    font-size: $font-regular;
+    vertical-align: middle;
+    padding: $gutter-regular;
+
+    &.active {
+      color: $primary;
+      background-color: $highlight-3;
+    }
+  }
+}
+
+h2.login-heading {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.hint {
+  margin: 10px 0;
+}
+
+.auth input {
+  width: 100% !important;
+  display: block;
+}
+
+.auth .form-group {
+  display: block;
+}
+
+.btn-center {
+  text-align: center;
+  margin: 20px 0 10px 0;
+}
+
+footer {
+  text-align: right;
+  padding: 0 $gutter-regular $gutter-regular;
+  height: $gutter-large * 1.5;
+}
+
+.full-height {
+  min-height: calc(100vh - 90px);
+}

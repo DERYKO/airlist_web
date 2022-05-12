@@ -1,0 +1,24 @@
+{
+  "modals": {
+    "create": {
+      "title": "Erstellen einer Neue Gästeliste",
+      "labels": {
+        "name": "Name des Events",
+        "start_date": "Beginn des Events",
+        "end_date": "Ende des Events",
+        "permission": "Privates Event"
+      },
+      "help_texts": {
+        "name": "Wird intern zum bennen des Events verwendet",
+        "permission": "Für private Gästelisten können in den Event Settings festlegen wer ausser Ihnen das Event noch sehen darf."
+      },
+      "messages": {
+        "invalid_data": "Die eingegebenen Daten sind nicht valid. Bitte überprüfen Sie diese erneut.",
+        "api_error": "Beim erstellen der Liste ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+      }
+    },
+    "after-create": {
+      "title": "Die Gästeliste wurde erfolgreich erstellt!"
+    }
+  }
+}

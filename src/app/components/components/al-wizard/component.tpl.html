@@ -1,0 +1,11 @@
+<div class="content-box">
+    <ul class="wizard box-section-wrap">
+        <li ng-class="{complete: step.completed, current: step.current}" ng-repeat="step in vm.steps track by $index" ng-if="!step.disabled">
+            <a ng-click="vm.clickAction(step)">
+                <div class="step-number" ng-if="step.completed"><i class="fal fa-check"></i></div>
+                <div class="step-number" ng-if="!step.completed">{{step.index}}</div>
+                <span class="step-desc">{{step.label}}</span>
+            </a>
+        </li>
+    </ul>
+</div>

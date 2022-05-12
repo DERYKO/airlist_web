@@ -1,0 +1,13 @@
+<button class="close" ng-click="vm.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Confirm Group Deletion: {{vm.model.group}} </h2>
+</div>
+<div class="modal-body">
+    <p>
+        Are you sure you want to delete the group <b>{{vm.model.group}}</b> with all the seats and allocations within the group?
+    </p>
+    <div class="btn-group">
+        <button class="btn-warning" ng-click="vm.cancel()">Cancel</button>
+        <button class="btn-delete" ng-click="vm.save(vm.model)">Delete</button>
+    </div>
+</div>

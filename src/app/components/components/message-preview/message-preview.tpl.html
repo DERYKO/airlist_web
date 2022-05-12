@@ -1,0 +1,27 @@
+<div class="booking-details"><h3>
+    Last message ({{vm.message.type}})
+    <a data-tooltip="Go to messages page" class="button" ui-sref="app.messages.details({id: vm.message.id})">
+        <i class="fal fa-external-link-square"></i>
+    </a>
+</h3>
+    <div class="details-wrapper datalist collayout">
+        <table>
+            <tbody>
+            <tr ng-if="vm.message.type === 'email'">
+                <td>Subject:</td>
+                <td colspan="3">{{vm.message.subject}}</td>
+            </tr>
+            <tr ng-if="vm.message.type === 'sms'">
+                <td>Content:</td>
+                <td colspan="3">{{vm.message.content}}</td>
+            </tr>
+            <tr>
+                <td>Timestamp:</td>
+                <td>{{vm.message.created_at | date:'d.M.yyyy HH:mm'}}</td>
+                <td>Status:</td>
+                <td>{{vm.message.status}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

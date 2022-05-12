@@ -1,0 +1,10 @@
+{
+  "name": "Membercards",
+  "identifier": "membercards",
+  "rights": [
+    {
+      "name": "nfcTagReader",
+      "identifier": "nfcTagReader"
+    }
+  ]
+}

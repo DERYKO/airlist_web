@@ -1,0 +1,14 @@
+<table class="table table-muted">
+    <thead>
+        <tr>
+            <th style="width: 60%;">{{ctrl.headline}}</th>
+            <th style="width: 40%;"></th>
+        </tr>
+    </thead>
+    <tbody>
+    	<tr ng-repeat="(group, count) in ctrl.data" ng-if="!ctrl.skipEmpty || count > 0">
+			<td>{{group ? group : (ctrl.empty || 'unknown')}}</td>
+			<td>{{count}} {{ctrl.unit}}</td>
+		</tr>
+    </tbody>
+</table>

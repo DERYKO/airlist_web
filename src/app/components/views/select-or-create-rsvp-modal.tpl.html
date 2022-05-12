@@ -1,0 +1,12 @@
+<button class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Select or Create a new Booking</h2>
+</div>
+<div class="modal-body">
+    <p>You can either select an existing booking or make a new booking from an existing contact or a new contact</p>
+    <div class="btn-group">
+        <button ng-click="vm.selectRsvp()">Existing Booking</button>
+        <button ng-click="vm.makeBooking()">Existing Contact</button>
+        <button ng-click="vm.addContact()">New Contact</button>
+    </div>
+</div>

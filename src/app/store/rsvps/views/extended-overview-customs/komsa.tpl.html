@@ -1,0 +1,36 @@
+<div class=" data-list col-layout">
+    <table>
+        <tbody>
+        <tr>
+            <td>Status:</td>
+            <td>{{::vm.rsvp.status}}</td>
+        </tr>
+        <tr>
+            <td>Code:</td>
+            <td>{{::vm.rsvp.code}}</td>
+        </tr>
+        <tr>
+            <td>Pax planned:</td>
+            <td>{{::vm.rsvp.pax_planned}}</td>
+        </tr>
+        <tr ng-repeat="customIndex in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,38,39,40]"
+            ng-if="vm.rsvp.guestlist.data['custom_'+customIndex+'_name'].name">
+            <td>{{::vm.rsvp.guestlist.data['custom_'+customIndex+'_name'].name}}</td>
+            <td ng-if="vm.rsvp.guestlist.data['custom_'+customIndex+'_name'].type === 'boolean'">{{::(vm.rsvp['custom_'
+                +
+                customIndex]) ? 'Yes' : 'No'}}
+            </td>
+            <td ng-if="vm.rsvp.guestlist.data['custom_'+customIndex+'_name'].type !== 'boolean'">{{::vm.rsvp['custom_' +
+                customIndex]}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div ng-if="vm.rsvp.lastMessage.data && vm.rsvp.lastMessage.data.id">
+    <h4>Last Message:</h4>
+    <p>
+        <a ui-sref="app.messages.details({id:vm.rsvp.lastMessage.data.id})">{{::vm.rsvp.lastMessage.data.subject}}</a><br/>
+        Status: {{::vm.rsvp.lastMessage.data.status}}
+    </p>
+</div>

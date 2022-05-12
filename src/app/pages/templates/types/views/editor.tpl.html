@@ -1,0 +1,24 @@
+<h1>{{vm.headline}}</h1>
+
+<section>
+    <h2>General</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <fieldset>
+                <div class="form-group">
+                    <label for="template_type_name">Name</label>
+                    <input type="text" class="form-control" ng-model="vm.model.name" name="name" id="template_type_name">
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="fixed-footer">
+        <div class="btn-group">
+            <button ng-click="vm.close()">Cancel</button>
+            <button ng-click="vm.save(vm.model)" class="btn-confirm">Done</button>
+        </div>
+    </div>
+</section>

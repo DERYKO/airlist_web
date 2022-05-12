@@ -1,0 +1,11 @@
+<div class="col-md-12">
+    <contact model="vm.contact"
+             manager="vm.manager"
+             on-save="vm.create(model)"
+             on-update="vm.refresh()"
+             back-route="vm.backRoute"
+             on-archive="vm.archive(rsvp)"
+             on-restore="vm.restore(rsvp)"
+             on-delete="vm.delete(rsvp)">
+    </contact>
+</div>

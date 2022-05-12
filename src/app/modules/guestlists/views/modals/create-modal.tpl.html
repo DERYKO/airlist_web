@@ -1,0 +1,54 @@
+<div class="modal-dialog ">
+    <div class="modal-content">
+        <button class="close ng-scope" ng-click="vm.dismiss()"><i class="fal fa-times"></i></button>
+        <form name="guestlistForm" novalidate>
+            <div class="modal-header">
+                <h2>{{'guestlists.modals.create.title' | translate}}</h2>
+            </div>
+            <div class="modal-body">
+                <div class="msg error-msg mt-0" ng-if="vm.error.active">{{vm.error.message}}</div>
+                <div class="wizard">
+                    <fieldset>
+                        <div class="form-group input-lg">
+                            <customfield ng-model="vm.model.name"
+                                         definition="{type:'textbox',name:('guestlists.modals.create.labels.name' | translate),help: ('guestlists.modals.create.help_texts.name' | translate), required:true}"
+                                         name="name"
+                                         ng-required="true"></customfield>
+                        </div>
+                        <div class="row">
+                            <div class="form-group d-inline-block col">
+                                <customfield ng-model="vm.model.settings.start_date"
+                                             definition="{type:'datetime',name:('guestlists.modals.create.labels.start_date' | translate), required:true}"
+                                             name="start_date"
+                                             ng-required="true"></customfield>
+                            </div>
+
+                            <div class="form-group d-inline-block col ml-10">
+                                <customfield ng-model="vm.model.settings.end_date"
+                                             definition="{type:'datetime',name:('guestlists.modals.create.labels.end_date' | translate), required:false}"
+                                             name="end_date"
+                                             ng-required="true"></customfield>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <customfield
+                                    definition="{type:'boolean', name: ('guestlists.modals.create.labels.permission' | translate),tooltip: ('guestlists.modals.create.help_texts.permission' | translate)}"
+                                    ng-model="vm.isPrivateGuestlist"
+                                    name="visibility"></customfield>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="btn-group">
+                    <button class="" ng-click="vm.dismiss()">Cancel</button>
+                    <button ng-click="vm.submit(guestlistForm)" class="btn-confirm" ng-if="!vm.submitting">
+                        Create a guestlist
+                    </button>
+                    <button class="btn-confirm" ng-if="vm.submitting" disabled>
+                        <span class="fal fa-sync fa-spin"></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+{
+  "load"  : "loading....",
+  "seat_plan_details" : {
+    "add_root_element" : "add new root element",
+    "discard_btn" : "Discard changes",
+    "done_btn" : "Done",
+    "cancel_btn" : "Cancel",
+    "add_child_btn" : "Add new child",
+    "duplicate_element_btn" : " Duplicate element",
+    "remove_element_btn" : "Remove element",
+    "default_text" : "Leave empty for default value",
+    "title ": "Title",
+    "bookable" : "Bookable",
+    "position": "Pos",
+    "size" : "Size",
+    "background" : "Background",
+    "border" : {
+      "color" : "Border Color",
+      "width" : "Border Width"
+    },
+    "demo" : {
+      "title" : " Demo Seatplan"
+    }
+  },
+  "alerts": {
+    "invalid_seat_id" : "Invalid seatplan ID given",
+    "error_loading_seat_plan" : "Error while loading seatplan",
+    "error_loading_canvas" : "Error while Loading canvas data"
+  }
+}

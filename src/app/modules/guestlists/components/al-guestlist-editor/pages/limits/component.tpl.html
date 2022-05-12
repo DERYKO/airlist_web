@@ -1,0 +1,105 @@
+<section id="guestlists_editor_tickets" ng-if="vm.showContent">
+    <h1>{{'guestlists.editor.pages.limits.head' | translate}}</h1>
+    <h2 ng-if="vm.globalModel.settings.enable_open_registration">
+        {{'guestlists.editor.pages.limits.sub_heads.open_registration' | translate}}</h2>
+    <div class="content-box" id="limitations_open_reg" ng-if="vm.globalModel.settings.enable_open_registration">
+        <div class="box-section-wrap">
+            <fieldset>
+                <div class="form-group">
+                    <customfield
+                            definition="{type:'boolean', name: ('guestlists.editor.pages.limits.labels.enable_open_reg_pax_limit' | translate), tooltip: ('guestlists.editor.pages.limits.help_texts.enable_open_reg_pax_limit' | translate)}"
+                            ng-model="vm.enableOpenRegPaxLimit"
+                            name="max_participants_open_registration"></customfield>
+                </div>
+
+                <div ng-if="vm.enableOpenRegPaxLimit">
+                    <div class="form-group">
+                        <customfield
+                                definition="{type:'integer', name: ('guestlists.editor.pages.limits.labels.open_reg_pax_limit' | translate), tooltip: ('guestlists.editor.pages.limits.help_texts.open_reg_pax_limit' | translate)}"
+                                ng-model="vm.model.settings.open_reg_pax_limit"
+                                name="max_no_participants_open_registration"></customfield>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            {{'guestlists.editor.pages.limits.labels.open_reg_pax_limit_states' | translate}}
+                            <i class="fal fa-info-circle">
+                                <span data-tooltip="{{'guestlists.editor.pages.limits.help_texts.open_reg_pax_limit_states' | translate}}"></span>
+                            </i>
+                        </label>
+                        <selectize items="vm.state.formConfig.rsvpStates"
+                                   ng-model="vm.model.settings.open_reg_pax_limit_states"
+                                   max-items="vm.state.formConfig.rsvpStates.length"></selectize>
+                    </div>
+                    <div class="form-group">
+                        <customfield
+                                definition="{type:'boolean', name: ('guestlists.editor.pages.limits.labels.open_reg_enable_waitlist' | translate), tooltip: ('guestlists.editor.pages.limits.help_texts.open_reg_enable_waitlist' | translate)}"
+                                ng-model="vm.model.settings.open_reg_enable_waitlist"
+                                name="allow_waitlist_open_registration"></customfield>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <h2 ng-if="vm.globalModel.settings.enable_code_registration">
+        {{'guestlists.editor.pages.limits.sub_heads.code_registration' | translate}}</h2>
+    <div class="content-box" id="limitations_close_reg" ng-if="vm.globalModel.settings.enable_code_registration">
+        <div class="box-section-wrap">
+            <fieldset>
+                <div class="form-group">
+                    <customfield
+                            definition="{type:'boolean', name: ('guestlists.editor.pages.limits.labels.enable_code_reg_pax_limit' | translate), tooltip: ('guestlists.editor.pages.limits.help_texts.enable_code_reg_pax_limit' | translate)}"
+                            ng-model="vm.enableCodeRegPaxLimit"
+                            name="max_participants_closed_registration"></customfield>
+                </div>
+                <div ng-if="vm.enableCodeRegPaxLimit">
+                    <div class="form-group">
+                        <customfield
+                                definition="{type:'integer', name: ('guestlists.editor.pages.limits.labels.code_reg_pax_limit' | translate), tooltip: ('guestlists.editor.pages.limits.help_texts.code_reg_pax_limit' | translate)}"
+                                ng-model="vm.model.settings.code_reg_pax_limit"
+                                name="max_no_participants_code_registration"></customfield>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            {{'guestlists.editor.pages.limits.labels.code_reg_pax_limit_states' | translate}}
+                            <i class="fal fa-info-circle">
+                                <span data-tooltip="{{'guestlists.editor.pages.limits.help_texts.code_reg_pax_limit_states' | translate}}"></span>
+                            </i>
+                        </label>
+                        <selectize items="vm.state.formConfig.rsvpStates"
+                                   ng-model="vm.model.settings.code_reg_pax_limit_states"
+                                   max-items="vm.state.formConfig.rsvpStates.length"></selectize>
+                    </div>
+                    <div class="form-group">
+                        <customfield
+                                definition="{type:'boolean', name: ('guestlists.editor.pages.limits.labels.code_reg_enable_waitlist' | translate), tooltip: ('guestlists.editor.pages.limits.help_texts.code_reg_enable_waitlist' | translate)}"
+                                ng-model="vm.model.settings.code_reg_enable_waitlist"
+                                name="allow_waitlist_code_registration"></customfield>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <h2>Field limits</h2>
+    <div class="content-box" id="limitations_field_limits">
+        <al-guestlist-limit-configurator guestlist="vm.guestlist" current-limits="vm.model.limits"
+                                         on-limits-update="vm.updateLimits(newValue)"></al-guestlist-limit-configurator>
+        <hr class="mt-30 mb-30">
+        <fieldset>
+            <div class="form-group" ng-if="vm.state.formConfig.rsvpStates && vm.state.formConfig.rsvpStates.length > 0">
+                <label>{{'guestlists.editor.pages.limits.labels.registration_limit_states' | translate}}</label>
+                <selectize items="vm.state.formConfig.rsvpStates"
+                           ng-model="vm.model.settings.registration_limit_states"
+                           max-items="vm.state.formConfig.rsvpStates.length"></selectize>
+            </div>
+            <div class="form-group">
+                <customfield
+                        definition="{type:'boolean', name: ('guestlists.editor.pages.limits.labels.registration_limit_public_counts' | translate)}"
+                        ng-model="vm.model.settings.registration_limit_public_counts"
+                        name="setting_registration_limit_public_counts"></customfield>
+            </div>
+        </fieldset>
+    </div>
+</section>

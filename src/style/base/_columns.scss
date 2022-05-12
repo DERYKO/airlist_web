@@ -1,0 +1,166 @@
+.col {
+  margin: 0 $gutter-regular;
+}
+
+.col-1 {
+  @extend .col;
+  width: span(1, $twelve-col);
+  margin: $gutter-regular;
+}
+
+.col-2 {
+  @extend .col;
+  width: span(2, $twelve-col);
+  margin: $gutter-regular;
+}
+
+.col-3 {
+  @extend .col;
+  width: span(3, $twelve-col);
+  margin: $gutter-regular;
+}
+
+.col-4 {
+  @extend .col;
+  width: span(4, $twelve-col);
+  margin: $gutter-regular;
+}
+
+.col-5 {
+  @extend .col;
+  width: span(5, $twelve-col);
+  margin: $gutter-regular;
+}
+
+.col-6 {
+  @extend .col;
+  width: span(6, $twelve-col);
+  margin: $gutter-regular;
+}
+
+.col-7 {
+  @extend .col;
+  width: span(7, $twelve-col);
+  margin: $gutter-regular;
+}
+
+.col-8 {
+  @extend .col;
+  width: span(8, $twelve-col);
+  margin: $gutter-regular;
+}
+
+.col-9 {
+  @extend .col;
+  width: span(9, $twelve-col);
+  margin: $gutter-regular;
+}
+
+.col-10 {
+  @extend .col;
+  width: span(10, $twelve-col);
+  margin: $gutter-regular;
+}
+
+.col-12 {
+  @extend .col;
+  width: span(12, $twelve-col);
+  margin: $gutter-regular;
+}
+
+
+//narrow
+.col-1-n {
+  @extend .col;
+  width: span(1, $twelve-col-narrow);
+  margin: $gutter-small;
+}
+
+.col-2-n {
+  @extend .col;
+  width: span(2, $twelve-col-narrow);
+  margin: $gutter-small;
+}
+
+.col-3-n {
+  @extend .col;
+  width: span(3, $twelve-col-narrow);
+  margin: $gutter-small;
+}
+
+.col-4-n {
+  @extend .col;
+  width: span(4, $twelve-col-narrow);
+  margin: $gutter-small;
+}
+
+.col-5-n {
+  @extend .col;
+  width: span(5, $twelve-col-narrow);
+  margin: $gutter-small;
+}
+
+.col-6-n {
+  @extend .col;
+  width: span(6, $twelve-col-narrow);
+  margin: $gutter-small;
+}
+
+.col-7-n {
+  @extend .col;
+  width: span(7, $twelve-col-narrow);
+  margin: $gutter-small;
+}
+
+.col-8-n {
+  @extend .col;
+  width: span(8, $twelve-col-narrow);
+  margin: $gutter-small;
+}
+
+.col-9-n {
+  @extend .col;
+  width: span(9, $twelve-col-narrow);
+  margin: $gutter-small;
+}
+
+.col-10-n {
+  @extend .col;
+  width: span(10, $twelve-col-narrow);
+  margin: $gutter-small;
+}
+
+.col-12-n {
+  @extend .col;
+  width: span(12, $twelve-col-narrow);
+  margin: $gutter-small;
+}
+
+.col {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  font-size: $font-regular;
+
+  @include breakpoint($small) {
+    width: 100%;
+  }
+}
+
+.row {
+  margin-left: -($gutter-regular);
+  margin-right: -($gutter-regular);
+  font-size: 0;
+  width: calc(100% + 30px);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row-n {
+  margin-left: -($gutter-small);
+  margin-right: -($gutter-small);
+  font-size: 0;
+  width: calc(100% + 15px);
+  display: flex;
+  flex-wrap: wrap;
+}

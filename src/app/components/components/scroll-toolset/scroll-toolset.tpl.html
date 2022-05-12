@@ -1,0 +1,14 @@
+<div class="toolset">
+
+    <button ng-click="vm.previous()" ng-if="vm.showPrevious()">
+        <i class="fal fa-angle-double-left"></i>&nbsp;&nbsp;Previous
+    </button>
+    <span ng-if="vm.showNext() && vm.showPrevious()">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+    <button ng-click="vm.next()" ng-if="vm.showNext()">
+        Next&nbsp;&nbsp;<i class="fal fa-angle-double-right"></i>
+    </button>
+
+    <button ng-repeat="action in vm.actions" ng-click="action.action(vm.model, vm.store)">
+        {{action.label}}&nbsp;&nbsp;<i class="{{action.icon}}"></i>
+    </button>
+</div>

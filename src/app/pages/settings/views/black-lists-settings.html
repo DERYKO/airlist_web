@@ -1,0 +1,36 @@
+<section>
+    <h1>Blacklists settings</h1>
+    <form name="settingsForm" novalidate>
+        <section>
+            <div class="content-box">
+                <div class="box-section-wrap">
+                    <p>
+                        Email(s) and Mobile No.(s) listed below will not receive any notifications. Any
+                        emails and smses sent to these contacts will be stopped by the system.
+                    </p>
+                </div>
+                <div class="box-section-wrap">
+                    <div class="form-group">
+                        <label for="emails">Blacklisted Email(s)</label>
+                        <textarea class="textarea-list" id="emails" rows="10" ng-model="vm.company.settings.messages.blacklisted_emails"></textarea>
+                        <p><i>Please enter one item per line</i></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="sms">Blacklisted Mobile No.(s)</label>
+                        <textarea class="textarea-list" id="sms" rows="10" ng-model="vm.company.settings.messages.blacklisted_sms"></textarea>
+                        <p><i>Please enter one item per line</i></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="fixed-footer">
+                <div class="btn-group">
+                    <button ng-click="vm.cancelEditing(false)">Cancel</button>
+                    <button ng-click="vm.update()" type="button" class="btn-confirm">Done</button>
+                </div>
+            </div>
+        </section>
+    </form>
+</section>

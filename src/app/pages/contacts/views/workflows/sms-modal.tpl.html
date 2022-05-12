@@ -1,0 +1,32 @@
+<button class="close" ng-click="vm.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>{{ 'common.send_sms'|i18n }}</h2>
+</div>
+<div class="modal-body">
+    <form ng-submit="vm.send()">
+        <fieldset>
+            <div class="form-group">
+                <label>{{ 'common.sms_sender_name'|i18n }}</label>
+                <select ng-model="vm.message.sender_name">
+                    <option value="{{name.value}}" ng-repeat="name in vm.sender_names">{{name.title}}</option>
+                </select>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group small-ace-box">
+                <label>{{ 'common.sms_content'|i18n }}</label>
+                <customfield definition="vm.aceOptions" ng-model="vm.message.content"></customfield>
+            </div>
+        </fieldset>
+        <p class="box-section-wrap">
+            Number of sent messages: <strong>{{vm.messageValidation.smsCount}}</strong><br />
+            Number of characters: <strong>{{vm.messageValidation.length}}</strong><br/>
+            Is Unicode: <strong>{{(vm.messageValidation.isGsm) ? 'No' : 'Yes'}}</strong><br/>
+            Characters limit per message: <strong>{{vm.messageValidation.limit}}</strong>
+        </p>
+        <div class="btn-group">
+            <button type="button" ng-click="vm.cancel()">{{ 'common.button_cancel'|i18n }}</button>
+            <button type="submit" class="btn-confirm">{{ 'common.button_send'|i18n }}</button>
+        </div>
+    </form>
+</div>

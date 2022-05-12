@@ -1,0 +1,42 @@
+<div class="modal-content">
+    <button class="close ng-scope" ng-click="vm.dismiss()"><i class="fal fa-times"></i></button>
+    <form name="customFieldForm">
+        <div class="modal-header">
+            <h2>{{'guestlists.editor.components.form-field-selector.modal.head' | translate}}<strong>{{vm.fieldConfig.default_label}}</strong>
+            </h2>
+        </div>
+        <div class="modal-body">
+                <div class="wizard">
+                    <fieldset class="no-border mb-30">
+                        <div class="form-group input-full">
+                            <h4>
+                                {{'guestlists.editor.components.form-field-selector.modal.custom_field_settings_header'
+                                | translate}}</h4>
+                            <customfield definition="{type:'builder', required: true}"
+                                         ng-model="vm.definition"
+                                         name="'custom_'+index+'_name'" class="input-full"></customfield>
+                        </div>
+                        <div ng-if="!vm.alreadyExists">
+                            <input type="checkbox"
+                                   name="is_global_field"
+                                   ng-true-value="true"
+                                   ng-false-value="false"
+                                   id="is_global_field"
+                                   ng-model="vm.isGlobalField"
+                                   ng-disabled="vm.disableGlobalCheckbox">
+                            <label for="is_global_field">Use field globally</label>
+                        </div>
+                    </fieldset>
+                </div>
+            <div class="btn-group">
+                <button class="" ng-click="vm.dismiss()">Cancel</button>
+                <button class="btn-delete" ng-if="vm.alreadyExists" ng-click="vm.save(null, 'delete')">
+                    Delete field
+                </button>
+                <button class="btn-confirm" ng-click="vm.save(customFieldForm, 'save', vm.definition)">
+                    Update field settings
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

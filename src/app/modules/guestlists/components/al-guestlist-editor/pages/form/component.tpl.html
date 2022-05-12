@@ -1,0 +1,347 @@
+<section id="guestlists_editor_form" ng-if="vm.showContent">
+    <h1>{{'guestlists.editor.pages.form.head' | translate}}</h1>
+    <h2>{{'guestlists.editor.pages.form.sub_heads.type' | translate}}</h2>
+    <div class="content-box" id="form_type">
+        <div class="box-section-wrap">
+            <div class="form-group">
+                <label>{{'guestlists.editor.pages.form.labels.registration_type' | translate}}<span>*</span></label>
+                <div class="checkbox-list">
+                    <input ng-model="vm.currentRegistrationType"
+                           id="registration-type-{{type.key}}"
+                           type="radio"
+                           ng-value="type.key"
+                           name="registration_type"
+                           ng-repeat-start="type in vm.state.formConfig.registrationTypes"/>
+                    <label for="registration-type-{{type.key}}" ng-repeat-end>
+                        {{type.label}}
+                        <i class="fal fa-info-circle">
+                            <span data-tooltip="{{type.help_text}}"></span>
+                        </i>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>{{'guestlists.editor.pages.form.sub_heads.guests' | translate}}</h2>
+    <div class="content-box" id="form_guests_of_guest">
+        <div class="box-section-wrap">
+            <div class="form-group">
+                <customfield
+                        ng-model="vm.model.settings.enable_guests"
+                        definition="{type:'boolean', name: ('guestlists.editor.pages.form.labels.enable_guests' | translate), tooltip:('guestlists.editor.pages.form.help_texts.enable_guests' | translate)}"
+                        name="allow_plusone"></customfield>
+            </div>
+            <div ng-if="vm.model.settings.enable_guests">
+                <div class="form-group">
+                    <customfield ng-model="vm.model.settings.guest_count_maximum"
+                                 definition="{type:'integer',name: ('guestlists.editor.pages.form.labels.guest_count_maximum' | translate), tooltip:('guestlists.editor.pages.form.help_texts.guest_count_maximum' | translate), disabled: (vm.model.settings.guest_count_maximum < 1)}"
+                                 name="maxno_plusone"
+                                 ng-required="true"></customfield>
+                </div>
+                <div class="form-group p-0">
+                    <input ng-model="vm.model.settings.guest_count_maximum"
+                           id="plusone_nolimit"
+                           type="checkbox"
+                           ng-true-value="0"
+                           ng-false-value="1"/>
+                    <label for="plusone_nolimit">{{('guestlists.editor.pages.form.labels.no_guest_limit' |
+                        translate)}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>{{'guestlists.editor.pages.form.sub_heads.representative' | translate}}</h2>
+    <div class="content-box" id="form_representative">
+        <div class="box-section-wrap">
+            <div class="form-group">
+                <customfield
+                        definition="{type:'boolean', name: ('guestlists.editor.pages.form.labels.enable_representative' | translate), tooltip:('guestlists.editor.pages.form.help_texts.enable_representative' | translate)}"
+                        ng-model="vm.model.settings.enable_representative"
+                        name="allow_representative"></customfield>
+            </div>
+            <div ng-if="vm.model.settings.enable_representative">
+                <div class="form-group">
+                    <label>
+                        {{'guestlists.editor.pages.form.labels.representative_default_state' | translate}}
+                        <i class="fal fa-info-circle" ng-if="field.definition.tooltip">
+                            <span data-tooltip="{{'guestlists.editor.pages.form.help_texts.representative_default_state' | translate}}"></span>
+                        </i>
+                    </label>
+                    <selectize items="vm.state.formConfig.rsvpStates"
+                               ng-model="vm.model.settings.representative_default_state"
+                               max-items="1"></selectize>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>{{'guestlists.editor.pages.form.sub_heads.recommendations' | translate}}</h2>
+    <div class="content-box" id="form_recommendation">
+        <div class="box-section-wrap">
+            <div class="form-group">
+                <customfield
+                        ng-model="vm.model.settings.enable_recommendations"
+                        definition="{type:'boolean', name: ('guestlists.editor.pages.form.labels.enable_recommendations' | translate), tooltip:('guestlists.editor.pages.form.help_texts.enable_recommendations' | translate)}"
+                        name="allow_recommendation"></customfield>
+            </div>
+            <div ng-if="vm.model.settings.enable_recommendations">
+                <div class="form-group">
+                    <label>
+                        {{'guestlists.editor.pages.form.labels.recommendation_default_state' | translate}}
+                        <i class="fal fa-info-circle" ng-if="field.definition.tooltip">
+                            <span data-tooltip="{{'guestlists.editor.pages.form.help_texts.recommendation_default_state' | translate}}"></span>
+                        </i>
+                    </label>
+                    <selectize items="vm.state.formConfig.rsvpStates"
+                               ng-model="vm.model.settings.recommendation_default_state"
+                               max-items="1"></selectize>
+                </div>
+
+                <div class="form-group">
+                    <customfield ng-model="vm.model.settings.recommendation_count_maximum"
+                                 definition="{type:'integer',name: ('guestlists.editor.pages.form.labels.recommendation_count_maximum' | translate), tooltip:('guestlists.editor.pages.form.help_texts.recommendation_count_maximum' | translate), disabled: (vm.model.settings.recommendation_count_maximum < 1)}"
+                                 name="maxno_recommendation"
+                                 ng-required="true"></customfield>
+                </div>
+                <div class="form-group p-0">
+                    <input ng-model="vm.model.settings.recommendation_count_maximum"
+                           id="recommendation_nolimit"
+                           type="checkbox"
+                           ng-true-value="0"
+                           ng-false-value="1"/>
+                    <label for="recommendation_nolimit">{{('guestlists.editor.pages.form.labels.no_recommendation_limit'
+                        | translate)}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>{{'guestlists.editor.pages.form.sub_heads.fields' | translate}}</h2>
+    <div class="content-box" id="form_form_fields">
+        <div class="box-section-wrap">
+
+            <h2 class="mt-20 tooltip-alt">
+                {{'guestlists.editor.pages.form.sub_heads.fields_main_guest' | translate}}
+                <i class="fal fa-info-circle">
+                    <span data-tooltip="{{'guestlists.editor.pages.form.sub_heads.fields_main_guest_sub' | translate}}"></span>
+                </i>
+            </h2>
+            <al-guestlist-form-field-selector guestlist="vm.guestlist"
+                                              current-definition="vm.internalDefinitions.registration_fields"
+                                              on-definition-update="vm.updateFieldDefinition('registration_fields', newDefinition)"
+                                              global-selected-fields="vm.globalModel.settings.enabled_fields"
+                                              available-fields="vm.availableFields"
+                                              id-prefix="'registration_fields_'"
+                                              custom-field-definitions="vm.customFieldDefinitions"
+                                              on-custom-field-change="vm.triggerCustomFieldChange(action, group, definition, number)"></al-guestlist-form-field-selector>
+
+            <div ng-if="vm.model.settings.enable_guests">
+                <hr class="mt-30">
+
+                <h2 class="mt-30 tooltip-alt">
+                    {{'guestlists.editor.pages.form.sub_heads.fields_guests' | translate}}
+                    <i class="fal fa-info-circle">
+                        <span data-tooltip="{{'guestlists.editor.pages.form.sub_heads.fields_guests_sub' | translate}}"></span>
+                    </i>
+                </h2>
+
+                <div class="form-group">
+                    <customfield
+                            ng-model="vm.copyMainGuestFieldModels.guests.state"
+                            definition="{type:'boolean', name: ('guestlists.editor.pages.form.labels.use_same_as_main_guest' | translate)}"
+                            name="guest_use_same_fields"></customfield>
+                </div>
+                <al-guestlist-form-field-selector ng-if="!vm.copyMainGuestFieldModels.guests.state"
+                                                  guestlist="vm.guestlist"
+                                                  current-definition="vm.internalDefinitions.registration_guest_fields"
+                                                  on-definition-update="vm.updateFieldDefinition('registration_guest_fields', newDefinition)"
+                                                  global-selected-fields="vm.globalModel.settings.enabled_fields"
+                                                  available-fields="vm.availableFields"
+                                                  id-prefix="'registration_guest_fields_'"
+                                                  custom-field-definitions="vm.customFieldDefinitions"
+                                                  on-custom-field-change="vm.triggerCustomFieldChange(action, group, definition, number)"></al-guestlist-form-field-selector>
+            </div>
+
+            <div ng-if="vm.model.settings.enable_representative">
+                <hr class="mt-30">
+                <h2 class="mt-30 tooltip-alt">
+                    {{'guestlists.editor.pages.form.sub_heads.fields_representative' | translate}}
+                    <i class="fal fa-info-circle">
+                        <span data-tooltip="{{'guestlists.editor.pages.form.sub_heads.fields_representative_sub' | translate}}"></span>
+                    </i>
+                </h2>
+
+                <div class="form-group">
+                    <customfield
+                            ng-model="vm.copyMainGuestFieldModels.representative.state"
+                            definition="{type:'boolean', name: ('guestlists.editor.pages.form.labels.use_same_as_main_guest' | translate)}"
+                            name="representative_use_same_fields"></customfield>
+                </div>
+                <al-guestlist-form-field-selector ng-if="!vm.copyMainGuestFieldModels.representative.state"
+                                                  guestlist="vm.guestlist"
+                                                  current-definition="vm.internalDefinitions.representative_fields"
+                                                  on-definition-update="vm.updateFieldDefinition('representative_fields', newDefinition)"
+                                                  global-selected-fields="vm.globalModel.settings.enabled_fields"
+                                                  available-fields="vm.availableFields"
+                                                  id-prefix="'representative_fields_'"
+                                                  custom-field-definitions="vm.customFieldDefinitions"
+                                                  on-custom-field-change="vm.triggerCustomFieldChange(action, group, definition, number)"></al-guestlist-form-field-selector>
+            </div>
+
+            <div ng-if="vm.model.settings.enable_recommendations">
+                <hr class="mt-30">
+
+                <h2 class="mt-30 tooltip-alt">
+                    {{'guestlists.editor.pages.form.sub_heads.fields_recommendations' | translate}}
+                    <i class="fal fa-info-circle">
+                        <span data-tooltip="{{'guestlists.editor.pages.form.sub_heads.fields_recommendations_sub' | translate}}"></span>
+                    </i>
+                </h2>
+
+                <div class="form-group">
+                    <customfield
+                            ng-model="vm.copyMainGuestFieldModels.recommendations.state"
+                            definition="{type:'boolean', name: ('guestlists.editor.pages.form.labels.use_same_as_main_guest' | translate)}"
+                            name="recommendation_use_same_fields"></customfield>
+                </div>
+                <al-guestlist-form-field-selector ng-if="!vm.copyMainGuestFieldModels.recommendations.state"
+                                                  guestlist="vm.guestlist"
+                                                  current-definition="vm.internalDefinitions.recommendations_fields"
+                                                  on-definition-update="vm.updateFieldDefinition('recommendations_fields', newDefinition)"
+                                                  global-selected-fields="vm.globalModel.settings.enabled_fields"
+                                                  available-fields="vm.availableFields"
+                                                  id-prefix="'recommendations_fields_'"
+                                                  custom-field-definitions="vm.customFieldDefinitions"
+                                                  on-custom-field-change="vm.triggerCustomFieldChange(action, group, definition, number)"></al-guestlist-form-field-selector>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="tooltip-alt">{{'guestlists.editor.pages.form.sub_heads.settings' | translate}}
+        <i class="fal fa-info-circle">
+            <span data-tooltip="{{'guestlists.editor.pages.form.sub_heads.settings_sub' | translate}}"></span>
+        </i>
+    </h2>
+    <div class="content-box" id="form_registration_settings">
+        <div class="box-section-wrap">
+            <h2 class="mt-20">{{'guestlists.editor.pages.form.sub_heads.registration_time_range' | translate}}</h2>
+            <p class="help-text">{{'guestlists.editor.pages.form.sub_heads.registration_time_range_sub' |
+                translate}}</p>
+
+            <div class="form-group">
+                <customfield
+                        ng-model="vm.registrationTimeRangeEnabled"
+                        definition="{type:'boolean', name: ('guestlists.editor.pages.form.labels.registration_time_range' | translate)}"
+                        name="restrict_registration"></customfield>
+            </div>
+            <div class="row" ng-if="vm.registrationTimeRangeEnabled">
+                <div class="form-group d-inline-block mr-10 col">
+                    <customfield
+                            ng-model="vm.dateFields.registration_start"
+                            definition="{type:'datetime',name:('guestlists.editor.pages.form.labels.registration_start' | translate), required:true}"
+                            name="registration_start"
+                            ng-required="true"></customfield>
+                </div>
+                <div class="form-group d-inline-block col">
+                    <customfield
+                            ng-model="vm.dateFields.registration_end"
+                            definition="{type:'datetime',name:'End of registration', required:true}"
+                            name="registration_end"
+                            ng-required="true"></customfield>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <customfield
+                        ng-model="vm.doNotAutoConfirmOpenRegistration"
+                        definition="{type:'boolean', name: ('guestlists.editor.pages.form.labels.open_registration_no_auto_confirm' | translate), tooltip: ('guestlists.editor.pages.form.help_texts.open_registration_no_auto_confirm' | translate)}"
+                        name="check_open_registration"></customfield>
+            </div>
+
+            <div class="form-group">
+                <customfield
+                        ng-model="vm.openRegPasswordEnabled"
+                        definition="{type:'boolean', name: ('guestlists.editor.pages.form.labels.open_password_enabled' | translate),tooltip:('guestlists.editor.pages.form.help_texts.open_password_enabled' | translate)}"
+                        name="if_password"></customfield>
+
+            </div>
+            <div class="form-group" ng-if="vm.openRegPasswordEnabled">
+                <customfield
+                        ng-model="vm.model.settings.open_reg_password"
+                        definition="{type:'textbox', name: ('guestlists.editor.pages.form.labels.open_reg_password' | translate)}"
+                        name="password"></customfield>
+
+            </div>
+
+            <hr class="mt-30">
+
+            <h2 class="mt-30">{{'guestlists.editor.pages.form.sub_heads.relogin' | translate}}</h2>
+            <p class="help-text">{{'guestlists.editor.pages.form.sub_heads.relogin_sub' | translate}}</p>
+
+            <div class="form-group">
+                <label>{{'guestlists.editor.pages.form.labels.status_mapping_preset' | translate}}</label>
+                <div class="radio-list">
+                    <input ng-model="vm.currentStatusMappingPreset"
+                           id="status_mapping_{{mapping.key}}"
+                           ng-value="mapping.key"
+                           type="radio"
+                           ng-repeat-start="mapping in vm.state.formConfig.statusMappings"/>
+                    <label for="status_mapping_{{mapping.key}}" ng-repeat-end>{{mapping.label}}</label>
+                </div>
+            </div>
+
+            <div ng-if="vm.currentStatusMappingPreset === 'individual'">
+                <h2 class="mt-30">{{'guestlists.editor.pages.form.sub_heads.individual_re-login' | translate}}</h2>
+                <div class="form-group">
+                    <label>{{'guestlists.editor.pages.form.labels.individual_re-login' | translate}}</label>
+                    <selectize items="vm.state.formConfig.rsvpStates"
+                               ng-model="vm.model.settings.enable_login_states"
+                               max-items="vm.state.formConfig.rsvpStates.length"></selectize>
+                </div>
+                <div>
+                    <h3 class="mt-20 mb-20">{{'guestlists.editor.pages.form.sub_heads.registration_status_flow' |
+                        translate}}</h3>
+                    <p class="help-text">
+                        {{'guestlists.editor.pages.form.sub_heads.registration_status_flow_sub' | translate}}
+                    </p>
+
+                    <table class="base-table fixed-table mt-20 mb-30 table-matrix">
+                        <tr>
+                            <th>From&nbsp;<i class="fal fa-arrow-down"></i> / To&nbsp;<i class="fal fa-arrow-right"></i>
+                            </th>
+                            <th ng-repeat="value in vm.state.formConfig.rsvpStates">
+                                {{value.label}}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Non state</th>
+                            <td ng-repeat="value in vm.state.formConfig.rsvpStates">
+                                <input type="checkbox"
+                                       name="selectedStates[default][{{value.value}}]"
+                                       value="{{value.value}}"
+                                       ng-checked="vm.model.settings.registration_status_flow.default.indexOf(value.value) > -1"
+                                       ng-click="vm.toggleStatusFlowSelection(value.value, vm.model.settings.registration_status_flow.default)"
+                                       id="registration-status-flow-default-{{value.value}}">
+                                <label for="registration-status-flow-default-{{value.value}}"></label>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="rowState in vm.state.formConfig.rsvpStates">
+                            <th>{{rowState.label}}</th>
+                            <td ng-repeat="colState in vm.state.formConfig.rsvpStates">
+                                <input type="checkbox"
+                                       name="selectedStates[{{rowState.value}}][{{colState.value}}]"
+                                       value="{{colState.value}}"
+                                       ng-checked="vm.model.settings.registration_status_flow[rowState.value].indexOf(colState.value) > -1"
+                                       ng-click="vm.toggleStatusFlowSelection(colState.value, vm.model.settings.registration_status_flow[rowState.value])"
+                                       id="registration-status-flow-{{rowState.value}}-{{colState.value}}">
+                                <label for="registration-status-flow-{{rowState.value}}-{{colState.value}}"></label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

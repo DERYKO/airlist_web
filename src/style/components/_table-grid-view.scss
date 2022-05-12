@@ -1,0 +1,122 @@
+.grid-view-margin {
+  margin-left: $gutter-large;
+  margin-right: $gutter-large;
+}
+
+//TODO making last item not centered to be handled by JS
+.grid-view {
+  text-align: center;
+  position: relative;
+  margin-left: -$gutter-small;
+  margin-right: -$gutter-small;
+
+  li {
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: top;
+
+    &:not(.og-expanded) {
+      height: auto !important;
+    }
+  }
+
+  .grid-box {
+    width: 230px;
+    height: 255px;
+    border: $border;
+    margin: $gutter-small;
+    box-shadow: $box-shadow-small;
+    border-radius: $border-radius-large;
+    vertical-align: top;
+    position: relative;
+
+    input[type="checkbox"] + label {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    img {
+
+      @include top-align;
+
+      max-width: 100%;
+      max-height: 100%;
+      opacity: 1;
+      position: relative;
+    }
+  }
+
+  .user-overview {
+    height: 150px;
+    background-color: $main-background;
+    text-align: center;
+    border-radius: $border-radius-large $border-radius-large 0 0;
+
+    .user {
+      @include user(100px);
+      @include top-align;
+
+      text-align: center;
+      vertical-align: middle;
+      position: relative;
+      margin: 0 auto;
+      object-fit: cover;
+
+      &.has-photo {
+        i {
+          display: none;
+        }
+      }
+    }
+
+    &.has-photo {
+      .user {
+        display: none;
+      }
+    }
+  }
+
+  .user-details {
+    padding: 15px;
+    text-align: left;
+
+    p {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}
+
+li.og-expanded {
+  height: 402px;
+
+  .grid-box {
+    @include arrow-top(bottom, -23px, left, 50%);
+
+
+    &:before {
+      transform: translateX(-50%);
+    }
+
+    &:after {
+      border-color: transparent transparent $highlight-3 transparent;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+  }
+}
+
+.og-expander {
+  position: absolute;
+  top: auto;
+  left: 0;
+  width: calc(100% + #{$gutter-large - $gutter-small} * 2);
+  margin: $gutter-regular (-$gutter-large - -$gutter-small);
+  text-align: left;
+  overflow: hidden;
+  border: $border;
+  box-shadow: $box-shadow-small;
+  cursor: default;
+}

@@ -1,0 +1,6 @@
+<span class="before-switch" ng-click="vm.model = false">{{::vm.internalConfig.falseLabel}}</span>
+
+<switch name="{{vm.internalConfig.name}}" id="{{vm.internalConfig.name}}" ng-model="vm.model"
+        disabled="vm.internalConfig.disabled"
+        ng-change="vm.changeAction(vm.model)"></switch>
+<span class="after-switch" ng-click="vm.model = true">{{::vm.internalConfig.trueLabel}}</span>

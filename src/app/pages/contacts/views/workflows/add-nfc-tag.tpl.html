@@ -1,0 +1,16 @@
+<button class="close" ng-click="vm.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Add Member Card</h2>
+</div>
+<div class="modal-body">
+    <form name="tagForm" ng-class="{'submitted':tagForm.$submitted}" novalidate ng-submit="vm.save(tagForm)">
+        <div class="form-group">
+            <label class="control-label col-xs-4">Tag</label>
+            <input type="text" class="form-control" ng-model="vm.nfc_key" name="tag" required>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn-dismiss" ng-click="vm.cancel()">Cancel</button>
+            <button type="submit" class="btn-confirm">Save</button>
+        </div>
+    </form>
+</div>

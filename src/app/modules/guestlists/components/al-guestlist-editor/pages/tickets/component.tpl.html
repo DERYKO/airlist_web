@@ -1,0 +1,107 @@
+<section id="guestlists_editor_tickets" ng-if="vm.showContent">
+    <h1>{{'guestlists.editor.pages.tickets.head' | translate}}</h1>
+
+    <p class="mb-20">{{'guestlists.editor.pages.tickets.main_head_sub' | translate}}</p>
+
+    <h2>{{'guestlists.editor.pages.tickets.sub_heads.design' | translate}}</h2>
+    <div class="content-box" id="tickets_design">
+        <div class="box-section-wrap">
+            <h2 class="mt-20">{{'guestlists.editor.pages.tickets.sub_heads.pdf_ticket' | translate}}</h2>
+
+            <div class="form-group">
+                <customfield
+                        definition="{type:'boolean', name: ('guestlists.editor.pages.tickets.labels.enable_ticket' | translate)}"
+                        ng-model="vm.enableTicket"
+                        name="pdf_ticket"></customfield>
+            </div>
+
+            <div ng-if="vm.enableTicket">
+                <div class="form-group">
+                    <label>{{'guestlists.editor.pages.tickets.labels.ticket_id' | translate}}</label>
+                    <select-box
+                            model="vm.model.ticket_id"
+                            config="vm.state.formConfig.ticketsStoreForSelectize">
+                    </select-box>
+
+                    <button class="d-inline-block" ng-disabled="!vm.model.ticket_id"
+                            ng-click="vm.openTicketEditor(vm.model.ticket_id)">
+                        <i class="fal fa-edit"></i>
+                    </button>
+
+                    <button class="d-inline-block" ng-disabled="!vm.model.ticket_id"
+                            ng-click="vm.openTicketPreview(vm.model.ticket_id)">
+                        <i class="fal fa-eye"></i>
+                    </button>
+                </div>
+
+                <div class="form-group p-0">
+                    <input ng-model="vm.model.settings.attach_ticket_to_confirmation_email"
+                           id="attach_pdf_ticket"
+                           type="checkbox"/>
+                    <label for="attach_pdf_ticket">{{'guestlists.editor.pages.tickets.labels.attach_ticket_to_confirmation_email'
+                        | translate}}</label>
+                </div>
+            </div>
+
+            <hr class="mt-30">
+
+            <h2 class="mt-30">{{'guestlists.editor.pages.tickets.sub_heads.wallet_ticket' | translate}}</h2>
+
+            <div class="form-group">
+                <customfield
+                        definition="{type:'boolean', name: ('guestlists.editor.pages.tickets.labels.enable_passbook' | translate)}"
+                        ng-model="vm.enablePassbook"
+                        name="pdf_ticket"></customfield>
+            </div>
+
+            <div ng-if="vm.enablePassbook">
+                <div class="form-group">
+                    <label>{{'guestlists.editor.pages.tickets.labels.passbook_id' | translate}}</label>
+                    <select-box
+                            model="vm.model.passbook_id"
+                            config="vm.state.formConfig.passbooksStoreForSelectize">
+                    </select-box>
+
+                    <button class="d-inline-block" ng-disabled="!vm.model.passbook_id"
+                            ng-click="vm.openPassbookEditor(vm.model.passbook_id)">
+                        <i class="fal fa-edit"></i>
+                    </button>
+
+                    <button class="d-inline-block" ng-disabled="!vm.model.passbook_id"
+                            ng-click="vm.openPassbookPreview(vm.model.passbook_id)">
+                        <i class="fal fa-eye"></i>
+                    </button>
+                </div>
+
+                <div class="form-group p-0">
+                    <input ng-model="vm.model.settings.attach_passbook_to_confirmation_email"
+                           id="attach_wallet_ticket"
+                           type="checkbox"/>
+                    <label for="attach_wallet_ticket">{{'guestlists.editor.pages.tickets.labels.attach_passbook_to_confirmation_email'
+                        | translate}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>{{'guestlists.editor.pages.tickets.sub_heads.ticket_flow' | translate}}</h2>
+    <div class="content-box" id="tickets_ticket_settings">
+        <div class="box-section-wrap">
+            <fieldset>
+                <div class="form-group">
+                    <label>{{'guestlists.editor.pages.tickets.labels.messages_ticket_flow'
+                        | translate}}</label>
+                    <div class="radio-list">
+                        <input ng-model="vm.model.settings.messages_ticket_flow"
+                               id="group_ticket_{{sendFlow.value}}"
+                               value="group ticket"
+                               type="radio"
+                               ng-value="sendFlow.value"
+                               ng-repeat-start="sendFlow in vm.state.formConfig.messageTicketFlows"/>
+                        <label for="group_ticket_{{sendFlow.value}}" ng-repeat-end>{{sendFlow.label}}</label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</section>

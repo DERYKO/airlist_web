@@ -1,0 +1,49 @@
+<button class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Merge contact duplicates of selected rsvps</h2>
+</div>
+<div class="modal-body">
+    <form name="mergeForm" class="light" ng-class="{'submitted':mergeForm.$submitted}" novalidate>
+        <h4>Compare the following fields:</h4>
+        <p>All fields must match for a contact to qualify as duplicate</p>
+        <fieldset class="inputs-list">
+            <div>
+                <input type="checkbox" ng-model="vm.model.fields[0]" ng-false-value="undefined"
+                       ng-true-value="'first_name'" id="merge_field_first_name">
+                <label for="merge_field_first_name">First Name</label>
+            </div>
+            <div>
+                <input type="checkbox" ng-model="vm.model.fields[1]" ng-false-value="undefined"
+                       ng-true-value="'last_name'" id="merge_field_last_name">
+                <label for="merge_field_last_name">Last Name</label>
+            </div>
+            <div>
+                <input type="checkbox" ng-model="vm.model.fields[2]" ng-false-value="undefined"
+                       ng-true-value="'email'" id="merge_field_email">
+                <label for="merge_field_email" for="merge_field_email">Email</label>
+            </div>
+        </fieldset>
+        <div class="box-section-wrap">
+            <h4>And use the following strategy:</h4>
+            <fieldset class="inputs-list">
+                <div>
+                    <input type="radio" ng-model="vm.model.strategy" value="latest" id="merge-type-latest">
+                    <label for="merge-type-latest">Automatic: Use most recent value</label>
+                </div>
+                <div>
+                    <input type="radio" ng-model="vm.model.strategy" value="oldest" id="merge-type-oldest">
+                    <label for="merge-type-oldest">Automatic: Use oldest value</label>
+                </div>
+                <div>
+                    <input type="radio" ng-model="vm.model.strategy" value="manual" id="merge-type-manual">
+                    <label for="merge-type-manual">Manual: Show me all duplicates and let me decide which fields to use
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+    </form>
+    <div class="btn-group">
+        <button ng-click="vm.close()">Cancel</button>
+        <button type="submit" class="btn-confirm" ng-click="vm.save()">Start merge</button>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="overlay"></div>
+<layout-header ng-if="user"></layout-header>
+
+<main ng-if="user">
+    <navigation-side-nav ng-if="$state.current.url.indexOf('/dashboard') != 0 && $state.current.url.indexOf('/download') != 0"></navigation-side-nav>
+    <div class="main-content" ng-class="{'main-content-wide':$state.current.url.indexOf('/dashboard') == 0}">
+        <navigation-breadcrumb ng-if="$state.current.url.indexOf('/dashboard') != 0 && $state.current.url.indexOf('/download') != 0"></navigation-breadcrumb>
+        <!--<div class="msg error-msg">-->
+        <!--Something went wrong. We couldn't save your results.-->
+        <!--</div>-->
+        <!--<div class="msg success-msg">-->
+        <!--Contacts successfully added to the list. <br />-->
+        <!--And this is a second line.-->
+        <!--</div>-->
+
+        <ui-view></ui-view>
+    </div>
+
+    <div growl></div>
+</main>
+
+
+<script id="templates/growl/growl.html" type="text/ng-template">
+    <div class="top-msg-container" ng-class="wrapperClasses()">
+        <div class="msg" ng-repeat="message in growlMessages.directives[referenceId].messages" ng-class="alertClasses(message)" ng-click="stopTimeoutClose(message)">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"
+                    ng-click="growlMessages.deleteMessage(message)" ng-if="!message.disableCloseButton">
+                <i class="fal fa-times"></i>
+            </button>
+            <div class="title" ng-if="message.title" ng-bind="message.title"></div>
+            <div class="message" ng-bind-html="message.text"></div>
+        </div>
+    </div>
+</script>

@@ -1,0 +1,10 @@
+<button class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2 id="modal-title">{{'billing.invoices.payments.title' | i18n:{invoice_number:vm.invoice.invoice_number} }}</h2>
+</div>
+<div class="modal-body" id="modal-body">
+    <invoice-payments invoice="vm.invoice"></invoice-payments>
+    <div class="btn-group">
+        <button type="button" ng-click="vm.close()">Close</button>
+    </div>
+</div>

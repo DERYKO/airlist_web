@@ -1,0 +1,10 @@
+{
+  "states": [
+    "listed",
+    "invited",
+    "requested",
+    "confirmed",
+    "cancelled",
+    "waitlisted"
+  ]
+}

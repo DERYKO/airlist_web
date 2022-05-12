@@ -1,0 +1,175 @@
+.wizard {
+
+  h2 {
+    margin-bottom: $gutter-regular;
+  }
+
+  h3 {
+    margin-bottom: 10px;
+  }
+
+  span.heading-emphasis {
+    color: $secondary;
+  }
+
+  .form-group {
+
+    display: block;
+    padding: $gutter-regular 0;
+
+    &.inline {
+      display: inline-block;
+    }
+
+    label {
+      width: 100%;
+      font-size: $font-regular;
+      font-weight: $font-weight-bold;
+      position: relative;
+
+      span {
+        color: $warning;
+      }
+
+      .mandatory {
+        color: $warning;
+      }
+    }
+
+    input[type="radio"] + label,
+    input[type="checkbox"] + label {
+      font-weight: $font-weight-regular;
+    }
+
+    h3 label {
+      margin: 0;
+    }
+  }
+
+  .radio-list,
+  .checkbox-list {
+
+    input[type="radio"] + label,
+    input[type="checkbox"] + label {
+      //line-height: $gutter-large;
+      font-weight: $font-weight-regular;
+      padding: 5px 0 5px 30px;
+      min-height: 1px;
+
+      &:before {
+        top: 1px;
+      }
+    }
+  }
+
+  .box-section-wrap {
+
+    > fieldset {
+      //border-bottom: $border;
+      //padding-top: $gutter-large;
+      //padding-bottom: $gutter-regular;
+
+      //&:first-of-type {
+      //  padding-top: 0;
+      //}
+    }
+
+    //&.set-fields {
+    //  > fieldset {
+    //
+    //    &:last-of-type {
+    //      border-bottom: none;
+    //      padding-bottom: 0;
+    //    }
+    //  }
+    //}
+  }
+
+  .al-select {
+    width: 350px;
+    display: inline-block;
+    //vertical-align: middle;
+  }
+
+  .selectize-input {
+    max-width: 350px;
+    width: 100%;
+  }
+
+  select-box ~ button {
+    margin-top: 5px;
+
+    &:disabled {
+      cursor: not-allowed;
+      color: $dark;
+    }
+  }
+
+  //.custom-fields {
+  //
+  //  .form-group {
+  //    padding: 0 $gutter-regular $gutter-regular 0;
+  //    display: inline-block;
+  //  }
+  //
+  //  label:first-child {
+  //    font-weight: initial;
+  //    font-size: $font-size-input-label;
+  //    width: $input-width;
+  //  }
+  //}
+
+  //.btn-group {
+  //  button {
+  //    i {
+  //      margin-left: 10px;
+  //    }
+  //  }
+  //}
+  //
+  //.btn-left, .btn-right {
+  //  width: 49%;
+  //}
+  //
+  //.btn-left {
+  //  text-align: left;
+  //}
+  //
+  //.btn-right {
+  //  text-align: right;
+  //}
+}
+
+.help-text {
+  font-style: italic;
+  font-size: 12px;
+  margin-bottom: 10px;
+  line-height: normal;
+
+  .modal-body & {
+    margin-bottom: $gutter-small;
+  }
+}
+
+.extended-info {
+  background-color: $highlight-5;
+  margin: 0 (-$gutter-large) (-$gutter-large);
+  padding: $gutter-regular $gutter-large;
+
+  @include breakpoint($small) {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.form-invalid {
+  customfield.ng-invalid {
+    color: $warning;
+
+    input {
+      border-color: $warning;
+    }
+  }
+}

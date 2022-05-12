@@ -1,0 +1,156 @@
+<h1>{{vm.headline}}</h1>
+<form name="templateEditor" ng-submit="vm.triggerSave(vm.template)">
+    <section ng-if="vm.template" ng-show="vm.currentView === 'general'">
+        <h2>General</h2>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <fieldset>
+                    <div class="form-group input-x-lg">
+                        <label for="create_template_name">Template name (internal)</label>
+                        <input type="text" ng-model="vm.template.name" name="name" id="create_template_name">
+                    </div>
+                    <div class="form-group input-x-lg">
+                        <label for="create_template_subject">Subject</label>
+                        <input type="text" ng-model="vm.template.subject" name="subject" id="create_template_subject">
+                    </div>
+                    <div class="form-group input-x-lg">
+                        <label for="create_template_preview">Custom preview text <br/>
+                            <small>line below subject in mail client</small>
+                        </label>
+                        <input type="text" ng-model="vm.template.preview" name="preview" id="create_template_preview">
+                    </div>
+                </fieldset>
+                <fieldset>
+
+                    <div class="form-group">
+                        <label for="create_template_sender_email">Sender email</label>
+                        <input type="text" ng-model="vm.template.email" name="email" id="create_template_sender_email">
+                    </div>
+                    <div class="form-group">
+                        <label for="create_template_sender_name">Sender name</label>
+                        <input type="text" ng-model="vm.template.sender_name" name="sender_name"
+                               id="create_template_sender_name">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="create_template_bcc_email">BCC email</label>
+                        <input type="text" ng-model="vm.template.bcc" name="bcc" id="create_template_bcc_email">
+                    </div>
+                    <div class="form-group">
+                        <label for="create_template_reply_to">Reply to address</label>
+                        <input type="text" ng-model="vm.template.reply_to" name="bcc" id="create_template_reply_to">
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </section>
+
+    <section ng-if="vm.template" ng-show="vm.currentView === 'template'">
+        <h2>Template</h2>
+        <div class="content-box " ng-class="{beefree: (vm.templateMode === 'beefree')}" style="position: relative">
+            <beefree model="vm.template" ng-if="vm.enableModeChange || vm.templateMode === 'beefree'"
+                     ng-show="vm.templateMode === 'beefree'" on-save="vm.save(model)"></beefree>
+            <div class="box-section-wrap" ng-if="vm.templateMode === 'custom'">
+                <customfield definition="vm.controls.ace_field" ng-model="vm.template.html"></customfield>
+            </div>
+
+            <div ng-if="vm.enableModeChange">
+                <button type="button" class="btn-regular btn-no-transition" ng-if="vm.templateMode === 'beefree'"
+                        ng-click="vm.changeTemplateMode()" style="margin: 20px;">Switch to custom template
+                </button>
+                <button type="button" class="btn-regular btn-no-transition" ng-if="vm.templateMode === 'custom'"
+                        ng-click="vm.changeTemplateMode()">Switch to editor
+                </button>
+            </div>
+        </div>
+        <!--<div class="content-box beefree" ng-show="vm.templateMode === 'beefree'" style="position: relative;">-->
+        <!---->
+        <!--</div>-->
+        <h2>Custom Plain Content</h2>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <h4>Custom Plain Content</h4>
+                <customfield definition="vm.controls.ace_field" ng-model="vm.template.plain_content"></customfield>
+            </div>
+        </div>
+    </section>
+
+    <section ng-if="vm.template" ng-show="vm.currentView === 'attachments'">
+        <h2 ng-if="vm.acl.hasRight('templates::type-list') || vm.acl.hasRight('tickets::list') || vm.acl.hasRight('passbooks::list')">
+            Attachments</h2>
+        <div class="content-box"
+             ng-if="vm.acl.hasRight('templates::type-list') || vm.acl.hasRight('tickets::list') || vm.acl.hasRight('passbooks::list')">
+            <div class="box-section-wrap">
+                <div class="data-list">
+                    <table>
+                        <tbody>
+                        <tbody>
+                        <tr ng-if="vm.acl.hasRight('tickets::list')">
+                            <td>Ticket Name</td>
+                            <td>
+                                <select-box
+                                        model="vm.template.ticket_id"
+                                        config="vm.ticket_config"
+                                        value-field="id"
+                                        display-field="name">
+                                </select-box>
+                            </td>
+                        </tr>
+                        <tr ng-if="vm.acl.hasRight('passbooks::list')">
+                            <td>Passbook Name</td>
+                            <td>
+                                <select-box
+                                        model="vm.template.passbook_id"
+                                        config="vm.passbook_config"
+                                        value-field="id"
+                                        display-field="name">
+                                </select-box>
+                            </td>
+                        </tr>
+                        <tr ng-if="vm.acl.hasRight('templates::type-list')">
+                            <td>Template Type</td>
+                            <td>
+                                <select-box
+                                        model="vm.template.template_type_id"
+                                        config="vm.template_type_config"
+                                        value-field="id"
+                                        display-field="name">
+                                </select-box>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <h2>Custom Attachments</h2>
+        <div class="content-box">
+            <div class="row">
+                <div class="col-4">
+                    <customfield definition="{type: 'media_file', name: 'Attachment 1', startDirectory: 'templates'}"
+                                 ng-model="vm.template.attachment_1" name="attachment_1"></customfield>
+
+                </div>
+                <div class="col-4">
+                    <customfield definition="{type: 'media_file', name: 'Attachment 2', startDirectory: 'templates'}"
+                                 ng-model="vm.template.attachment_2" name="attachment_2"></customfield>
+
+                </div>
+                <div class="col-4">
+                    <customfield definition="{type: 'media_file', name: 'Attachment 3', startDirectory: 'templates'}"
+                                 ng-model="vm.template.attachment_3" name="attachment_3"></customfield>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="fixed-footer">
+            <div class="btn-group">
+                <button class="btn-warning" ng-click="vm.hide()">Discard Changes</button>
+                <button type="submit" class="btn-confirm">Done</button>
+            </div>
+        </div>
+    </section>
+</form>

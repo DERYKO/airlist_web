@@ -1,0 +1,26 @@
+<button class="close" ng-click="vm.dismiss()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2 id="modal-title">Select fields for duplicate check</h2>
+</div>
+<div class="modal-body">
+    <p>Please select one field as minimum to do a clean duplicate check</p>
+    <fieldset>
+        <div class="checkbox-list">
+            <div class="form-group"
+                 ng-repeat="col in vm.store.getters.columns track by $index"
+                 ng-if="col.enabled_for_duplicates">
+                <input ng-model="vm.selectedFields[col.key]"
+                       id="selected-field-{{$index}}"
+                       type="checkbox"/>
+                <label for="selected-field-{{$index}}">{{col.label}}</label>
+            </div>
+        </div>
+    </fieldset>
+    <div class="btn-group">
+        <button type="button" class="btn-confirm" ng-click="vm.close()">
+            Set fields
+        </button>
+    </div>
+</div>
+
+

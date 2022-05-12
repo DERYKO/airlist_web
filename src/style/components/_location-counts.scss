@@ -1,0 +1,63 @@
+.location-counts {
+  .count {
+    display: block;
+    width: 32%;
+    margin-left: 2%;
+    float: left;
+    text-align: center;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    h3 {
+      background: $light;
+      padding: 5px;
+      margin-bottom: 0;
+      color: $lightest;
+      font-weight: normal;
+    }
+
+    span {
+      display: block;
+      padding: 4px;
+      border: 1px solid $light;
+    }
+
+    &.count-green {
+      h3 {
+        background: $secondary;
+      }
+
+      span {
+        border-color: $secondary;
+      }
+    }
+
+    &.count-red {
+      h3 {
+        background: $warning;
+      }
+
+      span {
+        border-color: $warning;
+      }
+    }
+
+    &.count-blue {
+      h3 {
+        background: $waitlist;
+      }
+
+      span {
+        border-color: $waitlist;
+      }
+    }
+  }
+
+  &:after {
+    display: table;
+    content: '';
+    clear: both;
+  }
+}

@@ -1,0 +1,372 @@
+{
+  "modals": {
+    "create": {
+      "title": "Create a new guestlist",
+      "labels": {
+        "name": "Name of event",
+        "start_date": "Start of Event",
+        "end_date": "End of Event",
+        "permission": "Private guestlist"
+      },
+      "help_texts": {
+        "name": "Used internally to to name the guestlist",
+        "permission": "Für private Gästelisten können in den Event Settings festlegen wer ausser Ihnen das Event noch sehen darf."
+      },
+      "messages": {
+        "invalid_data": "Given data is not valid. Please recheck the fields",
+        "api_error": "Error while creating guestlist. Please retry."
+      }
+    },
+    "after-create": {
+      "title": "Your guestlist has been successfully created!",
+      "actions_head": "Please select what you want to do next:",
+      "actions": {
+        "import": "Add guests",
+        "settings": "Guestlist settings",
+        "fields": "Set up fields"
+      }
+    }
+  },
+  "workflows": {
+    "create-guestlist": {
+      "messages": {
+        "created":{
+          "title": "Success",
+          "message": "The guestlists was created successfully"
+        }
+      }
+    }
+  },
+  "editor": {
+    "navigation": {
+      "general": {
+        "label": "General",
+        "subItems": {
+          "general": "General",
+          "location": "Location",
+          "visibility": "Visibility",
+          "advanced": "Advanced"
+        }
+      },
+      "fields": {
+        "label": "Fields"
+      },
+      "form": {
+        "label": "Registration form",
+        "subItems": {
+          "type": "Registration type",
+          "guests_of_guest": "Begleitpersonen",
+          "representative": "Vertreter",
+          "recommendation": "Nominierung",
+          "form_fields": "Abfragefelder",
+          "registration_settings": "Einstellungen"
+        }
+      },
+      "landing": {
+        "label": "Landing",
+        "subItems": {
+          "website": "Website",
+          "alerts": "Alerts"
+        }
+      },
+      "messages": {
+        "label": "E-Mails",
+        "subItems": {
+          "templates": "Templates",
+          "email_settings": "E-Mail settings"
+        }
+      },
+      "tickets": {
+        "label": "Tickets",
+        "subItems": {
+          "design": "Templates",
+          "ticket_settings": "Ticket settings"
+        }
+      },
+      "limitations": {
+        "label": "Limits / Waitlist",
+        "subItems": {
+          "open_reg": "Offene Registrierung",
+          "close_reg": "Geschlossene Registrierung",
+          "field_limits": "Field Limits"
+        }
+      }
+    },
+    "pages": {
+      "general": {
+        "head": "General settings",
+        "sub_heads": {
+          "location": "Location",
+          "visibility": "Visibility",
+          "advanced": "Advanced"
+        },
+        "labels": {
+          "name": "Name of event",
+          "start_date": "Start of Event",
+          "end_date": "End of Event",
+          "location": {
+            "name": "Name of location",
+            "street": "Street and number",
+            "zip": "ZIP",
+            "city": "City",
+            "country": "Country"
+          },
+          "permission": "Möchten Sie die Sichtbarkeit dieses Events für andere Mitarbeiter einschränken?",
+          "add_contact_to_categories": "Add following categories to the rsvp contact",
+          "add_contacts_to_addressbook": "Add guests to addressbook",
+          "identify_contact_by_email": "Identify contacts by email",
+          "overwrite_data_of_email_identified_contact": "Overwrite email identifier contact data"
+        },
+        "help_texts": {
+          "name": "Used internally to to name the guestlist"
+        },
+        "alerts": {
+          "user_already_exists_in_permissions_list": "User already exists in permissions list."
+        },
+        "permission_list": {
+          "headers": {
+            "main": "Permissions for guestlist",
+            "read": "Read",
+            "write": "Write",
+            "delete": "Delete",
+            "admin": "Admin"
+          },
+          "buttons": {
+            "add_user": "Add User"
+          }
+        }
+      },
+      "fields": {
+        "head": "Fields to be collected from guests"
+      },
+      "form": {
+        "head": "Registration form",
+        "sub_heads": {
+          "type": "Registration type",
+          "guests": "Begleitpersonen",
+          "representative": "Vertreter",
+          "recommendations": "Nominierungen",
+          "fields": "Abfragefelder",
+          "fields_main_guest": "Main guest",
+          "fields_main_guest_sub": "Bitte wählen Sie hier die Felder aus, die Sie von Ihren Gästen abfragen möchten. Sollten Sie weitere Felder benötigen, können Sie hierzu unsere Custom Fields verwenden.",
+          "fields_guests": "Begleitperson",
+          "fields_guests_sub": "Bitte wählen Sie hier die Felder aus, die Sie von den Begleitpersonen der Hauptgäste abfragen möchten. Sollten Sie weitere Felder benötigen, können Sie hierzu unsere Custom Fields verwenden.",
+          "fields_representative": "Vertretung des Hauptgastes",
+          "fields_representative_sub": "Bitte wählen Sie hier die Felder aus, die Sie von der Vertretung des Hauptgäste abfragen möchten. Sollten Sie weitere Felder benötigen, können Sie hierzu unsere Custom Fields verwenden.",
+          "fields_recommendations": "Nominierungen",
+          "fields_recommendations_sub": "Bitte wählen Sie hier die Felder aus, die Sie von der nominierten Person abfragen möchten. Sollten Sie weitere Felder benötigen, können Sie hierzu unsere Custom Fields verwenden.",
+          "settings": "Einstellungen",
+          "settings_sub": "Bitte legen Sie hier die Funktionsweise ihres Registrierungstyp fest.",
+          "registration_time_range": "Registrierungszeitraum",
+          "registration_time_range_sub": "Der Zeitraum in dem eine Anmeldung über das Registrierungsformular möglich ist, kann hier eingeschränkt werden.",
+          "relogin": "Relogin",
+          "relogin_sub": "Hier können Sie festlegen welche Personen das Registrierungsformular ausfüllen und abschicken können auch wenn sie bereits auf Ihre Einladung geantwortet haben.",
+          "individual_re-login": "Individueller Relogin",
+          "registration_status_flow": "Registration Status Flow",
+          "registration_status_flow_sub": "Configure from which status and to which status guest can go."
+        },
+        "labels": {
+          "registration_type": "Bitte wählen Sie hier wie Sie Ihre Gäste verwalten möchten",
+          "enable_guests": "Begleitpersonen zulassen?",
+          "guest_count_maximum": "Max. Anzahl der Begleitpersonen festlegen?",
+          "enable_representative": "Vertreter zulassen?",
+          "no_guest_limit": "Kein Limit",
+          "representative_default_state": "Status des Vertreters festlegen",
+          "enable_recommendations": "Nominierung weiterer Teilnehmer zulassen?",
+          "recommendation_default_state": "Status des Nominierten",
+          "recommendation_count_maximum": "Max. Anzahl der Nominierungen festlegen?",
+          "no_recommendation_limit": "Kein Limit",
+          "registration_time_range": "Möchten Sie den Registrierungszeitraum einschränken?",
+          "registration_start": "Start of registration",
+          "registration_end": "End of registration",
+          "open_registration_no_auto_confirm": "Prüfung der offenen Anmeldungen",
+          "open_password_enabled": "Passwortschutz für offene Anmeldungen",
+          "open_reg_password": "Passwort eingeben",
+          "status_mapping_preset": "Folgende Relogin Optionen stehen zur Verfügung:",
+          "use_same_as_main_guest": "Möchten Sie die selben Einstellungen wie des Hauptgastes verwenden?",
+          "individual_re-login": "Guest can log in with following states (\"relogin\"):"
+        },
+        "help_texts": {
+          "enable_guests": "Der Hauptgast hat die Möglichkeit Begleitpersonen anzulegen und zu verwalten.",
+          "guest_count_maximum": "Diese Einschränkung gilt  für alle Gäste. Um für jeden Gast eine individuelle Anzahl an Begleitpersonen festzulegen nutzen Sie bitte die Spalte „PAX MAX“ des jeweiligen Hauptgastes. (PAX MAX: 2 = 1 Hauptperson & 1 Begleitpseron)",
+          "enable_representative": "Der Hauptgast hat die Möglichkeit mit seiner persönlichen Absage einen Vertreter zu benennen.",
+          "representative_default_state": "Legen Sie hier fest welchen Status der Vertreter nach seiner Benennung erhalten soll. Entsprechend des Status erhält das dazugehörige E-Mail Template.",
+          "enable_recommendations": "Der Hauptgast hat die Möglichkeit eine oder mehrere Personen für Ihre Veranstaltung vorzuschlagen.",
+          "recommendation_default_state": "Legen Sie hier fest welchen Status der Nominierte nach seiner Benennung erhalten soll. Entsprechend des Status erhält das dazugehörige E-Mail Template.",
+          "recommendation_count_maximum": "Legen Sie hier fest wie viele Nominierungen ein Hauptgast aussprechen kann.",
+          "open_registration_no_auto_confirm": "Der Status des Teilnehmers wird vorerst auf „requested“ gesetzt und kann nach Prüfung eines Mitarbeiters „confirmed“ werden.",
+          "open_password_enabled": "Möchten sie die Registrierung durch ein allgemeines Passwort schützen, sodass sich nur Personen die dieses Passwort kennen anmelden können?"
+        },
+        "registrationTypes": {
+          "no_external": {
+            "label": "Keine externe Anmeldeseite",
+            "help_text": "Verwaltung der Teilnehmer nur über das AirLST System"
+          },
+          "just_open": {
+            "label": "Open Registration (Offener Teilnehmerkreis)",
+            "help_text": "Jeder kann sich über einen Link anmelden"
+          },
+          "just_closed": {
+            "label": "Code Registration (Geschlossener Teilnehmerkreis)",
+            "help_text": "Jeder Teilnehmer benötigt einen persönlichen Code um sich über einen Link anzumelden zu können"
+          },
+          "open_and_closed": {
+            "label": "Offener und geschlossener Teilnehmerkreis",
+            "help_text": "Die Anmeldung ist sowohl für bekannte also auch unbekannte Teilnehmer möglich"
+          }
+        },
+        "statusMappingPresets": {
+          "no_change": "Keine Änderungen zulassen",
+          "allow_cancellation": "Absage nach Zusage zulassen",
+          "allow_all_changes": "Beliebige Änderungen zulassen",
+          "individual": "Individuellen Relogin konfigurieren"
+        }
+      },
+      "landing": {
+        "head": "Configure your Landingpage",
+        "sub_heads": {
+          "website": "Webseite",
+          "alerts": "Alerts",
+          "alerts_limits": "Limits",
+          "alerts_registration": "Registrierung",
+          "alerts_validation": "Datenprüfung",
+          "alerts_general": "Allgemeine Fehlermeldungen"
+        },
+        "labels": {
+          "alerts": {
+            "registration_not_open": "Registrierung noch nicht geöffnet",
+            "registration_already_closed": "Registrierungszeitraum abgelaufen",
+            "pax_limit_reached_with_waitlist": "Maximale Teilnehmer Anzahl erreicht mit Warteliste",
+            "pax_limit_reached_without_waitlist": "Maximale Teilnehmer Anzahl erreicht ohne Warteliste",
+            "wrong_code": "Falscher Code",
+            "confirmation_success": "Anmeldung erfolgreich",
+            "cancellation_success": "Abmeldung erfolgreich",
+            "request_success": "Anfrage erfolgreich",
+            "waitlist_success": "Warteliste erfolgreich",
+            "missing_required_fields": "Fehlende Pflichtfelder",
+            "wrong_data_format": "Falsches Datenformat",
+            "technical_issue": "Technischer Fehler",
+            "missing_event_information": "Fehlende Eventinformationen"
+          }
+        }
+      },
+      "tickets": {
+        "head": "Tickets",
+        "main_head_sub": "Verwalten Sie hier die Tickets die Sie für Ihre Veranstaltung verwenden möchten.",
+        "sub_heads": {
+          "design": "Design",
+          "pdf_ticket": "PDF Ticket",
+          "wallet_ticket": "Wallet Ticket",
+          "ticket_flow": "Einzeltickets/Gruppenticket"
+        },
+        "labels": {
+          "enable_ticket": "Möchten Sie Ihren Gästen ein PDF Ticket zukommen lassen?",
+          "ticket_id": "Hier finden Sie eine Vorschau Ihres PDF Tickets. Wenn Sie ein individuelles PDF Ticket verwenden möchten, können Sie bestehende Ticket Templates hier auswählen",
+          "enable_passbook": "Möchten Sie Ihren Gästen ein Wallet Ticket zukommen lassen?",
+          "passbook_id": "Hier finden Sie eine Vorschau Ihres Wallet Tickets. Wenn Sie ein individuelles Wallet Ticket verwenden möchten, können Sie bestehende Ticket Templates hier auswählen",
+          "attach_ticket_to_confirmation_email": "Attach ticket to the confirmation email",
+          "attach_passbook_to_confirmation_email": "Attach wallet ticket to the confirmation email",
+          "messages_ticket_flow": "Legen Sie hier fest ob der Hauptgast ein Gruppenticket, für jeden Gast ein Einzelticket oder ob die Begleitpersonen direkt ihr Ticket erhalten sollen."
+        }
+      },
+      "limits": {
+        "head": "Limitations",
+        "sub_heads": {
+          "open_registration": "Offene Registrierung",
+          "code_registration": "Geschlossene Registrierung"
+        },
+        "labels": {
+          "enable_open_reg_pax_limit": "Maximale Teilnehmerzahl",
+          "open_reg_pax_limit": "Maximale Anzahl an bestätigten Personen",
+          "open_reg_pax_limit_states": "Welcher Status soll zur Zählung der max. Teilnehmerzahl verwendet werden?",
+          "open_reg_enable_waitlist": "Warteliste",
+          "enable_code_reg_pax_limit": "Maximale Teilnehmerzahl",
+          "code_reg_pax_limit": "Maximale Anzahl an bestätigten Personen",
+          "code_reg_pax_limit_states": "Welcher Status soll zur Zählung der max. Teilnehmerzahl verwendet werden?",
+          "code_reg_enable_waitlist": "Warteliste",
+          "registration_limit_public_counts": "Limits als Restwert an die public API übertragen",
+          "registration_limit_states": "Welcher Status des Gastes soll zur Zählung der Limits berücksichtigt werden?"
+        },
+        "help_texts": {
+          "enable_open_reg_pax_limit": "Legen Sie hier fest ob die Anzahl der Personen die sich für Ihre Veranstaltung anmelden dürfen begrenzt werden soll.",
+          "open_reg_pax_limit": "Nach Erreichen der max. Anzahl an bestätigten Personen ist eine Anmeldung nur noch über die Warteliste möglich, sollte diese aktiviert werden.",
+          "open_reg_pax_limit_states": "Nach Erreichen der max. Anzahl an bestätigten Personen ist eine Anmeldung nur noch über die Warteliste möglich, sollte diese aktiviert werden.",
+          "open_reg_enable_waitlist": "Möchten Sie nachdem die maximale Teilnehmeranzahl erreicht ist den Personen die Möglichkeit geben sich für eine Warteliste anzumelden?",
+          "enable_code_reg_pax_limit": "Legen Sie hier fest ob die Anzahl der Personen die sich für Ihre Veranstaltung anmelden dürfen begrenzt werden soll.",
+          "code_reg_pax_limit": "Nach Erreichen der max. Anzahl an bestätigten Personen ist eine Anmeldung nur noch über die Warteliste möglich, sollte diese aktiviert werden.",
+          "code_reg_pax_limit_states": "Nach Erreichen der max. Anzahl an bestätigten Personen ist eine Anmeldung nur noch über die Warteliste möglich, sollte diese aktiviert werden.",
+          "code_reg_enable_waitlist": "Möchten Sie nachdem die maximale Teilnehmeranzahl erreicht ist den Personen die Möglichkeit geben sich für eine Warteliste anzumelden?"
+        }
+      },
+      "emails": {
+        "head": "Messages",
+        "main_head_sub": "Definieren Sie hier welche individuellen E-Mail Templates für Ihren Registrierungsprozess verwendet werden sollen.",
+        "sub_heads": {
+          "settings": "Settings",
+          "templates": "Templates",
+          "templates_sub": "Hier können Sie individuelle E-Mail Templates für Ihr Event definieren und die AirLST Standard Templates austauschen."
+        },
+        "labels": {
+          "main_rsvp_send_flow": "Wann soll Emailbenachrichtigungen an den Gast erhalten?",
+          "send_guest_emails": "Automatische E-Mailbenachrichtig für Begleitpersonen",
+          "send_representative_emails": "Automatische E-Mailbenachrichtig für Vertreter",
+          "send_recommendation_emails": "Automatische E-Mailbenachrichtig für Nominierungen",
+          "invitation_template_id": "Select invitation template",
+          "reminder_template_id": "Select reminder template",
+          "confirmation_template_id": "Select confirmation template",
+          "cancellation_template_id": "Select cancellation template",
+          "request_email_id": "Select request template",
+          "pending_template_id": "Select pending template",
+          "waitlist_template_id": "Select waitlist template"
+        }
+      }
+    },
+    "components": {
+      "form-field-selector": {
+        "head": "Available fields",
+        "sub_heads": {
+          "selected_fields": "Selected fields"
+        },
+        "buttons": {
+          "move_all": "Move all"
+        },
+        "filters": {
+          "all_configured": "All configured fields",
+          "all": "All"
+        },
+        "labels": {
+          "add_custom_field_name": "Add custom field"
+        },
+        "fieldGroups": {
+          "basic": "Basic information",
+          "address": "Address information",
+          "business_information": "Business information",
+          "customs": "customs",
+          "communication": "Communication",
+          "contact_details": "Contact",
+          "contact_extended": "Extended"
+        },
+        "apiSettingTypes": {
+          "read_and_update": "read and edit",
+          "only_read": "read only",
+          "no_action": "hidden"
+        },
+        "tableHeaders": {
+          "label": "Field name",
+          "apiSetting": "API setting",
+          "required": "Req.",
+          "edit": "Edit"
+        },
+        "modal": {
+          "head": "Setting of the field: ",
+          "custom_field_settings_header": "Custom field settings",
+          "labels": {
+            "default_label": "Field name",
+            "label": "Custom label",
+            "api_setting": "API Setting"
+          }
+        }
+      }
+    }
+  }
+}

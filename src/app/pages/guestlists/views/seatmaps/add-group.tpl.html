@@ -1,0 +1,55 @@
+<button class="close" ng-click="vm.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Add a new Group to {{vm.model.super_group}}</h2>
+</div>
+<div class="modal-body">
+    <form ng-submit="vm.save(vm.model)">
+        <fieldset>
+            <div class="form-group">
+                <label>Group Name</label>
+                <input type="text" ng-model="vm.model.group" name="name">
+            </div>
+            <div class="form-group">
+                <label>Rows Name</label>
+                <input type="text" ng-model="vm.model.rows.format" name="row_format" placeholder="e.g. Row {value}">
+            </div>
+            <div class="form-group">
+                <label>Sequence Start</label>
+                <input type="text" ng-model="vm.model.rows.start" name="row_start" placeholder="e.g 1 or e or Z">
+            </div>
+            <div class="form-group">
+                <label>Sequence Stop</label>
+                <input type="text" ng-model="vm.model.rows.end" name="row_end" placeholder="e.g 5 or i or X">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Cols Name</label>
+                <input type="text" ng-model="vm.model.cols.format" name="col_format" placeholder="e.g. Col {value}">
+            </div>
+            <div class="form-group">
+                <label>Sequence Start</label>
+                <input type="text" ng-model="vm.model.cols.start" name="col_start" placeholder="e.g 1 or e or Z">
+            </div>
+            <div class="form-group">
+                <label>Sequence Stop</label>
+                <input type="text" ng-model="vm.model.cols.end" name="col_end" placeholder="e.g 5 or i or X">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Seat Name Format</label>
+                <input type="text" ng-model="vm.model.name" name="name">
+                <p class="help">Available placeholders are <code>{group}</code>,<code>{row}</code>,<code>{col}</code></p>
+            </div>
+            <div class="form-group">
+                <label>Capacity per Seat</label>
+                <input type="number" ng-model="vm.model.capacity" name="capacity">
+            </div>
+        </fieldset>
+    </form>
+    <div class="btn-group">
+        <button class="btn-warning" ng-click="vm.cancel()">Cancel</button>
+        <button class="btn-confirm" type="submit">Save</button>
+    </div>
+</div>

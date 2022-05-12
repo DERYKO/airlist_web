@@ -1,0 +1,68 @@
+<div class="details-expanded-basic-info" ng-if="elvc.model">
+    <table>
+        <tr>
+            <th>Pax planned:</th>
+            <th>Code:</th>
+            <th>Status:</th>
+            <th>Guests:</th>
+        </tr>
+        <tr>
+            <td>{{elvc.model.pax_planned}}</td>
+            <td>{{elvc.model.code}}</td>
+            <td>{{elvc.model.status}}</td>
+            <td>
+                {{elvc.model.guest_pax}}
+            </td>
+        </tr>
+    </table>
+</div>
+
+<hr/>
+<div class="data-list">
+    <ul class="col-layout">
+        <!--<li>-->
+            <!--<span class="data-label">Status</span>-->
+            <!--<span class="data-value">{{::elvc.model.status}}</span>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<span class="data-label">Pax planned</span>-->
+            <!--<span class="data-value">{{::elvc.model.status}}</span>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<span class="data-label">Status</span>-->
+            <!--<span class="data-value">{{::elvc.model.status}}</span>-->
+        <!--</li>-->
+        <li ng-repeat="customIndex in [1,2,3,7]"
+            ng-if="elvc.model.guestlist.data['custom_'+customIndex+'_name'].name">
+            <span class="data-label">{{::elvc.model.guestlist.data['custom_'+customIndex+'_name'].name}}</span>
+            <span class="data-value">{{::elvc.model['custom_' + customIndex]}}</span>
+        </li>
+    </ul>
+</div>
+
+<!--<div class="data-list">-->
+    <!--<table>-->
+        <!--<tbody>-->
+        <!--<tr>-->
+            <!--<td>Status:</td>-->
+            <!--<td>{{::elvc.model.status}}</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>Pax planned:</td>-->
+            <!--<td>{{::elvc.model.pax_planned}}</td>-->
+        <!--</tr>-->
+        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td>Code:</td>&ndash;&gt;-->
+            <!--&lt;!&ndash;<td>{{::vm.rsvp.contact.data.code}}</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+        <!--<tr ng-repeat="customIndex in [1,2,3,7]"-->
+            <!--ng-if="elvc.model.guestlist.data['custom_'+customIndex+'_name'].name">-->
+            <!--<td>{{::elvc.model.guestlist.data['custom_'+customIndex+'_name'].name}}</td>-->
+            <!--<td>{{::elvc.model['custom_' + customIndex]}}</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+<!--</div>-->
+<div style="margin-top: 20px; text-align: center;">
+    <airport-payback-actions rsvp="elvc.model" store="elvc.store" ng-if="elvc.model.guestlist_id == 965 && elvc.model.status == 'requested'" update-action="elvc.loadData()"></airport-payback-actions>
+</div>

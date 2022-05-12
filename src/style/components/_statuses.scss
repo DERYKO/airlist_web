@@ -1,0 +1,170 @@
+span {
+
+  &.confirmed,
+  &.cancelled,
+  &.listed,
+  &.requested,
+  &.waitlisted,
+  &.invited {
+
+    &:before {
+      content: "\f111";
+      font-family: $icon-font-solid;
+      margin-right: $gutter-regular;
+    }
+  }
+
+  &.confirmed {
+    &:before {
+      color: $secondary;
+    }
+  }
+
+  &.cancelled {
+    &:before {
+      color: $warning;
+    }
+  }
+
+  &.listed {
+    &:before {
+      color: $light;
+    }
+  }
+
+  &.requested {
+    &:before {
+      color: $warning-soft;
+    }
+  }
+
+  &.waitlisted {
+    &:before {
+      color: $waitlist;
+    }
+  }
+
+  &.invited {
+    &:before {
+      color: $primary;
+    }
+  }
+}
+
+span, p {
+  &.text-error {
+    color: $warning;
+    font-weight: $font-weight-bold;
+  }
+
+  &.text-warning {
+    color: $warning-soft;
+    font-weight: $font-weight-bold;
+  }
+
+  &.text-confirmation {
+    color: $secondary;
+    font-weight: $font-weight-bold;
+  }
+}
+
+span.message-status {
+
+  white-space: nowrap;
+
+  &:before {
+    content: "\f111";
+    font-family: $icon-font-solid;
+    margin-right: $gutter-regular;
+  }
+
+  &.delivered,
+  &.clicked,
+  &.opened,
+  &.processed {
+    &:before {
+      color: $secondary;
+    }
+  }
+
+  &.error,
+  &.bounced,
+  &.blocked,
+  &.invalid_send_to,
+  &.blacklisted,
+  &.dropped {
+    &:before {
+      color: $warning;
+    }
+  }
+
+  &.deferred {
+    &:before {
+      color: $light;
+    }
+  }
+
+  &.scheduled {
+    &:before {
+      color: $warning-soft;
+    }
+  }
+}
+
+span.subscription-state {
+
+  &:before {
+    content: "\f111";
+    font-family: $icon-font-solid;
+    margin-right: $gutter-small;
+  }
+
+  &.subscription_running {
+    &:before {
+      color: $secondary;
+    }
+  }
+
+  &.subscription_terminated {
+    &:before {
+      color: $warning;
+    }
+  }
+
+  &.subscription_will_start {
+    &:before {
+      color: $light;
+    }
+  }
+
+  &.subscription_paused {
+    &:before {
+      color: $warning-soft;
+    }
+  }
+}
+
+span {
+
+  &.soft-bounce,
+  &.hard-bounce {
+
+    &:before {
+      content: "\f071";
+      font-family: $icon-font-light;
+      margin-right: $gutter-regular;
+    }
+  }
+
+  &.soft-bounce {
+    &:before {
+      color: $warning-soft;
+    }
+  }
+
+  &.hard-bounce {
+    &:before {
+      color: $warning;
+    }
+  }
+}

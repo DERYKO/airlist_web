@@ -1,0 +1,62 @@
+{
+  "settings": {
+    "blacklist_header": "Blacklists settings",
+    "blacklist_title": " Email(s) and Mobile No.(s) listed below will not receive any notifications. Any emails and smses sent to these contacts will be stopped by the system.",
+    "blacklist_input_email": {
+      "label": "Blacklisted Email(s)",
+      "placeholder": "Please enter one item per line"
+    },
+    "blacklist_input_sms": {
+      "label": "Blacklisted Mobile No.(s)",
+      "placeholder": "Please enter one item per line"
+    },
+    "blacklist_update_success": {
+      "title": "Success",
+      "text": "Settings saved successful"
+    },
+    "blacklist_update_error": {
+      "title": "Failed",
+      "text": "An error occurred while saving settings. Please retry"
+    },
+    "custom_attributes_header": "Custom guestlist attributes",
+    "custom_attribute_title": "Attribute",
+    "custom_attributes_save": "Done",
+    "custom_attributes_discard": "Discard Changes",
+    "custom_attributes_save_success": {
+      "title": "Success",
+      "text": "Saving the custom fields was successful"
+    },
+    "custom_attributes_save_error": {
+      "title": "Failed",
+      "text": "Saving the custom fields failed"
+    },
+    "notifications_save_success": {
+      "title": "Success",
+      "text": "Settings saved successful"
+    },
+    "notifications_save_error": {
+      "title": "Failed",
+      "text": "An error occurred while saving settings. Please retry"
+    },
+    "notifications_header": "Email templates",
+    "notifications_registered_email_title": "Registered Email Template",
+    "notifications_checked_in_email_title": "Checked In Email Template",
+    "notifications_sms_header": "SMS Templates",
+    "notifications_registered_sms_title": "Registered SMS",
+    "notifications_checked_in_title": "Checked in SMS",
+    "notifications_save": "Done",
+    "notifications_discard": "Discard Changes",
+    "profile_edit_update_success": {
+      "title": "Success",
+      "text": "Changes have been saved successful"
+    },
+    "profile_details_applications_header": "Applications",
+    "profile_applications_input_company_uid": {
+      "label": "Company UID"
+    },
+    "profile_applications_input_token": {
+      "label": "Personal Token"
+    },
+    "profile_editor_title" : "Edit profile {{full_name}}"
+  }
+}

@@ -1,0 +1,71 @@
+<button class="close" ng-click="email.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>{{ 'common.send_email' | i18n }}</h2>
+</div>
+<div class="modal-body">
+    <div ng-if="!email.template">
+        <p>Please select a template to be sent by email:</p>
+        <button style="margin-bottom: 3px;" class="btn btn-default" ng-click="email.selectTemplate()">
+            Click to choose template
+        </button>
+    </div>
+
+    <div ng-if="email.template">
+        <table class="table">
+            <tr>
+                <td style="width: 80px; border-top: 0px solid #fff;">From</td>
+                <td style="border-top: 0px solid #fff;">{{email.template.sender_name}} <{{email.template.email}}></td>
+            </tr>
+            <tr ng-if="email.isSingleEmail">
+                <td>To</td>
+                <td>
+                    <span e-form="rowform" editable-text="email.model.send_to_email">{{email.model.send_to_email}}</span>
+                    <!-- form -->
+                    <div class="buttons" ng-show="!rowform.$visible">
+                        <button class="btn btn-primary" ng-click="rowform.$show()">Change</button>
+                    </div>
+                    <!-- form -->
+                    <form editable-form name="rowform" ng-show="rowform.$visible" class="form-buttons form-inline">
+                        <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                            Save
+                        </button>
+                        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                            Cancel
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>BCC</td>
+                <td>{{email.template.bcc}}</td>
+            </tr>
+            <tr>
+                <td>Subject</td>
+                <td>{{email.template.subject}}</td>
+            </tr>
+            <tr>
+                <td>Preview</td>
+                <td>
+                    <div ng-bind-html="email.trustTemplateHtml(email.template.html)">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="form-group" ng-if="email.template.ticket_id && email.template">
+        <label>Attach Ticket</label>
+        <customfield definition="{type:'boolean'}" ng-model="email.model.attach_ticket"></customfield>
+    </div>
+    <div class="form-group" ng-if="email.template.passbook_id && email.template">
+        <label>Attach Passbook</label>
+        <customfield definition="{type:'boolean'}" ng-model="email.model.attach_passbook"></customfield>
+    </div>
+    <div class="form-group" ng-if="email.template.files.length > 0 && email.template">
+        <label>Attach Files</label>
+        <customfield definition="{type:'boolean'}" ng-model="email.model.attach_files"></customfield>
+    </div>
+
+    <div class="btn-group">
+        <button class="bt-confirm" ng-disabled="!email.template" ng-click="email.send(email.model)">Send</button>
+    </div>
+</div>

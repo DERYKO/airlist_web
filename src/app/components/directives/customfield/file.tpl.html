@@ -1,0 +1,42 @@
+<div class="dropzone"
+     ngf-drop="field.uploadFiles($files)"
+     ngf-select="field.uploadFiles($files)"
+     ngf-pattern="field.definition.filePatterns || 'image/*,application/pdf'"
+     ngf-multiple="true">
+    <div>
+        <button type="button" class="btn-confirm">Select</button><br><br>
+        <span>or drop files</span>
+    </div>
+</div>
+<div ng-repeat="file in field.selectedFiles">
+    <div class="file">
+        <p>
+            <i class="fal fa-spin fa-hourglass"></i>&nbsp;&nbsp;
+            {{file.name}}
+        </p>
+        <p>
+            <b>Size:</b><span> {{file.size}}</span>
+        </p>
+    </div>
+</div>
+<div ng-repeat="file in field.ngModel">
+    <div class="file">
+        <p>
+            <!--todo: either file-image or file-pdf, e.g. file-png is not working-->
+            <!--<i class="fal fa-file-{{file.ext}}"></i>-->
+            <i class="fal fa-file"></i>&nbsp;&nbsp;
+            {{file.name}}
+        </p>
+        <div class="file-details">
+            <p>
+                <b>Size:</b><span> {{file.size}}</span>
+            </p>
+            <button data-tooltip="Download" ng-click="field.downloadFile(file)" type="button">
+                <i class="fal fa-download"></i>
+            </button>
+            <button data-tooltip="Delete" ng-click="field.deleteFile(file, $index)" type="button">
+                <i class="fal fa-trash"></i>
+            </button>
+        </div>
+    </div>
+</div>

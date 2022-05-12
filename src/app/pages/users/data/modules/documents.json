@@ -1,0 +1,38 @@
+{
+  "name": "Documents",
+  "identifier": "documents",
+  "rights": [
+    {
+      "name": "document.delete",
+      "identifier": "document.delete"
+    },
+    {
+      "name": "document.download",
+      "identifier": "document.download"
+    },
+    {
+      "name": "document.edit",
+      "identifier": "document.edit"
+    },
+    {
+      "name": "document.list",
+      "identifier": "document.list"
+    },
+    {
+      "name": "template.delete",
+      "identifier": "template.delete"
+    },
+    {
+      "name": "template.edit",
+      "identifier": "template.edit"
+    },
+    {
+      "name": "template.list",
+      "identifier": "template.list"
+    },
+    {
+      "name": "template.view",
+      "identifier": "template.view"
+    }
+  ]
+}

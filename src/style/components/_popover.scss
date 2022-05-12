@@ -1,0 +1,28 @@
+.popover {
+
+  @include box-basic($box-shadow-large, $padding-basic);
+
+  position: absolute;
+  border: $border;
+  z-index: 1001;
+  font-size: $font-size-basic;
+  display: none;
+
+  &.open {
+    display: block;
+  }
+}
+
+.side-menu .popover {
+  left: $side-menu-width - $gutter-regular;
+  top: -$gutter-regular;
+  white-space: nowrap;
+}
+
+.popover.left {
+  @include arrow-left(top, 25px, left, -16px);
+}
+
+.collapsed .side-menu .popover {
+  left: 70px;
+}

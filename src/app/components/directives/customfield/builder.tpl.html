@@ -1,0 +1,32 @@
+<fieldset>
+    <div class="form-group">
+        <customfield name="name" ng-model="field.ngModel.name" definition="{type: 'textbox', required: !!field.definition.required, name: 'Name'}"></customfield>
+    </div>
+
+    <div class="form-group">
+        <label>Type <span ng-if="field.definition.required">*</span></label>
+        <select name="type" ng-model="field.ngModel.type" ng-required="field.definition.required">
+            <option value="">Not set</option>
+            <option value="boolean">boolean</option>
+            <option value="date">date</option>
+            <option value="datetime">datetime</option>
+            <option value="decimal">decimal</option>
+            <option value="integer">integer</option>
+            <option value="select">select</option>
+            <option value="textarea">textarea</option>
+            <option value="color_code_select">Color codes</option>
+            <option value="textbox">textbox</option>
+            <option value="media_image">image</option>
+            <option value="media_file">file</option>
+            <option value="html">Richt Text</option>
+        </select>
+    </div>
+</fieldset>
+
+<fieldset ng-if="field.ngModel.type == 'select'">
+    <label class="mt-20 d-block"><strong>Options:</strong></label>
+    <customfield name="enum" ng-model="field.ngModel.enum" definition="{type: 'array'}"></customfield>
+</fieldset>
+<fieldset ng-if="field.ngModel.type == 'color_code_select'">
+    <customfield name="enum-color-code" ng-model="field.ngModel.enum" definition="{type: 'enum-color-array'}"></customfield>
+</fieldset>

@@ -1,0 +1,16 @@
+<section ng-if="vm.loading">
+    <div class="dashboard-empty">
+        <div class="pacman">
+            <i class="fal fa-sync fa-spin"></i>
+            <h2>Preparing download file</h2>
+        </div>
+    </div>
+</section>
+
+<section ng-if="!vm.loading">
+    <h3>Download started.</h3>
+</section>
+<section ng-if="vm.error.active">
+    <h3>Error occurred!</h3>
+</section>
+

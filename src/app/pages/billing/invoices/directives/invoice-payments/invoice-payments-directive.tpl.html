@@ -1,0 +1,35 @@
+<!--<div class="box-section-wrap main-table mt2">-->
+    <!--<table>-->
+        <!--<thead>-->
+        <!--<tr>-->
+            <!--<th></th>-->
+            <!--<th>Date</th>-->
+            <!--<th>Type</th>-->
+            <!--<th>Status</th>-->
+            <!--<th>Amount</th>-->
+            <!--<th style="width: 290px;">Actions</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr ng-repeat="payment in vm.payments">-->
+            <!--<td></td>-->
+            <!--<td>{{payment.payment_time|date:'yyyy-MM-dd'}}</td>-->
+            <!--<td>{{payment.type}}</td>-->
+            <!--<td>{{payment.status}}</td>-->
+            <!--<td>{{payment.amount|number:2}}</td>-->
+            <!--<td>-->
+                <!--<a ng-click="vm.editPayment(payment)" class="button" ng-if="!payment.is_stripe_payment">-->
+                    <!--<i class="fal fa-pencil"></i>-->
+                <!--</a>-->
+                <!--&nbsp;-->
+                <!--<a ng-click="vm.deletePayment(payment)" class="button btn-warning" ng-if="!payment.is_stripe_payment">-->
+                    <!--<i class="fal fa-trash-alt"></i>-->
+                <!--</a>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+<!--</div>-->
+<button ng-click="vm.createPayment()" ng-if="vm.alreadyPaidAmount < vm.invoice.sum_brutto" class="btn btn-confirm">
+    Create Payment
+</button>

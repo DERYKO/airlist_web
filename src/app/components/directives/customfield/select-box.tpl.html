@@ -1,0 +1,13 @@
+<label for="{{name}}" ng-if="field.definition.name">{{::field.definition.name}}
+    <span ng-if="field.definition.required">*</span>
+    <i class="fal fa-info-circle" ng-if="field.definition.tooltip">
+        <span data-tooltip="{{::field.definition.tooltip}}"></span>
+    </i>
+</label>
+<p class="help-text" ng-if="field.definition.help">{{::field.definition.help}}</p>
+
+<select-box
+        model="field.ngModel"
+        name="{{name}}"
+        config="field.definition.config">
+</select-box>

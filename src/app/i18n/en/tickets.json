@@ -1,0 +1,34 @@
+{
+  "crud_ticket": {
+    "title": "Create new PDF Ticket",
+    "ticket_archived_title": "This ticket has been deleted",
+    "dimensions": "Dimensions",
+    "width": "Width (mm)",
+    "Height": "Height (mm)",
+    "text": {
+      "position_top": "Text position top (mm)",
+      "position_left": "Text position left (mm)",
+      "size ": "Text size (mm)",
+      "color": "Text color (HEX)",
+      "qr_top": "QR position top (mm)",
+      "qr_left": "QR position left (mm)",
+      "qr_size ": "QR size (mm)"
+    },
+    "content " : "Content",
+    "background_image" : "Background Image",
+    "general" : "General",
+    "input_ticket_name" : "Ticket name",
+    "discard ": "Discard changes"
+  },
+  "alerts" : {
+    "archive_pdf_ticket" : {
+      "title" : "Confirm Ticket Deletion",
+      "text" : "Are you sure you want to delete the ticket: {{ticket_name}}"
+    },
+    "delete_pdf_ticket" : {
+      "title" : "Confirm Ticket Deletion",
+      "text" : "Are you sure you want to permanently delete the ticket: {{ticket_name}}"
+    }
+
+  }
+}

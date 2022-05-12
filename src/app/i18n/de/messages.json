@@ -1,0 +1,42 @@
+{
+  "crud_messages": {
+    "file_attachments" : "Dateianlagen",
+    "message_create": {
+      "title": "Senden Sie eine neue Nachricht",
+      "input_template": "Vorlage",
+      "input_contact": "Kontakte",
+      "input_subject": "Gegenstand",
+      "recipient_type_message": "Tickets und Sparbücher können einfach an RSVP-E-Mails angehängt werden",
+      "template_preview": {
+        "header": "Vorlagenvorschau",
+        "select_template": "Wählen Sie die Vorlage aus, um die Vorschau anzuzeigen",
+        "send": "Senden"
+      }
+    }
+  },
+  "alerts": {
+    "message_send": {
+      "title": "Nachricht gesendet",
+      "text": "Ihre Nachricht wurde zum Senden in die Warteschlange gestellt"
+    },
+    "archive_message": {
+      "title": "Deleting {{message_subject}}",
+      "text": "Möchten Sie die Nachricht wirklich in den Papierkorb verschieben?",
+      "btn_text": "Löschen",
+      "success": {
+        "title": "Erfolg",
+        "text": "Nachrichten wurden in den Papierkorb verschoben"
+      }
+    },
+    "delete_message": {
+      "title": "Deleting {{message_subject}}",
+      "text": "Möchten Sie die Nachricht wirklich löschen? Das kann nicht rückgängig gemacht werden!",
+      "btn_text": "Löschen"
+    },
+    "restore_message": {
+      "title": "Wiederherstellen {{message_subject}}",
+      "text": "Möchten Sie die Nachricht wirklich wiederherstellen? Das kann nicht rückgängig gemacht werden!",
+      "btn_text": "Wiederherstellen"
+    }
+  }
+}

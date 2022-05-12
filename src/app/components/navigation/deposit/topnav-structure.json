@@ -1,0 +1,141 @@
+[
+  {
+    "key": "contacts-list",
+    "order": 5,
+    "children": []
+  },
+  {
+    "key": "guestlists-list",
+    "order": 10,
+    "children": []
+  },
+  {
+    "key": "messages-list",
+    "order": 15,
+    "children": []
+  },
+  {
+    "key": "picklists-list",
+    "order": 20,
+    "children": []
+  },
+  {
+    "key": "templates",
+    "order": 25,
+    "children": [
+      {
+        "key": "templates-email",
+        "order": 5,
+        "children": []
+      },
+      {
+        "key": "templates-email-types",
+        "order": 10,
+        "children": []
+      },
+      {
+        "key": "templates-documents",
+        "order": 15,
+        "children": []
+      }
+    ]
+  },
+  {
+    "key": "tickets",
+    "order": 30,
+    "children": [
+      {
+        "key": "tickets-pdf",
+        "order": 5,
+        "children": []
+      },
+      {
+        "key": "tickets-passbook",
+        "order": 10,
+        "children": []
+      }
+    ]
+  },
+  {
+    "key": "settings",
+    "order": 50,
+    "children": [
+      {
+        "key": "users-list",
+        "order": 5,
+        "children": []
+      },
+      {
+        "key": "categories-list",
+        "order": 10,
+        "children": []
+      },
+      {
+        "key": "settings-jobs-log",
+        "order": 15,
+        "children": []
+      },
+      {
+        "key": "settings-notifications",
+        "order": 20,
+        "children": []
+      },
+      {
+        "key": "seatplans-list",
+        "order": 25,
+        "children": []
+      },
+      {
+        "key": "settings-blacklists",
+        "order": 25,
+        "children": []
+      },
+      {
+        "key": "settings-customfields",
+        "order": 30,
+        "children": []
+      }
+    ]
+  },
+  {
+    "key": "billing",
+    "order": 60,
+    "children": [
+      {
+        "key": "billing-invoices",
+        "order": 5,
+        "children": []
+      },
+      {
+        "key": "billing-positions",
+        "order": 10,
+        "children": []
+      },
+      {
+        "key": "billing-position_categories",
+        "order": 15,
+        "children": []
+      },
+      {
+        "key": "billing-invoice_templates",
+        "order": 20,
+        "children": []
+      },
+      {
+        "key": "billing-number_circles",
+        "order": 25,
+        "children": []
+      },
+      {
+        "key": "billing-subscriptions",
+        "order": 30,
+        "children": []
+      },
+      {
+        "key": "billing-stripe",
+        "order": 35,
+        "children": []
+      }
+    ]
+  }
+]

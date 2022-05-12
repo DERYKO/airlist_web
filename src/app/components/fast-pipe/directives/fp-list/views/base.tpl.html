@@ -1,0 +1,17 @@
+<ng-include src="'fast-pipe/directives/fp-list/views/partials/header.tpl.html'"></ng-include>
+
+
+<div class="content main-panel-content">
+    <div class="container-fluid" ng-if="vm-message.show">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-{{vm.message.type}}">{{vm.message.message}}</div>
+            </div>
+        </div>
+    </div>
+    <ng-include src="'fast-pipe/directives/fp-list/views/partials/filters.tpl.html'"></ng-include>
+    <ng-include src="'fast-pipe/directives/fp-list/views/layouts/' + vm.layout + '/rows.tpl.html'"
+                ng-if="!vm.loading && !vm.message.show"></ng-include>
+</div>
+
+<ng-include src="'fast-pipe/directives/fp-list/views/partials/footer.tpl.html'"></ng-include>

@@ -1,0 +1,123 @@
+<h1>Create a new RSVP</h1>
+
+<form ng-submit="vm.save(createRsvp)" name="createRsvp" class="lig" ng-class="{'submitted':createRsvp.$submitted}"
+      ng-if="vm.guestlist"
+      novalidate>
+    <section>
+        <div ng-if="vm.rsvps.contacts.count > 0">
+            <h2>Selected Contacts</h2>
+            <div class="content-box">
+                <div class="box-section-wrap">
+                    <div class="filter-expanded table-options">
+                        <span>{{vm.rsvps.contacts.count}} contacts selected:</span>
+                        <div class="contacts-tags">
+                            <div class="tag" ng-repeat="row in vm.contacts.getters.selectedRows | limitTo:25">
+                                {{row.full_name}}
+                            </div>
+                            <div class="tag" ng-if="vm.contacts.getters.selectedCount - 25 > 0">
+                                + {{ vm.contacts.getters.selectedCount - 25 }} more
+                            </div>
+                        </div>
+
+                        <div class="tag" ng-if="vm.rsvps.contacts.keyword">
+                            Keyword: {{vm.rsvps.contacts.keyword}}
+                        </div>
+                        <div class="tag" ng-repeat="col in vm.contacts.getters.filterableColumns"
+                             ng-if="col.filterable && vm.contacts.state.filters[col.key]">
+                            {{col.label}}: {{vm.contacts.state.filters[col.key]}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="vm.rsvps.contacts.count === 0">
+            <h2>Select contacts</h2>
+            <div class="content-box">
+                <div class="box-section-wrap">
+                    <div class="form-group input-x-lg">
+                        <label>Select contacts from the list below</label>
+                        <select-box model="vm.rsvps.contacts.filters[0].value"
+                                    config="vm.contactsSelector"></select-box>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Details</h2>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <fieldset>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="status" ng-model="vm.rsvps.fields.status"
+                                ng-options="k as v for (k, v) in vm.deposits.states"></select>
+                    </div>
+                    <div class="form-group" ng-if="vm.parentSelector">
+                        <label>Guest Of</label>
+                        <select-box model="vm.rsvps.fields.parent_rsvp_id" config="vm.parentSelector"></select-box>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label>Pax Planned</label>
+                        <input ng-model="vm.rsvps.fields.pax_planned" type="text"
+                               name="pax_planned">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pax Actual</label>
+                        <input ng-model="vm.rsvps.fields.pax_actual" type="text"
+                               name="pax_actual">
+                    </div>
+                    <div class="form-group">
+                        <label>Pax Max</label>
+                        <input ng-model="vm.rsvps.fields.pax_max" type="text"
+                               name="pax_max">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group">
+                        <label>RSVP</label>
+                        <select name="color" ng-model="vm.rsvps.fields.color">
+                            <option value="">No Selection</option>
+                            <option value="Presse">Presse</option>
+                            <option value="Free 1">Free 1</option>
+                            <option value="Free All">Free All</option>
+                            <option value="Partner">Partner</option>
+                            <option value="VIP">VIP</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Priority</label>
+                        <select name="priority" ng-model="vm.rsvps.fields.priority">
+                            <option value="a">a</option>
+                            <option value="b">b</option>
+                            <option value="c">c</option>
+                            <option value="d">d</option>
+                            <option value="e">e</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Comment</label>
+                        <textarea ng-model="vm.rsvps.fields.comment" name="comment"
+                                  rows="5"></textarea>
+                    </div>
+                </fieldset>
+                <div class="form-group" ng-repeat="field in vm.customFields track by $index">
+                    <label for="{{field.key}}">{{field.title}}</label>
+                    <customfield ng-model="vm.rsvps.fields[field.key]" definition="field" name="field.key"
+                                 id="{{field.key}}"></customfield>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="fixed-footer">
+            <div class="btn-group">
+                <button type="button" class="btn-warning" ng-click="vm.close()">Cancel</button>
+                <button type="submit" class="btn-confirm">Save</button>
+            </div>
+        </div>
+    </section>
+</form>

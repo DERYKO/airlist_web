@@ -1,0 +1,112 @@
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: $transition;
+}
+
+[data-tooltip]:before {
+  position: absolute;
+  bottom: 125%;
+  left: 0;
+  padding: 5px 10px;
+  border-radius: $border-radius-large;
+  background-color: $darkest;
+  color: $lightest;
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 11px;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-weight: $font-weight-bold;
+  z-index: 1;
+}
+
+[data-tooltip]:after {
+  position: absolute;
+  bottom: 81%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  border-width: 5px;
+  border-style: solid;
+  border-color: $darkest transparent transparent transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  opacity:1;
+}
+
+.side-menu {
+  [data-tooltip]:before {
+    bottom: 50px;
+  }
+
+  [data-tooltip]:after {
+    bottom: 40px;
+  }
+
+  [data-tooltip]:hover:before,
+  [data-tooltip]:hover:after {
+    visibility: hidden;
+  }
+}
+
+.collapsed .side-menu {
+  [data-tooltip]:hover:before,
+  [data-tooltip]:hover:after {
+    visibility: visible;
+
+    @include breakpoint($small) {
+      visibility: hidden;
+    }
+  }
+}
+
+.form-group, .tooltip-alt {
+  [data-tooltip]:before {
+    background-color: $lightest;
+    border: $border;
+    color: $text-color;
+    padding: 10px 15px;
+    content: attr(data-tooltip);
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.2;
+    white-space: normal;
+    text-transform: none;
+    font-weight: $font-weight-regular;
+    box-shadow: $box-shadow-small;
+    min-width: 300px;
+  }
+
+  [data-tooltip]:after {
+    content: none;
+  }
+
+  i.fa-info-circle {
+    cursor: pointer;
+    position: relative;
+    font-size: 13px;
+
+    [data-tooltip] {
+      font-family: $text-font-stack;
+      display: block;
+      width: 13px;
+      height: 13px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}

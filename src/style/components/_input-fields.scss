@@ -1,0 +1,371 @@
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+input:not([type='checkbox']),
+input:not([type='radio']),
+select,
+.selectize-input,
+textarea {
+  width: $input-width;
+  height: $input-height;
+  padding: $gutter-small $gutter-regular;
+  border: $border;
+  box-shadow: none;
+  border-radius: 0;
+  font-family: $text-font-stack;
+  color: $text-color;
+
+  &::placeholder {
+    color: $text-light;
+    font-weight: $font-weight-light;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  @include breakpoint($xsmall) {
+    width: 100%;
+    padding:  $gutter-small 10px;
+  }
+}
+
+select {
+  text-indent: 5px;
+  background-color: $lightest;
+}
+
+input[type="file"] {
+  border-color: white;
+  padding-left: 0;
+  box-shadow: none;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+
+  &.textarea-list {
+    min-width: $input-width * 2;
+  }
+}
+
+fieldset input[type="checkbox"] + label {
+  width: $input-width;
+  min-height: 30px;
+  line-height: normal;
+}
+
+input:not([type='checkbox']),
+input:not([type='radio']),
+select {
+  &.i-small {
+    width: $input-width / 2;
+  }
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="radio"] + label:before,
+input[type="checkbox"] + label:before {
+  font-size: 20px;
+  vertical-align: middle;
+  margin-right: 10px;
+  font-family: $icon-font-light;
+
+  display: block;
+  position: absolute;
+  top: 6px;
+  left: 0;
+}
+
+input[type="radio"] + label:before {
+  content: "\f111"; /* circle-blank */
+}
+
+input[type="radio"]:checked + label:before {
+  content: "\f192"; /* circle */
+  color: $primary;
+  font-family: $icon-font-solid;
+}
+
+input[type="checkbox"] + label:before {
+  content: "\f0c8"; /* check-empty */
+}
+
+input[type="checkbox"]:checked + label:before {
+  content: "\f14a"; /* check */
+  color: $primary;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  display: block;
+  position: relative;
+  padding: 10px 0 10px 30px;
+  min-height: 35px;
+}
+
+.form-group {
+  display: inline-block;
+  padding: 0 $gutter-regular $gutter-regular 0;
+  vertical-align:top;
+  position: relative;
+
+  @include breakpoint($xsmall) {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  &.input-lg {
+
+    width: 100%;
+
+    input, select, textarea, .selectize-input, ng-quill-editor > div, label {
+      width: 100%;
+      max-width: $input-width-lg;
+    }
+  }
+
+  &.input-sm {
+    input, select, .selectize-input, ng-quill-editor > div, label {
+      width: $input-width-sm;
+    }
+  }
+
+  &.input-x-lg {
+    width: calc(100% - 420px);
+
+    input, select, .selectize-input, textarea, ng-quill-editor > div, label {
+      width: 100%;
+    }
+
+    textarea {
+      height: 250px;
+    }
+  }
+
+  &.small-ace-box {
+    display: block;
+    padding-right: 0;
+
+    .ace_editor {
+      min-height: 200px !important;
+    }
+  }
+
+  label {
+    display: block;
+    font-size: $font-size-input-label;
+    margin-bottom: 7px;
+    width: $input-width;
+  }
+}
+
+.input-full {
+  width: 100%;
+
+  input, select, .selectize-input, textarea, ng-quill-editor > div {
+    width: 100%;
+  }
+}
+
+filter-date, filter-datetime {
+  font-size: $font-size-input-label;
+  margin-bottom: 5px;
+}
+
+.popup {
+  input, select {
+    width: 100%;
+    margin-bottom: $gutter-regular;
+  }
+}
+
+
+//Input field error
+.error {
+
+  label {
+    color: $warning;
+
+    &:before {
+      content: "\f06a";
+      font-family: $icon-font-light;
+      margin-right: 5px;
+      vertical-align: top;
+    }
+  }
+
+  input, select {
+    border: 1px solid $warning;
+  }
+}
+
+//enable stacked FontAwesome with pseudoelements
+//(works only for checkboxes without label - in tables)
+
+
+.grid-view, .main-table {
+  input[type="radio"] + label,
+  input[type="checkbox"] + label {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+  }
+
+  //FontAwesome icons in ::before are 'Solid'
+
+  input[type="radio"] + label:before,
+  input[type="checkbox"] + label:before {
+    font-family: $icon-font-solid;
+    color: $lightest;
+  }
+
+  input[type="radio"] + label:after,
+  input[type="checkbox"] + label:after {
+    font-family: $icon-font-light;
+  }
+
+  //position FontAwesome icons on top of each other
+
+  input[type="radio"] + label:before,
+  input[type="checkbox"] + label:before,
+  input[type="radio"] + label:after,
+  input[type="checkbox"] + label:after {
+    font-size: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+    position: absolute;
+    left: 0;
+  }
+
+  input[type="radio"] + label:after {
+    content: "\f111"; /* circle-blank */
+  }
+
+  input[type="checkbox"] + label:after {
+    content: "\f0c8"; /* check-empty */
+  }
+
+  input[type="radio"]:checked + label:after {
+    content: "\f192"; /* circle */
+    color: $primary;
+  }
+
+  input[type="checkbox"]:checked + label:after {
+    content: "\f14a"; /* check */
+    color: $primary;
+  }
+
+  input[type="radio"] + label,
+  input[type="checkbox"] + label {
+    line-height: normal;
+  }
+
+}
+
+
+//Star radio button
+.address-star {
+  margin-bottom: $gutter-regular;
+
+  input[type="radio"] + label:before,
+  input[type="radio"] + label:after {
+    font-size: inherit;
+  }
+
+  input[type="radio"] + label:before {
+    content: "\f005"; /* circle-blank */
+    font-weight: $font-weight-light;
+  }
+
+  input[type="radio"]:checked + label:before {
+    content: "\f005"; /* circle */;
+    font-family: $icon-font-solid;
+  }
+
+  label {
+    font-weight: $font-weight-bold;
+    cursor: pointer;
+  }
+}
+
+//Drop or select files
+.dropzone {
+  width: 100%;
+  height: 150px;
+  border: 2px dashed $border-color;
+  text-align: center;
+  position: relative;
+  transition: $transition;
+
+  div {
+
+    @include center-align;
+
+    font-size: $font-medium;
+    position: absolute;
+  }
+}
+
+.dragover {
+  background-color: $highlight-2;
+  border-color: $secondary;
+}
+
+.file {
+  margin-top: $gutter-regular;
+}
+
+.file-details {
+
+  p {
+    display: inline-block;
+  }
+}
+
+.add-option {
+  color: $secondary;
+}
+
+.html-editor {
+  width: span(4, $eight-col);
+  display: inline-block;
+
+  &:first-child {
+    padding-right: $gutter-small;
+  }
+
+  &:last-child {
+    padding-left: $gutter-small;
+  }
+}
+
+
+.input-icon {
+  position: absolute;
+  right: 0px;
+  bottom: 14px;
+  width: 40px;
+  height: $input-height;
+  cursor: pointer;
+
+  i {
+    font-size: 14px;
+    color: $dark;
+  }
+}
+
+.delete-field {
+  i {
+    color: $dark;
+  }
+}

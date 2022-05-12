@@ -1,0 +1,12 @@
+<label for="{{name}}" ng-if="field.definition.name">{{::field.definition.name}}
+    <span ng-if="field.definition.required">*</span>
+    <i class="fal fa-info-circle" ng-if="field.definition.tooltip">
+        <span data-tooltip="{{::field.definition.tooltip}}"></span>
+    </i>
+</label>
+<p class="help-text" ng-if="field.definition.help">{{::field.definition.help}}</p>
+<select ng-model="field.ngModel" id="{{name}}" name="{{name}}" class="form-control">
+    <option value="" ng-if="!field.definition.required"></option>
+    <option ng-repeat="item in field.definition.enum track by $index" value="{{item}}" ng-if="field.definition.enum">{{item}}</option>
+    <option ng-repeat="(value,title) in field.definition.options track by $index" value="{{value}}" ng-if="field.definition.options">{{title}}</option>
+</select>

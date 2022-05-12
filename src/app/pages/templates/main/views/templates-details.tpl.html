@@ -1,0 +1,83 @@
+<h1>{{vm.model.name}}</h1>
+
+<section ng-if="vm.currentView === 'general'">
+    <h2>General</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <div class="data-list">
+                <table>
+                    <tbody>
+                    <tbody>
+                    <tr>
+                        <td>{{'templates.subject' | i18n }}</td>
+                        <td>{{ vm.model.subject}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{'templates.email' | i18n }}</td>
+                        <td>{{ vm.model.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{'templates.sender_name' | i18n }}</td>
+                        <td>{{ vm.model.sender_name }}</td>
+                    </tr>
+                    <tr ng-if="vm.model.bcc">
+                        <td>{{'templates.bcc' | i18n }}</td>
+                        <td>{{ vm.model.bcc}}</td>
+                    </tr>
+                    <tr ng-if="vm.model.reply_to">
+                        <td>{{'templates.reply_to' | i18n }}</td>
+                        <td>{{ vm.model.reply_to}}</td>
+                    </tr>
+                    <tr ng-if="vm.model.preview">
+                        <td>{{'templates.preview' | i18n }}</td>
+                        <td>{{ vm.model.preview}}</td>
+                    </tr>
+                    <tr ng-if="vm.model.type">
+                        <td>{{'templates.template_type' | i18n }}</td>
+                        <td>{{ vm.model.type.data.name}}</td>
+                    </tr>
+                    <tr ng-if="vm.model.ticket_id">
+                        <td>{{'templates.ticket' | i18n }}</td>
+                        <td>{{ vm.model.ticket.data.name}}</td>
+                    </tr>
+                    <tr ng-if="vm.model.passbook_id">
+                        <td>{{'templates.passbook' | i18n }}</td>
+                        <td>{{ vm.model.passbook.data.name}}</td>
+                    </tr>
+                    <tr ng-if="vm.model.attachment_1">
+                        <td>{{'templates.attachment_1' | i18n }}</td>
+                        <td>
+                            <al-media-thumbnail file="vm.model.attachment_1"></al-media-thumbnail>
+                        </td>
+                    </tr>
+                    <tr ng-if="vm.model.attachment_2">
+                        <td>{{'templates.attachment_2' | i18n }}</td>
+                        <td>
+                            <al-media-thumbnail file="vm.model.attachment_2"></al-media-thumbnail>
+                        </td>
+                    </tr>
+                    <tr ng-if="vm.model.attachment_3">
+                        <td>{{'templates.attachment_3' | i18n }}</td>
+                        <td>
+                            <al-media-thumbnail file="vm.model.attachment_3"></al-media-thumbnail>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section ng-show="vm.currentView === 'template'">
+    <h2>Template</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <div ng-bind-html="vm.trustTemplateHtml(vm.model.html)"></div>
+        </div>
+    </div>
+    <h2 ng-if="vm.model.plain_content">Plain Content</h2>
+    <div class="content-box" ng-if="vm.model.plain_content">
+        <div class="box-section-wrap" ng-bind-html="vm.model.plain_content|nl2br"></div>
+    </div>
+</section>

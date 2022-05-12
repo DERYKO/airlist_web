@@ -1,0 +1,13 @@
+<form class="wizard" name="guestlistForm" enctype="multipart/form-data" method="post"
+      ng-class="{'submitted':guestlistForm.$submitted}" novalidate>
+
+    <al-guestlist-editor guestlist="vm.state.guestlist" on-model-update="vm.onModelUpdate(newData)" external-view-trigger="vm.editorView"></al-guestlist-editor>
+
+    <div class="fixed-footer">
+        <div class="btn-group">
+            <button ng-click="vm.cancel()" class="btn-warning">Cancel</button>
+
+            <button ng-click="vm.submitData()" class="btn-confirm">Save changes</button>
+        </div>
+    </div>
+</form>

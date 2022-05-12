@@ -1,0 +1,32 @@
+<section>
+    <h2>Extended booking information</h2>
+    <div class="content-box box-900">
+        <div class="box-section-wrap">
+            <div class="data-list">
+                <ul>
+                    <li ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]"
+                        ng-if="vm.schema.properties['custom_'+i] && (vm.rsvp['custom_'+i] || vm.schema.properties['custom_'+i]['type'] == 'boolean')">
+                        <span class="data-label">
+                            {{ vm.schema.properties['custom_'+i].title }}
+                        </span>
+                        <span class="data-value" ng-if="vm.schema.properties['custom_'+i]['format'] != 'date' && vm.schema.properties['custom_'+i]['type'] != 'datetime' && vm.schema.properties['custom_'+i]['type'] != 'boolean' && vm.schema.properties['custom_'+i]['type'] != 'media_image' && vm.schema.properties['custom_'+i]['type'] != 'media_file'">
+                            {{ vm.rsvp['custom_'+i] }}
+                        </span>
+                        <span class="data-value" ng-if="vm.schema.properties['custom_'+i]['format'] == 'date'">
+                            {{ vm.rsvp['custom_'+i] | date : 'dd.MM.yyyy':'+0000'}}
+                        </span>
+                        <span class="data-value" ng-if="vm.schema.properties['custom_'+i]['type'] == 'datetime'">
+                            {{ vm.rsvp['custom_'+i] | date : 'dd.MM.yyyy HH:mm':'+0000'}}
+                        </span>
+                        <span class="data-value" ng-if="vm.schema.properties['custom_'+i]['type'] == 'boolean'">
+                            {{ vm.rsvp['custom_'+i] == '1' ? 'yes' : 'no' }}
+                        </span>
+                        <span class="data-value" ng-if="vm.schema.properties['custom_'+i]['type'] == 'media_image' || vm.schema.properties['custom_'+i]['type'] == 'media_file'">
+                            <al-media-thumbnail file="vm.rsvp['custom_'+i]"></al-media-thumbnail>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

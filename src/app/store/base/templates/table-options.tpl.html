@@ -1,0 +1,32 @@
+<button class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Table Settings</h2>
+</div>
+<div class="modal-body visibility-filter">
+
+    <div class="table-options">
+        <div class="head">
+            <input ng-model="vm.colFilter" placeholder="Filter columns">
+            <span>Show only marked as:</span>
+            <button type="button" class="btn-regular" ng-model="vm.visible" uib-btn-radio="false" ng-class="{'btn-confirm': vm.visible === false}" uncheckable>No</button>
+            <button type="button" class="btn-regular" ng-model="vm.visible" uib-btn-radio="true" ng-class="{'btn-confirm': vm.visible === true}" uncheckable>Yes</button>
+        </div>
+        <div class="content">
+            <div ng-repeat="group in vm.columnsGrouped" class="col-group" ng-class="{open:(group.shown || vm.searchActive)}">
+                <h2 ng-click="group.shown = !group.shown">{{group.label}}</h2>
+                <div class="col-list">
+                    <div ng-repeat="item in group.columns| orderBy:'label' track by item.key">
+                        <input id="to-item-{{item.key}}" type="checkbox" ng-true-value="true" ng-false-value="false"
+                               ng-model="item.visible"/>
+                        <label for="to-item-{{item.key}}">{{item.label}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <button class="btn-warning" ng-click="vm.reset()">{{ 'common.reset_to_defaults' | i18n }}</button>
+        <button class="btn-confirm" ng-click="vm.save(vm.sections)">{{ 'common.apply' | i18n }}</button>
+    </div>
+</div>

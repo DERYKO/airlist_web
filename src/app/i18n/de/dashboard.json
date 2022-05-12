@@ -1,0 +1,13 @@
+{
+  "dashboard" : "Instrumententafel",
+  "airport_on_event" : {
+    "load" : "Lade Daten",
+    "time_to_shine" : "Zeit sich zu beweisen!",
+    "create_event_title": "Erstelle dein erstes Event!",
+    "btn_create_guestlist": "Erstellen Sie eine Gästeliste",
+    "pax_planned" : "{{sum_pax_planned}} PAX geplant",
+    "pax_checked_in" : "{{sum_pax_actual}} Pax (eingecheckt)",
+    "copy_to_clipboard" : "Kopieren Sie in die Zwischenablage für Excel"
+
+  }
+}

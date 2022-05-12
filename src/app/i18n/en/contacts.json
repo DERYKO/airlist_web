@@ -1,0 +1,132 @@
+{
+  "contacts": {
+    "routes_page_title": "Contacts",
+    "header": "Contact Details",
+    "active_subscription": "Active Subscription",
+    "additional": "Additional",
+    "check_in ": "Check-In",
+    "extended_info": "Extended contact information",
+    "picklists" : "picklists",
+    "rsvps" : "Show RSVP",
+    "rsvps_btn" : "Full screen",
+    "overview": {
+      "no_data": "No Data Available",
+      "table": {
+        "last_booking": "Last Bookings",
+        "status ": "Status",
+        "Pax": "Pax",
+        "last_checkins": "Last Checkins",
+        "guestlist ": "Guestlists",
+        "date": "Date",
+        "last_messages": "Last Messages",
+        "type": "Type"
+      }
+    },
+    "view ": {
+      "navbar": "Merge duplicate contacts",
+      "navbar_action": "Save Changes"
+    },
+    "contact_trashed_warning": {
+      "title": "Warning",
+      "text": "This contact is currently in trash."
+    },
+    "merge_options": {
+      "header": "Merge contacts",
+      "cancel ": "Cancel",
+      "form": {
+        "header ": "Compare the following fields:",
+        "title": "All fields must match for a contact to qualify as duplicate",
+        "strategy_header": "And use the following strategy:",
+        "strategy_done_btn": "Start merge"
+      }
+    },
+    "editors": {
+      "header": "Contact details {{ title }} {{ first_name }} {{ last_name }}",
+      "form": {
+        "sex": "Sex",
+        "title": "Title",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "salutation": "Salutation",
+        "override_salutation": "Override Salutation",
+        "birthday ": "Birthday",
+        "language": "Language",
+        "header ": "Address details",
+        "street ": "Street",
+        "street2": "Street 2",
+        "zip": "ZIP",
+        "city": "City",
+        "country": "Country",
+        "mobile": "Mobile",
+        "phone": "Phone (Landline)",
+        "fax": "Fax",
+        "email": "Email",
+        "Web": "web",
+        "business": "Business",
+        "company": "Company",
+        "department": "Department",
+        "position": "Position",
+        "b s_street": "Business Street",
+        "bs_zip": "Business ZIP",
+        "bs_city": "Business City",
+        "bs_country": "Business country",
+        "bs_mobile": "Business Mobile Phone",
+        "bs_fax ": "Business Fax",
+        "bs_email": "Business Email",
+        "bs_web": "Business Web",
+        "nfc": "NFC key",
+        "cc ": "Always CC this email",
+        "blacklist": "Blacklist",
+        "bl_reason": "Blacklist reason",
+        "block_emails": "Block emails",
+        "block_sms": "Block sms",
+        "comment ": "Comment",
+        "custom_attr ": "Custom attributes",
+        "social": "Social profiles",
+        "notifications": {
+          "header ": "Notifications",
+          "notify_email": "Notify Email",
+          "notify_sms": "Notify SMS Number"
+        }
+      }
+    },
+    "workflows": {
+      "contact_genderize_header": "Gender check",
+      "contact_genderize_title": "Which contacts would you like to update gender for?",
+      "contact_genderize_all": "All selected contacts",
+      "contact_genderize_unknown": "If gender unknown"
+    }
+  },
+  "alerts": {
+    "saved": {
+      "title": "Success",
+      "text": "changes have been saved successful"
+    },
+    "workflows" : {
+      "add_nfc_tag_sucess" : "'Member card added",
+      "check_in_contact" : "Checkin Successful",
+      "archive_contact": {
+        "title" : "Deleting {{name}}",
+        "text" : "Are you sure you want to move contact to trash?"
+      },
+      "delete_contact": {
+        "title" : "Deleting {{name}}",
+        "text" : "Are you sure you want to delete contact? This cannot be undone!"
+      },
+      "restore_contact": {
+        "title" : "Restoring {{name}}",
+        "text" : "Are you sure you want to restore contact? This cannot be undone!"
+      },
+      "sms" : {
+        "title ": "Message Sent",
+        "text": "Your message has been queued for sending"
+      },
+      "sample": {
+        "archived" : "Clicked deleted with selected",
+        "drop_down": "Clicked dropdown action",
+        "row_action": "Clicked sample row action",
+        "with_selected": "Clicked with selected"
+      }
+    }
+  }
+}

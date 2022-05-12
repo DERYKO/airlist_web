@@ -1,0 +1,28 @@
+<div class="content-box" ng-class="{empty: (!vm.loading && vm.data.length === 0)}">
+    <h2>Failed Payments</h2>
+    <div class="empty-box" ng-if="(!vm.loading && vm.data.length === 0)">
+        <i class="fal fa-euro-sign"></i>
+        <p>No failed payments.</p>
+    </div>
+    <div class="main-table table-other" ng-if="!vm.loading && vm.data.length > 0">
+    <table>
+        <tr>
+            <th>Invoice title</th>
+            <th>Invoice Number</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Amount</th>
+        </tr>
+        <tr ng-repeat="invoice in vm.data">
+            <td><span class="hard-bounce"><a ui-sref="app.billing.invoices.details({id: invoice.invoice_id})">{{invoice.subject}}</a></span></td>
+            <td>{{invoice.invoice_number}}</td>
+            <td>{{invoice.date|date:'dd. MM. yyyy '}}</td>
+            <td>{{invoice.type}}</td>
+            <td>{{invoice.amount}} €</td>
+        </tr>
+    </table>
+</div>
+    <div class="btn-center"  ng-if="!vm.loading && vm.data.length > 0">
+        <a class="button btn-redirect" ui-sref="app.billing.invoices.index">Review Invoices</a>
+    </div>
+</div>

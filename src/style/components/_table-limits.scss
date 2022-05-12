@@ -1,0 +1,56 @@
+.table-limits {
+
+  table {
+    table-layout: fixed;
+
+    td:nth-child(1),
+    th:nth-child(1) {
+      width: 50px;
+    }
+
+    td {
+      padding: 10px 10px;
+
+      i.fa-trash-alt {
+        padding: 10px;
+        margin-left: -10px;
+      }
+    }
+
+    input:not([type='checkbox']), input:not([type='radio']) {
+      width: 100%;
+    }
+  }
+
+  &.table-limits-small {
+    table {
+      td {
+        padding: 0 10px;
+      }
+    }
+  }
+}
+
+.limits-header {
+
+  margin-bottom: 10px;
+
+  * {
+    display: inline-block;
+  }
+
+  i.fa-trash-alt {
+    width: 30px;
+    color: red;
+    font-size: 16px;
+  }
+
+  i.fa-pencil {
+    font-size: 14px;
+  }
+}
+
+
+.ml-33 {
+  margin-left: 33px;
+}

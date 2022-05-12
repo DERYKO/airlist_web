@@ -1,0 +1,26 @@
+<div class="content-box">
+    <h2>Membership Counts</h2>
+    <!--put pie chart with members number per type-->
+    <div class="canvas-container">
+        <canvas class="chart chart-doughnut"
+                chart-data="vm.chartData.data"
+                chart-labels="vm.chartData.labels"
+                chart-dataset-override="vm.dataSetOverride"
+                chart-options="{cutoutPercentage: 85, tooltips: {enabled: true}, title: {enabled: false}}">
+        </canvas>
+    </div>
+    <div class="main-table table-other mt-10">
+        <table>
+            <tbody>
+            <tr>
+                <th style="width: 100px;">Count</th>
+                <th>Subscription</th>
+            </tr>
+            <tr ng-repeat="subscription in vm.data">
+                <td>{{subscription.count}}</td>
+                <td>{{subscription.subscription}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

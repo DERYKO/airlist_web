@@ -1,0 +1,8 @@
+<label for="{{name}}" ng-if="field.definition.name">{{::field.definition.name}}
+    <span ng-if="field.definition.required">*</span>
+    <i class="fal fa-info-circle" ng-if="field.definition.tooltip">
+        <span data-tooltip="{{::field.definition.tooltip}}"></span>
+    </i>
+</label>
+<al-media-selector current-selected-file="field.ngModel" on-file-select="field.updateFileModel(file)" start-directory="field.definition.startDirectory" allowed-mimes="['image/png', 'image/jpg', 'image/jpeg', 'image/bmp']"></al-media-selector>
+<p class="help-text" ng-if="field.definition.help">{{::field.definition.help}}</p>

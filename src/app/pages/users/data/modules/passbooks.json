@@ -1,0 +1,30 @@
+{
+  "name": "Passbooks",
+  "identifier": "passbooks",
+  "rights": [
+    {
+      "name": "passbook.bulk",
+      "identifier": "passbook.bulk"
+    },
+    {
+      "name": "passbook.delete",
+      "identifier": "passbook.delete"
+    },
+    {
+      "name": "passbook.download",
+      "identifier": "passbook.download"
+    },
+    {
+      "name": "passbook.edit",
+      "identifier": "passbook.edit"
+    },
+    {
+      "name": "passbook.list",
+      "identifier": "passbook.list"
+    },
+    {
+      "name": "passbook.view",
+      "identifier": "passbook.view"
+    }
+  ]
+}

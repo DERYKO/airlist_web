@@ -1,0 +1,113 @@
+<div class="heading-toolset-wrapper">
+    <h1 ng-if="vm.message.type == 'email'">{{vm.message.subject}}</h1>
+    <h1 ng-if="vm.message.type == 'sms'">{{vm.message.send_to}}</h1>
+    <scroll-toolset model="vm.message"
+                    store="vm.store"
+                    index="vm.selectedIndex"
+                    on-scroll-up="vm.goToMessage(model)"
+                    on-scroll-down="vm.goToMessage(model)"
+    ></scroll-toolset>
+</div>
+<section ng-if="vm.currentView == 'general'">
+    <h2>Information</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <div class="data-list col-layout">
+                <table>
+                    <tr ng-if="vm.message.type == 'email'">
+                        <td>{{'templates.subject' | i18n }}</td>
+                        <td>{{ vm.message.subject || vm.message.template.data.subject}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{'messages.type' | i18n }}</td>
+                        <td>{{ vm.message.type}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{'messages.send_to' | i18n }}</td>
+                        <td>
+                            <a ui-sref="app.contacts.details({id : vm.message.recipient.data.id})"
+                               ng-if="vm.message.recipient_type == 'Contact' && vm.message.recipient.data.full_name">
+                                {{vm.message.recipient.data.full_name}}
+                            </a>
+                            <a ui-sref="app.contacts.details({id : vm.message.recipient.data.contact.id})"
+                               ng-if="vm.message.recipient_type != 'Contact' && vm.message.recipient.data.contact.data.full_name">
+                                {{vm.message.recipient.data.contact.data.full_name}}
+                            </a>
+                            {{ vm.message.send_to}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{'common.status' | i18n }}</td>
+                        <td>{{'messages.states.' + vm.message.status | i18n}}</td>
+                    </tr>
+                    <tr ng-if="vm.message.type == 'email'">
+                        <td>{{'templates.email' | i18n }}</td>
+                        <td>{{ vm.message.template.data.email}}</td>
+                    </tr>
+                    <tr ng-if="vm.message.type == 'email'">
+                        <td>{{'templates.sender_name' | i18n }}</td>
+                        <td>{{ vm.message.template.data.sender_name }}</td>
+                    </tr>
+                    <tr ng-if="vm.message.type == 'email'">
+                        <td>{{'templates.bcc' | i18n }}</td>
+                        <td>{{ vm.message.bcc}}</td>
+                    </tr>
+                    <tr ng-if="vm.message.type == 'sms'">
+                        <td>{{'messages.content' | i18n }}</td>
+                        <td>{{ vm.message.content}}</td>
+                    </tr>
+                    <tr ng-if="vm.message.template">
+                        <td>{{'messages.template' | i18n }}</td>
+                        <td><a ui-sref="app.templates.main.details({id : vm.message.template.data.id})">{{
+                            vm.message.template.data.name}}</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <h2>Activities</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <div class="main-table table-other">
+                <table>
+                    <tr ng-repeat="state in vm.message.states | orderBy: '-date'">
+                        <td style="width:200px">{{ state.date | amDateFormat:'DD.MM.YYYY HH:mm' }}</td>
+                        <td>
+                            {{'messages.states.' + state.state | i18n}}
+                        </td>
+                        <td>
+                            <span ng-repeat="(key, content) in state.extended_information"><strong>{{key}}</strong><br>
+                            {{content}}</span>
+                        </td>
+                    </tr>
+                    <tr ng-if="!vm.message.states">
+                        <td>
+                            No activities available
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <h2 ng-if="vm.message.attachments.length > 0">File Attachments</h2>
+    <div class="content-box" ng-if="vm.message.attachments.length > 0">
+        <div class="box-section-wrap">
+            <p ng-repeat="attachment in vm.message.attachments">
+                <a ng-click="vm.downloadAttachment(attachment)">>
+                    <i class="fal fa-download"></i> {{attachment}}
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<section ng-if="vm.currentView == 'message'">
+    <h2>Message</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <div ng-bind-html="vm.trustTemplateHtml(vm.message.content)"></div>
+        </div>
+    </div>
+</section>

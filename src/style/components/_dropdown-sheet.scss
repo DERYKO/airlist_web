@@ -1,0 +1,285 @@
+//wrap an element that is supposed to have a dropdown sheet to be able to position it absolutely
+
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-sheet {
+  //visibility: hidden;
+  //opacity: 0;
+  display: none;
+  transition: all ease-in 0.3s;
+
+  &.open {
+    //visibility: visible;
+    //opacity: 1;
+    display: block;
+    transition: all ease-out 0.3s;
+  }
+
+  @include box-basic($box-shadow-large, 0);
+  border: $border;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  margin: 0 auto;
+  white-space: nowrap;
+  width: auto;
+  z-index: 999;
+  text-align: left;
+
+  ul {
+    border-bottom: 1px solid $border-color;
+    padding: 10px 0;
+
+    a {
+      display: block;
+      padding: $padding-list;
+
+      &:hover {
+        background-color: $secondary;
+        color: $lightest;
+        text-shadow: $text-shadow;
+      }
+    }
+  }
+}
+
+//style for top menu
+nav .dropdown-container {
+  //display: table-cell;
+
+  @include breakpoint($mediumsmall) {
+    display: block;
+  }
+
+  .dropdown-sheet {
+
+    @include breakpoint($mediumsmall) {
+      position: static;
+      border-bottom: none;
+      box-shadow: none;
+      background-color: $highlight-3;
+
+      ul {
+        border-bottom: none;
+        padding: 0;
+
+        li {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+nav .desktop-menu .dropdown-container {
+
+  &:hover > .dropdown-sheet {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+
+    @include breakpoint($small) {
+      display: none;
+    }
+  }
+
+  .dropdown-sheet {
+    top: 18px;
+    right: auto;
+    left: 0;
+  }
+}
+
+.notifications .dropdown-sheet {
+  width: 360px;
+  white-space: normal;
+  font-size: $font-small;
+
+  ul {
+    padding: 0;
+  }
+
+  h2 {
+    margin-top: $gutter-regular;
+    font-weight: $font-weight-light;
+    text-align: center;
+    line-height: normal;
+  }
+
+  a {
+    padding: $gutter-regular 50px;
+    line-height: $font-small * 1.5;
+    border-top: $border;
+
+    strong {
+      color: $primary;
+      text-decoration: underline;
+      font-weight: $font-weight-light;
+    }
+
+    &:hover {
+      background-color: $highlight-3;
+      text-shadow: none;
+      color: inherit;
+    }
+  }
+
+  .nf-new {
+    font-weight: $font-weight-bold;
+    position: relative;
+
+    strong {
+      font-weight: $font-weight-bold;
+    }
+
+    &:before {
+      content: " ";
+      width: 10px;
+      height: 10px;
+      display: block;
+      border-radius: $border-radius-round;
+      background-color: $secondary;
+      position: absolute;
+      left: 25px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.quick-search .dropdown-sheet {
+  width: 360px;
+  white-space: normal;
+  font-size: $font-regular;
+
+  small {
+    font-size: $font-small;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  h2 {
+    margin-top: $gutter-regular;
+    font-weight: $font-weight-light;
+    text-align: center;
+    line-height: normal;
+  }
+
+  .loading {
+    text-align: center;
+    padding: $gutter-regular;
+    font-size: $font-large;
+  }
+
+  a {
+    padding: $gutter-regular;
+    padding-left: 76px;
+    line-height: $font-regular * 1.5;
+    font-size: 120%;
+    border-top: $border;
+    height: 76px;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+
+    &:hover {
+      background-color: $highlight-3;
+      text-shadow: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 46px;
+      max-height: 46px;
+      height: auto;
+      width: auto;
+      position: absolute;
+      top: $gutter-regular;
+      left: $gutter-regular;
+      border-radius: 50%;
+    }
+  }
+}
+
+//mobile menu
+.mobile-menu {
+
+  .dropdown-sheet {
+
+    &.open {
+      right: auto;
+      top: 42px;
+      left: 7px;
+    }
+
+    ul:first-child {
+      padding: 0;
+      width: 250px;
+    }
+
+    a {
+      padding: $gutter-regular $gutter-large;
+    }
+  }
+
+  li .dropdown-sheet {
+    display: block;
+    border: none;
+    border-top: $border;
+  }
+
+  nav li {
+    width: 100%;
+  }
+
+}
+
+//style for user profile
+.right-nav {
+
+  .dropdown-container {
+    vertical-align: text-top;
+  }
+
+  .dropdown-sheet {
+    top: 52px;
+    right: -14px;
+    line-height: normal;
+    @include arrow-top(top, -15px, right, 15px);
+  }
+
+  .notifications .dropdown-sheet,
+  .quick-search .dropdown-sheet {
+    border-bottom: none;
+  }
+
+  .profile {
+
+    li {
+      padding: $padding-list;
+    }
+  }
+
+  .checkin-mode {
+    padding: $gutter-large $gutter-large $gutter-regular $gutter-large;
+
+    label {
+      width: auto;
+    }
+  }
+}
+
+// dashboard
+
+.dashboard-wrapper {
+
+  .dropdown-sheet {
+    max-height: calc(100vh - 150px);
+    overflow: scroll;
+  }
+}

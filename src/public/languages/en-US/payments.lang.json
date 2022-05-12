@@ -1,0 +1,8 @@
+{
+  "key": "Key Identifier",
+  "description": "Description",
+  "amount": "Amount",
+  "tax_rate": "Tax Rate",
+  "quantity": "Quantity",
+  "unit_cost": "Unit Cost"
+}

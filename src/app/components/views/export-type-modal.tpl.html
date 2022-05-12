@@ -1,0 +1,35 @@
+<button class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Select export format</h2>
+</div>
+<div class="modal-body">
+    <div class="table-options">
+        <div class="options-row">
+            <span>{{vm.store.getters.selectedFilters.count}} {{vm.store.state.slug}} selected</span>
+        </div>
+        <div ng-if="vm.store.getters.selectedFilters.keyword">
+            <span>Keyword:</span>
+            <div class="tag">
+                {{vm.store.getters.selectedFilters.keyword}}
+            </div>
+        </div>
+        <div class="options-row" ng-if="vm.store.getters.isFiltered">
+            <span>Filters:</span>
+            <div class="tag" ng-repeat="col in vm.store.getters.filterableColumns"
+                 ng-if="vm.showFilterTag(col)">
+                {{col.label}}: {{ vm.displayFilter(vm.store.state.filters[col.key]) }}
+            </div>
+            <div class="tag alternate" ng-repeat="filter in vm.store.getters.specialFilters track by $index"
+                 ng-if="filter.modelValue">
+                {{filter.title}}
+            </div>
+        </div>
+        <div class="columns-row">
+            <span>Columns:</span>
+            {{vm.store.state.visible | join:', '}}
+        </div>
+    </div>
+    <div class="btn-group">
+        <button class="btn-regular" ng-repeat="(value, label) in vm.options" ng-click="vm.select(value)">{{label}}</button>
+    </div>
+</div>

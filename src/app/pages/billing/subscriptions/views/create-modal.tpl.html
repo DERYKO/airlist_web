@@ -1,0 +1,19 @@
+<button class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2 id="modal-title">Create new Subscription</h2>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="form-group">
+        <label>Start Date</label>
+        <customfield ng-model="vm.start_date" definition="{type:'date'}" name="date"></customfield>
+    </div>
+    <div class="form-group">
+        <label>Subscription</label>
+        <select ng-model="vm.selectedSubscription"
+                ng-options="subscription.title for subscription in vm.availableSubscriptions"></select>
+    </div>
+    <div class="btn-group">
+        <button class="btn-warning" type="button" ng-click="vm.close()">Close</button>
+        <button class="btn-confirm" type="button" ng-click="vm.save()">Save</button>
+    </div>
+</div>

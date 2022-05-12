@@ -1,0 +1,55 @@
+<div class="alert alert-danger" ng-if="category.model.archived">
+    <strong>{{ 'common.archive_header'|i18n }}</strong> {{ 'categories.archive_header'|i18n }}
+</div>
+
+<div class="row">
+    <div class="height-less-navbar no-bottom-margin portlet light" ng-if="!category.editing"
+         ng-class="{hidden: category.isShowingContact }">
+        <div class="portlet-title">
+            <div class="caption font-red-sunglo">
+                <span class="caption-subject bold uppercase"> {{ category.model.name }}</span>
+                <span class="caption-subtitle">{{ category.model.permission }}</span>
+            </div>
+            <div class="actions">
+                <div class="btn-group" uib-dropdown ng-if="!category.editing">
+                    <button id="edit-button" type="button" class="btn blue" ng-click="category.editing = true"
+                            ng-if="!category.model.archived">
+                        {{'common.edit' | i18n}}
+                    </button>
+                    <button id="restore-button" type="button" class="btn blue"
+                            ng-click="category.restore(category.model)"
+                            ng-if="category.model.archived">
+                        {{'common.restore' | i18n}}
+                    </button>
+                    <button type="button" class="btn blue" uib-dropdown-toggle>
+                        <span class="caret"></span>
+                        <span class="sr-only">{{'common.more_options' | i18n}}</span>
+                    </button>
+                    <ul uib-dropdown-menu role="menu" aria-labelledby="split-button">
+                        <li ng-if="!category.model.archived" role="menuitem"><a ng-click="category.archive()">
+                            {{'common.archive' | i18n}} </a></li>
+                        <li ng-if="category.model.archived" role="menuitem"><a
+                                ng-click="category.delete(category.model)">
+                            {{'common.delete_permanently' | i18n}} </a></li>
+                    </ul>
+                </div>
+                <a class="btn btn-circle btn-icon-only btn-default" ng-click="category.hide()">
+                    <i class="fal fa-remove"></i>
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <contacts-list parent="category.contacts.parent"
+                           collection="category.contacts.collection"
+                           settings="category.contacts.settings"
+                           methods="category.contacts.methods"
+                           hide-archive-button></contacts-list>
+            <div>
+            </div>
+        </div>
+    </div>
+</div>
+<editor ng-if="category.editing" schema="category.schema" form="category.form" model="category.model"
+        on-save="category.save(model)" on-cancel="category.cancelEditing()">
+</editor>
+

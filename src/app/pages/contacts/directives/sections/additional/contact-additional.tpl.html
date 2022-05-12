@@ -1,0 +1,26 @@
+<div class="content">
+    <h2>Additional</h2>
+    <table class="table table-details">
+        <tbody>
+            <tr ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]"
+                ng-if="vm.schema.properties['custom_'+i] && (vm.model['custom_'+i] || vm.schema.properties['custom_'+i]['type'] == 'boolean')">
+                <th>
+                    {{ vm.schema.properties['custom_'+i].title }}
+                </th>
+                <td ng-if="vm.schema.properties['custom_'+i]['format'] != 'date' && vm.schema.properties['custom_'+i]['type'] != 'datetime' && vm.schema.properties['custom_'+i]['type'] != 'boolean'">
+                    {{ vm.model['custom_'+i] }}
+                </td>
+                <td ng-if="vm.schema.properties['custom_'+i]['format'] == 'date'">
+                    {{ vm.model['custom_'+i] | date : 'dd.MM.yyyy'}}
+                </td>
+                <td ng-if="vm.schema.properties['custom_'+i]['type'] == 'datetime'">
+                    {{ vm.model['custom_'+i] | date : 'dd.MM.yyyy HH:mm'}}
+                </td>
+                <td ng-if="vm.schema.properties['custom_'+i]['type'] == 'boolean'">
+                    {{ vm.model['custom_'+i] == '1' ? 'yes' : 'no' }}
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

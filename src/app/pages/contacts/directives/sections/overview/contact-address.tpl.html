@@ -1,0 +1,94 @@
+<div ng-if="vm.currentView == 'overview'" class="content">
+    <table class="table table-muted">
+        <thead>
+            <tr>
+                <th style="width: 70%;">Last Bookings</th>
+                <th style="width: 20%;">Status</th>
+                <th style="width: 10%;">Pax</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-if="!vm.rsvps.collection.length">
+                <td colspan="3">No Data Available</td>
+            </tr>
+            <tr ng-repeat="rsvp in vm.rsvps.collection | limitTo:vm.limits.bookings">
+                <!-- <td><a class="muted" ng-click="vm.showRsvp(rsvp)">{{rsvp.guestlist.data.name}}</a></td> -->
+                <td><a class="muted" ng-click="vm.gotoGuestlist(rsvp.guestlist_id)">{{rsvp.guestlist.data.name}}</a>
+                </td>
+                <td>{{rsvp.status}}</td>
+                <td>{{rsvp.pax_actual || '0'}} / {{rsvp.pax_planned}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="text-center">
+        <a class="muted" ng-click="vm.increaseLimit('bookings')"
+           ng-if="vm.limits.bookings < vm.rsvps.collection.length">More</a>
+    </p>
+    <table class="table table-muted dt30">
+        <thead>
+            <tr>
+                <th style="width: 30%;">Last Checkins</th>
+                <th style="width: 60%;">Guestlist</th>
+                <th style="width: 10%;">Pax</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-if="!vm.checkins.collection.length">
+                <td colspan="3">No Data Available</td>
+            </tr>
+            <tr ng-repeat="checkin in vm.checkins.collection | limitTo:vm.limits.checkins">
+                <td>{{checkin.created_at | date : 'dd.MM.yyyy HH:mm'}}</td>
+                <td><a class="muted"
+                       ng-click="vm.gotoGuestlist(checkin.rsvp.data.guestlist_id)">{{checkin.rsvp.data.guestlist.data.name
+                    || ''}}</a></td>
+                <td>{{checkin.pax_old}} &#9656; {{checkin.pax_new}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="text-center">
+        <a class="muted" ng-click="vm.increaseLimit('checkins')"
+           ng-if="vm.limits.checkins < vm.checkins.collection.length">More</a>
+    </p>
+    <table class="table table-muted dt30">
+        <thead>
+            <tr>
+                <th>Last Messages</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-if="!vm.messages.collection.length">
+                <td colspan="4">No Data Available</td>
+            </tr>
+            <tr ng-repeat="message in vm.messages.collection | limitTo:vm.limits.messages">
+                <td>
+                    <a class="muted" ng-click="vm.showMessage(message)">
+                        {{message.type == 'email' ? message.subject : message.content}}
+                    </a>
+                </td>
+                <td>{{message.type == 'email' ? 'Email' : 'SMS'}}</td>
+                <td>{{message.created_at | date : 'dd.MM.yyyy HH:mm'}}</td>
+                <td>{{message.status}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="text-center">
+        <a class="muted" ng-click="vm.increaseLimit('messages')"
+           ng-if="vm.limits.messages < vm.messages.collection.length">More</a>
+    </p>
+    <table class="table table-muted dt30" ng-if="vm.picklists.length">
+        <thead>
+            <tr>
+                <th>Picklists</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="picklist in vm.picklists">
+                <td><a class="muted" ng-click="vm.gotoPicklist(picklist.id)">{{picklist.name}}</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,198 @@
+{
+  "billing": {
+    "success": {
+      "payments_created": {
+        "title": "success",
+        "text": "payment created"
+      },
+      "payments_updated": {
+        "title": "success",
+        "text": "payment saved"
+      },
+      "payments_delete": {
+        "confirmation": {
+          "title": "Delete?",
+          "text": "Are you sure you want to delete this payment?",
+          "confirmButtonText": "Yes, delete it!"
+        },
+        "success": {
+          "title": "deleted",
+          "text": "payment was deleted successful"
+        }
+      },
+      "invoice": {
+        "created": {
+          "title": "Created",
+          "text": "Invoice was created"
+        },
+        "updating": {
+          "title": "Edit?",
+          "text": "Are you sure you want to edit this invoice?",
+          "confirm_button_text": "Yes, edit it!"
+        },
+        "cancelled": {
+          "title": "Success",
+          "text": "Invoice deleted"
+        },
+        "address_updated": {
+          "title": "Success",
+          "text": "Invoice Address updated"
+        },
+        "deleted": {
+          "title": "Success",
+          "text": "invoice deleted"
+        },
+        "completed": {
+          "title": "Success",
+          "text": "finished invoice successful"
+        }
+      },
+      "invoice_payments": {
+        "deleted": {
+          "title": "Delete?",
+          "text": "Are you sure to delete this payment?",
+          "confirm_button_text": "Yes, delete it!"
+        }
+      },
+      "position_links": {
+        "position_link_created": {
+          "title": "success",
+          "text": "position link created"
+        }
+      },
+      "subscriptions": {
+        "create_subscription": {
+          "title": "success",
+          "text": "contact subscription was created successfully"
+        },
+        "terminate_subscription": {
+          "title": "success",
+          "text": "Subscription was terminated successful"
+        },
+        "pause_subscription": {
+          "title": "success",
+          "text": "Subscription was paused successful"
+        },
+        "reactivate_subscription": {
+          "title": "success",
+          "text": "Subscription was re-activated successfully"
+        }
+      }
+    },
+    "error": {
+      "stripe_connection_info": {
+        "error": "there was an error while checking the connection to stripe"
+      },
+      "create_subscription": {
+        "title": "error",
+        "text": "error while saving "
+      },
+      "load_subscription": {
+        "error": "Subscription not found"
+      }
+    },
+    "routes": {
+      "page_title": "Invoice Templates"
+    },
+    "invoice_templates": {
+      "general": "General",
+      "pdf_template": "PDF Template (use HTML)",
+      "enable_header": "Enable For",
+      "submit": "Done",
+      "page_title": "Invoice Templates"
+    },
+    "subscriptions": {
+      "create": "Create new Subscription",
+      "create_input_start_date": "Start Date",
+      "create_input_subscription": "Subscription",
+      "close_btn": "Close",
+      "save_btn": "Save",
+      "cancel_btn": "Cancel",
+      "done_btn": "Done",
+      "modal": {
+        "pause": "Select date for pausing",
+        "terminate": "Select date for termination",
+        "date_btn": "Select this Date"
+      },
+      "details": {
+        "table_header": "Positions",
+        "oti": "OTI",
+        "amount": "amount",
+        "unit": "unit",
+        "sum": "sum",
+        "ppu": "ppu"
+      },
+      "factories": {
+        "title": "Subscriptions"
+      }
+    },
+    "invoices": {
+      "cancel_invoice": "Cancel Invoice {{invoice_number}}",
+      "subject": "Subject",
+      "text1": "Text 1",
+      "text2": "Text 2",
+      "text3": "Text 3",
+      "tax_rate": "Tax rate",
+      "save": "Save",
+      "saving": "Saving....",
+      "update_address": "Address",
+      "controllers": {
+        "payments": {
+          "close": "close",
+          "header": "Create a new payment",
+          "payment_time": "Payment Time",
+          "amount": "Amount",
+          "status": "Status",
+          "delete": "Delete",
+          "save": "save",
+          "states": [
+            {
+              "label": "Success"
+            },
+            {
+              "label": "Failed"
+            },
+            {
+              "label": "Pending"
+            }
+          ],
+          "types": [
+            {
+              "title": "Bank"
+            },
+            {
+              "title": "Direct Debit"
+            },
+            {
+              "title": "Credit Card"
+            },
+            {
+              "title": "Credit"
+            },
+            {
+              "title": "Cash"
+            },
+            {
+              "title": "Other"
+            }
+          ]
+        }
+      }
+    },
+    "discard_changes": {
+      "discard": "Discard Changes",
+      "done": "done"
+    },
+    "stripe": {
+      "header": "Daten werden geladen",
+      "connect": " Connect to Stripe now",
+      "payout_details": {
+        "header": "Details for the payout at {{ arrival_date }}",
+        "table_title": "Invoices",
+        "table_th_invoice_number": "Invoice Number",
+        "table_th_sum": "Sum",
+        "table_th_contact": "Contact"
+      }
+    }
+  }
+}

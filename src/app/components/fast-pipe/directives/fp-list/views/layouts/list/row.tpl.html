@@ -1,0 +1,34 @@
+<tr ng-repeat="row in vm.listItems track by $index">
+    <td class="size-selection text-center">
+        <span class="checkbox checkbox-circle checkbox-success"
+              ng-if="vm.enableSelection">
+            <input type="checkbox"
+                   ng-model="row.selected"
+                   ng-click="vm.toggleRowSelection(row)">
+            <label></label>
+        </span>
+    </td>
+    <td ng-repeat="col in vm.listCols track by $index">
+        <a ng-click="row.clickAction(row)"
+           ng-if="col.enableClick"
+           class="text-bold color-blue"
+        >
+            {{row[col.key]}}
+        </a>
+        <span ng-if="!col.enableClick">
+            {{row[col.key]}}
+        </span>
+    </td>
+    <td class="actions text-right" ng-if="ngListView.adapter.meta.actions.row.length > 0" ng-class="col.column_size">
+        <a ng-repeat="action in ngListView.adapter.meta.actions.row  track by $index"
+           uib-tooltip-placement="top"
+           uib-tooltip="{{action.text}}"
+           ng-click="ngListView.manager.actionClicked(action, row, $parent.$index, $parent )"
+           ng-if="ngListView.adapter.showAction(row, action)"
+           class="{{action.class}}"
+        >
+            <i class="fa {{action.icon}}" ng-if="action.icon"></i>
+            <span ng-if="!action.icon">{{action.text}}</span>
+        </a>
+    </td>
+</tr>

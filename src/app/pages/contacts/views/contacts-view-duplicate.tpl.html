@@ -1,0 +1,92 @@
+<nav class="navbar navbar-default navbar-two">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="navbar-brand">
+                Merge duplicate contacts
+            </div>
+        </div>
+        <div class="navbar-collapse">
+            <a ng-click="vm.saveAndArchive()" type="button" class="btn btn-default navbar-btn navbar-right">Save
+                Changes</a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid dt20">
+    <div class="row">
+        <div class="height-less-navbar col-md-12">
+            <div class="listview">
+                <!--table-stripped table-bordered -->
+                <table class="table table-listing table-responsive table-merge"
+                       ng-if="vm.data.length > 0">
+                    <thead>
+                    <tr>
+                        <th ng-repeat="col in vm.columns" class="size-medium">
+                            {{col.name}}
+                            <div>
+                                <button class="btn btn-default" title="Click to use all values from this record"
+                                        ng-click="vm.selectRecord(col)"
+                                        ng-if="col.field !== 'final' && col.field !== 'label'">
+                                    Select
+                                </button>
+                                <button class="btn btn-default" title="Click if this record is not a duplicate and should be removed from the current merge"
+                                        ng-click="vm.notDuplicate(col)"
+                                        ng-if="col.field !== 'final' && col.field !== 'label'">
+                                    No duplicate
+                                </button>
+
+                            </div>
+                            <!--<div class="btn-group" role="group">-->
+                            <!--</div>-->
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="row in vm.data track by $index" ng-class="{'tr-highlight':vm.diffValues(row)}">
+                        <td ng-repeat="col in vm.columns" ng-click="vm.selectValue(row,col)"
+                            ng-class="{selectable: col.field.slice(0,10) == 'duplicate_'  || (row.edited == true && col.field == 'final'), selected: vm.selected[row.field] == col.field || (row.edited == true && col.field == 'final')}"
+                            class="size-medium"
+                            >
+                            <span ng-if="row.field !== 'profile_image' && (col.field.slice(0,10) == 'duplicate_' || col.field == 'label')">
+                                {{(row[col.field] === false) ? 'No' : (row[col.field] === true) ? 'Yes' : (row[col.field] || 'empty')}}
+                            </span>
+                            <!-- Boolean field -->
+                            <span ng-if="col.field === 'final' && row.type == 'boolean'" editable-radiolist="row[col.field]"
+                                  e-ng-options="s.value as s.name for s in row.titleMap"
+                                  onaftersave="vm.selectValue(row, col)">
+                                {{(row[col.field] === false) ? 'No' : (row[col.field] === true) ? 'Yes' : (row[col.field] || 'empty')}}
+                            </span>
+                            <!-- Select field -->
+                            <span ng-if="col.field === 'final' && row.type !== 'boolean' && row.titleMap"
+                                  editable-select="row[col.field]" e-ng-options="s.value as s.name for s in row.titleMap"
+                                  onaftersave="vm.selectValue(row, col)">
+
+                                {{(row[col.field] || 'empty')}}
+                            </span>
+                            <!-- Date field -->
+                            <span ng-if="col.field ==='final' && row.type == 'date'" editable-text="row[col.field]"
+                                  e-placeholder="dd.mm.yyyy" onaftersave="vm.selectValue(row,col)">
+
+                                {{(row[col.field] === false) ? 'false' : (row[col.field] || 'empty')}}
+                            </span>
+                            <!-- Normal text field -->
+                            <span ng-if="col.field ==='final' && row.field !== 'profile_image' && row.field !== 'email' && row.type !== 'boolean' && !row.titleMap && row.type !== 'date'"
+                                  editable-text="row[col.field]" onaftersave="vm.selectValue(row,col)">
+
+                                {{(row[col.field] === false) ? 'false' : (row[col.field] || 'empty')}}
+                            </span>
+                            <!-- Email field -->
+                            <span ng-if="col.field ==='final' && row.field == 'email'" editable-email="row[col.field]"
+                                  e-required onaftersave="vm.selectValue(row,col)">
+
+                                {{row[col.field]}}
+                            </span>
+                            <!-- Profile Image -->
+                            <img ng-if="row.field == 'profile_image' && col.field !=='label'" ng-src="{{row[col.field].url}}" class="profile-image" style="max-height:150px; max-width:150px; height:100%; width:100%;"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

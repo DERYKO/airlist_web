@@ -1,0 +1,26 @@
+<div ng-if="vm.store.getters.selectedCount">
+    <h2>Selected Records</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <div class="filter-expanded table-options">
+                <span>{{vm.store.getters.selectedCount }} records selected:</span>
+                <div class="contacts-tags">
+                    <div class="tag" ng-repeat="row in vm.store.getters.selectedRows | limitTo:25">
+                        <span compile="vm.showTag(row)"></span>
+                    </div>
+                    <div class="tag" ng-if="vm.store.getters.selectedCount - 25 > 0">
+                        + {{ vm.store.getters.selectedCount - 25 }} more
+                    </div>
+                </div>
+
+                <div class="tag" ng-if="vm.store.keyword">
+                    Keyword: {{vm.store.keyword}}
+                </div>
+                <div class="tag" ng-repeat="col in vm.store.getters.filterableColumns"
+                     ng-if="col.filterable && vm.store.state.filters[col.key]">
+                    {{col.label}}: {{vm.store.state.filters[col.key]}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="side-menu">
+    <div class="sm-wrapper">
+        <!--<div class="sm-submenu sm-back" ng-if="vm.navigator.showBackBtn ||vm.state.current.data.showBackBtn">-->
+            <!--<ul>-->
+                <!--<li data-tooltip="Back">-->
+                    <!--<a ng-click="vm.goBack()">-->
+                        <!--<i class="fal fa-arrow-left"></i>Back-->
+                    <!--</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <div class="sm-submenu" ng-if="vm.sidenav.customs.length">
+            <ul>
+                <li ng-repeat="sideNavItem in vm.sidenav.customs"
+                    data-tooltip="{{sideNavItem.label}}"
+                    ng-class="{active: sideNavItem.active}">
+                    <a ng-click="sideNavItem.action()">
+                        <i class="fal fa-{{sideNavItem.icon}}" ng-if="sideNavItem.icon"></i>{{sideNavItem.label}}
+                    </a>
+                    <div class="sub-actions" ng-if="sideNavItem.subItems && sideNavItem.subItems.length > 0">
+                        <ng-include src="'/components/navigation/components/sidenav/views/subItems.tpl.html'" onload="items = sideNavItem.subItems"></ng-include>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="sm-actions">
+            <h5><i class="fal fa-wrench"></i>Toolbox</h5>
+            <ul>
+                <li data-tooltip="{{sideNavItem.label}}" ng-repeat="sideNavItem in vm.sidenav.main">
+                    <a ng-class="{'primary-action': sideNavItem.primary}"
+                       ng-click="vm.goToElem(sideNavItem)"
+                       ng-if="!sideNavItem.custom">
+                        <i class="fal fa-{{sideNavItem.icon}}"></i>{{sideNavItem.label}}
+                    </a>
+                    <a ng-click="sideNavItem.action()"
+                       ng-if="sideNavItem.custom">
+                        <i class="fal fa-{{sideNavItem.icon}}"></i>{{sideNavItem.label}}
+                    </a>
+                </li>
+                <li class="no-tools" data-tooltip="No tools available" ng-if="vm.sidenav.main.length == 0">
+                    <i class="fal fa-ban"></i> No tools available
+                </li>
+            </ul>
+        </div>
+        <button class="sm-expand" ng-click="vm.toggleSideNavStatus()"></button>
+    </div>
+</div>

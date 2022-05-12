@@ -1,0 +1,33 @@
+<div class="col-4 user-overview">
+    <img ng-src="{{vm.contact.profile_image.url}}" ng-if="vm.contact.profile_image" class="user"/>
+    <p class="details-expanded-name">
+        {{vm.contact.full_name}}<span ng-if="vm.contact.age">&nbsp;({{ vm.contact.age }})</span>&nbsp;&nbsp;<i class="fal" ng-class="{'fa-mars': (vm.contact.sex === 'male'), 'fa-venus': (vm.contact.sex === 'female'), 'fa-transgender': (vm.contact.sex === 'various')}"></i>
+    </p>
+
+    <hr>
+
+    <div class="data-list">
+
+        <ul>
+            <li ng-if="vm.contact.company_name">
+                <span class="data-label">Company:</span>
+                <span class="data-value">{{vm.contact.company_name}}</span>
+            </li>
+            <li>
+                <span class="data-label">Email:</span>
+                <span class="data-value">{{vm.contact.preferred_email}}</span>
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class="tbl-actions">
+        <h3>User actions:</h3>
+        <button><i class="fal fa-sign-in"></i>&nbsp;&nbsp;Check in</button>
+        <button><i class="fal fa-envelope"></i>&nbsp;&nbsp;Send email</button>
+        <button class="btn-warning"><i class="fal fa-trash-alt"></i>&nbsp;&nbsp;Delete</button>
+        <button><i class="fal fa-edit"></i>&nbsp;&nbsp;Edit</button>
+        <button><i class="fal fa-external-link-square"></i>&nbsp;&nbsp;View</button>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div style="height: {{vm.model.styling.size.length}}mm; margin-bottom: 10px">
+  <style>
+    @page {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    #ticket-wrapper {
+      display: inline;
+      font-family: Arial, Helvetica, Sans-Serif;
+      background-color: #fff;
+      position: relative;
+      overflow: hidden;
+      width: {{vm.model.styling.size.width}}mm;
+      height: {{vm.model.styling.size.length}}mm;
+    }
+
+    #ticket-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: {{vm.model.styling.size.width}}mm;
+      height: {{vm.model.styling.size.length}}mm;
+
+    }
+
+    #qr-code {
+      position: absolute;
+      width: {{vm.model.styling.qrCode.size}}mm;
+      height: {{vm.model.styling.qrCode.size}}mm;
+      top: {{vm.model.styling.qrCode.top}}mm;
+      left: {{vm.model.styling.qrCode.left}}mm;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    #ticket-text {
+      position: absolute;
+      font-size: {{vm.model.styling.text.size}}mm;
+      color: {{vm.model.styling.text.color}};
+      top: {{vm.model.styling.text.top}}mm;
+      left: {{vm.model.styling.text.left}}mm;
+    }
+
+    #dpi-converter{
+      width:1px;
+    }
+  </style>
+  <div id="ticket-wrapper">
+    <img ngf-src="vm.backgroundImage.url" id="ticket-image"/>
+    <img ng-src="https://via.placeholder.com/{{ vm.model.styling.qrCode.size * vm.pixelsPerMm | number:0 }}?text=QR Code" id="qr-code"/>
+    <p id="ticket-text">{{vm.model.text_content}}</p>
+    <span id="dpi-converter">&nbsp;</span>
+  </div>
+</div>

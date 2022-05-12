@@ -1,0 +1,73 @@
+<section id="guestlists_editor_emails" ng-if="vm.showContent">
+    <h1>{{'guestlists.editor.pages.emails.head' | translate}}</h1>
+    <p class="mb-20">{{'guestlists.editor.pages.emails.main_head_sub' | translate}}</p>
+
+    <h2>{{'guestlists.editor.pages.emails.sub_heads.templates' | translate}}</h2>
+    <div class="content-box" id="messages_templates">
+        <div class="box-section-wrap">
+            <p>{{'guestlists.editor.pages.emails.sub_heads.templates_sub' | translate}}</p>
+
+            <fieldset>
+                <!--todo add for each template option "none"-->
+                <!--todo add for each template option "Add new"-->
+
+                <div class="form-group" ng-repeat="(templateIdField, enableField) in vm.availableEmailTemplateTypes">
+                    <label>{{'guestlists.editor.pages.emails.labels.' + templateIdField | translate}}</label>
+                    <select-box
+                            model="vm.selectedEmailTemplates[templateIdField]"
+                            config="vm.state.formConfig.templatesStoreForSelectize">
+                    </select-box>
+
+                    <button class="d-inline-block" ng-disabled="!vm.selectedEmailTemplates[templateIdField]" ng-click="vm.openTemplateEditor(vm.selectedEmailTemplates[templateIdField])">
+                        <i class="fal fa-edit"></i>
+                    </button>
+
+                    <button class="d-inline-block" ng-disabled="!vm.selectedEmailTemplates[templateIdField]" ng-click="vm.openTemplatePreview(vm.selectedEmailTemplates[templateIdField])">
+                        <i class="fal fa-eye"></i>
+                    </button>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <h2>{{'guestlists.editor.pages.emails.sub_heads.settings' | translate}}</h2>
+    <div class="content-box" id="messages_email_settings">
+        <div class="box-section-wrap">
+            <fieldset>
+                <div class="form-group">
+                    <label>{{'guestlists.editor.pages.emails.labels.main_rsvp_send_flow' | translate}}</label>
+                    <div class="radio-list">
+                        <input ng-model="vm.model.settings.messages_main_rsvp_send_flow"
+                               id="main_rsvp_send_flow_{{sendFlow.value}}"
+                               type="radio"
+                               name="main_rsvp_send_flow"
+                               ng-value="sendFlow.value"
+                               ng-repeat-start="sendFlow in vm.state.formConfig.mainRsvpSendFlows"/>
+                        <label for="main_rsvp_send_flow_{{sendFlow.value}}" ng-repeat-end>{{sendFlow.label}}</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <customfield
+                            definition="{type:'boolean', name: ('guestlists.editor.pages.emails.labels.send_guest_emails' | translate)}"
+                            ng-model="vm.model.settings.send_guest_emails"
+                            name="send_guest_emails"></customfield>
+                </div>
+
+                <div class="form-group">
+                    <customfield
+                            definition="{type:'boolean', name: ('guestlists.editor.pages.emails.labels.send_representative_emails' | translate)}"
+                            ng-model="vm.model.settings.send_representative_emails"
+                            name="send_representative_emails"></customfield>
+                </div>
+
+                <div class="form-group">
+                    <customfield
+                            definition="{type:'boolean', name: ('guestlists.editor.pages.emails.labels.send_recommendation_emails' | translate)}"
+                            ng-model="vm.model.settings.send_recommendation_emails"
+                            name="send_recommendation_emails"></customfield>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</section>

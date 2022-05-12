@@ -1,0 +1,30 @@
+{
+  "name": "Tickets",
+  "identifier": "tickets",
+  "rights": [
+    {
+      "name": "ticket.bulk",
+      "identifier": "ticket.bulk"
+    },
+    {
+      "name": "ticket.delete",
+      "identifier": "ticket.delete"
+    },
+    {
+      "name": "ticket.download",
+      "identifier": "ticket.download"
+    },
+    {
+      "name": "ticket.edit",
+      "identifier": "ticket.edit"
+    },
+    {
+      "name": "ticket.list",
+      "identifier": "ticket.list"
+    },
+    {
+      "name": "ticket.view",
+      "identifier": "ticket.view"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+$susy: (
+        'svg-grid-colors': #dff9da,
+        'columns': 250px 1 1 1 1 1 1 1 1 1 1 1 1,
+        'gutters': 15px,
+        'spread': 'narrow',
+        'container-spread': 'narrow'
+);
+
+$eight-col: (
+        'columns': 1 1 1 1 1 1 1 1
+);
+
+$six-col: (
+        'columns': 1 1 1 1 1 1
+);
+
+$twelve-col: (
+        'columns': 1 1 1 1 1 1 1 1 1 1 1 1,
+        'gutters': 30px,
+        'spread': 'narrow',
+        'container-spread': 'wide'
+);
+
+$twelve-col-narrow: (
+        'columns': 1 1 1 1 1 1 1 1 1 1 1 1,
+        'gutters': 15px,
+        'spread': 'narrow',
+        'container-spread': 'wide'
+);
+
+$five-col: (
+        'columns': 100px 1 1 1 1
+);
+
+$four-col: (
+        'columns': 220px 1 1 1
+);
+
+$collapsed: (
+        'columns': 105px 1 1 1 1 1 1 1 1 1 1 1 1,
+);

@@ -1,0 +1,73 @@
+.preferred-address {
+
+  &:after {
+    content: "\f005";
+    font-family: $icon-font-solid;
+    margin-left: $gutter-small;
+    color: $secondary;
+  }
+}
+
+.user-avatar {
+  display: inline-block;
+  vertical-align: middle;
+  width: span(1 at 1, $five-col);
+
+  .user {
+    @include user(100px);
+    line-height: 100px;
+    object-fit: cover;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: none;
+  }
+
+  @include breakpoint($small) {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+.user-general-info {
+  display: inline-block;
+  width: span(4 at 2, $five-col);
+  padding-left: $gutter-large;
+  vertical-align: middle;
+  p {
+    margin-bottom: 0;
+  }
+
+  @include breakpoint($small) {
+    width: 100%;
+    padding-left: 0;
+    margin-top: 20px;
+  }
+}
+
+
+.user-extended-info {
+
+  .comment {
+  }
+
+  .categories-list {
+  }
+}
+
+.name {
+  font-size: $font-xlarge;
+}
+
+.subscription-status {
+  font-size: $font-small;
+  background-color: $primary;
+  color: #fff;
+  margin: 5px;
+  line-height: 16px;
+  height: 26px;
+  padding: 5px 15px;
+  border-radius: 13px;
+}

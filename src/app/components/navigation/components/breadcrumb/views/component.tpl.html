@@ -1,0 +1,7 @@
+<div class="breadcrumbs">
+    <span ng-repeat="elem in vm.breadcrumb" class="elem" ng-class="{last:$last,first:$first}">
+        <a ng-click="vm.goToElem(elem)" ng-if="!$last" ng-bind-html="vm.sce.trustAsHtml(elem.label)"></a>
+        <span ng-if="!$last" class="separator"><span class="fal fa-chevron-right fa-small"></span>
+        </span><span ng-if="$last" ng-bind-html="vm.sce.trustAsHtml(elem.label)"></span>
+    </span>
+</div>

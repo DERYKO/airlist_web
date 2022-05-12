@@ -1,0 +1,53 @@
+<div ng-controller="RsvpsDuplicatesExtendedListViewCtrl as elvc"
+     ng-init="elvc.setRow(row); elvc.setStore(vm.store);" ng-click="$event.stopPropagation();">
+    <div class="loading-indicator" ng-if="elvc.loading">
+        <span class="fal fa-sync fa-spin"></span>
+    </div>
+    <div class="duplicates-expanded" ng-if="!elvc.loading">
+        <table>
+            <thead>
+            <tr>
+                <th colspan="2">Actions</th>
+                <th ng-repeat="col in elvc.rsvpsStore.getters.visibleColumns track by $index">
+                    <div ng-class="{pointer: col.sortable}" ng-click="elvc.rsvpsStore.dispatch('toggleSort', col)">
+                        {{col.label}}
+                        <span ng-if="col.sort">
+                            <i class="fa"
+                               ng-class="{'fa-caret-up':col.sort == 'asc', 'fa-caret-down':col.sort == 'desc'}"></i>
+                        </span>
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in elvc.rsvpsStore.state.data track by row.id">
+                <td>
+                    <customfield definition="{type:'boolean'}" ng-model="elvc.noDuplicatesStates[row.id]"></customfield>
+
+                    <span class="switch-label" ng-if="!elvc.noDuplicatesStates[row.id]">not a <br>duplicate</span>
+                    <span class="switch-label switch-label-yes" ng-if="elvc.noDuplicatesStates[row.id]">duplicate</span>
+
+                    <!--todo delete-->
+                    <!--<button data-tooltip='Not a duplicate' ng-if="elvc.checkIfIdIsNew(row.id)" ng-click="elvc.markAsNoDuplicate(row);"><i class="fal fa-star-exclamation"></i></button>-->
+                </td>
+                <td class="nowrap">
+                    <button data-tooltip='Edit guest' ng-click="elvc.editRsvp(row)"><i class="fal fa-pencil"></i>
+                    </button>
+                    <span class="duplicates-separator">|</span>
+                    <button data-tooltip='Delete guest' ng-click="elvc.confirmNDeleteRsvp(row)"><i
+                            class="fal fa-trash-alt"></i></button>
+                </td>
+                <td ng-repeat="col in elvc.rsvpsStore.getters.visibleColumns track by $index"
+                    ng-bind-html="elvc.rsvpsStore.helpers.getCell(row, col, vm.store)"
+                    ng-class="{'duplicate-column': elvc.differentValueColumns.indexOf(col.key) == -1}">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!--<button ng-if="elvc.getUnresolvedCount() > 1" class="btn-confirm btn-large mt-10 mb-30">Merge {{elvc.getUnresolvedCount()}} duplicates</button>-->
+    </div>
+
+</div>
+
+

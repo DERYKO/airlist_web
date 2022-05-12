@@ -1,0 +1,9 @@
+<div class="search-result">
+    <img class="img-circle" ng-src="{{match.label.profile_image.url}}">
+    <div class="details">
+        <span class="name"> {{match.label.full_name}}</span>
+        <span ng-if="match.label.company_name" class="company text-muted">
+            ({{match.label.company_name|limitTo:20}})
+        </span>
+    </div>
+</div>

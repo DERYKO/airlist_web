@@ -1,0 +1,294 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+
+.side-menu {
+  display: inline-block;
+  vertical-align: top;
+  width: span(1 at 1);
+  font-size: $font-size-nav;
+  font-weight: $font-weight-light;
+  padding-right: $gutter-regular;
+  z-index: 999;
+  min-height: 100vh;
+  position: absolute;
+
+  @include breakpoint($small) {
+    min-height: auto;
+    position: static;
+    width: 100% !important;
+    padding: 0;
+  }
+
+  //position: fixed;
+  //cannot use position fixed because tooltip gets cut, to be checked if it can be ever fixed
+
+  .sm-wrapper {
+    width: $side-menu-width - $gutter-regular;
+    //height: calc(100vh - 65px);
+    height: 100vh;
+    padding: $gutter-large $gutter-regular;
+    background-color: $main-background;
+
+    @include breakpoint($small) {
+      height: auto;
+      width: 100%;
+      padding: 20px 0 40px 15px;
+    }
+  }
+
+  h5 {
+    font-size: $font-small;
+    color: $darker;
+    background-color: $highlight-3;
+    border-radius: $border-radius-large $border-radius-large 0 0;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    height: $font-large * 2;
+    line-height: $font-large * 2;
+
+    i {
+      display: none;
+    }
+  }
+
+  li {
+    position: relative;
+
+    &:first-child {
+      border-radius: $border-radius-small $border-radius-small 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 $border-radius-small $border-radius-small;
+    }
+
+    &.no-tools {
+      padding: $gutter-regular;
+      color: $dark;
+    }
+
+    a {
+      display: block;
+      padding: 12px;
+      white-space: nowrap;
+      line-height: $font-large;
+    }
+  }
+
+  i {
+    font-size: $icon-large;
+    margin-right: 8px;
+    width: 30px;
+    text-align: center;
+  }
+
+  .primary-action {
+    color: $primary;
+  }
+
+  .active {
+    background-color: $primary-bg;
+
+    a {
+      font-weight: $font-weight-bold;
+      color: $lightest;
+
+      &:after {
+        top: 13px;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 10px 0 10px 10px;
+        border-color: transparent transparent transparent $primary-bg;
+        position: absolute;
+        right: -10px;
+
+        @include breakpoint($small) {
+          content: none;
+        }
+      }
+    }
+  }
+
+  .sub-actions {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background-color: #f3f4f5;
+
+    a {
+      background-color: #f3f4f5;
+      padding-left: 50px;
+      padding-top: 7px;
+      padding-bottom: 7px;
+      color: $text-color;
+      font-weight: $font-weight-regular;
+      white-space: initial;
+
+      &:after {
+        content: none;
+      }
+    }
+
+    .active {
+      a {
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+
+  @include breakpoint($small) {
+    width: span(1 at 1, $collapsed);
+
+    .sm-wrapper {
+      //box-shadow: $box-shadow-right;
+    }
+  }
+
+}
+
+.side-menu .sm-submenu {
+  margin-bottom: 30px;
+}
+
+.sm-actions,
+.sm-submenu {
+  background-color: $lightest;
+  border: $border;
+  box-shadow: $box-shadow-small;
+  border-radius: $border-radius-small;
+
+  i {
+    font-size: $icon-medium;
+    vertical-align: bottom;
+  }
+}
+
+.sm-back {
+  height: 46px;
+  margin-bottom: 30px;
+  border: none;
+}
+
+.sm-actions {
+
+  li {
+    a {
+      font-size: $font-small;
+      line-height: $font-medium;
+      text-transform: uppercase;
+      color: $darker;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+
+.collapsed .side-menu {
+  width: span(1 at 1, $collapsed);
+
+  @include breakpoint($small) {
+    padding: 0;
+  }
+
+  .sm-wrapper {
+    width: $side-menu-width-collapsed - $gutter-regular;
+
+    @include breakpoint($small) {
+      width: 100%;
+    }
+  }
+
+  .sm-actions, .sm-submenu {
+
+    li a,
+    li.no-tools {
+      font-size: 0;
+
+      @include breakpoint($small) {
+        font-size: inherit;
+      }
+    }
+  }
+
+  .sub-actions {
+    display: none;
+  }
+
+  @include breakpoint($small) {
+
+    width: 100%;
+
+  }
+
+  li a {
+    height: 40px;
+  }
+}
+
+button.sm-expand {
+  font-size: $icon-large;
+  font-weight: $font-weight-light;
+  width: 60px;
+  text-align: center;
+  margin: $gutter-large 0 $gutter-large auto;
+  display: block;
+
+  &:after {
+    content: "\f100";
+    font-family: $icon-font-light;
+  }
+
+  @include breakpoint($small) {
+    display: none;
+  }
+}
+
+.collapsed button.sm-expand {
+  text-align: center;
+
+  &:after {
+    content: "\f101";
+  }
+}
+
+.collapsed .side-menu h5 {
+  font-size: 0;
+
+  i {
+    display: initial;
+    margin: 0;
+    line-height: $font-large * 2;
+
+    @include breakpoint($small) {
+      display: none;
+    }
+  }
+
+  @include breakpoint($small) {
+    font-size: inherit;
+  }
+}
+
+.sm-actions + .sm-submenu {
+  margin-top: $gutter-large;
+}
+
+.not-collapsed {
+  @include breakpoint($small) {
+    .side-menu {
+      //position: fixed;
+    }
+
+    .sm-wrapper {
+      //overflow: scroll;
+    }
+  }
+}

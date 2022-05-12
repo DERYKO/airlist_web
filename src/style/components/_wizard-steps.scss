@@ -1,0 +1,87 @@
+ul.wizard {
+  width: 100%;
+  text-align: center;
+
+  li {
+    display: inline-block;
+    text-align: center;
+    width: 15%;
+    max-width: 170px;
+    position: relative;
+    z-index: 0;
+    vertical-align: top;
+    padding: 0 $gutter-small;
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+      border-radius: $border-radius-round;
+      border: 2px solid $border-color;
+      color: $border-color;
+      line-height: 45px;
+      font-size: $font-xlarge;
+      background-color: $box-background;
+      margin: 0 auto $gutter-regular auto;
+    }
+
+    .step-desc {
+      color: $border-color;
+    }
+
+    &.complete, &.current {
+
+      .step-desc {
+        color: $secondary;
+      }
+    }
+
+    &:not(:last-child):after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 70px;
+      top: 25px;
+      background-color: $border-color;
+      height: 2px;
+      width: 100%;
+      z-index: -1;
+    }
+
+    &.complete {
+
+      .step-number {
+        background-color: $secondary;
+        border-color: $secondary;
+        color: $lighter;
+      }
+
+      &:after {
+        background-color: $secondary;
+      }
+    }
+
+    &.current {
+
+      .step-number {
+        border-color: $secondary;
+        color: $secondary;
+      }
+    }
+  }
+}
+
+//.wizard {
+//  .col-4 {
+//    .form-group {
+//      input, select, textarea, .datepicker {
+//        width: 100%;
+//        max-width: 100%;
+//      }
+//
+//      .datepicker .input-icon {
+//        right: 0;
+//        left: auto;
+//      }
+//    }
+//  }
+//}

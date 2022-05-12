@@ -1,0 +1,278 @@
+<button class="close" ng-click="vm.cancel()"><i class="fal fa-times"></i></button>
+<form name="quickAddForm" ng-submit="vm.save(quickAddForm)" novalidate ng-if="!vm.loading">
+    <div class="modal-header">
+        <h2 id="modal-title" ng-if="!vm.parentRsvp">Quick add Guest</h2>
+        <h2 id="modal-title" ng-if="vm.parentRsvp">Quick add Guest of {{vm.parentRsvp.contact.data.full_name}}</h2>
+    </div>
+    <div class="modal-body">
+        <h3 class="mt-0">Personal data</h3>
+        <fieldset>
+            <div class="form-group">
+                <label for="contact_sex">Sex</label>
+                <select name="country" id="contact_sex"
+                        ng-model="vm.model.contact.sex"
+                        ng-options="key as value for (key , value) in vm.deposits.genders"></select>
+            </div>
+            <div class="form-group" ng-if="vm.isFieldEnabled('contact.title')">
+                <label for="contact_title">Title</label>
+                <input type="text" ng-model="vm.model.contact.title"
+                       name="title"
+                       id="contact_title"/>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label for="contact_first_name">First name</label>
+                <input type="text" ng-model="vm.model.contact.first_name"
+                       name="first_name"
+                       id="contact_first_name"/>
+            </div>
+            <div class="form-group">
+                <label for="contact_last_name">Last name</label>
+                <input type="text" ng-model="vm.model.contact.last_name"
+                       name="first_name"
+                       id="contact_last_name"/>
+            </div>
+        </fieldset>
+        <fieldset ng-if="vm.isFieldEnabled('contact.language') || vm.isFieldEnabled('contact.birth_day')">
+            <div class="form-group" ng-if="vm.isFieldEnabled('contact.language')">
+                <label for="contact_language">Language</label>
+                <select name="langauge" id="contact_language"
+                        ng-model="vm.model.contact.language"
+                        ng-options="key as value for (key , value) in vm.deposits.languages"></select>
+            </div>
+            <div class="form-group" ng-if="vm.isFieldEnabled('contact.birth_day')">
+                <customfield definition="{type:'date', name: 'Date of birth'}"
+                             ng-model="vm.model.contact.birth_day"
+                             name="birthday"
+                             id="contact_birthday"></customfield>
+            </div>
+        </fieldset>
+        <h3>Booking information</h3>
+        <fieldset>
+            <div class="form-group">
+                <label for="rsvp_pax_planned">Pax Planned</label>
+                <input type="number" min="0" ng-model="vm.model.rsvp.pax_planned" id="rsvp_pax_planned"/>
+            </div>
+            <div class="form-group">
+                <label>Pax Max</label>
+                <input ng-model="vm.model.rsvp.pax_max" type="text" name="pax_max">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group" ng-if="!vm.hideCustomRsvpCode">
+                <label for="rsvp_pax_planned">Custom RSVP-Code</label>
+                <input type="text" ng-model="vm.model.rsvp.code" id="code"/>
+            </div>
+            <div class="form-group">
+                <label for="rsvp_status">Status</label>
+                <select name="status" id="rsvp_status"
+                        ng-model="vm.model.rsvp.status"
+                        ng-options="key as value for (key , value) in vm.deposits.states"></select>
+            </div>
+            <fieldset ng-if="(vm.rsvpCustomFields|objLength) > 0">
+                <div class="form-group" ng-repeat="field in vm.rsvpCustomFields track by $index">
+                    <label for="rsvp_{{field.key}}">{{field.title}}</label>
+                    <customfield ng-model="vm.model.rsvp[field.key]" definition="field" name="rsvp_{{field.key}}"
+                                 id="rsvp_{{field.key}}"></customfield>
+                </div>
+            </fieldset>
+        </fieldset>
+        <div>
+            <h3>Communication data</h3>
+            <fieldset>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.phone')">
+                    <label for="contact_phone">Phone</label>
+                    <input type="text" ng-model="vm.model.contact.phone" name="phone" id="contact_phone"/>
+                </div>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.phone_2')">
+                    <label for="contact_phone_2">Mobile</label>
+                    <input type="text" ng-model="vm.model.contact.phone_2" name="phone_2" id="contact_phone_2"/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group">
+                    <label for="contact_email">Email</label>
+                    <input type="text" ng-model="vm.model.contact.email" id="contact_email" name="email"/>
+                </div>
+            </fieldset>
+            <fieldset ng-if="vm.isFieldEnabled('contact.email_cc')">
+                <div class="form-group">
+                    <label for="contact_email_cc">Always CC this email</label>
+                    <input type="text" ng-model="vm.model.contact.email_cc" id="contact_email_cc"
+                           name="email_cc"/>
+                </div>
+            </fieldset>
+        </div>
+        <div ng-if="(vm.contactCustomFields|objLength) > 0">
+            <h3>Extended contact information</h3>
+            <fieldset>
+                <div class="form-group" ng-repeat="field in vm.contactCustomFields track by $index">
+                    <label for="contact_{{field.key}}">{{field.title}}</label>
+                    <customfield ng-model="vm.model.contact[field.key]" definition="field" name="contact_{{field.key}}"
+                                 id="contact_{{field.key}}"></customfield>
+                </div>
+            </fieldset>
+        </div>
+        <div ng-if="vm.isFieldEnabled('contact.street') || vm.isFieldEnabled('contact.street_2') || vm.isFieldEnabled('contact.zip') || vm.isFieldEnabled('contact.city') || vm.isFieldEnabled('contact.country')">
+            <h3>Address data</h3>
+            <fieldset>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.street')">
+                    <label for="contact_street">Street</label>
+                    <input type="text" ng-model="vm.model.contact.street" name="street" id="contact_street"/>
+                </div>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.street_2')">
+                    <label for="contact_street_2">Street 2</label>
+                    <input type="text" ng-model="vm.model.contact.street_2" name="street_2" id="contact_street_2"/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.zip')">
+                    <label for="contact_zip">ZIP</label>
+                    <input type="text" ng-model="vm.model.contact.zip" name="zip" id="contact_zip"/>
+                </div>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.city')">
+                    <label for="contact_city">City</label>
+                    <input type="text" ng-model="vm.model.contact.city" name="city" id="contact_city"/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.country')">
+                    <label for="contact_country">Country</label>
+                    <select name="country" id="contact_country"
+                            ng-model="vm.model.contact.country"
+                            ng-options="key as value for (key , value) in vm.deposits.countries"></select>
+                </div>
+            </fieldset>
+        </div>
+        <div ng-if="vm.isFieldEnabled('contact.business_', true) || vm.isFieldEnabled('contact.company_name') || vm.isFieldEnabled('contact.position') || vm.isFieldEnabled('contact.department')">
+            <h3>Business data</h3>
+            <fieldset>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.business_preferred')">
+                    <customfield definition="{type:'boolean', name: 'Business preferred'}"
+                                 ng-model="vm.model.contact.business_preferred"
+                                 name="contact_business_preferred"
+                                 id="contact_business_preferred"></customfield>
+                </div>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.company_name')">
+                    <label for="contact_company_name">Company name</label>
+                    <input type="text" ng-model="vm.model.contact.company_name" name="company_name"
+                           id="contact_company_name"/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.position')">
+                    <label for="contact_position">Position</label>
+                    <input type="text" ng-model="vm.model.contact.position" name="position"
+                           id="contact_position"/>
+                </div>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.department')">
+                    <label for="contact_department">Department</label>
+                    <input type="text" ng-model="vm.model.contact.department" name="department"
+                           id="contact_department"/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.business_phone')">
+                    <label for="contact_business_phone">Business phone</label>
+                    <input type="text" ng-model="vm.model.contact.business_phone" name="business_phone"
+                           id="contact_business_phone"/>
+                </div>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.business_phone_2')">
+                    <label for="contact_phone_2">Business mobile</label>
+                    <input type="text" ng-model="vm.model.contact.business_phone_2" name="business_phone_2"
+                           id="contact_business_phone_2"/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.business_fax')">
+                    <label for="contact_business_fax">Business fax</label>
+                    <input type="text" ng-model="vm.model.contact.business_fax" name="business_fax"
+                           id="contact_business_fax"/>
+                </div>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.business_web')">
+                    <label for="contact_business_web">Business web</label>
+                    <input type="text" ng-model="vm.model.contact.business_web" name="business_web"
+                           id="contact_business_web"/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.business_street')">
+                    <label for="contact_business_street">Street</label>
+                    <input type="text" ng-model="vm.model.contact.business_street" name="business_street"
+                           id="contact_business_street"/>
+                </div>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.business_street_2')">
+                    <label for="contact_business_street_2">Street 2</label>
+                    <input type="text" ng-model="vm.model.contact.business_street_2" name="business_street_2"
+                           id="contact_business_street_2"/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.business_zip')">
+                    <label for="contact_business_zip">ZIP</label>
+                    <input type="text" ng-model="vm.model.contact.business_zip" name="business_zip"
+                           id="contact_business_zip"/>
+                </div>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.business_city')">
+                    <label for="contact_business_city">City</label>
+                    <input type="text" ng-model="vm.model.contact.business_city" name="business_city"
+                           id="contact_business_city"/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.business_country')">
+                    <label for="contact_business_country">Country</label>
+                    <select name="business_country" id="contact_business_country"
+                            ng-model="vm.model.contact.business_country"
+                            ng-options="key as value for (key , value) in vm.deposits.countries"></select>
+                </div>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.business_email')">
+                    <label for="contact_business_email">Business email</label>
+                    <input type="text" ng-model="vm.model.contact.business_email" id="contact_business_email"
+                           name="email"/>
+                </div>
+            </fieldset>
+        </div>
+        <div ng-if="vm.isFieldEnabled('contact.web') || vm.isFieldEnabled('contact.facebook_url') || vm.isFieldEnabled('contact.instagram_url') || vm.isFieldEnabled('contact.linkedin_url') || vm.isFieldEnabled('contact.xing_url')">
+            <h3>Social profiles</h3>
+            <fieldset>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.web')">
+                    <label for="contact_web">Website Url</label>
+                    <input type="text" ng-model="vm.model.contact.web" name="web" id="contact_web"/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.facebook_url')">
+                    <label for="contact_facebook_url">Facebook Url</label>
+                    <input type="text" ng-model="vm.model.contact.facebook_url" name="facebook_url"
+                           id="contact_facebook_url"/>
+                </div>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.instagram_url')">
+                    <label for="contact_instagram_url">Instagram Url</label>
+                    <input type="text" ng-model="vm.model.contact.instagram_url" name="instagram_url"
+                           id="contact_instagram_url"/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.linkedin_url')">
+                    <label for="contact_linkedin_url">LinkedIn Url</label>
+                    <input type="text" ng-model="vm.model.contact.linkedin_url" name="linkedin_url"
+                           id="contact_linkedin_url"/>
+                </div>
+                <div class="form-group" ng-if="vm.isFieldEnabled('contact.xing_url')">
+                    <label for="contact_xing_url">Xing Url</label>
+                    <input type="text" ng-model="vm.model.contact.xing_url" name="xing_url" id="contact_xing_url"/>
+                </div>
+            </fieldset>
+        </div>
+        <div class="btn-group">
+            <button type="submit" class="btn-confirm" ng-class="{'disabled': (vm.submitting || vm.loadingStates)}"
+                    ng-disabled="vm.loadingStates || vm.submitting"
+                    ng-attr="{disabled: (vm.submitting || vm.loadingStates)}"> {{vm.submitting ? 'Saving ...' : 'Save'}}
+            </button>
+        </div>
+    </div>
+</form>
+
+

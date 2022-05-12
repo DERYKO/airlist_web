@@ -1,0 +1,5 @@
+<input class="form-control text-muted" placeholder="{{vm.col.search_text}}" ng-model="search"
+       ng-init="search = vm.store.state.filters[vm.col.key]"
+       ng-enter="vm.store.dispatch('filterCol', {col: vm.col, value: search})"
+       ng-blur="vm.store.dispatch('filterCol', {col: vm.col, value: search})"
+type="text">

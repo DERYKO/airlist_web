@@ -1,0 +1,198 @@
+{
+  "billing": {
+    "success": {
+      "payments_created": {
+        "title": "Erfolg",
+        "text": "Zahlung erstellt"
+      },
+      "payments_updated": {
+        "title": "Erfolg",
+        "text": "Zahlung gespeichert"
+      },
+      "payments_delete": {
+        "confirmation": {
+          "title": "Löschen?",
+          "text": "Möchten Sie diese Zahlung wirklich löschen?",
+          "confirmButtonText": "Ja, lösche es!"
+        },
+        "success": {
+          "title": "gelöscht",
+          "text": "Zahlung wurde erfolgreich gelöscht"
+        }
+      },
+      "invoice": {
+        "created": {
+          "title": "Erstellt",
+          "text": "Die Rechnung wurde erstellt"
+        },
+        "updated": {
+          "title": "Bearbeiten?",
+          "text": "Möchten Sie diese Rechnung wirklich bearbeiten?",
+          "confirm_button_text": "Ja, bearbeite es!"
+        },
+        "cancelled": {
+          "title": "Erfolg",
+          "text": "Rechnung gelöscht"
+        },
+        "address_updated": {
+          "title": "Erfolg",
+          "text": "Rechnungsadresse aktualisiert"
+        },
+        "deleted": {
+          "title": "Erfolg",
+          "text": "Rechnung gelöscht"
+        },
+        "completed": {
+          "title": "Erfolg",
+          "text": "fertige Rechnung erfolgreich"
+        }
+      },
+      "invoice_payments": {
+        "deleted": {
+          "title": "Löschen?",
+          "text": "Möchten Sie diese Zahlung wirklich löschen?",
+          "confirm_button_text": "Ja, lösche es!"
+        }
+      }
+    },
+    "position_links": {
+      "position_link_created": {
+        "title": "Erfolg",
+        "text": "Positionslink erstellt"
+      }
+    },
+    "subscriptions": {
+      "create_subscription": {
+        "title": "Erfolg",
+        "text": "Kontaktabonnement wurde erfolgreich erstellt"
+      },
+      "terminate_subscription": {
+        "title": "Erfolg",
+        "text": "Das Abonnement wurde erfolgreich beendet"
+      },
+      "pause_subscription": {
+        "title": "Erfolg",
+        "text": "Das Abonnement wurde erfolgreich angehalten"
+      },
+      "reactivate_subscription": {
+        "title": "Erfolg",
+        "text": "Das Abonnement wurde erfolgreich reaktiviert"
+      }
+    }
+  },
+  "error": {
+    "stripe_connection_info": {
+      "error": "Beim Überprüfen der Verbindung zum Stripe ist ein Fehler aufgetreten"
+    },
+    "create_subscription": {
+      "title": "error",
+      "text": "Fehler beim Speichern "
+    },
+    "load_subscription": {
+      "error": "Abonnement nicht gefunden"
+    }
+  },
+  "routes": {
+    "page_title": "Rechnungsvorlagen"
+  },
+  "invoice_templates": {
+    "general": "Allgemeines",
+    "pdf_template": "PDF-Vorlage (HTML verwenden)",
+    "enable_header": "Aktivieren Sie für",
+    "submit": "Erledigt",
+    "page_title": "Rechnungsvorlagen"
+  },
+  "subscriptions": {
+    "create": "Neues Abonnement erstellen",
+    "create_input_start_date": "Anfangsdatum",
+    "create_input_subscription": "Abonnement",
+    "close_btn": "Schließen",
+    "save_btn": "sparen",
+    "cancel_btn": "Stornieren",
+    "done_btn": "Erledigt",
+    "modal": {
+      "pause": "Datum für Pause auswählen",
+      "terminate": "Wählen Sie das Datum für die Beendigung",
+      "date_btn": "Wählen Sie dieses Datum"
+    },
+    "details": {
+      "table_header": "Positionen",
+      "oti": "OTI",
+      "amount": "Menge",
+      "unit": "Einheit",
+      "sum": "Summe",
+      "ppu": "ppu"
+    },
+    "factories": {
+      "title": "Abonnements"
+    }
+  },
+  "invoices": {
+    "cancel_invoice": "Rechnung stornieren {{invoice_number}}",
+    "subject": "Gegenstand",
+    "text1": "Text 1",
+    "text2": "Text 2",
+    "text3": "Text 3",
+    "tax_rate": "Steuersatz",
+    "save": "sparen",
+    "saving": "Speichern ....",
+    "update_address": "Adresse",
+    "controllers": {
+      "payments": {
+        "close": "schließen",
+        "header": "Legen Sie eine neue Zahlung an",
+        "payment_time": "Zahlungszeit",
+        "amount": "Menge",
+        "status": "Status",
+        "delete": "Löschen",
+        "save": "sparen",
+        "states": [
+          {
+            "label": "Erfolg"
+          },
+          {
+            "label": "Gescheitert"
+          },
+          {
+            "label": "steht aus"
+          }
+        ],
+        "types": [
+          {
+            "title": "Bank"
+          },
+          {
+            "title": "Lastschrift"
+          },
+          {
+            "title": "Kreditkarte"
+          },
+          {
+            "title": "Kredit"
+          },
+          {
+            "title": "Kasse"
+          },
+          {
+            "title": "Andere"
+          }
+        ]
+      }
+    },
+    "discard_changes": {
+      "discard": "Änderungen verwerfen",
+      "done": "erledigt"
+    },
+    "stripe": {
+      "header": "Daten werden geladen",
+      "connect": " Verbinde dich jetzt mit Stripe",
+      "payout_details": {
+        "header": "Details zur Auszahlung bei {{ arrival_date }}",
+        "table_title": "Rechnungen",
+        "table_th_invoice_number": "Rechnungsnummer",
+        "table_th_sum": "Summe",
+        "table_th_contact": "Kontakt"
+      }
+    }
+  }
+}

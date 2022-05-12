@@ -1,0 +1,22 @@
+<div class="al-media-selector" ng-if="vm.file">
+    <div class="al-media-selector-selected-info">
+        <span title="{{vm.file.name}}" ng-if="vm.file">
+            <a clipboard text="vm.file.url"
+               on-copied="vm.clipboardStatus(true)"
+               on-error="vm.clipboardStatus(false)"><i class="fal fa-clone"></i></a> {{vm.file.name}}
+        </span>
+    </div>
+    <div class="al-media-selector-thumbnail align-center">
+        <img ng-src="{{vm.file.thumbnail}}" class="d-block m-auto" ng-click="vm.handleThumbClick()"/>
+    </div>
+    <div class="al-media-selector-meta">
+        <hr>
+        <div class="al-media-selector-toolbar">
+            <a class="download-file-toggle button" href="{{vm.file.url}}" download="{{vm.file.name}}"
+               target="_blank"><i class="fal fa-arrow-to-bottom"></i> Download</a>
+
+            <a class="download-file-toggle button" ng-click="vm.handleThumbClick()" ng-if="vm.file.type === 'image'"><i class="fal fa-search"></i> Large</a>
+        </div>
+    </div>
+</div>
+

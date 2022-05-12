@@ -1,0 +1,84 @@
+<!--todo delete after grid view is finished-->
+<!--<div ng-repeat="row in vm.store.state.data track by row.id"-->
+<!--ng-click="vm.store.dispatch('clickedRow', row)"-->
+<!--ng-class="{active: (vm.store.state.extendedListView && row.id == vm.store.state.currentExtendedRow)}"-->
+<!--style="display:inline-block; width:21%; margin:2%;"-->
+<!--&gt;-->
+<!--<div class="size-selection text-center" ng-if="vm.store.getters.selectable">-->
+<!--<span class="checkbox checkbox-circle checkbox-success">-->
+<!--<input type="checkbox"-->
+<!--ng-checked="vm.store.state.selection.selectedRows[row.id]"-->
+<!--ng-click="vm.store.dispatch('toggleRowSelection',row)"-->
+<!--id="table_row_{{row.id}}">-->
+<!--<label for="table_row_{{row.id}}"></label>-->
+<!--</span>-->
+<!--</div>-->
+<!--<div ng-repeat="col in vm.store.getters.visibleColumns track by $index">-->
+<!--<a ng-if="col.main" ng-click="vm.store.dispatch('clickedMainRow', row)"-->
+<!--compile="vm.store.helpers.getCell(row, col, vm.store)"></a>-->
+<!--<span ng-if="!col.main" compile="vm.store.helpers.getCell(row, col, vm.store)"></span>-->
+<!--</div>-->
+<!--<div class="actions text-right" ng-class="col.column_size">-->
+<!--<a ng-repeat="action in ngListView.adapter.meta.actions.row  track by $index"-->
+<!--uib-tooltip-placement="top"-->
+<!--uib-tooltip="{{action.text}}"-->
+<!--ng-click="ngListView.manager.actionClicked(action, row, $parent.$index, $parent )"-->
+<!--ng-if="ngListView.adapter.showAction(row, action)"-->
+<!--class="{{action.class}}"-->
+<!--&gt;-->
+<!--<i class="fa {{action.icon}}" ng-if="action.icon"></i>-->
+<!--<span ng-if="!action.icon">{{action.text}}</span>-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--todo calculate the height of expanded view (now it's fixed)-->
+<section>
+    <div class="box-section-wrap grid-view-margin">
+        <ul class="grid-view">
+            <li ng-repeat="row in vm.store.state.data track by $index"
+                ng-click="vm.store.dispatch('clickedRow', row)"
+                ng-class="{'og-expanded': (vm.store.state.extendedListView && vm.lodash.get(row, vm.store.state.identifier_field) == vm.store.state.currentExtendedRow)}"
+            >
+                <div class="grid-box">
+                    <div class="user-overview">
+                        <img ng-src="{{row.profile_image.url}}" ng-if="row.profile_image" class="user"/>
+                        <img ng-src="{{row.contact.profile_image.url}}"
+                             ng-if="!row.profile_image && row.contact.profile_image" class="user"/>
+                    </div>
+                    <div class="user-details">
+                        <h4>{{ row.first_name || row.contact.first_name }} {{ row.last_name || row.contact.last_name }}
+                            <i class="fal" ng-class="{
+                               'fa-mars': (row.sex === 'male' || row.contact.sex === 'male'),
+                               'fa-venus': (row.sex === 'female' || row.contact.sex === 'female'),
+                               'fa-transgender': (row.sex === 'female' || row.contact.sex === 'various')
+                               }"></i>
+                        </h4>
+                        <p>
+                            {{ row.company_name || row.contact.company_name }}<br
+                                ng-if="row.company_name || row.contact.company_name">
+                            {{ row.business_email || row.contact.business_email }}
+                            <span ng-if="!row.business_email && !row.contact.business_email">
+                                {{ row.email || row.contact.email }}
+                            </span>
+                        </p>
+                    </div>
+                    <div ng-if="vm.store.getters.selectable">
+                        <input type="checkbox"
+                               ng-checked="vm.store.state.selection.selectedRows[row.id]"
+                               ng-click="vm.store.dispatch('toggleRowSelection',row)"
+                               id="table_row_{{row.id}}">
+                        <label for="table_row_{{row.id}}"></label>
+                    </div>
+                </div>
+                <div class="og-expander"
+                     ng-if="vm.store.state.extendedListView && vm.lodash.get(row, vm.store.state.identifier_field) == vm.store.state.currentExtendedRow"
+                     ng-repeat-end>
+                    <div class="details-expanded">
+                        <ng-include src="vm.store.state.extendedListViewTemplate"></ng-include>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>

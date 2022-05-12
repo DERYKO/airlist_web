@@ -1,0 +1,13 @@
+<section ng-if="vm.loading">
+    <div class="dashboard-empty">
+        <div class="pacman">
+            <i class="fal fa-sync fa-spin"></i>
+            <h2>Loading data</h2>
+        </div>
+    </div>
+</section>
+
+<dashboard-default ng-if="!vm.loading && !vm.dashboard"></dashboard-default>
+<dashboard-heart-finance ng-if="!vm.loading && vm.dashboard === 'heart_finance_dashboard'"></dashboard-heart-finance>
+<dashboard-airport-on-event ng-if="!vm.loading && vm.dashboard === 'airport_on_event_dashboard'"></dashboard-airport-on-event>
+<dashboard-dekra ng-if="!vm.loading && vm.dashboard === 'dekra_dashboard'"></dashboard-dekra>

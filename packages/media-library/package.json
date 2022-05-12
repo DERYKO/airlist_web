@@ -1,0 +1,24 @@
+{
+  "name": "@airlst/media-library",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/media-library.umd.js",
+  "scripts": {
+    "build-package": "vue-cli-service build --target lib --name media-library"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "2.0.0-rc.15",
+    "core-js": "^2.6.5",
+    "performant-array-to-tree": "^1.1.2",
+    "vue": "^2.6.6"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.5.21"
+  }
+}

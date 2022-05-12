@@ -1,0 +1,64 @@
+<h1>{{ vm.company.name }} Notification Settings</h1>
+
+<form name="settingsForm" novalidate>
+
+    <h2>Email templates</h2>
+    <section>
+        <div class="content-box">
+            <div class="box-section-wrap data-list">
+                <table ng-if="vm.canSendEmail">
+                    <tr>
+                        <td>Registered Email Template</td>
+                        <td>
+                            <select-box
+                                    config="vm.form.templates"
+                                    value-field="id"
+                                    display-field="name"
+                                    model="vm.company.settings.contacts.notify_register_template_id"
+                                    name="notify_register_template_id"></select-box>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Checked In Email Template</td>
+                        <td>
+                            <select-box
+                                    config="vm.form.templates"
+                                    value-field="id"
+                                    display-field="name"
+                                    model="vm.company.settings.contacts.notify_check_in_template_id"
+                                    name="notify_checkin_template_id"></select-box>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <h2>SMS Templates</h2>
+    <section>
+        <div class="html-editor">
+            <h3>Registered SMS</h3>
+            <div class="content-box form-group beefree" ng-if="vm.canSendSms">
+                <customfield ng-model="vm.company.settings.contacts.notify_register_sms" definition="vm.form.sms"
+                             name="notify_register_sms"></customfield>
+            </div>
+        </div>
+        <div class="html-editor">
+            <h3>Checked in SMS</h3>
+            <div class="content-box form-group beefree" ng-if="vm.canSendSms">
+                <customfield ng-model="vm.company.settings.contacts.notify_check_in_sms" definition="vm.form.sms"
+                             name="notify_checkin_sms"></customfield>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="fixed-footer">
+            <div class="btn-group">
+                <!--todo cancel code-->
+                <button class="btn-warning" ng-click="profile.cancelEditing()">Discard Changes</button>
+                <button ng-click="vm.update()" type="button" class="btn-confirm">Done</button>
+            </div>
+        </div>
+    </section>
+</form>

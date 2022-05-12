@@ -1,0 +1,13 @@
+{
+  "title": "Categories",
+  "alerts": {
+    "delete_category": "Deleting Category: {{category_name}}"
+  },
+  "crud_category": {
+    "title": "Create Category",
+    "input_name": "Name",
+    "btn_create": "Create",
+    "delete_btn": "Delete",
+    "save": "Save"
+  }
+}

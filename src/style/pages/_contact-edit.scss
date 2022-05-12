@@ -1,0 +1,36 @@
+.edit-screen {
+  .user-avatar {
+    width: calc(50% - 4px);
+    padding-right: 15px;
+    vertical-align: top;
+
+    @include breakpoint($small) {
+      width: 100%;
+    }
+  }
+  .user-general-info {
+    padding-left: 0;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .content-box {
+    padding-right: 15px;
+
+    @extend .box-900;
+  }
+
+  .form-group {
+    width: calc(50% - 4px);
+
+    input, select, textarea, .datepicker {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+.attr-name {
+  font-weight: $font-weight-bold;
+  color: $primary;
+}

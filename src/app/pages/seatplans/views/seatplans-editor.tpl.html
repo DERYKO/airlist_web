@@ -1,0 +1,389 @@
+<h1>{{vm.headline}}</h1>
+
+<section ng-if="vm.currentView === 'general'">
+    <h2>{{'seatplans.seatplans.views.editor.general.headline' | i18n }}</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <fieldset>
+                <div class="form-group">
+                    <label for="seatplan_editor_title">{{'seatplans.seatplans.views.editor.general.labels.title'
+                        | i18n }}</label>
+                    <input type="text" ng-model="vm.model.title" name="bcc" id="seatplan_editor_title">
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</section>
+
+<section ng-show="vm.currentView === 'groups'">
+    <h2>{{'seatplans.seatplans.views.editor.groups.headline' | i18n }}</h2>
+
+    <div class="toolset">
+        <button ng-click="vm.addGroup()">
+            <i class="fal fa-plus-circle"></i>&nbsp;&nbsp;{{'seatplans.seatplans.views.editor.groups.actions.add_group'
+            | i18n }}
+        </button>
+    </div>
+
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <ul role="tablist" class="nav nav-tabs" ng-if="vm.groups">
+                <li role="presentation" ng-class="{active: $first}"
+                    ng-repeat="group in vm.groups">
+                    <a data-toggle="tab" data-target="#seatplan-group-{{$index}}-content">
+                        {{group.title}}
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content" ng-if="vm.groups">
+                <div id="seatplan-group-{{$index}}-content" class="tab-pane"
+                     ng-class="{active: $first}" ng-repeat="group in vm.groups">
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <legend>
+                                {{'seatplans.seatplans.views.editor.groups.legends.general' | i18n }}
+                            </legend>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    {{'seatplans.seatplans.views.editor.groups.labels.title' | i18n }}
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text"
+                                           ng-model="group.title"
+                                           name="title" class="form-control"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>
+                                {{'seatplans.seatplans.views.editor.groups.legends.grid' | i18n }}
+                            </legend>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    {{'seatplans.seatplans.views.editor.groups.labels.grid_width' | i18n
+                                    }}
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="number"
+                                           ng-model="group.grid_width"
+                                           name="grid_width" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">{{'seatplans.seatplans.views.editor.groups.labels.grid_height'
+                                    | i18n }}</label>
+                                <div class="col-md-9">
+                                    <input type="number"
+                                           ng-model="group.grid_height"
+                                           name="grid_height" class="form-control"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>
+                                {{'seatplans.seatplans.views.editor.groups.legends.styles' | i18n }}
+                            </legend>
+                            <ul role="tablist" class="nav nav-tabs" ng-if="vm.groups">
+                                <li role="presentation" class="active">
+                                    <a data-toggle="tab"
+                                       data-target="#seatplan-group-{{$index}}-style-general">
+                                        {{'seatplans.seatplans.views.editor.groups.style_tabs.general' |
+                                        i18n }}
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a data-toggle="tab"
+                                       data-target="#seatplan-group-{{$index}}-style-font">
+                                        {{'seatplans.seatplans.views.editor.groups.style_tabs.font' |
+                                        i18n }}
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a data-toggle="tab"
+                                       data-target="#seatplan-group-{{$index}}-style-element-defaults">
+                                        {{'seatplans.seatplans.views.editor.groups.style_tabs.element_defaults'
+                                        | i18n }}
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a data-toggle="tab"
+                                       data-target="#seatplan-group-{{$index}}-style-element-defaults-hover">
+                                        {{'seatplans.seatplans.views.editor.groups.style_tabs.element_defaults_hover'
+                                        | i18n }}
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a data-toggle="tab"
+                                       data-target="#seatplan-group-{{$index}}-style-element-defaults-selected">
+                                        {{'seatplans.seatplans.views.editor.groups.style_tabs.element_defaults_selected'
+                                        | i18n }}
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" ng-if="vm.groups">
+                                <div id="seatplan-group-{{$index}}-style-general"
+                                     class="tab-pane active">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.background'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.background"
+                                                   name="background" class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="seatplan-group-{{$index}}-style-font" class="tab-pane">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.font.family'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.font.family"
+                                                   name="font_family" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.font.size'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="number"
+                                                   ng-model="group.style_information.font.size"
+                                                   name="font_size" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.font.color'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.font.color"
+                                                   name="font_color" class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="seatplan-group-{{$index}}-style-element-defaults"
+                                     class="tab-pane">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.default'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.backgrounds.default"
+                                                   name="element_defaults_background"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.blocked'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.backgrounds.blocked"
+                                                   name="element_defaults_blocked"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.bookable.confirmed'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.backgrounds.bookable.confirmed"
+                                                   name="element_defaults_background"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.bookable.pending'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.backgrounds.bookable.pending"
+                                                   name="element_defaults_background"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.bookable.invited'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.backgrounds.bookable.invited"
+                                                   name="element_defaults_background"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="seatplan-group-{{$index}}-style-element-defaults-hover"
+                                     class="tab-pane">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.default'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.backgrounds_hover.default"
+                                                   name="element_defaults_background"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.blocked'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.backgrounds_hover.blocked"
+                                                   name="element_defaults_blocked"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.bookable.confirmed'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.backgrounds_hover.bookable.confirmed"
+                                                   name="element_defaults_background"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.bookable.pending'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.backgrounds_hover.bookable.pending"
+                                                   name="element_defaults_background"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.bookable.invited'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.backgrounds_hover.bookable.invited"
+                                                   name="element_defaults_background"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="seatplan-group-{{$index}}-style-element-defaults-selected"
+                                     class="tab-pane">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.default'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.selected.default"
+                                                   name="element_defaults_background"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.blocked'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.selected.blocked"
+                                                   name="element_defaults_blocked"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.bookable.confirmed'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.selected.bookable.confirmed"
+                                                   name="element_defaults_background"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.bookable.pending'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.selected.bookable.pending"
+                                                   name="element_defaults_background"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            {{'seatplans.seatplans.views.editor.groups.labels.defaults.bookable.invited'
+                                            | i18n }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text"
+                                                   ng-model="group.style_information.defaults.selected.bookable.invited"
+                                                   name="element_defaults_background"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <hr/>
+                        <button class="btn btn-danger btn-simple btn-xs"
+                                ng-click="vm.removeGroup(group)">
+                            <span class="fal fa-remove"></span>
+                            {{'seatplans.seatplans.views.editor.groups.actions.remove_group' | i18n }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section ng-if="vm.currentView === 'custom_fields'">
+    <h2>{{'seatplans.seatplans.views.editor.custom_rsvp_element_attributes.headline' | i18n }}</h2>
+    <div class="content-box">
+        <div class="box-section-wrap">
+            <fieldset>
+                <div class="row" ng-repeat="index in [1,2,3,4,5,6,7,8,9,10]"
+                     ng-if="index == 1  || vm.model['custom_'+index+'_rsvp_element'].type || vm.model['custom_'+(index-1)+'_rsvp_element'].type">
+                    <div class="form-group">
+                        <h4>
+                            {{'seatplans.seatplans.views.editor.custom_rsvp_element_attributes.labels.attribute'| i18n}}
+                            {{ index }}
+                        </h4>
+                        <customfield class="col-md-8"
+                                     definition="{type:'builder'}"
+                                     ng-model="vm.model['custom_'+index+'_rsvp_element']"
+                                     name="'custom_'+index+'_rsvp_element'"></customfield>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="fixed-footer">
+        <div class="btn-group">
+            <button class="btn-warning" ng-click="vm.cancel()">Discard Changes</button>
+            <button class="btn-confirm" ng-click="vm.save(vm.model)">Done</button>
+        </div>
+    </div>
+</section>

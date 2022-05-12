@@ -1,0 +1,229 @@
+//todo cleanup this css
+
+.select-fields {
+  max-height: 80vh;
+  overflow: scroll;
+
+  .search {
+    width: 100%;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  button {
+    vertical-align: text-bottom;
+  }
+}
+
+
+.select-fields-header {
+  height: 35px;
+
+  h3 {
+    float: left;
+  }
+
+  button {
+    float: right;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.select-fields-box {
+  padding: 20px 0;
+}
+
+.bg-grey {
+  background-color: $lighter;
+  //border-right: $border;
+}
+
+.select-fields-categories {
+
+  height: 100%;
+  background: $lighter;
+  padding: 5px 0;
+
+  li {
+    display: block;
+    //background: white;
+    padding: 8px 15px;
+    font-size: 12px;
+    //border: $border;
+    //margin-bottom: 4px;
+
+    a {
+      display: block;
+    }
+
+    &.active {
+      a {
+        font-weight: bold;
+        color: $primary;
+      }
+      //border-color: $secondary;
+    }
+
+    &:hover {
+      //border-color: $secondary;
+      font-weight: bold;
+    }
+  }
+}
+
+.select-fields-form-group {
+
+  h3 {
+    background: #f1f2f3;
+    padding: 8px;
+  }
+
+  input[type="radio"] + label,
+  input[type="checkbox"] + label {
+    padding-right: 30px;
+  }
+
+
+  button {
+    margin-top: 6px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.selected-fields {
+  label {
+    &:hover {
+      background: #f9f9f9;
+      cursor: move;
+
+    }
+
+    &:active,
+    &:focus {
+      box-shadow: $text-shadow;
+    }
+  }
+}
+
+.drag-drop-group {
+  margin-bottom: 10px;
+
+
+}
+
+.drag-drop-item-nogroup {
+  .drag-drop-item {
+    padding: 15px;
+  }
+}
+
+.drag-drop-group-label {
+  background-color: $highlight-1;
+  text-transform: uppercase;
+  padding: 15px;
+  margin-bottom: 5px;
+
+  button {
+    float: right;
+    margin-top: -2px;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.drag-drop-item {
+  background-color: $lighter;
+  margin-bottom: 3px;
+  cursor: move;
+  display: flex;
+  height: 100%;
+
+  input[type="radio"] + label,
+  input[type="checkbox"] + label {
+    vertical-align: middle;
+    line-height: 1.2;
+  }
+
+  &.drag-drop-item-not-movable {
+    cursor: auto;
+  }
+
+  div {
+    vertical-align: middle;
+    padding: 0 10px;
+    border-right: 2px solid white;
+    line-height: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &:last-child {
+      border: none;
+    }
+  }
+}
+
+.drag-drop-legend {
+  background-color: $highlight-1;
+  margin-bottom: 5px;
+  display: flex;
+
+  div {
+    display: inline-block;
+    padding: 5px;
+    text-align: center;
+    border-right: 2px solid white;
+
+    &:last-child {
+      border: none;
+    }
+  }
+}
+
+.drag-drop-field-name {
+  width: calc(65% - 40px);
+}
+
+.drag-drop-field-type {
+  width: calc(40% - 32px);
+}
+
+.drag-drop-field-actions {
+  text-align: center;
+  width: 51px;
+}
+
+.drag-drop-field-name2 {
+  width: calc(63% - 71px);
+}
+
+.drag-drop-field-type2 {
+  width: calc(44% - 71px);
+}
+
+.drag-drop-field-req2 {
+  width: 48px;
+
+  input[type="radio"] + label:before,
+  input[type="checkbox"] + label:before {
+    margin-right: 0;
+  }
+}
+
+span.field-configured {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  background-color: $secondary;
+  border-radius: 50%;
+  margin-left: 3px;
+}

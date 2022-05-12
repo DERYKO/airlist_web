@@ -1,0 +1,17 @@
+<div class="seatplan-example-container">
+    <div class="alert alert-danger" ng-if="vm.showError">
+        {{vm.error}}
+    </div>
+    <div class="loading-indicator" ng-if="vm.loading">
+        <div class="overlay">
+            <p class="icon"><span class="fal fa-refresh fa-spin"></span></p>
+            <p class="text">Loading</p>
+        </div>
+    </div>
+    <div class="examples" ng-if="vm.seatplan && !vm.loading && !vm.showError">
+        <div class="example-canvas" ng-repeat="group in vm.seatplan.groups.data">
+            <h5 class="title">{{group.title}}</h5>
+            <seatplan-group group-id="{{group.id}}" clickable="false" blocked-elements="vm.blockedElements"></seatplan-group>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<fieldset ng-repeat="fieldDef in field.ngModel track by $index">
+    <h4>Option {{ ::$index+1 }} <span ng-if="field.definition.required">*</span></h4>
+    <div class="form-group inline">
+        <label>Label</label>
+        <input type="text" class="form-control" ng-model="field.ngModel[$index].label" >
+    </div>
+    <div class="form-group inline">
+        <label>Color</label>
+        <color-picker ng-model="field.ngModel[$index].color_code" options="{format: 'hexString',alpha: false}"></color-picker>
+    </div>
+    <hr ng-if="!$last"/>
+    <button class="input-icon" type="button" ng-click="field.ngModel.splice($index,1)"><i class="fal fa-trash-alt"></i></button>
+</fieldset>
+<br ng-if="!field.definition.items">
+<button class="add-option" type="button" ng-click="field.ngModel = []; field.ngModel.push({label:'',color_code:'#FFFFFF'})" ng-if="!field.ngModel"><i class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add option</button>
+<button class="add-option" type="button" ng-click="field.ngModel.push({label:'',color_code:'#FFFFFF'})" ng-if="field.ngModel"><i class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add option</button>

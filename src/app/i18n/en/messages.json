@@ -1,0 +1,42 @@
+{
+  "crud_messages": {
+    "file_attachments" : "File Attachments",
+    "message_create": {
+      "title": "Send a new message",
+      "input_template": "Template",
+      "input_contact": "Contacts",
+      "input_subject": "Subject",
+      "recipient_type_message": " Tickets and Passbooks can just be attached to RSVP E-Mails",
+      "template_preview": {
+        "header": "Template preview",
+        "select_template": " Select the template to display its preview",
+        "send": "Send"
+      }
+    }
+  },
+  "alerts": {
+    "message_send": {
+      "title": "Message Sent",
+      "text": "Your message has been queued for sending"
+    },
+    "archive_message": {
+      "title": "Deleting {{message_subject}}",
+      "text": "Are you sure you want to move message to trash?",
+      "btn_text": "Delete",
+      "success": {
+        "title": "Success",
+        "text": "Messages was moved to trash"
+      }
+    },
+    "delete_message": {
+      "title": "Deleting {{message_subject}}",
+      "text": "Are you sure you want to delete message? This cannot be undone!",
+      "btn_text": "Delete"
+    },
+    "restore_message": {
+      "title": "Restoring {{message_subject}}",
+      "text": "Are you sure you want to restore message? This cannot be undone!",
+      "btn_text": "Restore"
+    }
+  }
+}

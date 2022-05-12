@@ -1,0 +1,58 @@
+<div class="filter-expanded" ng-if="vm.store.state.showFilters">
+    <form>
+        <filter-field ng-repeat="col in vm.store.getters.filterableColumns" type="{{col.type}}" col="col"
+                      store="vm.store"></filter-field>
+
+        <div class="special-filters" ng-if="vm.store.getters.specialFilters.length > 0">
+            <div class="form-group" ng-repeat="filter in vm.store.getters.specialFilters track by $index">
+                <label>{{filter.title}}</label>
+                <al-switch config="{name:name,label:field.definition.name}" model="filter.modelValue"
+                           on-change="filter.action(filter, vm.store, newValue)"></al-switch>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button ng-click="vm.store.dispatch('clearFilters');vm.store.dispatch('saveState')"
+                    type="reset">Cancel
+            </button>
+            <button type="submit"
+                    class="btn-confirm"
+                    ng-click="vm.store.commit('toggleFilters');vm.store.dispatch('saveState')">Apply
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="filter-expanded"
+     ng-if="!vm.store.state.showFilters && (vm.store.getters.isFiltered || (vm.store.getters.specialFilters|filter:{modelValue: true}).length > 0)">
+    <span class="results-found"><strong>{{vm.store.state.pagination.total}}</strong> results found:</span>
+
+    <div class="filter-results">
+        <div class="tags-container">
+            <div class="tag alternate" ng-repeat="filter in vm.store.getters.specialFilters track by $index"
+                 ng-if="filter.modelValue">
+                {{filter.title}}
+                <button ng-click="filter.action(filter, vm.store, false)"><i class="fal fa-times"></i></button>
+            </div>
+            <div ng-if="vm.store.getters.isFiltered">
+                <div class="tag" ng-repeat="col in vm.store.getters.filterableColumns"
+                     ng-if="vm.showFilterTag(col)">
+                    {{col.label}}: {{ vm.displayFilter(vm.store.state.filters[col.key]) }}
+                    <button ng-click="vm.store.dispatch('removeFilter', col)"><i class="fal fa-times"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button type="reset"
+                    class="btn-warning"
+                    ng-click="vm.store.dispatch('clearFilters');vm.store.dispatch('saveState')">
+                Reset
+            </button>
+            <!--<button>Save</button>-->
+            <button class="btn-regular"
+                    ng-click="vm.store.commit('toggleFilters');vm.store.dispatch('saveState')">Edit
+            </button>
+        </div>
+    </div>
+</div>

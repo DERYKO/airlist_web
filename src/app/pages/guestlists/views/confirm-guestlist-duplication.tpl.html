@@ -1,0 +1,12 @@
+<button class="close" ng-click="vm.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Duplicate Guestlist</h2>
+</div>
+<div class="modal-body">
+    <p>Should we include bookings as well?</p>
+    <div class="btn-group">
+        <button class="btn-confirm" ng-click="vm.save({copy_rsvps: true, preserve_codes: true})">Include Bookings (preserve Codes)</button>
+        <button class="btn-confirm" ng-click="vm.save({copy_rsvps: true, preserve_codes: false})">Include Bookings (new Codes)</button>
+        <button class="btn-confirm" ng-click="vm.save({copy_rsvps: false, preserve_codes: false})">Settings Only</button>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+<h1>{{vm.headline}}</h1>
+
+<form name="form" ng-class="{'submitted':form.$submitted}" novalidate>
+
+    <h2>{{ 'billing.subscriptions.editor.subheads.general' | i18n}}</h2>
+    <section>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <div class="form-group">
+                    <label>{{vm.schema.properties.title.title}}</label>
+                    <input type="text" ng-model="vm.model.title" name="title"/>
+                </div>
+                <div class="form-group">
+                    <label>{{vm.schema.properties.label.title}}</label>
+                    <input type="text" ng-model="vm.model.label" name="label"/>
+                </div>
+                <div class="form-group">
+                    <label>{{vm.schema.properties.description.title}}</label>
+                    <textarea ng-model="vm.model.description"
+                              name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="invoice_template_id">{{vm.schema.properties.invoice_template_id.title}}</label>
+                    <select ng-model="vm.model.invoice_template_id"
+                            ng-options="invoiceTemplate.id as invoiceTemplate.title for invoiceTemplate in vm.invoiceTemplates"
+                            name="invoice_template"
+                            id="invoice_template_id">
+                    </select>
+                </div>
+                <fieldset>
+                    <div class="form-group">
+                        <label>{{vm.schema.properties.invoicing_interval_value.title}}</label>
+                        <div class="input-group">
+                            <input type="number" step="1" ng-model="vm.model.invoicing_interval_value"
+                                   name="invoicing_interval_value"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Interval unit</label>
+                        <div class="input-group-addon"><select
+                                ng-model="vm.model.invoicing_interval_type"
+                                name="invoicing_interval_type"
+                                ng-options="type.value as type.name for type in vm.schema.properties.invoicing_interval_type.titleMap"></select>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </section>
+
+    <h2>{{ 'billing.subscriptions.editor.subheads.positions' | i18n}}</h2>
+    <section>
+        <div class="content-box">
+            <div class="box-section-wrap main-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>{{ 'billing.subscriptions.editor.positions.current.heads.title' | i18n}}</th>
+                            <th>{{ 'billing.subscriptions.editor.positions.current.heads.amount' | i18n}}</th>
+                            <th>{{ 'billing.subscriptions.editor.positions.current.heads.one_time_invoiced' | i18n}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-if="vm.currentPositions.length == 0">
+                            <td colspan="4"><p class="empty-table">Select positions below by clicking <i class="fal fa-plus-circle"></i> button</p></td>
+                        </tr>
+                        <tr ng-repeat="curPos in vm.currentPositions">
+                            <td>
+                                <button type="button" ng-click="vm.removeFromCurrentPositions(curPos)" data-tooltip="Click to remove position"><i class="fal fa-trash-alt"></i></button>
+                            </td>
+                            <td>{{curPos.title}}</td>
+                            <td>
+                                <input type="number" step="0.01"
+                                       ng-model="curPos.amount">
+                            </td>
+                            <td>
+                                <customfield definition="{type:'boolean'}" ng-model="curPos.one_time_invoiced"></customfield>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-section-wrap"></div>
+            <div class="box-section-wrap">
+                <h3>Available Positions</h3>
+                <div class="main-table">
+                    <table>
+                        <tr ng-repeat="position in vm.positions" ng-if="!position.already_used">
+                            <td>
+                                <button type="button" ng-click="vm.movePositionToCurrent(position)" data-tooltip="Click to add position"><i class="fal fa-plus-circle"></i></button>
+                            </td>
+                            <td>{{position.title}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="fixed-footer">
+            <div class="btn-group">
+                <button class="btn-warning" ng-click="vm.cancel()">Cancel</button>
+                <button ng-click="vm.save(vm.model)" type="submit" class="btn-confirm">Done</button>
+            </div>
+        </div>
+    </section>
+</form>

@@ -1,0 +1,28 @@
+# Mac
+.DS_Store
+
+# Win
+Thumbs.db
+ehthumbs.db
+
+#IntelliJ
+.idea
+
+node_modules
+node_modules_bak
+./dist
+
+# Log files
+*.log
+
+#bower_components
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+env.json
+dist
+notes.md
+/airlst-ng-web.iml

@@ -1,0 +1,62 @@
+{
+  "name": "Seatplans",
+  "identifier": "seatplans",
+  "rights": [
+    {
+      "name": "element.list",
+      "identifier": "element.list"
+    },
+    {
+      "name": "group.bulk",
+      "identifier": "group.bulk"
+    },
+    {
+      "name": "group.delete",
+      "identifier": "group.delete"
+    },
+    {
+      "name": "group.download",
+      "identifier": "group.download"
+    },
+    {
+      "name": "group.edit",
+      "identifier": "group.edit"
+    },
+    {
+      "name": "group.list",
+      "identifier": "group.list"
+    },
+    {
+      "name": "group.view",
+      "identifier": "group.view"
+    },
+    {
+      "name": "rse.list",
+      "identifier": "rse.list"
+    },
+    {
+      "name": "seatplan.bulk",
+      "identifier": "seatplan.bulk"
+    },
+    {
+      "name": "seatplan.delete",
+      "identifier": "seatplan.delete"
+    },
+    {
+      "name": "seatplan.download",
+      "identifier": "seatplan.download"
+    },
+    {
+      "name": "seatplan.edit",
+      "identifier": "seatplan.edit"
+    },
+    {
+      "name": "seatplan.list",
+      "identifier": "seatplan.list"
+    },
+    {
+      "name": "seatplan.view",
+      "identifier": "seatplan.view"
+    }
+  ]
+}

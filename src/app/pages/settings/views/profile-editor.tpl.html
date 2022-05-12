@@ -1,0 +1,47 @@
+<h1>Edit profile {{ vm.model.full_name }}</h1>
+
+<form ng-submit="vm.save(vm.model)" name="profileForm" ng-class="{'submitted':profileForm.$submitted}" class="edit-screen" novalidate>
+    <section>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <div class="user-avatar">
+                    <customfield name="image" definition="{type:'media_image'}" ng-model="vm.model.profile_image"></customfield>
+                </div>
+                <div class="user-general-info">
+                    <fieldset>
+                        <div class="form-group">
+                            <label>{{'profile.first_name' | i18n }}</label>
+                            <customfield definition="{type:'textbox'}" ng-model="vm.model.first_name"
+                                         name="first_name"></customfield>
+                        </div>
+                        <div class="form-group">
+                            <label>{{'profile.last_name' | i18n }}</label>
+                            <customfield definition="{type:'textbox'}" ng-model="vm.model.last_name"
+                                         name="last_name"></customfield>
+                        </div>
+                        <div class="form-group">
+                            <label>{{'profile.email' | i18n }}</label>
+                            <input type="text" name="email" ng-model="vm.model.email" ng-disabled="true"/>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-group">
+                            <label>{{'profile.password' | i18n }}</label>
+                            <customfield definition="{type:'password'}" ng-model="vm.model.password"
+                                         name="password"></customfield>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="fixed-footer">
+            <div class="btn-group">
+                <button class="btn-warning" ng-click="vm.cancel()">Discard Changes</button>
+                <button class="btn-confirm" ng-click="vm.save(vm)" type="submit">Done</button>
+            </div>
+        </div>
+    </section>
+</form>

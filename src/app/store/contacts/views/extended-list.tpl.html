@@ -1,0 +1,121 @@
+<div class="row" ng-controller="ContactExtendedListViewCtrl as elvc"
+     ng-init="elvc.setRow(row); elvc.setStore(vm.store);" ng-click="$event.stopPropagation();">
+    <div class="loading-indicator" ng-if="elvc.loading">
+        <span class="fal fa-sync fa-spin"></span>
+    </div>
+    <div class="col-4 user-details-overview" ng-if="!elvc.loading">
+        <img ng-src="{{elvc.model.profile_image.url}}" ng-if="elvc.model.profile_image" class="user"/>
+        <p class="details-expanded-name">
+            {{elvc.model.full_name}}<span ng-if="elvc.model.age">&nbsp;({{ elvc.model.age }})</span>&nbsp;&nbsp;<i
+                class="fal"
+                ng-class="{'fa-mars': (elvc.model.sex === 'male'), 'fa-venus': (elvc.model.sex === 'female'), 'fa-transgender': (elvc.model.sex === 'various')}"></i>
+        </p>
+        <hr>
+        <div class="data-list">
+            <ng-include src="elvc.specialContactView" ng-if="elvc.specialContactView"></ng-include>
+            <ul>
+                <li ng-if="elvc.model.main_subscription_status">
+                    <span class="data-label">Subscription:</span>
+                    <span class="data-value">
+                        <span class="subscription-state {{ elvc.model.main_subscription_status }}"></span>{{ 'profile.' + elvc.model.main_subscription_status | i18n }}
+                    </span>
+                </li>
+                <li ng-if="elvc.model.company_name">
+                    <span class="data-label">Company:</span>
+                    <span class="data-value">{{elvc.model.company_name}}</span>
+                </li>
+                <li ng-if="elvc.model.department">
+                    <span class="data-label">Department:</span>
+                    <span class="data-value">{{elvc.model.department}}</span>
+                </li>
+                <li ng-if="elvc.model.position">
+                    <span class="data-label">Position:</span>
+                    <span class="data-value">{{elvc.model.position}}</span>
+                </li>
+                <li ng-if="elvc.model.preferred_email">
+                    <span class="data-label">Email:</span>
+                    <span class="data-value">{{elvc.model.preferred_email}}</span>
+                </li>
+            </ul>
+        </div>
+        <hr>
+        <div class="tbl-actions">
+            <h3>User actions:</h3>
+            <button ng-if="elvc.acl.hasRight('messages::send-email')" ng-click="elvc.sendEmail()"><i
+                    class="fal fa-envelope"></i>&nbsp;&nbsp;Send email
+            </button>
+            <button ng-if="(!elvc.model.archived && elvc.acl.hasRight('addressbook::archive')) || (elvc.model.archived && elvc.acl.hasRight('addressbook::delete'))"
+                    ng-click="elvc.delete()" class="btn-warning">
+                <i class="fal fa-trash-alt"></i>&nbsp;&nbsp;Delete
+            </button>
+            <button ng-if="elvc.acl.hasRight('addressbook::edit')" ng-click="elvc.editContact()"><i
+                    class="fal fa-edit"></i>&nbsp;&nbsp;Edit
+            </button>
+            <button ng-if="elvc.acl.hasRight('addressbook::view')" ng-click="elvc.openContactDetails()"><i
+                    class="fal fa-external-link-square"></i>&nbsp;&nbsp;View
+            </button>
+        </div>
+    </div>
+
+    <div class="col-8 user-details-summary" ng-if="!elvc.loading">
+        <div class="details-expanded-tabs">
+            <ul>
+                <li ng-repeat="view in elvc.availableViews">
+                    <a ng-click="elvc.goToView(view.key);" ng-class="{'active-tab': elvc.currentView === view.key}">{{view.label}}</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="details-expanded-box" ng-if="elvc.currentView === 'overview'">
+            <div class="details-expanded-basic-info" ng-if="elvc.model.latestRsvp">
+                <h3>Latest booking: {{elvc.model.latestRsvp.data.guestlist.data.name}}</h3>
+                <hr>
+                <table>
+                    <tr>
+                        <th>Pax planned:</th>
+                        <th>Code:</th>
+                        <th ng-if="elvc.model.latestRsvp.data.guestlist.data.settings.enable_guests">Guests:</th>
+                    </tr>
+                    <tr>
+                        <td>{{elvc.model.latestRsvp.data.pax_actual ? elvc.model.latestRsvp.data.pax_actual : 0}}/{{elvc.model.latestRsvp.data.pax_planned}}</td>
+                        <td>{{elvc.model.latestRsvp.data.code}}</td>
+                        <td ng-if="elvc.model.latestRsvp.data.guestlist.data.settings.enable_guests">
+                            {{elvc.model.latestRsvp.data.guest_count}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="details-expanded-last-messages"
+                 ng-if="elvc.acl.hasRight('messages::view') && elvc.model.latestMessage">
+                <hr>
+                <h3>Last message:</h3>
+                <table class="table-last-message">
+                    <tr ui-sref="app.messages.details({id: elvc.model.latestMessage.data.id})">
+                        <td class="pointer"><span class="message-status {{elvc.model.latestMessage.data.status}}">{{'messages.states.' + elvc.model.latestMessage.data.status | i18n}}</span>
+                        </td>
+                        <td class="pointer">{{elvc.model.latestMessage.data.created_at|date:'d.M.yyyy HH:mm'}}</td>
+                        <td class="pointer">{{elvc.model.latestMessage.data.subject}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="details-expanded-picklists"
+                 ng-if="elvc.model.picklists && elvc.model.picklists.data.length > 0">
+                <hr/>
+                <h3>Picklists</h3>
+
+                <table class="table-guests">
+                    <tr ng-repeat="picklist in elvc.model.picklists.data">
+                        <td>
+                            <a ui-sref="app.picklists.contacts.index({pid: picklist.id})">{{picklist.name}}</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="details-expanded-box" ng-if="elvc.currentView === 'bookings'">
+            <contact-bookings contact="elvc.model" store="vm.store"></contact-bookings>
+        </div>
+    </div>
+</div>

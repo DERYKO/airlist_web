@@ -1,0 +1,49 @@
+main {
+  //background: susy-svg-grid() no-repeat scroll;
+  padding: 65px 15px 50px 8px;
+  max-width: $max-width-page;
+
+  @include breakpoint($mediumsmall) {
+    padding: 50px 15px 50px 4px;
+  }
+}
+
+.main-content {
+  display: inline-block;
+  width: span(13 at 1);
+  padding-right: $gutter-regular;
+  padding-left: span(1 at 1);
+  padding-top: $gutter-large;
+
+    .breadcrumbs, .content-box {
+      width: span(8 of 8, $eight-col);
+    }
+
+    h1 {
+      display: inline-block;
+    }
+
+  .collapsed & {
+    padding-left: span(1 at 1, $collapsed);
+
+    @include breakpoint($small) {
+      padding-left: 15px;
+    }
+  }
+
+  @include breakpoint($small) {
+    padding-left: 15px;
+    padding-right: 0;
+    padding-top: 0;
+  }
+}
+
+.collapsed .main-content.main-content-wide {
+  padding-left: $gutter-regular;
+}
+
+.wide {
+  main {
+    max-width: 100%;
+  }
+}

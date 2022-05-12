@@ -1,0 +1,157 @@
+<h1>{{vm.model.name}}</h1>
+
+<form ng-submit="vm.save(vm.model, passbookForm)" name="passbookForm" class="light"
+      ng-class="{'submitted':passbookForm.$submitted}" novalidate>
+
+    <section ng-if="vm.currentView === 'labels'" class="edit-screen">
+        <h2>Labels</h2>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <div class="form-group">
+                    <label>{{'passbooks.name' | i18n }}</label>
+                    <input type="text" ng-model="vm.model.name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>{{'passbooks.primary_label' | i18n }}</label>
+                    <input type="text" ng-model="vm.model.primary_label" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>{{'passbooks.secondary_label' | i18n }}</label>
+                    <input type="text" ng-model="vm.model.secondary_label" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>{{'passbooks.auxiliary_label' | i18n }}</label>
+                    <input type="text" ng-model="vm.model.auxiliary_label" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>{{'passbooks.backfield_label' | i18n }}</label>
+                    <input type="text" ng-model="vm.model.backfield_label" class="form-control">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section ng-if="vm.currentView === 'texts'">
+        <h2>{{'passbooks.title' | i18n }} (use HTML)</h2>
+        <div class="content-box beefree">
+            <customfield ng-model="vm.model.title"
+                         definition="vm.ace_field"></customfield>
+        </div>
+        <h2>{{'passbooks.primary_text' | i18n }}</h2>
+        <div class="content-box beefree">
+            <customfield ng-model="vm.model.primary_text"
+                         definition="vm.ace_field"></customfield>
+        </div>
+        <h2>{{'passbooks.secondary_text' | i18n }}</h2>
+        <div class="content-box beefree">
+            <customfield ng-model="vm.model.secondary_text"
+                         definition="vm.ace_field"></customfield>
+        </div>
+        <h2>{{'passbooks.auxiliary_text' | i18n }}</h2>
+        <div class="content-box beefree">
+            <customfield ng-model="vm.model.auxiliary_text"
+                         definition="vm.ace_field"></customfield>
+        </div>
+        <h2>{{'passbooks.code_text' | i18n }}</h2>
+        <div class="content-box beefree">
+            <customfield ng-model="vm.model.code_text"
+                         definition="vm.ace_field"></customfield>
+        </div>
+        <h2>{{'passbooks.backfield_text' | i18n }}</h2>
+        <div class="content-box beefree">
+            <customfield ng-model="vm.model.backfield_text"
+                         definition="vm.ace_field"></customfield>
+        </div>
+    </section>
+
+    <section ng-if="vm.currentView === 'colors'" class="edit-screen">
+        <h2>{{'passbooks.background_color' | i18n }}</h2>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <div class="form-group">
+                    <label>Red</label>
+                    <input type="text" ng-model="vm.model.background_color.red" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Green</label>
+                    <input type="text" ng-model="vm.model.background_color.green" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Blue</label>
+                    <input type="text" ng-model="vm.model.background_color.blue" class="form-control">
+                </div>
+            </div>
+        </div>
+        <h2>{{'passbooks.fore_color' | i18n }}</h2>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <div class="form-group">
+                    <label>Red</label>
+                    <input type="text" ng-model="vm.model.fore_color.red" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Green</label>
+                    <input type="text" ng-model="vm.model.fore_color.green" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Blue</label>
+                    <input type="text" ng-model="vm.model.fore_color.blue" class="form-control">
+                </div>
+            </div>
+        </div>
+        <h2>{{'passbooks.label_color' | i18n }}</h2>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <div class="form-group">
+                    <label>Red</label>
+                    <input type="text" ng-model="vm.model.label_color.red" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Green</label>
+                    <input type="text" ng-model="vm.model.label_color.green" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Blue</label>
+                    <input type="text" ng-model="vm.model.label_color.blue" class="form-control">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section ng-if="vm.currentView === 'images'" class="edit-screen">
+        <h2>{{'passbooks.image_logo' | i18n }}</h2>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <customfield definition="{type:'media_image', startDirectory: 'wallets'}" ng-model="vm.model.image_logo"></customfield>
+            </div>
+        </div>
+        <h2>{{'passbooks.image_icon' | i18n }}</h2>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <customfield definition="{type:'media_image', startDirectory: 'wallets'}" ng-model="vm.model.image_icon"></customfield>
+            </div>
+        </div>
+        <h2>{{'passbooks.image_thumbnail' | i18n }}</h2>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <customfield definition="{type:'media_image', startDirectory: 'wallets'}" ng-model="vm.model.image_thumbnail"></customfield>
+            </div>
+        </div>
+        <h2>{{'passbooks.image_background' | i18n }}</h2>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <customfield definition="{type:'media_image', startDirectory: 'wallets'}" ng-model="vm.model.image_background"></customfield>
+                <p class="help-text mt-20">{{'passbooks.image_background_notice' | i18n }}</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="fixed-footer">
+            <div class="btn-group">
+                <button class="btn-warning" ng-click="vm.close()">Discard Changes</button>
+                <button type="submit" class="btn-confirm">Done</button>
+            </div>
+        </div>
+    </section>
+</form>

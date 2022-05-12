@@ -1,0 +1,118 @@
+<div class="heading-toolset-wrapper">
+    <h1>{{vm.store.state.title}}</h1>
+    <div class="toolset">
+        <button ng-if="!vm.store.state.archived"
+                ng-repeat="action in vm.store.getters.backActions track by $index"
+                ng-click="vm.store.dispatch('clicked',{action: action})">
+            <i class="fal fa-{{action.icon}}"></i>&nbsp;&nbsp;{{action.title}}
+        </button>
+
+        <button ng-click="vm.store.dispatch('hideArchived')" ng-if="vm.store.state.archived">
+            <i class="fal fa-arrow-left"></i>&nbsp;&nbsp;Hide Deleted
+        </button>
+
+        <ng-include ng-if="vm.store.state.toolsetTemplate" src="vm.store.state.toolsetTemplate"></ng-include>
+    </div>
+</div>
+<div ng-include="ngListView.manager.templates.afterHeadlineTemplate"></div>
+<div class="content-box">
+    <section>
+        <div class="box-section-wrap table-options">
+
+            <listview-filters store="vm.store"></listview-filters>
+
+            <div class="options-left">
+                <span>{{vm.store.getters.selectedCount}} selected</span>
+                <div class="choose-action dropdown-container" al-dropdown
+                     ng-if="vm.store.getters.selectedCount > 0">
+                    <button class="dropdown-toggle">Choose action</button>
+
+                    <div class="dropdown-sheet">
+                        <ul ng-if="!vm.store.state.archived">
+                            <li ng-repeat="action in vm.store.getters.selectedActions track by $index">
+                                <a ng-click="vm.store.dispatch('clicked', {action: action})">{{action.title}}</a>
+                            </li>
+                        </ul>
+                        <ul ng-if="vm.store.state.archived">
+                            <li ng-repeat="action in vm.store.getters.archivedActionsSelected track by $index">
+                                <a ng-click="vm.store.dispatch('clicked', {action: action})">{{action.title}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="options-right">
+                <listview-keyword-search keyword="vm.store.state.keyword"
+                                         on-update="vm.search(keyword)"></listview-keyword-search>
+
+                <button class="filter"
+                        ng-class="{'active': vm.store.state.showFilters}"
+                        data-tooltip="Filters"
+                        ng-click="vm.store.commit('toggleFilters');vm.store.dispatch('saveState')">
+                    Filters&nbsp;&nbsp;<i class="fal fa-filter"></i>
+                </button>
+
+                <button ng-repeat="action in vm.store.getters.globalActions track by $index"
+                        data-tooltip="{{action.title}}"
+                        ng-click="vm.store.dispatch('clicked',{action: action})">
+                    <i class="{{action.icon}}"></i>
+                </button>
+
+                <button data-tooltip="Refresh" ng-click="vm.store.dispatch('getData')">
+                    <i class="fal fa-sync" ng-class="{'fa-spin' : vm.store.state.busy}"></i>
+                </button>
+                <div class="dropdown-container" al-dropdown ng-if="!vm.store.state.archived">
+                    <button data-tooltip="Settings" class="dropdown-toggle"><i class="fal fa-cog"></i></button>
+
+                    <div class="dropdown-sheet">
+                        <ul>
+                            <li ng-repeat="action in vm.store.getters.settingsActions track by $index">
+                                <a ng-click="vm.store.dispatch('clicked',{action: action})">
+                                    {{action.title}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+        <div class="box-section-wrap main-table"
+             ng-class="{mt0:vm.store.state.key === 'rsvps', mt2:vm.store.state.key !== 'rsvps'}">
+
+            <listview-table store="vm.store"
+                            ng-if="!vm.store.state.view.mode || vm.store.state.view.mode === 'tableview' "></listview-table>
+
+            <listview-grid store="vm.store" ng-if="vm.store.state.view.mode === 'gridview'"></listview-grid>
+
+            <!--todo different text for no records and empty list-->
+            <div class="table-empty col-12 mt-40 mb-40" ng-if="vm.store.state.data.length == 0 && !vm.store.state.busy">
+                <div class="row">
+                    <div class="col-5 align-center">
+                        <img srcset="/images/ghost.png 1x, /images/ghost@2x.png 2x" src="/images/ghost.png" alt="">
+                    </div>
+                    <div class="col-7">
+                        <!-- @todo translate this headlines -->
+                        <h1 ng-if="!vm.store.state.keyword && !vm.store.getters.isFiltered">Nothing here, yet.</h1>
+                        <h1 ng-if="vm.store.state.keyword || vm.store.getters.isFiltered">No records match your search!</h1>
+                        <br><br>
+                        <!-- @todo implement empty list actions -->
+                        <button class="btn-confirm"
+                                ng-repeat-start="action in vm.store.getters.emptyListActions track by $index"
+                                ng-click="vm.store.dispatch('clicked',{action: action})">{{action.title}}
+                        </button>
+                        <br ng-if="!$loop.last"><br ng-if="!$loop.last" ng-repeat-end>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <listview-pagination store="vm.store"></listview-pagination>
+    </section>
+</div>

@@ -1,0 +1,38 @@
+{
+  "name": "Addressbook Categories",
+  "identifier": "addressbook_categories",
+  "rights": [
+    {
+      "name": "category.addContacts",
+      "identifier": "category.addContacts"
+    },
+    {
+      "name": "category.bulk",
+      "identifier": "category.bulk"
+    },
+    {
+      "name": "category.contacts",
+      "identifier": "category.contacts"
+    },
+    {
+      "name": "category.delete",
+      "identifier": "category.delete"
+    },
+    {
+      "name": "category.edit",
+      "identifier": "category.edit"
+    },
+    {
+      "name": "category.list",
+      "identifier": "category.list"
+    },
+    {
+      "name": "category.removeContacts",
+      "identifier": "category.removeContacts"
+    },
+    {
+      "name": "category.view",
+      "identifier": "category.view"
+    }
+  ]
+}

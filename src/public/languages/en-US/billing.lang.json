@@ -1,0 +1,362 @@
+{
+  "invoice_templates": {
+    "title": "Invoice templates",
+    "fields": {
+      "id": "ID",
+      "number_circle_id": "number circle",
+      "title": "Title (intern)",
+      "text1": "Text 1",
+      "text2": "Text 2",
+      "text3": "Text 3",
+      "subject": "Subject",
+      "tax_rate": "Tax rate"
+    },
+    "list": {
+      "title": "Invoice templates"
+    },
+    "create": {
+      "title": "Create new invoice template",
+      "success": "Success",
+      "success_message": "Invoice template created successful"
+    },
+    "edit": {
+      "success": "Success",
+      "success_message": "Invoice template saved successful"
+    },
+    "not_found": "Not found",
+    "not_found_message": "Invoice template not found"
+  },
+  "position_categories": {
+    "title": "Position categories",
+    "fields": {
+      "id": "ID",
+      "title": "Title (intern)"
+    },
+    "list": {
+      "title": "Position categories"
+    },
+    "create": {
+      "title": "Create a new position category",
+      "success": "Success",
+      "success_message": "Position category created successful"
+    },
+    "edit": {
+      "success": "Success",
+      "success_message": "Position category saved successful"
+    },
+    "not_found": "Not found",
+    "not_found_message": "Position category not found"
+  },
+  "positions": {
+    "title": "Positions",
+    "fields": {
+      "id": "ID",
+      "category_id": "Category",
+      "title": "Title (intern)",
+      "label": "Label",
+      "description": "Description",
+      "unit": "Unit",
+      "price_per_unit": "Price per unit",
+      "block_for_voucher": "Ignore position for vouchers",
+      "pax_based": "Pax based"
+    },
+    "list": {
+      "title": "Positions"
+    },
+    "create": {
+      "title": "Create a new position",
+      "success": "Success",
+      "success_message": "Position created successful"
+    },
+    "edit": {
+      "success": "Success",
+      "success_message": "Position saved successful"
+    },
+    "not_found": "Not found",
+    "not_found_message": "Position not found"
+  },
+  "number-circles": {
+    "title": "Number circles",
+    "fields": {
+      "id": "ID",
+      "category_id": "Category",
+      "title": "Title (intern)",
+      "number_template": "number template",
+      "start_number": "start number"
+    },
+    "list": {
+      "title": "Number circles"
+    },
+    "create": {
+      "title": "Create a new circle",
+      "success": "Success",
+      "success_message": "circle created successful"
+    },
+    "edit": {
+      "success": "Success",
+      "success_message": "circle saved successful"
+    },
+    "not_found": "Not found",
+    "not_found_message": "circle not found"
+  },
+  "invoices": {
+    "title": "Invoices",
+    "fields": {
+      "id": "ID",
+      "type": "Type",
+      "number_circle_id": "number circle",
+      "invoice_number": "Invoice Number",
+      "status": "Status",
+      "tax_rate": "Tax Rate",
+      "subject": "Subject",
+      "address": "Address",
+      "performance_period": "Performance Period",
+      "text1": "Text 1",
+      "text2": "Text 2",
+      "text3": "Text 3",
+      "created_at": "Created at",
+      "updated_at": "Updated at"
+    },
+    "list": {
+      "title": "Invoices"
+    },
+    "details": {
+      "headlines": {
+        "positions": "Positions",
+        "information": "Information"
+      },
+      "labels": {
+        "information": {
+          "type": "Type",
+          "invoice_number": "Invoice number",
+          "status": "Status",
+          "performance_period": "performance period",
+          "contact": "Contact",
+          "address": "Address"
+        },
+        "positions": {
+          "pos": "Pos.",
+          "label": "Label",
+          "price_per_unit": "Price per unit",
+          "amount": "Amount",
+          "unit": "Unit",
+          "sum": "Sum",
+          "sum_netto": "sum netto",
+          "sum_tax": "% tax",
+          "sum_brutto": "sum brutto"
+        }
+      },
+      "types": {
+        "invoice": "Invoice",
+        "bid": "Offer",
+        "cancellation": "Cancellation"
+      },
+      "status": {
+        "draft": "draft",
+        "paid": "Paid",
+        "paid_partial": "partial paid",
+        "unpaid": "unpaid",
+        "payment_started": "payment started",
+        "payment_pending": "payment pending",
+        "payment_failed": "payment failed",
+        "cancelled": "Cancelled"
+      }
+    },
+    "create": {
+      "title": "Create new {type}",
+      "labels": {
+        "information": {
+          "template": "template",
+          "number_circle_id": "number circle",
+          "subject": "subject",
+          "text1": "text 1",
+          "text2": "text 2",
+          "text3": "text 3",
+          "address": "address",
+          "invoice_date": "Invoice date",
+          "performance_period": "performance period",
+          "tax_rate": "tax rate",
+          "subscription_invoice": {
+            "title": "subscription information",
+            "start_date": "start date",
+            "end_date": "end date"
+          }
+        },
+        "positions": {
+          "actions": " ",
+          "order": "#",
+          "text": "text",
+          "price_per_unit": "price per unit",
+          "amount": "amount",
+          "unit": "unit",
+          "sum": "price sum"
+        }
+      },
+      "buttons": {
+        "add_position": "Add position"
+      }
+    },
+    "update_address": {
+      "title": "Update address on invoice {number}",
+      "labels": {
+        "address": "address"
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "save": "Save changes"
+      }
+    },
+    "edit": {
+      "title": "Edit {type} with number {number}",
+      "labels": {
+        "information": {
+          "template": "template",
+          "number_circle_id": "number circle",
+          "subject": "subject",
+          "text1": "text 1",
+          "text2": "text 2",
+          "text3": "text 3",
+          "address": "address",
+          "invoice_date": "Invoice date",
+          "performance_period": "performance period",
+          "tax_rate": "tax rate",
+          "subscription_invoice": {
+            "title": "subscription information",
+            "start_date": "start date",
+            "end_date": "end date"
+          }
+        },
+        "positions": {
+          "actions": " ",
+          "order": "#",
+          "text": "text",
+          "price_per_unit": "price per unit",
+          "amount": "amount",
+          "unit": "unit",
+          "sum": "price sum"
+        }
+      },
+      "buttons": {
+        "add_position": "Add position"
+      }
+    },
+    "payments": {
+      "title": "Payments for the invoice {invoice_number}"
+    },
+    "not_found": "Not found",
+    "not_found_message": "Position not found"
+  },
+  "position_links": {
+    "title": "position links",
+    "fields": {
+      "id": "ID",
+      "label": "label",
+      "description": "description",
+      "price_per_unit": "price per unit",
+      "unit": "unit",
+      "amount": "amount"
+    }
+  },
+  "voucher_categories": {
+    "title": "Voucher categories",
+    "fields": {
+      "id": "ID",
+      "title": "Title",
+      "template": "Template",
+      "number_template": "Number template",
+      "line1": "Line 1",
+      "line2": "Line 2",
+      "line3": "Line 3"
+    },
+    "list": {
+      "title": "Voucher categories"
+    },
+    "create": {
+      "title": "Create new voucher category",
+      "success": "Success",
+      "success_message": "Voucher category created successful"
+    },
+    "edit": {
+      "success": "Success",
+      "success_message": "Voucher category saved successful"
+    },
+    "not_found": "Not found",
+    "not_found_message": "Voucher category not found"
+  },
+  "vouchers": {
+    "title": "Vouchers",
+    "fields": {
+      "id": "ID",
+      "line1": "Line 1",
+      "line2": "Line 2",
+      "line3": "Line 3",
+      "voucher_number": "voucher number",
+      "voucher_number_plain": "voucher number plain",
+      "amount": "Amount",
+      "status": "status",
+      "created_at": "Created at",
+      "updated_at": "Updated at"
+    },
+    "list": {
+      "title": "Vouchers"
+    },
+    "create": {
+      "title": "Create new voucher",
+      "success": "Success",
+      "success_message": "Voucher created successful"
+    },
+    "edit": {
+      "success": "Success",
+      "success_message": "Voucher saved successful"
+    },
+    "not_found": "Not found",
+    "not_found_message": "Voucher not found"
+  },
+  "subscriptions": {
+    "title": "Subscriptions",
+    "fields": {
+      "id": "ID",
+      "title": "Title (intern)",
+      "label": "Label",
+      "description": "Description",
+      "invoice_template_id": "Invoice Template",
+      "invoicing_interval_value": "Invoicing interval",
+      "invoicing_interval_type": "Invoicing interval type"
+    },
+    "invoicing_interval_types": {
+      "year": "Years/s",
+      "month": "Month/s",
+      "week": "Week/s",
+      "day": "Day/s"
+    },
+    "list": {
+      "title": "Subscriptions"
+    },
+    "create": {
+      "title": "Create a new subscription",
+      "success": "Success",
+      "success_message": "Subscription created successful"
+    },
+    "edit": {
+      "success": "Success",
+      "success_message": "Subscription saved successful"
+    },
+    "editor": {
+      "subheads": {
+        "general": "General settings",
+        "positions": "Positions"
+      },
+      "positions": {
+        "current": {
+          "heads": {
+            "title": "Position",
+            "amount": "Amount",
+            "one_time_invoiced": "OTI"
+          }
+        }
+      }
+    },
+    "not_found": "Not found",
+    "not_found_message": "Subscription not found"
+  }
+}

@@ -1,0 +1,17 @@
+<div class="content-box" ng-class="{empty: (!vm.loading && vm.data.length === 0)}">
+    <h2>Status <i>(people on your guestlist)</i></h2>
+    <div class="empty-box" ng-if="!vm.loading && vm.data.length == 0">
+        <i class="fal fa-chart-bar"></i>
+        <p>
+            You don't have any guests on the list.<br>
+            <a ui-sref="app.guestlists.rsvps.index({gid: vm.currentGuestlist.id})">Add guests</a>
+        </p>
+    </div>
+    <canvas class="chart chart-horizontal-bar"
+            chart-data="vm.chartData.data"
+            chart-labels="vm.chartData.labels"
+            chart-options="vm.chartData.options"
+            chart-colors="vm.chartData.colors"
+            ng-if="vm.showChart">
+    </canvas>
+</div>

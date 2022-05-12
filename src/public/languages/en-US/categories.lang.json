@@ -1,0 +1,21 @@
+{
+  "contacts_removed": "Contacts removed from category",
+  "confirm_removal_of_contacts": "Are you sure you want to remove categories from contact(s)?",
+  "contacts_added":"Contacts added to category",
+  "title_details": "Categories",
+  "name": "Name",
+  "new_category": "New category",
+  "archive_header": "This category has been deleted.",
+  "confirm_archive": "Do you want to delete this category?",
+  "archive_successful": "The category has successfully been deleted.",
+  "confirm_restore": "Do you want to restore this category?",
+  "restore_successful": "The category has successfully been restored.",
+  "confirm_force_delete": "Do you want to delete this category permanently?",
+  "force_delete_successful": "The category has successfully been deleted.",
+  "saved_successfully": "Category saved",
+  "saved_successfully_message": "The category has successfully been saved.",
+  "archive_selected_categories": "Do you want to delete the selected categories?",
+  "categories_archived": "Categories deleted",
+  "categories_archived_message": "All selected categories have been deleted.",
+  "contacts_successfully_removed": "The contacts have been removed from the category(s)"
+}

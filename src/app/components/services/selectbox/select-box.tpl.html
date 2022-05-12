@@ -1,0 +1,22 @@
+<button class="close" ng-click="vm.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Select {{vm.store.state.title}}</h2>
+</div>
+<div class="modal-body">
+    <section>
+
+        <select-box model="vm.selectedValue" config="vm.config" multiple="vm.multiple" disabled="vm.selectAll">
+        </select-box>
+
+        <div ng-if="vm.config.maxItems > 1">
+            <input id="select-all" type="checkbox" ng-checked="vm.selectAll" ng-click="vm.toggleSelectAll()">
+            <label for="select-all"> Select All</label>
+        </div>
+    </section>
+    <section>
+        <div class="btn-group">
+            <button class="btn-warning" ng-click="vm.cancel()">Cancel</button>
+            <button class="btn-confirm" ng-click="vm.select()" ng-if="vm.config.store.getters.selectedCount">Select ({{vm.config.store.getters.selectedCount}} Records)</button>
+        </div>
+    </section>
+</div>

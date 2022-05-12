@@ -1,0 +1,73 @@
+<div ng-repeat="limitField in vm.currentLimitInformation">
+    <div class="box-section-wrap">
+        <div class="limits-header">
+            <a ng-click="vm.removeFieldLimits(limitField)" data-tooltip="Remove field"><i class="fal fa-trash-alt"></i></a>
+            <h2>{{limitField.field.label}}&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+        </div>
+        <div class="main-table table-limits">
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Value</th>
+                    <th>Limit</th>
+                    <th>Current</th>
+                    <th>Free</th>
+                </tr>
+                <tr ng-repeat="limitValue in limitField.limits track by $index">
+                    <td>
+                        <a data-tooltip="Remove value"
+                           class="btn ng-scope"
+                           ng-click="vm.removeLimitValue(limitField, limitValue)"
+                           ng-if="vm.checkIfValueEditEnabled(limitField)">
+                            <i class="fal fa-trash-alt"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <div class="cell-content">
+                            <input type="text" ng-model="limitValue.value"
+                                   ng-if="vm.checkIfValueEditEnabled(limitField)"/>
+                        </div>
+
+                    </td>
+                    <td>
+                        <div class="cell-content">
+                            <input type="number" step="1" min="-1" ng-model="limitValue.limit"/>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="cell-content">{{limitValue.current}}</span>
+                    </td>
+                    <td>
+                    <span class="cell-content text-green"
+                          ng-if="limitValue.limit === -1"><strong>-1</strong></span>
+                        <span class="cell-content text-green"
+                              ng-if="limitValue.limit !== -1 && limitValue.limit > limitValue.current"><strong>{{limitValue.limit - limitValue.current}}</strong></span>
+                        <span class="cell-content text-red"
+                              ng-if="limitValue.limit !== -1 && limitValue.limit <= limitValue.current"><strong>{{limitValue.limit - limitValue.current}}</strong></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <a ng-click="vm.addEmptyValueToField(limitField)" ng-if="vm.checkIfValueEditEnabled(limitField)"
+           class="button mb-40 d-block">
+            New value&nbsp;&nbsp;<i class="fal fa-plus-circle"></i>
+        </a>
+    </div>
+</div>
+<fieldset>
+    <h4>Add field to limits</h4>
+    <form>
+        <div class="form-group">
+            <select ng-model="vm.currentSelectedAddField" ng-disabled="vm.addableFields.length === 0"
+                    ng-options="item.value as item.label for item in vm.addableFields">
+                <option value="">--- Select field ---</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-confirm" ng-disabled="!vm.currentSelectedAddField"
+                    ng-click="vm.addField(vm.currentSelectedAddField)">
+                Add field
+            </button>
+        </div>
+    </form>
+</fieldset>

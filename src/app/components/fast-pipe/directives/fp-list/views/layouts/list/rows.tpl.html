@@ -1,0 +1,132 @@
+<div class="container-fluid">
+    <div style="position: relative;" class="mt2">
+        <ul class="subnav with-selected pull-left">
+            <li>
+                <span class="stat color-green">{{vm.selectedRows.length}}</span> Selected
+            </li>
+            <li class="p0"
+                ng-if="ngListView.adapter.meta.actions.selected.length && ngListView.manager.state.data.archived">
+                <div uib-dropdown uib-keyboard-nav>
+                    <a role="button" class="dropdown-toggle text-muted" uib-dropdown-toggle>
+                        Choose Action
+                        <i class="fal fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-left" role="menu"
+                        aria-labelledby="bootstrap-btn-keyboard-nav">
+                        <li role="menuitem"
+                            ng-repeat="action in ngListView.adapter.meta.actions.archivedSelected  track by $index">
+                            <a ng-click="ngListView.manager.withSelectedActionClicked(action)">{{action.text}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="p0"
+                ng-if="ngListView.adapter.meta.actions.selected.length && !ngListView.manager.state.data.archived">
+                <div uib-dropdown uib-keyboard-nav>
+                    <a role="button" class="dropdown-toggle text-muted" uib-dropdown-toggle>
+                        Choose Action
+                        <i class="fal fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-left" role="menu"
+                        aria-labelledby="bootstrap-btn-keyboard-nav">
+                        <li role="menuitem"
+                            ng-repeat="action in ngListView.adapter.meta.actions.selected  track by $index">
+                            <a ng-click="ngListView.manager.withSelectedActionClicked(action)">{{action.text}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li uib-dropdown uib-keyboard-nav id="table-settings">
+                <a role="button" class=dropdown-toggle" uib-dropdown-toggle uib-tooltip="Settings"
+                   tooltip-placement="top">
+                    <span class="pe-7s-config"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="bootstrap-btn-keyboard-nav">
+                    <li ng-repeat="elem in ngListView.adapter.meta.actions.settings track by $index">
+                        <a ng-click="ngListView.manager.globalActionClicked(elem)">
+                            {{elem.text}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card no-border-radius">
+                <div class="content table-responsive table-full-width pb0">
+                    <div class="table-scrollable-borderless">
+                        <div class="listview">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th class="size-selection text-center"
+                                        style="width: 50px;">
+                                            <span class="checkbox checkbox-circle checkbox-success"
+                                                  ng-if="vm.enableSelection">
+                                                <input type="checkbox"
+                                                       ng-model="vm.selectionAllSelected"
+                                                       ng-click="vm.toggleAllSelection()">
+                                                <label></label>
+                                            </span>
+                                    </th>
+                                    <th ng-repeat="col in vm.listCols track by $index" valign="top">
+                                        <div>
+                                            <div class="db10 pointer"
+                                                 ng-if="col.enableSorting || col.enableFiltering"
+                                                 ng-click="vm.sort[col.key] === 'asc' ? vm.setSort(col.key,'desc') : vm.setSort(col.key,'asc')">
+                                                {{ col.title }}
+                                                <span
+                                                        ng-if="col.enableSorting && vm.sort[col.key]">
+                                                        <span ng-if="vm.sort[col.key] === 'asc'"><i
+                                                                class="fal fa-caret-up"></i></span>
+                                                        <span ng-if="vm.sort[col.key] === 'desc'"><i
+                                                                class="fal fa-caret-down"></i></span>
+                                                    </span>
+                                            </div>
+                                            <div class="db10 "
+                                                 ng-if="!col.enableSorting && !col.enableFiltering">
+                                                {{col.displayName || col.name}}
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th ng-if="ngListView.adapter.meta.actions.row.length > 0" class="text-right">
+                                        Actions
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody ng-if="!vm.dataLoading"
+                                       ng-include="'fast-pipe/directives/fp-list/views/layouts/list/row.tpl.html'">
+                                </tbody>
+                                <tbody ng-show="vm.dataLoading">
+                                <tr>
+                                    <td colspan="500" class="bg-info text-center">Loading</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Pagination -->
+                    <div id="footer" class="container-fluid p0">
+                        <div ng-if="!vm.dataLoading && vm.pagination"
+                             class="pull-left">
+                            <div class="pl1 perpage">
+                                <span>rows visible </span>
+                                <select class="form-control" ng-model="vm.pagination.perPage" ng-options="size as size for size in vm.pageSizes"></select>
+                            </div>
+                        </div>
+
+                        <div id="pagination" class="pull-right" ng-if="vm.pagination.pages > 1">
+                            <uib-pagination total-items="vm.pagination.total"
+                                            items-per-page="vm.pagination.perPage"
+                                            ng-model="vm.pagination.page"
+                                            max-size="5" class="pagination-sm" force-ellipses="true"
+                                            style="margin:0;"></uib-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

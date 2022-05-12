@@ -1,0 +1,23 @@
+<div class="content-box" ng-class="{empty: (!vm.loading && vm.data.length === 0)}">
+    <div class="header-with-link">
+        <h2>Failed messages</h2>
+    </div>
+    <div class="empty-box" ng-if="(!vm.loading && vm.data.length === 0)">
+        <i class="fal fa-envelope"></i>
+        <p>
+            No failed messages.
+        </p>
+    </div>
+    <div class="main-table table-other" ng-if="!vm.loading && vm.data.length > 0">
+    <table>
+        <tr ng-repeat="message in vm.data">
+            <td><span ng-class="{'soft-bounce': (message.status == 'deferred'), 'hard-bounce': (message.status !== 'deferred')}">{{message.subject}}</span></td>
+            <td>{{message.contact}}</td>
+            <td>{{message.date|date:'dd. MM.'}}</td>
+        </tr>
+    </table>
+</div>
+    <div class="btn-center"  ng-if="!vm.loading && vm.data.length > 0">
+        <a class="button btn-redirect" ui-sref="app.messages.index">Review messages</a>
+    </div>
+</div>

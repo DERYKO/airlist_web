@@ -1,0 +1,98 @@
+<nav class="navbar navbar-default ">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="navbar-brand">
+                Toolbox
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="main-panel-content">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="nav-container">
+                <ul class="nav nav-icons">
+                    <li ng-repeat="(key, filter) in toolbox.availableFilters"
+                        ng-if="!toolbox.collection"
+                        ng-class="{active:filter.using, disabled: !filter.enabled}">
+                        <a class="icon-btn"
+                           ng-click="toolbox.useFilter(filter)"
+                           ng-if="filter.available"
+                           data-target="#toolbox-{{key}}">
+                            <i class="{{filter.icon}}"></i>
+                            <div> {{filter.title}}</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card" ng-if="toolbox.showFilters">
+                <div class="header">
+                    <h4 class="title">{{ toolbox.filter.title }} Filter</h4>
+                    <p class="category">{{ toolbox.builder.model.name || " Custom Query " }}</p>
+                </div>
+
+                <div class="content" ng-if="toolbox.showFilters && !toolbox.collection">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation"
+                            ng-repeat="query in toolbox.predefinedQueries"
+                            ng-class="{active: toolbox.builder.model.name == query.name}">
+                            <a class="list-group-item" ng-click="toolbox.applyQuery(query)"
+                               ng-class="{active:toolbox.builder.model.name == query.name }">
+                                {{query.name}}
+                            </a>
+                        </li>
+                        <li role="presentation" ng-class="{active: toolbox.builder.model.name == 'Custom Query'}">
+                            <a class="list-group-item"
+                               ng-click="toolbox.applyQuery({name: 'Custom Query', query:[{}]})">
+                                {{'common.custom_query' | i18n}}
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active">
+                            <div ng-if="toolbox.builder.model.query.length > 0" class="alert alert-info">
+                                You are searching for contacts where
+                                <span ng-repeat="query in toolbox.builder.model.query">
+                                <span ng-if="query.field">
+                                  <b>{{ toolbox.fields[query.field] }}</b>
+                                  <i>{{ query.operator | operatorToString }}</i>
+                                  <b>{{ query.value || 'Null' | holderToValue:toolbox.fields}}</b>
+                                  <span ng-if="!$last"> {{'common.and' | i18n}} </span></span>
+                              </span>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <form name="queryBuilder" ng-submit="toolbox.runQuery(queryBuilder)">
+                                        <div sf-schema="toolbox.builder.schema" sf-form="toolbox.builder.form"
+                                             sf-model="toolbox.builder.model"></div>
+                                        <button class="btn btn-success" type="submit">{{'common.filter' | i18n}}
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content" ng-if="toolbox.collection">
+                    <a ng-click="toolbox.filter()" class="btn btn-success">Refresh Results</a>
+                    <a ng-click="toolbox.collection = null" class="btn btn-info">Show Filters</a>
+                </div>
+                <div class="content" ng-if="toolbox.collection">
+                    <div class="alert alert-warning" ng-if="toolbox.collection.length == 0">
+                        No results found
+                    </div>
+                </div>
+                <div class="content content-full-width responsive-table"
+                     ng-if="toolbox.collection && toolbox.collection.length > 0">
+                    <contacts-list ng-if="toolbox.collection && toolbox.filter.name == 'Contact'"
+                                   parent="toolbox.availableFilters.contacts.parent"
+                                   collection="toolbox.collection"
+                                   settings="toolbox.availableFilters.contacts.settings"
+                                   methods="toolbox.availableFilters.contacts.methods"></contacts-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,12 @@
+{
+  "rsvp": {
+    "status": {
+      "listed": "#e0e0e0",
+      "invited": "#967adc",
+      "requested": "#f5b858",
+      "waitlisted": "#40c4f1",
+      "confirmed": "#73ccb9",
+      "cancelled": "#ed5565"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<h1>{{vm.headline}}</h1>
+
+<form class="form-horizontal" name="templateForm" ng-submit="vm.submit(templateForm)">
+    <section>
+        <h2>General information</h2>
+        <div class="content-box">
+            <div class="box-section-wrap">
+                <fieldset>
+                    <div class="form-group input-lg">
+                        <label for="template_title">Title</label>
+                        <input type="text" name="title" ng-model="vm.model.title" class="form-control" id="template_title"/>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <h2>Template</h2>
+        <div class="content-box">
+            <customfield ng-model="vm.model.template" definition="vm.ace_template"></customfield>
+        </div>
+    </section>
+
+    <section>
+        <div class="fixed-footer">
+            <div class="btn-group">
+                <button type="button" ng-click="vm.back()">Cancel</button>
+                <button type="submit" class="btn-confirm">Done</button>
+            </div>
+        </div>
+    </section>
+</form>

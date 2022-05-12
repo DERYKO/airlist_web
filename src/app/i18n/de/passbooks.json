@@ -1,0 +1,18 @@
+{
+  "crud_passbooks"  : {
+    "header" : "Neues Sparbuch erstellen",
+    "discard"  : "Änderungen verwerfen"
+  },
+  "alerts": {
+    "archive_passbook": {
+      "title": "Bestätigen Sie das Löschen der Apple Wallet",
+      "text": "Möchten Sie das Apple Wallet wirklich löschen ?: {{name}}",
+      "btn_text": "Löschen"
+    },
+    "delete_passbook": {
+      "title": "Bestätigen Sie das Löschen des Tickets",
+      "text": "Möchten Sie das Ticket wirklich dauerhaft löschen?: {{name}}",
+      "btn_text": "Löschen"
+    }
+  }
+}

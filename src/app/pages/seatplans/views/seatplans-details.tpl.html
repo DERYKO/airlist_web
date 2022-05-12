@@ -1,0 +1,286 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="navbar-brand">
+                {{ vm.seatplan.title }}
+            </div>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="color-blue" ng-click="vm.cancel()"
+                       uib-tooltip="{{'seatplans.seatplans.views.details.head.cancel' | i18n }}"
+                       tooltip-placement="bottom">
+                        <span class="pe-7s-back"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<form name="templateForm" class="light" ng-class="{'submitted':templateForm.$submitted}" novalidate>
+    <div class="main-panel-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">
+                                {{'seatplans.seatplans.views.details.custom_rsvp_element_attributes.headline'
+                                | i18n }}</h4>
+                        </div>
+                        <div class="content" uib-accordion>
+                            <div uib-accordion-group heading="{{'seatplans.seatplans.views.details.custom_rsvp_element_attributes.labels.attribute'
+                                    | i18n }} {{ index }}" ng-repeat="index in [1,2,3,4,5,6,7,8,9,10]"
+                                 ng-if="vm.seatplan['custom_'+index+'_rsvp_element'].type">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <dl class="dl-horizontal">
+                                            <dt>
+                                                {{'seatplans.seatplans.views.details.custom_rsvp_element_attributes.labels.name'
+                                                | i18n }}
+                                            </dt>
+                                            <dd>{{vm.seatplan['custom_'+index+'_rsvp_element'].name}}</dd>
+                                            <dt>
+                                                {{'seatplans.seatplans.views.details.custom_rsvp_element_attributes.labels.type'
+                                                | i18n }}
+                                            </dt>
+                                            <dd>{{vm.seatplan['custom_'+index+'_rsvp_element'].type}}</dd>
+                                            <dt ng-if="vm.seatplan['custom_'+index+'_rsvp_element'].enum && vm.seatplan['custom_'+index+'_rsvp_element'].enum.length > 0">
+                                                {{'seatplans.seatplans.views.details.custom_rsvp_element_attributes.labels.enum'
+                                                | i18n }}
+                                            </dt>
+                                            <dd>{{vm.seatplan['custom_'+index+'_rsvp_element'].enum.join(', ')}}</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">
+                                {{'seatplans.seatplans.views.details.groups.headline' | i18n }}
+                            </h4>
+                        </div>
+
+                        <div class="content">
+                            <ul role="tablist" class="nav nav-tabs">
+                                <li role="presentation" ng-class="{active: $first}"
+                                    ng-repeat="group in vm.seatplan.groups.data">
+                                    <a data-toggle="tab" data-target="#seatplan-group-{{$index}}-content">
+                                        {{group.title}}
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div id="seatplan-group-{{$index}}-content" class="tab-pane"
+                                     ng-class="{active: $first}" ng-repeat="group in vm.seatplan.groups.data">
+                                    <div class="form-horizontal">
+                                        <fieldset>
+                                            <legend>
+                                                {{'seatplans.seatplans.views.details.groups.legends.grid' | i18n }}
+                                            </legend>
+                                            <dl class="dl-horizontal">
+                                                <dt>
+                                                    {{'seatplans.seatplans.views.details.groups.labels.grid_width' |
+                                                    i18n }}
+                                                </dt>
+                                                <dd>{{group.grid_width}}</dd>
+                                                <dt>
+                                                    {{'seatplans.seatplans.views.details.groups.labels.grid_height' |
+                                                    i18n }}
+                                                </dt>
+                                                <dd>{{group.grid_height}}</dd>
+                                            </dl>
+                                        </fieldset>
+                                        <fieldset>
+                                            <legend>
+                                                {{'seatplans.seatplans.views.details.groups.legends.styles' | i18n }}
+                                            </legend>
+                                            <ul role="tablist" class="nav nav-tabs">
+                                                <li role="presentation" class="active">
+                                                    <a data-toggle="tab"
+                                                       data-target="#seatplan-group-{{$index}}-style-general">
+                                                        {{'seatplans.seatplans.views.details.groups.style_tabs.general'
+                                                        |
+                                                        i18n }}
+                                                    </a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a data-toggle="tab"
+                                                       data-target="#seatplan-group-{{$index}}-style-font">
+                                                        {{'seatplans.seatplans.views.details.groups.style_tabs.font' |
+                                                        i18n }}
+                                                    </a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a data-toggle="tab"
+                                                       data-target="#seatplan-group-{{$index}}-style-element-defaults">
+                                                        {{'seatplans.seatplans.views.details.groups.style_tabs.element_defaults'
+                                                        | i18n }}
+                                                    </a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a data-toggle="tab"
+                                                       data-target="#seatplan-group-{{$index}}-style-element-defaults-hover">
+                                                        {{'seatplans.seatplans.views.details.groups.style_tabs.element_defaults_hover'
+                                                        | i18n }}
+                                                    </a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a data-toggle="tab"
+                                                       data-target="#seatplan-group-{{$index}}-style-element-defaults-selected">
+                                                        {{'seatplans.seatplans.views.details.groups.style_tabs.element_defaults_selected'
+                                                        | i18n }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div id="seatplan-group-{{$index}}-style-general"
+                                                     class="tab-pane active">
+                                                    <dl class="dl-horizontal">
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.background'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.background}}</dd>
+                                                    </dl>
+                                                </div>
+                                                <div id="seatplan-group-{{$index}}-style-font" class="tab-pane">
+                                                    <dl class="dl-horizontal">
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.font.family'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.font.family}}</dd>
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.font.size'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.font.size}}</dd>
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.font.color'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.font.color}}</dd>
+                                                    </dl>
+                                                </div>
+                                                <div id="seatplan-group-{{$index}}-style-element-defaults"
+                                                     class="tab-pane">
+                                                    <dl class="dl-horizontal">
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.default'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.backgrounds.default}}</dd>
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.blocked'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.backgrounds.blocked}}</dd>
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.bookable.confirmed'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.backgrounds.bookable.confirmed}}</dd>
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.bookable.pending'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.backgrounds.bookable.pending}}</dd>
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.bookable.invited'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.backgrounds.bookable.invited}}</dd>
+                                                    </dl>
+                                                </div>
+                                                <div id="seatplan-group-{{$index}}-style-element-defaults-hover"
+                                                     class="tab-pane">
+                                                    <dl class="dl-horizontal">
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.default'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.backgrounds_hover.default}}</dd>
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.blocked'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.backgrounds_hover.blocked}}</dd>
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.bookable.confirmed'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.backgrounds_hover.bookable.confirmed}}</dd>
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.bookable.pending'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.backgrounds_hover.bookable.pending}}</dd>
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.bookable.invited'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.backgrounds_hover.bookable.invited}}</dd>
+                                                    </dl>
+                                                </div>
+                                                <div id="seatplan-group-{{$index}}-style-element-defaults-selected"
+                                                     class="tab-pane">
+                                                    <dl class="dl-horizontal">
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.default'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.selected.default}}</dd>
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.blocked'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.selected.blocked}}</dd>
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.bookable.confirmed'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.selected.bookable.confirmed}}</dd>
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.bookable.pending'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.selected.bookable.pending}}</dd>
+                                                        <dt>
+                                                            {{'seatplans.seatplans.views.details.groups.labels.defaults.bookable.invited'
+                                                            | i18n }}
+                                                        </dt>
+                                                        <dd>{{group.style_information.defaults.selected.bookable.invited}}</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset>
+                                            <legend>
+                                                {{'seatplans.seatplans.views.details.groups.legends.preview' | i18n }}
+                                            </legend>
+
+                                            <seatplan-group group-id="{{group.id}}"></seatplan-group>
+                                        </fieldset>
+                                        <hr/>
+                                        <button class="btn btn-primary btn-simple btn-xs"
+                                                ng-click="vm.editElements(group)">
+                                            <span class="fal fa-edit"></span>
+                                            {{'seatplans.seatplans.views.details.groups.actions.edit_elements' | i18n }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

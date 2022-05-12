@@ -1,0 +1,150 @@
+{
+  "name": "Billing",
+  "identifier": "billing",
+  "rights": [
+    {
+      "name": "invoice.delete",
+      "identifier": "invoice.delete"
+    },
+    {
+      "name": "invoice.download",
+      "identifier": "invoice.download"
+    },
+    {
+      "name": "invoice.edit",
+      "identifier": "invoice.edit"
+    },
+    {
+      "name": "invoice.finish",
+      "identifier": "invoice.finish"
+    },
+    {
+      "name": "invoice.list",
+      "identifier": "invoice.list"
+    },
+    {
+      "name": "invoice.payment.delete",
+      "identifier": "invoice.payment.delete"
+    },
+    {
+      "name": "invoice.payment.edit",
+      "identifier": "invoice.payment.edit"
+    },
+    {
+      "name": "invoice.payment.list",
+      "identifier": "invoice.payment.list"
+    },
+    {
+      "name": "invoice.payment.view",
+      "identifier": "invoice.payment.view"
+    },
+    {
+      "name": "invoice.position.delete",
+      "identifier": "invoice.position.delete"
+    },
+    {
+      "name": "invoice.position.edit",
+      "identifier": "invoice.position.edit"
+    },
+    {
+      "name": "invoice.send",
+      "identifier": "invoice.send"
+    },
+    {
+      "name": "invoice.template.delete",
+      "identifier": "invoice.template.delete"
+    },
+    {
+      "name": "invoice.template.edit",
+      "identifier": "invoice.template.edit"
+    },
+    {
+      "name": "invoice.template.list",
+      "identifier": "invoice.template.list"
+    },
+    {
+      "name": "invoice.template.view",
+      "identifier": "invoice.template.view"
+    },
+    {
+      "name": "invoice.updateAddress",
+      "identifier": "invoice.updateAddress"
+    },
+    {
+      "name": "invoice.view",
+      "identifier": "invoice.view"
+    },
+    {
+      "name": "number_circle.delete",
+      "identifier": "number_circle.delete"
+    },
+    {
+      "name": "number_circle.edit",
+      "identifier": "number_circle.edit"
+    },
+    {
+      "name": "number_circle.list",
+      "identifier": "number_circle.list"
+    },
+    {
+      "name": "number_circle.view",
+      "identifier": "number_circle.view"
+    },
+    {
+      "name": "position_link.delete",
+      "identifier": "position_link.delete"
+    },
+    {
+      "name": "position_link.edit",
+      "identifier": "position_link.edit"
+    },
+    {
+      "name": "position_link.list",
+      "identifier": "position_link.list"
+    },
+    {
+      "name": "position_link.view",
+      "identifier": "position_link.view"
+    },
+    {
+      "name": "position.category.delete",
+      "identifier": "position.category.delete"
+    },
+    {
+      "name": "position.category.edit",
+      "identifier": "position.category.edit"
+    },
+    {
+      "name": "position.category.list",
+      "identifier": "position.category.list"
+    },
+    {
+      "name": "position.category.view",
+      "identifier": "position.category.view"
+    },
+    {
+      "name": "position.delete",
+      "identifier": "position.delete"
+    },
+    {
+      "name": "position.edit",
+      "identifier": "position.edit"
+    },
+    {
+      "name": "position.list",
+      "identifier": "position.list"
+    },
+    {
+      "name": "position.view",
+      "identifier": "position.view"
+    },
+    {
+      "name": "stripe.admin",
+      "identifier": "stripe.admin"
+    },
+    {
+      "name": "stripe.payouts",
+      "identifier": "stripe.payouts"
+    }
+  ]
+}

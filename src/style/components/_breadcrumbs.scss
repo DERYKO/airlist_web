@@ -1,0 +1,52 @@
+.breadcrumbs {
+  margin-bottom: 0;
+
+  .elem {
+    display: block;
+    float: left;
+    position: relative;
+    padding-right: 25px;
+    line-height: 19px;
+
+    a {
+      font-weight: $font-weight-regular;
+      line-height: inherit;
+    }
+
+    span {
+      line-height: inherit;
+    }
+
+    .separator {
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      height: 19px;
+      line-height: inherit;
+      width: 25px;
+      text-align: center;
+      font-size: 9px;
+    }
+
+    &.last {
+      padding-right: 0;
+      &:after {
+        display: none;
+      }
+    }
+
+    &.first {
+      a {
+        color: $primary;
+      }
+    }
+  }
+
+  &:after {
+    display: table;
+    content: '';
+    clear: both;
+  }
+}

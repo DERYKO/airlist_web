@@ -1,0 +1,76 @@
+<h1>Connection Info</h1>
+
+<section ng-if="vm.currentView == 'General'">
+    <div class="content-box">
+        <div class="box-section-wrap" ng-if="vm.loading">
+            <i class="fal fa-sync fa-spin"></i>&nbsp;&nbsp;Daten werden geladen
+        </div>
+        <div class="box-section-wrap" ng-if="!vm.loading && vm.error">
+            {{vm.error}}
+        </div>
+        <div class="box-section-wrap" ng-if="!vm.loading && !vm.error && vm.currentView == 'General'">
+            <div ng-if="vm.connectionStatus">
+                <div class="data-list">
+                    <table>
+                        <tr>
+                            <td>Account</td>
+                            <td>{{ vm.connectionInfo.information.business_name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Account URL</td>
+                            <td>{{ vm.connectionInfo.information.business_url}}</td>
+                        </tr>
+                        <tr>
+                            <td>Default Currency</td>
+                            <td>{{ vm.connectionInfo.information.default_currency}}</td>
+                        </tr>
+                        <tr>
+                    </table>
+                </div>
+            </div>
+            <div ng-if="!vm.connectionStatus">
+                <a href="{{vm.initConnectionData.data.url}}" class="button btn-confirm" ng-if="vm.initConnectionData">
+                    Connect to Stripe now
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section ng-if="vm.currentView == 'Payouts'">
+    <h2>Payouts</h2>
+    <div class="content-box">
+        <div class="box-section-wrap" ng-if="vm.loading">
+            <i class="fal fa-sync fa-spin"></i>&nbsp;&nbsp;Daten werden geladen
+        </div>
+        <div class="box-section-wrap" ng-if="!vm.loading && vm.error">
+            {{vm.error}}
+        </div>
+        <div class="box-section-wrap" ng-if="!vm.loading && !vm.error && vm.currentView == 'Payouts'">
+            <div class="main-table table-other">
+                <table>
+                    <tr>
+                        <th>Arrival Date</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Currency</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr ng-repeat="payout in vm.payouts">
+                        <td><a ng-click="vm.showPayoutDetails(payout)">{{ payout.arrival_date|date:'dd. MM. yyyy' }}</a></td>
+                        <td><a ng-click="vm.showPayoutDetails(payout)">{{ payout.type }}</a></td>
+                        <td><a ng-click="vm.showPayoutDetails(payout)">{{ (payout.amount/100)|number:2 }}</a></td>
+                        <td><a ng-click="vm.showPayoutDetails(payout)">{{ payout.currency }}</a></td>
+                        <td><a ng-click="vm.showPayoutDetails(payout)">{{ payout.status }}</a></td>
+                    </tr>
+                    <tr>
+                </table>
+            </div>
+            <div ng-if="!vm.connectionStatus">
+                <a href="{{vm.initConnectionData.data.url}}" class="button btn-confirm" ng-if="vm.initConnectionData">
+                    Connect to Stripe now
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

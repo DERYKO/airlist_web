@@ -1,0 +1,102 @@
+.msg {
+  padding: $padding-basic;
+  padding-right: $gutter-large * 1.5;
+  border-left: 4px solid $light;
+  margin-top: $gutter-large;
+  line-height: $font-xlarge;
+  position: relative;
+
+  button {
+
+    @include top-align;
+
+    position: absolute;
+    right: 15px;
+
+  }
+}
+
+.error-msg,
+.alert-error {
+  background-color: lighten($warning, 29%);
+  border-color: $warning;
+}
+
+.warn-msg,
+.alert-warning {
+  background-color: lighten($warning-soft, 29%);
+  border-color: $warning-soft;
+}
+
+.success-msg,
+.alert-success {
+  background-color: #bee7e4;
+  border-color: $secondary;
+}
+
+.info-msg,
+.alert-info {
+  background-color: #B6E0FF;
+  border-color: #61C5FF;
+}
+
+.top-msg {
+  position: absolute;
+  top: 80 - $gutter-large;
+  right: 10px;
+  box-shadow: $box-shadow-large;
+  max-width: $max-width-element;
+  font-size: $font-size-button;
+  padding: $padding-list;
+  padding-right: $gutter-large * 1.5;
+
+  button i {
+    font-size: inherit;
+  }
+}
+
+.top-msg-container {
+  position: fixed;
+  top: 65px;
+  right: $gutter-large;
+
+  .msg {
+    box-shadow: $box-shadow-large;
+    max-width: $max-width-element;
+    font-size: $font-size-button;
+    padding: $padding-list;
+    padding-right: $gutter-large * 1.5;
+    button i {
+      font-size: inherit;
+    }
+
+    .title {
+      font-size: $font-size-button*1.2;
+      font-weight: bold;
+    }
+
+    .message {
+      font-size: $font-size-button;
+    }
+  }
+}
+
+.info-box {
+  //border: $border;
+  background-color: #f9f9f9;
+  padding: 20px;
+
+  i.fa-info-circle {
+    font-size: 30px;
+    display: inline-block;
+    width: 40px;
+    vertical-align: top;
+    color: $secondary;
+  }
+
+  p {
+    padding: 0;
+    width: calc(100% - 45px);
+    display: inline-block;
+  }
+}

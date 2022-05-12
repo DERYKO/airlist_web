@@ -1,0 +1,22 @@
+{
+  "templates_archived_message": "All selected template types have been deleted",
+  "templates_archived": "Template types deleted",
+  "archiving_template": "You are about to delete the selected template types",
+  "saving_message": "Save in progress.",
+  "template_saved": "Template Type Saved",
+  "template_creation_successful": "Template Type Creation Successful",
+  "template_info": "Template Type info",
+  "new_template": "New template type",
+  "copy_template": "Copy type",
+  "title_details": "Template Type details",
+  "add": "Add Type",
+  "edit": "Edit Type",
+  "name": "Template Type name",
+  "archive_header": "This template has been deleted.",
+  "confirm_archive": "Do you want to delete this email template?",
+  "archive_successful": "The email template has successfully been deleted.",
+  "confirm_restore": "Do you want to restore this email template?",
+  "restore_successful": "The email template has successfully been restored.",
+  "confirm_force_delete": "Do you want to delete this template?",
+  "force_delete_successful": "The email template has successfully been deleted."
+}

@@ -1,0 +1,143 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+@mixin box-basic($box-shadow, $padding) {
+  background-color: $box-background;
+  //border-radius: $border-radius-small;
+  box-shadow: $box-shadow;
+  padding: $padding;
+}
+
+@mixin user($size) {
+  background-color: $lightest;
+  border-radius: $border-radius-round;
+  width: $size;
+  height: $size;
+  text-align: center;
+
+  i {
+    font-size: $size / 2;
+    line-height: $size;
+    color: $dark;
+
+    &:hover {
+      color: $lightest;
+    }
+  }
+}
+
+%arrow {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+}
+
+@mixin arrow-top($vertical-pos,$vertical-val,$horizontal-pos,$horizontal-val) {
+
+  &:before {
+    @extend %arrow;
+    border-width: 0 15px 15px 15px;
+    border-color: transparent transparent $border-color transparent;
+    #{$vertical-pos}: $vertical-val;
+    #{$horizontal-pos}: $horizontal-val;
+  }
+
+  &:after {
+    @extend %arrow;
+    border-width: 0 15px 15px 15px;
+    border-color: transparent transparent $box-background transparent;
+
+    @if $vertical-pos == top {
+      #{$vertical-pos}: calc(#{$vertical-val} + 1px);
+    }
+    @else if $vertical-pos == bottom {
+      #{$vertical-pos}: calc(#{$vertical-val} - 1px);
+    }
+
+    #{$horizontal-pos}: $horizontal-val;
+  }
+}
+
+@mixin arrow-left($vertical-pos,$vertical-val,$horizontal-pos,$horizontal-val) {
+
+  &:before {
+    @extend %arrow;
+    border-width: 15px 15px 15px 0;
+    border-color: transparent $border-color transparent transparent;
+    #{$vertical-pos}: $vertical-val;
+    #{$horizontal-pos}: $horizontal-val;
+  }
+
+  &:after {
+    @extend %arrow;
+    border-width: 15px 15px 15px 0;
+    border-color: transparent $box-background transparent transparent;
+    #{$vertical-pos}: $vertical-val;
+
+    @if $horizontal-pos == left {
+      #{$horizontal-pos}: calc(#{$horizontal-val} + 1px);
+    }
+    @else if $horizontal-pos == right {
+      #{$horizontal-pos}: calc(#{$horizontal-val} - 1px);
+    }
+
+  }
+}
+
+@mixin top-align {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin left-align {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin center-align {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+@mixin full-color-button($color) {
+  background-color: $color!important;
+  border: 1px solid $color;
+  color: $lightest;
+
+  &:hover {
+    background-color: darken($color, 10%);
+    border: 1px solid darken($color, 10%);
+    color: $lightest;
+  }
+
+  &:active {
+    background-color: darken($color, 20%);
+    border: 1px solid darken($color, 20%);
+    color: $lightest;
+  }
+}

@@ -1,0 +1,29 @@
+<button class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2 id="modal-title">Details for the payout at {{ vm.payout.arrival_date|date:'dd. MM. yyyy' }}</h2>
+</div>
+<div class="modal-body" id="modal-body">
+    <h3>Invoices</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Invoice Number</th>
+            <th>Sum</th>
+            <th>Contact</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="invoice in vm.payout.invoices">
+            <td>
+                <a ui-sref="app.billing.invoices.details({id: invoice.invoice_id})" target="_blank">{{invoice.invoice_number}}</a>
+            </td>
+            <td>{{invoice.invoice_sum}} EUR</td>
+            <td><a ui-sref="app.contacts.details({id: invoice.contact_id})" target="_blank">{{invoice.contact_full_name}}</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="btn-group">
+        <button class="btn-confirm" type="button" ng-click="vm.close()" ng-if="vm.enableDelete">Schließen</button>
+    </div>
+</div>

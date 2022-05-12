@@ -1,0 +1,47 @@
+<h1>Profile {{ vm.model.full_name }}</h1>
+<section>
+    <section>
+        <div class="content-box box-900">
+            <div class="box-section-wrap general-info">
+                <div class="user-avatar">
+                    <img ng-src="{{ vm.model.profile_image.url }}" class="user" alt=""/>
+                </div>
+                <div class="user-general-info">
+                    <p>
+                        <span class="name">{{ vm.model.first_name}} {{ vm.model.last_name}}</span>
+                        <br>
+                        {{ vm.model.email}}
+                    </p>
+                </div>
+                <div class="user-extended-info mt-20">
+                    <div class="categories-list">
+                        <div class="category" ng-repeat="role in vm.roles" ng-if="!!vm.model.roles[role.id]">
+                            {{role.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h2>Applications</h2>
+    <section>
+        <div class="content-box box-900">
+            <div class="box-section-wrap">
+                <fieldset>
+                    <div class="form-group">
+                        <label>Company UID</label>
+                        <input type="text" readonly ng-model="user.company.data.uid">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="form-group input-lg">
+                        <label>Personal Token</label>
+                        <input type="text" readonly ng-model="vm.model.personal_token">
+                        <button class="btn-confirm" type="button" ng-click="vm.refreshToken()">Refresh</button>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </section>
+</section>

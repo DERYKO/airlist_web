@@ -1,0 +1,116 @@
+<div class="heading-toolset-wrapper">
+    <h1>{{vm.store.state.title}}</h1>
+</div>
+<div ng-include="ngListView.manager.templates.afterHeadlineTemplate"></div>
+<div class="content-box">
+    <section>
+        <div class="box-section-wrap table-options">
+
+            <div class="filter-expanded">
+                <span class="results-found"><strong>{{vm.duplicateCounts.general}}</strong> duplicates for:</span>
+
+                <div class="filter-results">
+                    <div class="tags-container">
+                        <div class="tag" ng-repeat="col in vm.store.getters.visibleColumns">
+                            {{col.label}}
+                            <button ng-click="vm.removeVisibleColumn(col)"><i class="fal fa-times"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn-confirm" ng-click="vm.openFieldSelectionModal()">Edit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="box-section-wrap table-duplicates"
+             ng-class="{mt0:vm.store.state.key === 'rsvps', mt2:vm.store.state.key !== 'rsvps'}">
+            <table>
+                <tbody>
+                <tr ng-repeat-start="row in vm.store.state.data track by $index"
+                    ng-class="{active: (vm.store.state.extendedListView && vm.lodash.get(row, vm.store.state.identifier_field) == vm.store.state.currentExtendedRow)}"
+                    ng-click="vm.store.dispatch('clickedMainRow', row)">
+
+                    <td class="duplicates-number">
+                        {{vm.duplicateCounts.rows[row.duplicate_information.identifier]}}
+                    </td>
+
+                    <td class="duplicates-overview">
+                        <span ng-repeat="col in vm.store.getters.visibleColumns track by $index">
+                            <span ng-bind-html="vm.store.helpers.getCell(row, col, vm.store)"
+                                  class="cell-content"></span>
+                            <span class="duplicates-separator">•</span>
+                        </span>
+                    </td>
+
+                    <td class="duplicates-expand">
+                        <i class="fal fa-angle-down"
+                           ng-if="vm.lodash.get(row, vm.store.state.identifier_field) != vm.store.state.currentExtendedRow"></i>
+                        <i class="fal fa-angle-up"
+                           ng-if="vm.lodash.get(row, vm.store.state.identifier_field) == vm.store.state.currentExtendedRow"></i>
+                    </td>
+                </tr>
+
+                <tr class="duplicates-expanded-row"
+                    ng-if="vm.lodash.get(row, vm.store.state.identifier_field) == vm.store.state.currentExtendedRow"
+                    ng-repeat-end>
+                    <td colspan="3">
+                        <ng-include src="vm.store.state.extendedListViewTemplate"></ng-include>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!--todo maybe we dont need it?-->
+    <!--<section>-->
+    <!--<listview-pagination store="vm.store"></listview-pagination>-->
+    <!--</section>-->
+</div>
+
+
+<!--<tbody>-->
+<!--<tr ng-repeat-start="row in vm.store.state.data track by $index"-->
+<!--ng-class="{active: (vm.store.state.extendedListView && vm.lodash.get(row, vm.store.state.identifier_field) == vm.store.state.currentExtendedRow)}">-->
+<!--<td ng-repeat="col in vm.store.getters.visibleColumns track by $index">-->
+<!--<span ng-bind-html="vm.store.helpers.getCell(row, col, vm.store)" class="cell-content"-->
+<!--ng-click="vm.store.dispatch('clickedMainRow', row)"></span>-->
+<!--<div class="cell-actions"-->
+<!--ng-if="vm.store.state.copyColumns.indexOf(col.key) !== -1 && vm.store.helpers.getCell(row, col, vm.store)">-->
+<!--<button clipboard text="vm.store.helpers.getCell(row, col, vm.store)" type="button"-->
+<!--on-copied="vm.store.dispatch('copiedTextToClipboard', true)"-->
+<!--on-error="vm.store.dispatch('copiedTextToClipboard', false)">-->
+<!--<i class="fal fa-copy"></i>-->
+<!--</button>-->
+<!--</div>-->
+<!--<div class="tooltip-wrapper" data-tooltip="{{vm.store.helpers.getCell(row, col, vm.store)}}"-->
+<!--ng-if="vm.store.state.tooltipColumns.indexOf(col.key) !== -1 && vm.store.helpers.getCell(row, col, vm.store)"></div>-->
+<!--</td>-->
+<!--<td ng-repeat="col in vm.store.getters.extraDisplayedColumns track by $index">-->
+<!--<span ng-bind-html="vm.store.helpers.getCell(row, col, vm.store)" class="cell-content"-->
+<!--ng-click="vm.store.dispatch('clickedMainRow', row)"></span>-->
+<!--</td>-->
+<!--<td class="actions text-right" ng-class="col.column_size"-->
+<!--ng-if="vm.store.getters.otherRowActions.length">-->
+<!--<button ng-repeat="action in vm.store.getters.otherRowActions  track by $index"-->
+<!--class="{{action.class}}"-->
+<!--title="{{action.title}}" ng-click="vm.store.dispatch('clickedRow', row)">-->
+<!--<i class="fa {{action.icon}}" ng-if="action.icon"></i>-->
+<!--<span ng-if="!action.icon">{{action.title}}</span>-->
+<!--</button>-->
+<!--</td>-->
+<!--</tr>-->
+
+<!--<tr class="details-expanded"-->
+<!--ng-if="vm.lodash.get(row, vm.store.state.identifier_field) == vm.store.state.currentExtendedRow"-->
+<!--ng-repeat-end>-->
+<!--<td colspan="100%">-->
+<!--<ng-include src="vm.store.state.extendedListViewTemplate"></ng-include>-->
+<!--</td>-->
+<!--</tr>-->
+<!--</tbody>-->

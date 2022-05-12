@@ -1,0 +1,5 @@
+<form class="search">
+    <input type="text" name="tableSearch" placeholder="Filter by keyword" ng-model="vm.keyword" ng-model-options="{debounce: 300}"
+           ng-change="vm.onUpdate({keyword: vm.keyword})">
+    <button name="tableSearchSubmit" value=""><i class="fal fa-search "></i></button>
+</form>

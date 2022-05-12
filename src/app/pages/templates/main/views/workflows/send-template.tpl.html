@@ -1,0 +1,53 @@
+<form ng-submit="vm.send(sendEditor)" name="sendEditor">
+    <button type="button" class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+    <div class="modal-header">
+        <h2>Send Template: {{vm.template.name}}</h2>
+    </div>
+    <div class="modal-body">
+        <div class="form-group input-lg">
+            <label>Send To:</label>
+            <input type="email" ng-model="vm.message.send_to_override" ng-required>
+        </div>
+        <div class="form-group input-lg">
+            <label>Recipient Type:</label>
+            <customfield ng-model="vm.message.recipient_type" definition="vm.recipientTypes">
+        </div>
+        <div class="form-group input-x-lg" ng-if="vm.message.recipient_type == 'contact'">
+            <label>Select Contact</label>
+            <select-box model="vm.contacts" config="vm.contactsConfig"></select-box>
+        </div>
+        <div class="form-group input-x-lg" ng-if="vm.message.recipient_type == 'rsvp'">
+            <label>Select Booking</label>
+            <select-box model="vm.rsvps" config="vm.rsvpsConfig"></select-box>
+        </div>
+        <fieldset>
+            <div class="form-group" ng-if="vm.template.ticket_id">
+                <customfield ng-model="vm.message.attach_ticket" name="attach_ticket"
+                             definition="{type:'boolean', 'name': 'Attach Ticket'}"></customfield>
+            </div>
+            <div class="form-group" ng-if="vm.template.passbook_id">
+                <customfield ng-model="vm.message.attach_passbook" name="attach_passbook"
+                             definition="{type:'boolean', 'name': 'Attach Passbook'}"></customfield>
+            </div>
+            <div class="form-group" ng-if="vm.template.invoice_id">
+                <customfield ng-model="vm.message.attach_invoice" name="attach_invoice"
+                             definition="{type:'boolean', 'name': 'Attach Invoice'}"></customfield>
+            </div>
+            <div class="form-group" ng-if="vm.template.files && vm.template.files.length > 0">
+                <customfield ng-model="vm.message.attach_files" name="attach_files"
+                             definition="{type:'boolean', 'name': 'Attach Files'}"></customfield>
+            </div>
+        </fieldset>
+        <div class="btn-group">
+            <button type="button" class="btn-warning" ng-click="vm.close()">{{ 'common.cancel' | i18n }}</button>
+            <button type="submit" class="btn-confirm" ng-disabled="sendEditor.$invalid || vm.sending"
+                    ng-class="{disabled: sendEditor.$invalid || vm.sending}">
+                {{vm.sending ? 'Sending' : 'Send'}}
+            </button>
+        </div>
+        <fieldset ng-if="!vm.loading && vm.template">
+            <h4>Preview</h4>
+            <div class="preview" ng-bind-html="vm.trustTemplateHtml(vm.template.html)"></div>
+        </fieldset>
+    </div>
+</form>

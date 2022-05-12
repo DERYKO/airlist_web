@@ -1,0 +1,30 @@
+{
+  "crud_picklists": {
+    "create_title": "Create new Picklist",
+    "details_header": "General Information",
+    "input_name": "Name",
+    "input_permissions": "Permissions",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "alerts": {
+    "select_rows": "You must first select rows before updating them'",
+    "not_found": "Picklist not found",
+    "archive_picklists": {
+      "title": "Deleting {{name}}",
+      "text": "Are you sure you want to archive this picklist?",
+      "success": {
+        "title": "Success",
+        "text": "The picklist was archived successful"
+      }
+    },
+    "delete_picklists": {
+      "title": "Deleting {{name}}",
+      "text": "Are you sure you want to permanently delete this picklist? This can not be undone!",
+      "success": {
+        "title": "Success",
+        "text": "The picklist was deleted successful"
+      }
+    }
+  }
+}

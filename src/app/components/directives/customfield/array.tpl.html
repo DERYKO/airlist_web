@@ -1,0 +1,15 @@
+<div ng-repeat="fieldDef in field.ngModel track by $index" class="form-group input-full">
+    <input type="text"
+           class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-not-modified"
+           ng-model="field.ngModel[$index]">
+    <button class="input-icon" type="button"
+            ng-click="field.ngModel.splice($index,1)"><i
+            class="fal fa-trash-alt"></i></button>
+</div>
+<br ng-if="!field.definition.items">
+<button class="add-option" type="button" ng-click="field.ngModel = []; field.ngModel.push('')" ng-if="!field.ngModel"><i
+        class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add option
+</button>
+<button class="add-option" type="button" ng-click="field.ngModel.push('')" ng-if="field.ngModel"><i
+        class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add option
+</button>

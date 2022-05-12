@@ -1,0 +1,74 @@
+<button class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2 id="modal-title">{{vm.subscription.subscription.data.title}}</h2>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="data-list">
+        <table>
+            <tbody>
+            <tr>
+                <td>Label</td>
+                <td>{{vm.subscription.subscription.data.label}}</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>{{vm.subscription.subscription.data.description}}</td>
+            </tr>
+            <tr>
+                <td>Start Date</td>
+                <td>{{vm.subscription.start_date|date:'dd.MM.yyyy'}}</td>
+            </tr>
+            <tr ng-if="vm.subscription.paused_until">
+                <td>Paused until</td>
+                <td>{{vm.subscription.paused_until|date:'dd.MM.yyyy'}}</td>
+            </tr>
+            <tr ng-if="vm.subscription.termination_date">
+                <td>Termination date</td>
+                <td>
+                    {{vm.subscription.termination_date|date:'dd.MM.yyyy'}}
+                    <button style="margin-left: 20%;" class="btn-confirm right" type="button" ng-if="vm.subscription.termination_date && vm.days >= 1" ng-click="vm.terminateSubscription()">Change date</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-if="vm.subscription.subscription.data.positions.data && vm.subscription.subscription.data.positions.data.length > 0">
+    <h4>Positions</h4>
+    <table>
+        <thead>
+        <tr>
+            <th>OTI</th>
+            <th></th>
+            <th>amount</th>
+            <th>unit</th>
+            <th>ppu</th>
+            <th>sum</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="position in vm.subscription.subscription.data.positions.data">
+            <td>{{position.one_time_invoiced}}</td>
+            <td>
+                {{position.title}}<br/>
+            </td>
+            <td>{{position.amount}}</td>
+            <td>{{position.unit}}</td>
+            <td>{{position.price_per_unit|number:2}} €</td>
+            <td>{{position.price_per_unit * position.amount|number:2}} €</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="btn-group">
+        <button type="button" ng-click="vm.close()">Close</button>
+        <button class="btn-confirm" type="button" ng-click="vm.terminateSubscription()"
+                ng-if="!vm.subscription.termination_date">Terminate
+        </button>
+        <button class="btn-confirm" type="button" ng-click="vm.pauseSubscription()"
+                ng-if="!vm.subscription.termination_date">Pause
+        </button>
+        <button class="btn-confirm" type="button" ng-click="vm.reactivateSubscription()"
+                ng-if="vm.subscription.termination_date">Re-Activate
+        </button>
+    </div>
+</div>

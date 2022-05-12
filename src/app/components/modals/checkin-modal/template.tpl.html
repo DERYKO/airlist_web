@@ -1,0 +1,20 @@
+<button class="close" ng-click="vm.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2 ng-if="vm.rsvp.pax_actual === vm.rsvp.pax_planned">Check-Out</h2>
+    <h2 ng-if="vm.rsvp.pax_actual !== vm.rsvp.pax_planned">Check-In</h2>
+</div>
+<div class="modal-body">
+    <p>
+        <strong>Pax checked-in: </strong>{{vm.rsvp.pax_actual}}<br/>
+        <strong>Pax planned: </strong>{{vm.rsvp.pax_planned}}<br/>
+    </p>
+    <form ng-submit="vm.checkIn(checkinForm)" name="checkinForm" novalidate>
+        <div class="form-group" ng-class="{'has-error':checkinForm.$submitted && checkinForm.pax_actual.$invalid}">
+            <label>New count of checked-in persons</label>
+            <input type="text" ng-model="vm.pax" name="pax_actual" required>
+        </div>
+        <div class="btn-group">
+            <button type="submit" class="btn-confirm">Save</button>
+        </div>
+    </form>
+</div>

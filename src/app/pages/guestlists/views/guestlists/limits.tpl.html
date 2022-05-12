@@ -1,0 +1,118 @@
+<h1>Field limits</h1>
+
+<form>
+    <div class="content-box">
+        <div class="box-section-wrap">
+
+            <div ng-if="vm.currentLimitInformation.length == 0 && vm.editEnabled == false">
+                <p>
+                    You haven't specified any limits yet.
+                </p>
+
+                <button class="btn btn-confirm mt-10" ng-click="vm.enableEdit();">Add Limits</button>
+            </div>
+
+            <div ng-repeat="limitField in vm.currentLimitInformation">
+                <div class="limits-header">
+                    <a ng-click="vm.removeFieldLimits(limitField)" ng-if="vm.editEnabled" data-tooltip="Remove field"><i class="fal fa-trash-alt"></i></a>
+                    <h2 ng-class="{'ml-33':!vm.editEnabled}">
+                        {{limitField.field.label}}&nbsp;&nbsp;&nbsp;&nbsp;
+                    </h2>
+                    <a href="" ng-if="!vm.editEnabled" class="button" ng-click="vm.enableEdit()">Edit&nbsp;&nbsp;<i class="fal fa-pencil"></i></a>
+                </div>
+                <div class="main-table table-limits" ng-class="{'table-limits-small':!vm.editEnabled}">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Value</th>
+                            <th>Limit</th>
+                            <th>Current</th>
+                            <th>Free</th>
+                        </tr>
+                        <tr ng-repeat="limitValue in limitField.limits track by $index">
+                            <td>
+                                <a data-tooltip="Remove value"
+                                   class="btn ng-scope"
+                                   ng-click="vm.removeLimitValue(limitField, limitValue)"
+                                   ng-if="vm.editEnabled && vm.checkIfValueEditEnabled(limitField)">
+                                    <i class="fal fa-trash-alt"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <div class="cell-content">
+                                    <input type="text" ng-model="limitValue.value"
+                                           ng-if="vm.editEnabled && vm.checkIfValueEditEnabled(limitField)"/>
+                                    <span ng-if="!vm.editEnabled || !vm.checkIfValueEditEnabled(limitField)">{{limitValue.value}}</span>
+                                </div>
+
+                            </td>
+                            <td>
+                                <div class="cell-content">
+                                    <input type="number" step="1" min="-1" ng-model="limitValue.limit"
+                                           ng-if="vm.editEnabled"/>
+                                    <span ng-if="!vm.editEnabled">{{limitValue.limit}}</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="cell-content">{{limitValue.current}}</span>
+                            </td>
+                            <td>
+                                <span class="cell-content text-green"
+                                      ng-if="limitValue.limit === -1"><strong>-1</strong></span>
+                                <span class="cell-content text-green"
+                                      ng-if="limitValue.limit !== -1 && limitValue.limit > limitValue.current"><strong>{{limitValue.limit - limitValue.current}}</strong></span>
+                                <span class="cell-content text-red"
+                                      ng-if="limitValue.limit !== -1 && limitValue.limit <= limitValue.current"><strong>{{limitValue.limit - limitValue.current}}</strong></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <a ng-click="vm.addEmptyValueToField(limitField)" ng-if="vm.editEnabled && vm.checkIfValueEditEnabled(limitField)" class="button mb-40 d-block">
+                    New value&nbsp;&nbsp;<i class="fal fa-plus-circle"></i>
+                </a>
+            </div>
+            <fieldset ng-if="vm.editEnabled">
+                <h4>Add field to limits</h4>
+                <form>
+                    <div class="form-group">
+                        <select ng-model="vm.currentSelectedAddField" ng-disabled="vm.addableFields.length === 0"
+                                ng-options="item.value as item.label for item in vm.addableFields"
+                                max-items="0">
+                            <option value="">--- Select field ---</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-confirm" ng-disabled="!vm.currentSelectedAddField"
+                                ng-click="vm.addField(vm.currentSelectedAddField)">
+                            Add field
+                        </button>
+                    </div>
+                </form>
+                <hr/>
+                <div class="form-group">
+                    <customfield definition="{type:'boolean', name: 'Send rest limits to public'}"
+                                 ng-model="vm.guestlist.settings.registration_limit_public_counts"
+                                 name="setting_registration_limit_public_counts"></customfield>
+                </div>
+                <div class="form-group">
+                    <label>States the limits are calculated on</label>
+                    <selectize items="vm.statesForSelectize"
+                               ng-model="vm.guestlist.settings.registration_limit_states"
+                               max-items="vm.statesForSelectize.length"></selectize>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</form>
+
+<section>
+    <div class="fixed-footer">
+        <div ng-if="!vm.editEnabled" class="btn-group">
+            <button class="btn btn-regular" ng-click="vm.backToList()">Back to list</button>
+            <button class="btn btn-confirm" ng-click="vm.enableEdit()">Edit Limits</button>
+        </div>
+        <div ng-if="vm.editEnabled" class="btn-group">
+            <button ng-click="vm.saveLimits()" class="btn-confirm">Save limits</button>
+        </div>
+    </div>
+</section>

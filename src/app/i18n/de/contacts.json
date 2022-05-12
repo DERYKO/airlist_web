@@ -1,0 +1,131 @@
+{
+  "contacts": {
+    "routes_page_title": "Kontakte",
+    "header": "Kontakt details",
+    "active_subscription": "Aktives Abonnement",
+    "additional": "Zusätzlich",
+    "check_in ": "Check-In",
+    "extended_info": "Erweiterte Kontaktinformationen",
+    "picklists" : "Auswahllisten",
+    "rsvps" : "RSVP anzeigen",
+    "rsvps_btn" : "Vollbildschirm",
+    "overview": {
+      "no_data": "Keine Daten verfügbar",
+      "table": {
+        "last_booking": "Letzte Buchungen",
+        "status ": "Status",
+        "last_checkins": "Letzte Checkins",
+        "guestlist ": "Gästelisten",
+        "date": "Datum",
+        "last_messages": "Letzte Nachrichten",
+        "type": "Art"
+      }
+    },
+    "view ": {
+      "navbar": "Doppelte Kontakte zusammenführen",
+      "navbar_action": "Änderungen speichern"
+    },
+    "contact_trashed_warning": {
+      "title": "Warnung",
+      "text": "Dieser Kontakt befindet sich derzeit im Papierkorb."
+    },
+    "merge_options": {
+      "header": "Kontakte zusammenführen",
+      "cancel ": "Stornieren",
+      "form": {
+        "header ": "Vergleichen Sie die folgenden Felder:",
+        "title": "Alle Felder müssen übereinstimmen, damit ein Kontakt als Duplikat qualifiziert wird",
+        "strategy_header": "Und wende die folgende Strategie an:",
+        "strategy_done_btn": "Merge starten"
+      }
+    },
+    "editors": {
+      "header": "Kontakt details{{ title }} {{ first_name }} {{ last_name }}",
+      "form": {
+        "sex": "Sex",
+        "title": "Titel",
+        "first_name": "Vorname",
+        "last_name": "Nachname",
+        "salutation": "Anrede",
+        "override_salutation": "Anrede überschreiben",
+        "birthday ": "Geburtstag",
+        "language": "Sprache",
+        "header ": "Adressen Details",
+        "street ": "Straße",
+        "street2": "Straße 2",
+        "zip": "POSTLEITZAHL",
+        "city": "Stadt",
+        "country": "Land",
+        "mobile": "Handy, Mobiltelefon",
+        "phone": "Telefon (Festnetz)",
+        "fax": "Fax",
+        "email": "Email",
+        "Web": "Netz",
+        "business": "Geschäft",
+        "company": "Unternehmen",
+        "department": "Abteilung",
+        "position": "Position",
+        "b s_street": "Geschäftsstraße",
+        "bs_zip": "Geschäfts-PLZ",
+        "bs_city": "Geschäftsstadt",
+        "bs_country": "Geschäftsland",
+        "bs_mobile": "Geschäfts-Handy",
+        "bs_fax ": "Geschäftsfax",
+        "bs_email": "Geschäftliche E-Mail",
+        "bs_web": "Business Web",
+        "nfc": "NFC key",
+        "cc ": "Immer CC diese E-Mail",
+        "blacklist": "Schwarze Liste",
+        "bl_reason": "Grund für die schwarze Liste",
+        "block_emails": "E-Mails blockieren",
+        "block_sms": "SMS blockieren",
+        "comment ": "Kommentar",
+        "custom_attr ": "CommentCustom-Attribute",
+        "social": "Profile in sozialen Netzwerken",
+        "notifications": {
+          "header ": "Benachrichtigungen",
+          "notify_email": "E-Mail benachrichtigen",
+          "notify_sms": "SMS-Nummer benachrichtigen "
+        }
+      }
+    },
+    "workflows": {
+      "contact_genderize_header": "Gender Check",
+      "contact_genderize_title": "Für welche Kontakte möchten Sie das Geschlecht aktualisieren?",
+      "contact_genderize_all": "Alle ausgewählten Kontakte",
+      "contact_genderize_unknown": "Wenn Geschlecht unbekannt"
+    }
+  },
+  "alerts": {
+    "saved": {
+      "title": "Success",
+      "text": "Änderungen wurden erfolgreich gespeichert"
+    },
+    "workflows" : {
+      "add_nfc_tag_sucess" : "'Mitgliedskarte hinzugefügt",
+      "check_in_contact" : "Einchecken erfolgreich",
+      "archive_contact": {
+        "title" : "Löschen {{name}}",
+        "text" : "Möchten Sie den Kontakt wirklich in den Papierkorb verschieben?"
+      },
+      "delete_contact": {
+        "title" : "Löschen {{name}}",
+        "text" : "Möchten Sie den Kontakt wirklich löschen? Das kann nicht rückgängig gemacht werden!"
+      },
+      "restore_contact": {
+        "title" : "Wiederherstellen {{name}}",
+        "text" : "Möchten Sie den Kontakt wirklich wiederherstellen? Das kann nicht rückgängig gemacht werden!"
+      },
+      "sms" : {
+        "title ": "Nachricht gesendet",
+        "text": "Ihre Nachricht wurde zum Senden in die Warteschlange gestellt"
+      },
+      "sample": {
+        "archived" : "Mit Auswahl gelöscht anklicken",
+        "drop_down": "Dropdown-Aktion angeklickt",
+        "row_action": "Beispielreihenaktion angeklickt",
+        "with_selected": "Mit ausgewähltem geklickt"
+      }
+    }
+  }
+}

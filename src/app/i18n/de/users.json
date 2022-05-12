@@ -1,0 +1,23 @@
+{
+  "crud_users": {
+    "cancel_btn" : "Stornieren",
+    "done_btn" : "Erledigt",
+    "discard_btn" : "Änderungen verwerfen"
+  },
+  "alerts" : {
+    "invite_user" : {
+      "invalid_email": {
+        "title": "Ungültige E-Mail",
+        "text": "Eine ungültige E-Mail wurde eingegeben"
+      },
+      "no_roles_selected": {
+        "title": "Keine Rollen ausgewählt",
+        "text": "Bitte wählen Sie mindestens eine Rolle aus, an die der neue Benutzer angehängt wird"
+      },
+      "user_invited" : {
+        "title" : "Eingeladen",
+        "text"  : "Die eingegebene E-Mail wurde zum Unternehmen eingeladen"
+      }
+    }
+  }
+}

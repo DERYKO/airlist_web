@@ -1,0 +1,38 @@
+{
+  "name": "Billing Subscriptions",
+  "identifier": "billing_subscriptions",
+  "rights": [
+    {
+      "name": "contact.details",
+      "identifier": "contact.details"
+    },
+    {
+      "name": "contact.edit",
+      "identifier": "contact.edit"
+    },
+    {
+      "name": "contact.list",
+      "identifier": "contact.list"
+    },
+    {
+      "name": "contact.terminate",
+      "identifier": "contact.terminate"
+    },
+    {
+      "name": "subscription.delete",
+      "identifier": "subscription.delete"
+    },
+    {
+      "name": "subscription.edit",
+      "identifier": "subscription.edit"
+    },
+    {
+      "name": "subscription.list",
+      "identifier": "subscription.list"
+    },
+    {
+      "name": "subscription.view",
+      "identifier": "subscription.view"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "crud_documents": {
+    "general": "General Information",
+    "create_title": "Create a new Document",
+    "input_title": "Title",
+    "input_template": "Template",
+    "btn_create": "Create Document",
+    "cancel": "Cancel",
+    "created_at": "Created At",
+    "documents_unavailable": "No documents Available",
+    "documents_loading": " Documents are loading",
+    "more": "more"
+  },
+  "crud_templates"  : {
+    "create_title"  : "Create new Document Template"
+  },
+  "alerts": {
+    "error_template_not_found" : "Document template not found",
+    "save_template": {
+      "title": "Saved",
+      "text": "Changes to template has been saved"
+    },
+    "create_document": {
+      "title": "Success",
+      "text": "document created"
+    },
+    "error_loading": "error while loading documents: {{e}}",
+    "delete_document": {
+      "title": "Delete?",
+      "text": "Are you sure to delete this document?",
+      "btn_text": "Yes, delete it!",
+      "success": {
+        "title": "Deleted",
+        "text": "Document was deleted successful"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "crud_users": {
+    "cancel_btn" : "Cancel",
+    "done_btn" : "Done",
+    "discard_btn" : "Discard changes"
+  },
+  "alerts" : {
+    "invite_user" : {
+      "invalid_email": {
+        "title": "Invalid email",
+        "text": "An invalid email was entered"
+      },
+      "no_roles_selected": {
+        "title": "No roles selected",
+        "text": "Please select at minimum one role the new user gets attached"
+      },
+      "user_invited" : {
+        "title" : "Invited",
+        "text"  : "The entered email was invited to the company"
+      }
+    }
+  }
+}

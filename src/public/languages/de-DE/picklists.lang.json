@@ -1,0 +1,23 @@
+{
+  "creation_successful":"Picklist successfully created",
+  "confirm_removal_of_contacts": "Are you sure you want to remove the selected contact(s) from the picklist?",
+  "contacts_successfully_removed": "Contacts have successfully been removed from the picklist",
+  "title_details": "Picklist details",
+  "add": "Add picklist",
+  "edit": "Edit picklist",
+  "name": "Picklist name",
+  "contacts_added": "The contact(s) have successfully been added to the picklist.",
+  "picklist_archived": "Picklist deleted",
+  "picklist_archived_message": "All selected picklist will be deleted",
+  "archive_confirmation_message": "You are about to delete the selected picklists",
+  "crated_successfully" : "Picklist Creation Successful",
+  "picklist_saved" : "Picklist Saved",
+  "permission": "Permission",
+  "archive_header": "This picklist has been deleted",
+  "confirm_archive": "Do you want to delete this picklist?",
+  "archive_successful": "The picklist has successfully been deleted.",
+  "confirm_restore": "Do you want to restore this picklist?",
+  "restore_successful": "The picklist has successfully been restored.",
+  "confirm_force_delete": "Do you want to delete this picklist?",
+  "force_delete_successful": "The picklist has successfully been deleted."
+}

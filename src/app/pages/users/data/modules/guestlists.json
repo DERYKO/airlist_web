@@ -1,0 +1,98 @@
+{
+  "name": "Guestlists",
+  "identifier": "guestlists",
+  "rights": [
+    {
+      "name": "guestlist.addContacts",
+      "identifier": "guestlist.addContacts"
+    },
+    {
+      "name": "guestlist.bulk",
+      "identifier": "guestlist.bulk"
+    },
+    {
+      "name": "guestlist.copyBookings",
+      "identifier": "guestlist.copyBookings"
+    },
+    {
+      "name": "guestlist.counts",
+      "identifier": "guestlist.counts"
+    },
+    {
+      "name": "guestlist.delete",
+      "identifier": "guestlist.delete"
+    },
+    {
+      "name": "guestlist.duplicate",
+      "identifier": "guestlist.duplicate"
+    },
+    {
+      "name": "guestlist.edit",
+      "identifier": "guestlist.edit"
+    },
+    {
+      "name": "guestlist.list",
+      "identifier": "guestlist.list"
+    },
+    {
+      "name": "guestlist.rsvp.list",
+      "identifier": "guestlist.rsvp.list"
+    },
+    {
+      "name": "guestlist.stats",
+      "identifier": "guestlist.stats"
+    },
+    {
+      "name": "guestlist.view",
+      "identifier": "guestlist.view"
+    },
+    {
+      "name": "rsvp.bulk",
+      "identifier": "rsvp.bulk"
+    },
+    {
+      "name": "rsvp.delete",
+      "identifier": "rsvp.delete"
+    },
+    {
+      "name": "rsvp.duplicates",
+      "identifier": "rsvp.duplicates"
+    },
+    {
+      "name": "rsvp.edit",
+      "identifier": "rsvp.edit"
+    },
+    {
+      "name": "rsvp.export",
+      "identifier": "rsvp.export"
+    },
+    {
+      "name": "rsvp.import",
+      "identifier": "rsvp.import"
+    },
+    {
+      "name": "rsvp.list",
+      "identifier": "rsvp.list"
+    },
+    {
+      "name": "rsvp.masterlist",
+      "identifier": "rsvp.masterlist"
+    },
+    {
+      "name": "rsvp.merge",
+      "identifier": "rsvp.merge"
+    },
+    {
+      "name": "rsvp.messages",
+      "identifier": "rsvp.messages"
+    },
+    {
+      "name": "rsvp.view",
+      "identifier": "rsvp.view"
+    },
+    {
+      "name": "rsvps.view",
+      "identifier": "rsvps.view"
+    }
+  ]
+}

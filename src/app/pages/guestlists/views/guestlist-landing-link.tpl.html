@@ -1,0 +1,13 @@
+<button class="close" ng-click="vm.close()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>Copy landing page link</h2>
+</div>
+<div class="modal-body">
+    <div class="form-group input-lg">
+        <input type="text" read-only ng-model="vm.link" style="width:350px">
+        <button class="clipboard btn-confirm" data-clipboard-text="{{vm.link}}">
+            Copy link
+        </button>
+    </div>
+    <p class="alert alert-success" ng-if="vm.message"><i class="fal fa-check"></i>&nbsp;&nbsp;{{vm.message}}</p>
+</div>

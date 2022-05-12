@@ -1,0 +1,62 @@
+{
+  "settings": {
+    "blacklist_header": "Einstellungen für Blacklists",
+    "blacklist_title": "Die unten aufgeführten E-Mails und Handynummern erhalten keine Benachrichtigungen. Alle an diese Kontakte gesendeten E-Mails und SMS werden vom System gestoppt.",
+    "blacklist_input_email": {
+      "label": "E-Mail (s) auf der schwarzen Liste",
+      "placeholder": "Bitte geben Sie einen Artikel pro Zeile ein"
+    },
+    "blacklist_input_sms": {
+      "label": "Blacklisted Mobile No.(s)",
+      "placeholder": "Bitte geben Sie einen Artikel pro Zeile ein"
+    },
+    "blacklist_update_success": {
+      "title": "Erfolg",
+      "text": "Einstellungen erfolgreich gespeichert"
+    },
+    "blacklist_update_error": {
+      "title": "Gescheitert",
+      "text": "Beim Speichern der Einstellungen ist ein Fehler aufgetreten. Bitte erneut versuchen"
+    },
+    "custom_attributes_header": "Benutzerdefinierte Gästelistenattribute",
+    "custom_attribute_title": "Attribut",
+    "custom_attributes_save": "erledigt",
+    "custom_attributes_discard": "Änderungen verwerfen",
+    "custom_attributes_save_success": {
+      "title": "Erfolg",
+      "text": "Das Speichern der benutzerdefinierten Felder war erfolgreich"
+    },
+    "custom_attributes_save_error": {
+      "title": "Gescheitert",
+      "text": "Speichern der benutzerdefinierten Felder Gescheitert"
+    },
+    "notifications_save_success": {
+      "title": "Erfolg",
+      "text": "Einstellungen erfolgreich gespeichert"
+    },
+    "notifications_save_error": {
+      "title": "Gescheitert",
+      "text": "Beim Speichern der Einstellungen ist ein Fehler aufgetreten. Bitte erneut versuchen"
+    },
+    "notifications_header": "E-Mail-Vorlagen",
+    "notifications_registered_email_title": "Registrierte E-Mail-Vorlage",
+    "notifications_checked_in_email_title": "E-Mail-Vorlage eingecheckt",
+    "notifications_sms_header": "SMS-Vorlagen",
+    "notifications_registered_sms_title": "Registrierte SMS",
+    "notifications_checked_in_title": "SMS eingecheckt",
+    "notifications_save": "erledigt",
+    "notifications_discard": "Änderungen verwerfen",
+    "profile_edit_update_success": {
+      "title": "Erfolg",
+      "text": "Änderungen wurden erfolgreich gespeichert"
+    },
+    "profile_details_applications_header": "Anwendungen",
+    "profile_applications_input_company_uid": {
+      "label": "Firmen-UID"
+    },
+    "profile_applications_input_token": {
+      "label": "Persönliches Token"
+    },
+    "profile_editor_title" : "Profil bearbeiten {{full_name}}"
+  }
+}

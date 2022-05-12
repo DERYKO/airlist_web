@@ -1,0 +1,24 @@
+.datepicker {
+  max-width: $input-width;
+  position: relative;
+
+  @include breakpoint($small) {
+    max-width: none;
+  }
+
+  .input-icon {
+    top: 0;
+    right: 0;
+  }
+}
+
+.moment-picker {
+  z-index: 9999;
+}
+
+.clean-datepicker {
+  color: $warning;
+  margin: 5px 0;
+  font-size: 80%;
+  display: block;
+}

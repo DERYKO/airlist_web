@@ -1,0 +1,26 @@
+<h2 class="login-heading">Please enter your login information</h2>
+<form novalidate ng-submit="auth.login(auth.credentials)">
+    <section>
+        <fieldset>
+            <div class="form-group">
+                <label>{{'common.email' | i18n}}</label>
+                <input type="email" placeholder="Enter email" class="form-control" ng-model="auth.credentials.email" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>{{'common.password' | i18n}}</label>
+                <input type="password" placeholder="Password" class="form-control" ng-model="auth.credentials.password" ng-enter="auth.login(auth.credentials)" autocomplete="off">
+            </div>
+
+            <input id="keep-logged-in" type="checkbox" data-toggle="checkbox" ng-model="auth.remember" value="1"><label for="keep-logged-in">Keep me logged in</label>
+
+        </fieldset>
+        <div class="btn-center">
+            <div class="form-group">
+                <button type="submit" id="loginBtn" class="btn btn-confirm">{{'auth.login' | i18n}}</button>
+            </div>
+            <div class="form-group">
+                <button ui-sref="auth.forgot" class="btn-grey">{{'auth.forgot_password' | i18n}}?</button>
+            </div>
+        </div>
+    </section>
+</form>

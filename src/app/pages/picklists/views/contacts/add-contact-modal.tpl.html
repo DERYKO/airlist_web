@@ -1,0 +1,7 @@
+<button class="close" ng-click="picklist.cancel()"><i class="fal fa-times"></i></button>
+<div class="modal-header">
+    <h2>{{'picklists.add_contact_details' | i18n}}</h2>
+</div>
+<div class="modal-body">
+    <editor model="picklist.model" schema="picklist.schema" form="picklist.form" on-save="picklist.save(model)" on-cancel="picklist.cancel()"></editor>
+</div>

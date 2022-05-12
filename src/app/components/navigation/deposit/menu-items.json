@@ -1,0 +1,568 @@
+[
+  {
+    "key": "dashboard",
+    "locale-key": "dashboard.default",
+    "route": "app.dashboard",
+    "parent": null,
+    "required-right": null
+  },
+  {
+    "key": "categories-list",
+    "locale-key": "categories.list",
+    "route": "app.categories.index",
+    "parent": "settings",
+    "required-right": "addressbook_categories::list"
+  },
+  {
+    "key": "contacts-list",
+    "locale-key": "contacts.list",
+    "route": "app.contacts.index",
+    "parent": null,
+    "required-right": "addressbook::list"
+  },
+  {
+    "key": "contacts-details",
+    "locale-key": "contacts.details",
+    "route": "app.contacts.details",
+    "parent": "contacts-list",
+    "required-right": "addressbook::view"
+  },
+  {
+    "key": "contacts-details-tab",
+    "locale-key": "contacts.details-tab",
+    "route": "app.contacts.details.tab",
+    "parent": "contacts-details",
+    "required-right": "addressbook::view"
+  },
+  {
+    "key": "contacts-create",
+    "locale-key": "contacts.create",
+    "route": "app.contacts.create",
+    "parent": "contacts-list",
+    "required-right": "addressbook::create"
+  },
+  {
+    "key": "contacts-edit",
+    "locale-key": "contacts.edit",
+    "route": "app.contacts.edit",
+    "parent": "contacts-details",
+    "required-right": "addressbook::edit"
+  },
+  {
+    "key": "contacts-edit-multiple",
+    "locale-key": "contacts.edit-multiple",
+    "route": "app.contacts.multiple",
+    "parent": "contacts-list",
+    "required-right": "addressbook::edit"
+  },
+  {
+    "key": "contacts-import",
+    "locale-key": "contacts.import",
+    "route": "app.contacts.import",
+    "parent": "contacts-list",
+    "required-right": "addressbook::import"
+  },
+  {
+    "key": "guestlists-list",
+    "locale-key": "guestlists.list",
+    "route": "app.guestlists.index",
+    "parent": null,
+    "required-right": "guestlists::list"
+  },
+  {
+    "key": "guestlists-rsvps",
+    "locale-key": "guestlists.rsvps.list",
+    "route": "app.guestlists.rsvps.index",
+    "parent": "guestlists-list",
+    "required-right": "rsvps::list"
+  },
+  {
+    "key": "guestlists-rsvps-details",
+    "locale-key": "guestlists.rsvps.details",
+    "route": "app.guestlists.rsvps.details",
+    "parent": "guestlists-rsvps",
+    "required-right": "rsvps::view"
+  },
+  {
+    "key": "guestlists-rsvps-details-tab",
+    "locale-key": "guestlists.rsvps.details-tab",
+    "route": "app.guestlists.rsvps.details.tab",
+    "parent": "guestlists-rsvps-details",
+    "required-right": "rsvps::view"
+  },
+  {
+    "key": "guestlists-rsvps-create",
+    "locale-key": "guestlists.rsvps.create",
+    "route": "app.guestlists.rsvps.create",
+    "parent": "guestlists-rsvps",
+    "required-right": "rsvps::view"
+  },
+  {
+    "key": "guestlists-rsvps-edit",
+    "locale-key": "guestlists.rsvps.edit",
+    "route": "app.guestlists.rsvps.edit",
+    "parent": "guestlists-rsvps-details",
+    "required-right": "rsvps::edit"
+  },
+  {
+    "key": "guestlists-masterlist",
+    "locale-key": "guestlists.masterlist",
+    "route": "app.guestlists.masterlist",
+    "parent": "guestlists-list",
+    "required-right": "rsvps::masterlist"
+  },
+  {
+    "key": "guestlists-create",
+    "locale-key": "guestlists.create",
+    "route": "app.guestlists.create",
+    "parent": "guestlists-list",
+    "required-right": "guestlists::create"
+  },
+  {
+    "key": "guestlists-edit",
+    "locale-key": "guestlists.edit",
+    "route": "app.guestlists.rsvps.edit-settings",
+    "parent": "guestlists-rsvps",
+    "required-right": "guestlists::edit"
+  },
+  {
+    "key": "guestlists-duplicates",
+    "locale-key": "guestlists.duplicates",
+    "route": "app.guestlists.rsvps.duplicates",
+    "parent": "guestlists-rsvps",
+    "required-right": "guestlists::view"
+  },
+  {
+    "key": "guestlists-limits",
+    "locale-key": "guestlists.limits",
+    "route": "app.guestlists.rsvps.limits",
+    "parent": "guestlists-rsvps",
+    "required-right": "guestlists::view-limits"
+  },
+  {
+    "key": "guestlists-import",
+    "locale-key": "guestlists.import",
+    "route": "app.guestlists.rsvps.import",
+    "parent": "guestlists-rsvps",
+    "required-right": "guestlists::import"
+  },
+  {
+    "key": "messages-list",
+    "locale-key": "messages.list",
+    "route": "app.messages.index",
+    "parent": null,
+    "required-right": "messages::list"
+  },
+  {
+    "key": "messages-details",
+    "locale-key": "messages.details",
+    "route": "app.messages.details",
+    "parent": "messages-list",
+    "required-right": "messages::details"
+  },
+  {
+    "key": "messages-send",
+    "locale-key": "messages.send",
+    "route": "app.messages.create",
+    "parent": "messages-list",
+    "required-right": "messages::send"
+  },
+  {
+    "key": "picklists-list",
+    "locale-key": "picklists.list",
+    "route": "app.picklists.index",
+    "parent": null,
+    "required-right": "picklists::list"
+  },
+  {
+    "key": "picklists-create",
+    "locale-key": "picklists.create",
+    "route": "app.picklists.create",
+    "parent": "picklists-list",
+    "required-right": "picklists::create"
+  },
+  {
+    "key": "picklists-contacts",
+    "locale-key": "picklists.contacts",
+    "route": "app.picklists.contacts.index",
+    "parent": "picklists-list",
+    "required-right": "addressbook::list"
+  },
+  {
+    "key": "picklists-edit-settings",
+    "locale-key": "picklists.edit",
+    "route": "app.picklists.contacts.edit-settings",
+    "parent": "picklists-contacts",
+    "required-right": "picklists::edit"
+  },
+  {
+    "key": "seatplans-list",
+    "locale-key": "seatplans.list",
+    "route": "app.seatplans.index",
+    "parent": "settings",
+    "required-right": "seatplans::seatplan-list"
+  },
+  {
+    "key": "seatplans-create",
+    "locale-key": "seatplans.create",
+    "route": "app.seatplans.create",
+    "parent": "seatplans-list",
+    "required-right": "seatplans::seatplan-create"
+  },
+  {
+    "key": "settings",
+    "locale-key": "settings.main",
+    "route": null,
+    "parent": null
+  },
+  {
+    "key": "settings-blacklists",
+    "locale-key": "settings.blacklists",
+    "route": "app.settings.blacklists",
+    "parent": "settings",
+    "required-right": "companies::edit"
+  },
+  {
+    "key": "settings-customfields",
+    "locale-key": "settings.customfields",
+    "route": "app.settings.custom",
+    "parent": "settings",
+    "required-right": "companies::edit"
+  },
+  {
+    "key": "settings-jobs-log",
+    "locale-key": "settings.jobs-log",
+    "route": "app.queue.index",
+    "parent": "settings",
+    "required-right": "queue::list"
+  },
+  {
+    "key": "settings-notifications",
+    "locale-key": "settings.notifications",
+    "route": "app.settings.notifications",
+    "parent": "settings",
+    "required-right": "companies::edit"
+  },
+  {
+    "key": "settings-profile-details",
+    "locale-key": "settings.profile.details",
+    "route": "app.settings.profile-details",
+    "parent": "settings",
+    "required-right": "companies::edit"
+  },
+  {
+    "key": "settings-profile",
+    "locale-key": "settings.profile.edit",
+    "route": "app.settings.profile-edit",
+    "parent": "settings-profile-details",
+    "required-right": "companies::edit"
+  },
+  {
+    "key": "users-list",
+    "locale-key": "users.list",
+    "route": "app.users.index",
+    "parent": null,
+    "required-right": "users::list"
+  },
+  {
+    "key": "users-details",
+    "locale-key": "users.details",
+    "route": "app.users.details",
+    "parent": "users-list",
+    "required-right": "users::view"
+  },
+  {
+    "key": "users-edit",
+    "locale-key": "users.edit",
+    "route": "app.users.edit",
+    "parent": "users-details",
+    "required-right": "users::edit"
+  },
+  {
+    "key": "users-create",
+    "locale-key": "users.create",
+    "route": "app.users.create",
+    "parent": "users-list",
+    "required-right": "users::create"
+  },
+  {
+    "key": "templates",
+    "locale-key": "templates.main",
+    "route": null,
+    "parent": null,
+    "required-right": null
+  },
+  {
+    "key": "templates-email",
+    "locale-key": "templates.email.list",
+    "route": "app.templates.main.index",
+    "parent": "templates",
+    "required-right": "templates::list"
+  },
+  {
+    "key": "templates-email-create",
+    "locale-key": "templates.email.create",
+    "route": "app.templates.main.create",
+    "parent": "templates-email",
+    "required-right": "templates::create"
+  },
+  {
+    "key": "templates-email-details",
+    "locale-key": "templates.email.details",
+    "route": "app.templates.main.details",
+    "parent": "templates-email",
+    "required-right": "templates::view"
+  },
+  {
+    "key": "templates-email-edit",
+    "locale-key": "templates.email.edit",
+    "route": "app.templates.main.edit",
+    "parent": "templates-email-details",
+    "required-right": "templates::edit"
+  },
+  {
+    "key": "templates-email-types",
+    "locale-key": "templates.types.list",
+    "route": "app.templates.types.index",
+    "parent": "templates-email",
+    "required-right": "templates::type-list"
+  },
+  {
+    "key": "templates-email-types-create",
+    "locale-key": "templates.types.create",
+    "route": "app.templates.types.create",
+    "parent": "templates-email-types",
+    "required-right": "templates::type-create"
+  },
+  {
+    "key": "templates-email-types-edit",
+    "locale-key": "templates.types.edit",
+    "route": "app.templates.types.edit",
+    "parent": "templates-email-types",
+    "required-right": "templates::type-edit"
+  },
+  {
+    "key": "templates-documents",
+    "locale-key": "templates.documents.list",
+    "route": "app.documents.templates.index",
+    "parent": null,
+    "required-right": "documents::template-list"
+  },
+  {
+    "key": "templates-documents-create",
+    "locale-key": "templates.documents.create",
+    "route": "app.documents.templates.create",
+    "parent": "templates-documents",
+    "required-right": "documents::template-create"
+  },
+  {
+    "key": "templates-documents-details",
+    "locale-key": "templates.documents.details",
+    "route": "app.documents.templates.details",
+    "parent": "templates-documents",
+    "required-right": "documents::template-view"
+  },
+  {
+    "key": "templates-documents-edit",
+    "locale-key": "templates.documents.edit",
+    "route": "app.documents.templates.edit",
+    "parent": "templates-documents-details",
+    "required-right": "documents::template-edit"
+  },
+  {
+    "key": "tickets",
+    "locale-key": "tickets.main",
+    "route": null,
+    "parent": null,
+    "required-right": null
+  },
+  {
+    "key": "tickets-pdf",
+    "locale-key": "tickets.pdf.list",
+    "route": "app.tickets.index",
+    "parent": "tickets",
+    "required-right": "tickets::list"
+  },
+  {
+    "key": "tickets-pdf-create",
+    "locale-key": "tickets.pdf.create",
+    "route": "app.tickets.create",
+    "parent": "tickets-pdf",
+    "required-right": "tickets::create"
+  },
+  {
+    "key": "tickets-pdf-details",
+    "locale-key": "tickets.pdf.details",
+    "route": "app.tickets.details",
+    "parent": "tickets-pdf",
+    "required-right": "tickets::view"
+  },
+  {
+    "key": "tickets-pdf-edit",
+    "locale-key": "tickets.pdf.edit",
+    "route": "app.tickets.edit",
+    "parent": "tickets-pdf-details",
+    "required-right": "tickets::edit"
+  },
+  {
+    "key": "tickets-passbook",
+    "locale-key": "tickets.passbook.list",
+    "route": "app.passbooks.index",
+    "parent": "tickets",
+    "required-right": "passbooks::list"
+  },
+  {
+    "key": "tickets-passbook-create",
+    "locale-key": "tickets.passbook.create",
+    "route": "app.passbooks.create",
+    "parent": "tickets-passbook",
+    "required-right": "passbooks::create"
+  },
+  {
+    "key": "tickets-passbook-details",
+    "locale-key": "tickets.passbook.details",
+    "route": "app.passbooks.details",
+    "parent": "tickets-passbook",
+    "required-right": "passbooks::view"
+  },
+  {
+    "key": "tickets-passbook-edit",
+    "locale-key": "tickets.passbook.edit",
+    "route": "app.passbooks.edit",
+    "parent": "tickets-passbook-details",
+    "required-right": "passbooks::edit"
+  },
+  {
+    "key": "billing",
+    "locale-key": "billing.main",
+    "route": null,
+    "parent": null,
+    "required-right": null
+  },
+  {
+    "key": "billing-invoices",
+    "locale-key": "billing.invoices.list",
+    "route": "app.billing.invoices.index",
+    "parent": "billing",
+    "required-right": "billing::invoice-list"
+  },
+  {
+    "key": "billing-invoices-details",
+    "locale-key": "billing.invoices.details",
+    "route": "app.billing.invoices.details",
+    "parent": "billing-invoices",
+    "required-right": "billing::invoice-view"
+  },
+  {
+    "key": "billing-positions",
+    "locale-key": "billing.positions.list",
+    "route": "app.billing.positions.index",
+    "parent": "billing",
+    "required-right": "billing::position-list"
+  },
+  {
+    "key": "billing-positions-create",
+    "locale-key": "billing.positions.create",
+    "route": "app.billing.positions.create",
+    "parent": "billing-positions",
+    "required-right": "billing::position-create"
+  },
+  {
+    "key": "billing-positions-edit",
+    "locale-key": "billing.positions.edit",
+    "route": "app.billing.positions.edit",
+    "parent": "billing-positions",
+    "required-right": "billing::position-edit"
+  },
+  {
+    "key": "billing-position_categories",
+    "locale-key": "billing.position_categories.list",
+    "route": "app.billing.position_categories.index",
+    "parent": "billing",
+    "required-right": "billing::position_category-list"
+  },
+  {
+    "key": "billing-position_categories-create",
+    "locale-key": "billing.position_categories.create",
+    "route": "app.billing.position_categories.create",
+    "parent": "billing-position_categories",
+    "required-right": "billing::position_category-create"
+  },
+  {
+    "key": "billing-position_categories-edit",
+    "locale-key": "billing.position_categories.edit",
+    "route": "app.billing.position_categories.edit",
+    "parent": "billing-position_categories",
+    "required-right": "billing::position_category-edit"
+  },
+  {
+    "key": "billing-invoice_templates",
+    "locale-key": "billing.invoice_templates.list",
+    "route": "app.billing.invoice_templates.index",
+    "parent": "billing",
+    "required-right": "billing::invoice_template-list"
+  },
+  {
+    "key": "billing-invoice_templates-create",
+    "locale-key": "billing.invoice_templates.create",
+    "route": "app.billing.invoice_templates.create",
+    "parent": "billing-invoice_templates",
+    "required-right": "billing::invoice_template-create"
+  },
+  {
+    "key": "billing-invoice_templates-edit",
+    "locale-key": "billing.invoice_templates.edit",
+    "route": "app.billing.invoice_templates.edit",
+    "parent": "billing-invoice_templates",
+    "required-right": "billing::invoice_template-edit"
+  },
+  {
+    "key": "billing-number_circles",
+    "locale-key": "billing.number_circles.list",
+    "route": "app.billing.number-circles.index",
+    "parent": "billing",
+    "required-right": "billing::number_circle-list"
+  },
+  {
+    "key": "billing-number_circles-create",
+    "locale-key": "billing.number_circles.create",
+    "route": "app.billing.number-circles.create",
+    "parent": "billing-number_circles",
+    "required-right": "billing::number_circle-create"
+  },
+  {
+    "key": "billing-number_circles-edit",
+    "locale-key": "billing.number_circles.edit",
+    "route": "app.billing.number-circles.edit",
+    "parent": "billing-number_circles",
+    "required-right": "billing::number_circle-edit"
+  },
+  {
+    "key": "billing-subscriptions",
+    "locale-key": "billing.subscriptions.list",
+    "route": "app.billing.subscriptions.index",
+    "parent": "billing",
+    "required-right": "billing_subscriptions::list"
+  },
+  {
+    "key": "billing-subscriptions-create",
+    "locale-key": "billing.subscriptions.create",
+    "route": "app.billing.subscriptions.create",
+    "parent": "billing-subscriptions",
+    "required-right": "billing_subscriptions::create"
+  },
+  {
+    "key": "billing-subscriptions-edit",
+    "locale-key": "billing.subscriptions.edit",
+    "route": "app.billing.subscriptions.edit",
+    "parent": "billing-subscriptions",
+    "required-right": "billing_subscriptions::edit"
+  },
+  {
+    "key": "billing-stripe",
+    "locale-key": "billing.stripe.main",
+    "route": "app.billing.stripe.connection-info",
+    "parent": "billing",
+    "required-right": "billing::stripe-admin"
+  }
+]

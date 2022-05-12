@@ -1,0 +1,9 @@
+<div class="booking-details"><h3>
+    Picklists
+</h3>
+    <div class="details-wrapper">
+    <span ng-repeat="picklist in vm.picklists"><a
+            ui-sref="app.picklists.contacts.index({pid: picklist.id, back: vm.back,backParams: vm.backParams})">{{picklist.name}}</a><span
+            ng-if="!$last">&nbsp;&nbsp;|&nbsp;&nbsp;</span></span>
+    </div>
+</div>
